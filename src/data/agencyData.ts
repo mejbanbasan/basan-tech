@@ -770,12 +770,13 @@ export const CASE_STUDIES: CaseStudy[] = [
 
 export const AGENCY_TEAM: TeamMember[] = [
   {
-    name: 'Alexander Basan',
-    role: 'Founder & Chief Technology Officer',
-    department: 'Executive Leadership',
+    name: 'Mejban Basan',
+    role: 'Founder & Lead Software Engineer',
+    department: 'Leadership & Architecture',
     avatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=400&q=80',
-    bio: 'Former principal cloud architect with 14+ years designing high-throughput distributed systems and mission-critical enterprise platforms.',
-    skills: ['System Architecture', 'Cloud Infrastructure', 'Tech Strategy', 'Full-Stack Engineering']
+    bio: 'Founder of BasanTech. Full-stack software engineer and systems architect specializing in high-performance web applications, mobile platforms, custom software, and scalable digital products.',
+    skills: ['System Architecture', 'Full-Stack Web & Mobile', 'Custom Software', 'Cloud Infrastructure'],
+    github: 'https://github.com/mejbanbasan'
   },
   {
     name: 'Victoria Vance',

@@ -145,6 +145,73 @@ export const AboutAgency: React.FC<AboutAgencyProps> = ({ onNavigate }) => {
           </div>
         </div>
 
+        {/* Leadership & Founder Spotlight */}
+        <div id="founder-profile" className="rounded-3xl p-8 sm:p-12 bg-white border border-zinc-200 shadow-sm space-y-8">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-zinc-200 pb-6">
+            <div className="space-y-1">
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-zinc-100 border border-zinc-200 text-xs font-mono font-semibold text-zinc-800">
+                <Users className="w-3.5 h-3.5 text-zinc-900" />
+                <span>FOUNDER &amp; LEADERSHIP</span>
+              </div>
+              <h3 className="font-display text-2xl sm:text-3xl font-bold text-zinc-950">
+                Led by Builders, Driven by Engineering Excellence
+              </h3>
+            </div>
+            <a
+              href="https://github.com/mejbanbasan"
+              target="_blank"
+              rel="noopener noreferrer"
+              id="about-founder-github-link"
+              className="inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs font-semibold bg-zinc-100 hover:bg-zinc-200 text-zinc-900 transition-colors border border-zinc-200 shrink-0 w-fit cursor-pointer"
+            >
+              <span>View Founder GitHub</span>
+              <ArrowUpRight className="w-3.5 h-3.5" />
+            </a>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
+            <div className="md:col-span-4 flex flex-col items-center sm:items-start text-center sm:text-left space-y-4">
+              <div className="w-28 h-28 sm:w-32 sm:h-32 rounded-2xl bg-zinc-950 border-2 border-zinc-200 overflow-hidden flex items-center justify-center text-white text-3xl font-display font-bold shadow-md">
+                MB
+              </div>
+              <div className="space-y-1">
+                <h4 className="font-display text-xl font-bold text-zinc-950">
+                  Mejban Basan
+                </h4>
+                <p className="text-xs font-mono font-semibold text-emerald-700">
+                  Founder &amp; Lead Software Engineer, BasanTech
+                </p>
+                <p className="text-xs text-zinc-500">
+                  Systems Architect &amp; Full-Stack Specialist
+                </p>
+              </div>
+            </div>
+
+            <div className="md:col-span-8 space-y-4 text-zinc-700 text-sm leading-relaxed">
+              <p>
+                <strong>Mejban Basan</strong> founded <strong>BasanTech</strong> with a distinct mission: eliminate unnecessary agency bureaucracy and give founders direct collaboration with the software engineers architecting their products.
+              </p>
+              <p>
+                Specializing in end-to-end full-stack development, modern cloud ecosystems, mobile apps, and scalable digital solutions, Mejban personally oversees system architecture, code quality, and delivery for every platform engineered at BasanTech.
+              </p>
+              <div className="flex flex-wrap gap-2 pt-2">
+                <span className="px-3 py-1 rounded-lg bg-zinc-100 border border-zinc-200 text-xs font-mono text-zinc-800">
+                  System Architecture
+                </span>
+                <span className="px-3 py-1 rounded-lg bg-zinc-100 border border-zinc-200 text-xs font-mono text-zinc-800">
+                  Full-Stack Web &amp; Mobile
+                </span>
+                <span className="px-3 py-1 rounded-lg bg-zinc-100 border border-zinc-200 text-xs font-mono text-zinc-800">
+                  Custom Software
+                </span>
+                <span className="px-3 py-1 rounded-lg bg-zinc-100 border border-zinc-200 text-xs font-mono text-zinc-800">
+                  Cloud &amp; DevOps
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+
         {/* Action Pitch */}
         <div className="p-8 sm:p-10 rounded-3xl bg-white border border-zinc-200 shadow-sm flex flex-col md:flex-row items-center justify-between gap-6">
           <div className="space-y-1">

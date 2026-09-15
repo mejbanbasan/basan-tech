@@ -43,7 +43,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onNavigate }) => {
           
           <div className="lg:col-span-8 space-y-6">
             <h1 className="font-display text-4xl sm:text-6xl lg:text-7xl font-bold tracking-tight text-zinc-950 leading-[1.08]">
-              We design and build bespoke software, platforms, and digital systems.
+              BasanTech — Engineering bespoke software, web apps, and digital platforms.
             </h1>
             
             <p className="text-lg sm:text-xl text-zinc-600 font-normal leading-relaxed max-w-2xl">

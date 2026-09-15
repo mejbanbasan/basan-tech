@@ -12,14 +12,44 @@ import { SERVICES_DATA } from './data/agencyData';
 import { ArrowLeft, Clock, ArrowUpRight, Check } from 'lucide-react';
 
 export default function App() {
-  const [currentPage, setCurrentPage] = useState<PageView>('home');
+  const [currentPage, setCurrentPage] = useState<PageView>(() => {
+    if (typeof window !== 'undefined') {
+      const hash = window.location.hash.replace('#', '').toLowerCase();
+      if (['services', 'portfolio', 'about', 'testimonials', 'contact'].includes(hash)) {
+        return hash as PageView;
+      }
+    }
+    return 'home';
+  });
   const [selectedServiceId, setSelectedServiceId] = useState<ServiceId>('web-dev');
+
+  React.useEffect(() => {
+    const onHashChange = () => {
+      const hash = window.location.hash.replace('#', '').toLowerCase();
+      if (['services', 'portfolio', 'about', 'testimonials', 'contact', 'home'].includes(hash)) {
+        setCurrentPage(hash === 'home' ? 'home' : (hash as PageView));
+      }
+    };
+    window.addEventListener('hashchange', onHashChange);
+    return () => window.removeEventListener('hashchange', onHashChange);
+  }, []);
 
   const handleNavigate = (page: PageView, serviceId?: ServiceId) => {
     if (serviceId) {
       setSelectedServiceId(serviceId);
     }
     setCurrentPage(page);
+
+    try {
+      if (page === 'home') {
+        history.replaceState(null, '', window.location.pathname);
+      } else if (page !== 'service-detail') {
+        history.pushState(null, '', `#${page}`);
+      }
+    } catch {
+      // ignore
+    }
+
     try {
       window.scrollTo({ top: 0, behavior: 'smooth' });
     } catch {

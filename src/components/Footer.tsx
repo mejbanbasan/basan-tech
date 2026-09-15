@@ -253,8 +253,10 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
 
         {/* Bottom Bar */}
         <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-zinc-500">
-          <div>
-            © {new Date().getFullYear()} Basan Tech. All rights reserved.
+          <div className="flex flex-wrap items-center gap-2">
+            <span>© {new Date().getFullYear()} BasanTech. All rights reserved.</span>
+            <span>•</span>
+            <span>Founded by <strong className="text-zinc-800 font-semibold">Mejban Basan</strong></span>
           </div>
           <div className="flex items-center gap-6">
             <button 
