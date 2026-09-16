@@ -8,25 +8,27 @@ import { PortfolioShowcase } from './components/PortfolioShowcase';
 import { AboutAgency } from './components/AboutAgency';
 import { TestimonialsSection } from './components/TestimonialsSection';
 import { ContactSection } from './components/ContactSection';
-import { SERVICES_DATA } from './data/agencyData';
-import { ArrowLeft, Clock, ArrowUpRight, Check } from 'lucide-react';
+import { PrivacyPolicy } from './components/PrivacyPolicy';
+import { TermsOfService } from './components/TermsOfService';
+import { SERVICES_DATA } from './data/servicesData';
+import { ArrowLeft, ArrowUpRight } from 'lucide-react';
 
 export default function App() {
   const [currentPage, setCurrentPage] = useState<PageView>(() => {
     if (typeof window !== 'undefined') {
       const hash = window.location.hash.replace('#', '').toLowerCase();
-      if (['services', 'portfolio', 'about', 'testimonials', 'contact'].includes(hash)) {
+      if (['services', 'portfolio', 'about', 'testimonials', 'contact', 'privacy', 'terms'].includes(hash)) {
         return hash as PageView;
       }
     }
     return 'home';
   });
-  const [selectedServiceId, setSelectedServiceId] = useState<ServiceId>('web-dev');
+  const [selectedServiceId, setSelectedServiceId] = useState<ServiceId>('custom-software');
 
   React.useEffect(() => {
     const onHashChange = () => {
       const hash = window.location.hash.replace('#', '').toLowerCase();
-      if (['services', 'portfolio', 'about', 'testimonials', 'contact', 'home'].includes(hash)) {
+      if (['services', 'portfolio', 'about', 'testimonials', 'contact', 'privacy', 'terms', 'home'].includes(hash)) {
         setCurrentPage(hash === 'home' ? 'home' : (hash as PageView));
       }
     };
@@ -72,56 +74,56 @@ export default function App() {
         <div className="flex items-center justify-between">
           <button
             onClick={() => handleNavigate('services')}
-            className="inline-flex items-center gap-2 text-xs font-semibold text-zinc-600 hover:text-zinc-950 transition-colors"
+            className="inline-flex items-center gap-2 text-xs font-semibold text-slate-600 hover:text-[#022A4E] transition-colors cursor-pointer"
           >
-            <ArrowLeft className="w-4 h-4" />
-            <span>Back to All Practices</span>
+            <ArrowLeft className="w-4 h-4 text-[#00976C]" />
+            <span>Back to All 8 Practices</span>
           </button>
           
-          <div className="flex items-center gap-2 text-xs text-zinc-500 font-mono">
+          <div className="flex items-center gap-2 text-xs text-slate-500 font-mono">
             <span>Practice Code:</span>
-            <strong className="text-zinc-900">BSN-{service.id.toUpperCase()}</strong>
+            <strong className="text-[#022A4E]">BSN-{service.id.toUpperCase()}</strong>
           </div>
         </div>
 
         {/* Hero Section for Service Detail */}
-        <div className="rounded-2xl p-8 sm:p-12 bg-white border border-zinc-200 shadow-sm space-y-6">
+        <div className="rounded-3xl p-8 sm:p-12 bg-white border border-slate-200 shadow-sm space-y-6">
           <div className="flex flex-wrap items-center gap-3">
-            <span className="px-3 py-1 rounded-md text-xs font-mono bg-zinc-100 text-zinc-800 border border-zinc-200">
+            <span className="px-3 py-1 rounded-md text-xs font-mono bg-emerald-50 text-emerald-800 border border-emerald-200 font-semibold">
               {service.badge}
             </span>
-            <span className="text-xs text-zinc-500 font-mono flex items-center gap-1.5">
-              <span>Full IP Ownership & Production Grade</span>
+            <span className="text-xs text-slate-500 font-mono flex items-center gap-1.5 font-medium">
+              <span>Full Source Code Ownership • Enterprise Grade</span>
             </span>
           </div>
 
           <div className="space-y-3">
-            <h1 className="font-display text-3xl sm:text-5xl font-bold text-zinc-950 tracking-tight">
+            <h1 className="text-3xl sm:text-5xl font-bold text-[#022A4E] tracking-tight">
               {service.title}
             </h1>
-            <p className="text-zinc-700 text-lg sm:text-xl font-medium max-w-3xl">
+            <p className="text-slate-800 text-lg sm:text-xl font-medium max-w-3xl">
               {service.tagline}
             </p>
           </div>
 
-          <p className="text-zinc-600 text-base leading-relaxed max-w-4xl">
+          <p className="text-slate-600 text-base leading-relaxed max-w-4xl">
             {service.fullDescription}
           </p>
 
           <div className="flex flex-wrap items-center gap-4 pt-4">
             <button
               onClick={() => handleNavigate('contact', service.id)}
-              className="px-6 py-3.5 rounded-full bg-zinc-950 hover:bg-zinc-800 text-white text-xs font-semibold transition-colors flex items-center gap-2 shadow-sm"
+              className="px-7 py-3.5 rounded-full bg-[#022A4E] hover:bg-[#00976C] text-white text-xs font-bold transition-all duration-200 flex items-center gap-2 shadow-xs cursor-pointer"
             >
               <span>Initiate {service.title} Inquiry</span>
-              <ArrowUpRight className="w-4 h-4" />
+              <ArrowUpRight className="w-4 h-4 text-emerald-300" />
             </button>
 
             <button
               onClick={() => handleNavigate('portfolio')}
-              className="px-6 py-3.5 rounded-full bg-white hover:bg-zinc-50 text-zinc-700 text-xs font-medium border border-zinc-300 transition-colors"
+              className="px-6 py-3.5 rounded-full bg-white hover:bg-slate-50 text-slate-700 hover:text-[#022A4E] text-xs font-semibold border border-slate-300 transition-colors cursor-pointer"
             >
-              <span>View Related Works</span>
+              <span>View Case Studies</span>
             </button>
           </div>
         </div>
@@ -140,7 +142,7 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen bg-zinc-50 text-zinc-900 flex flex-col justify-between selection:bg-zinc-200 selection:text-zinc-950">
+    <div className="min-h-screen bg-slate-50/50 text-slate-900 flex flex-col justify-between selection:bg-emerald-100 selection:text-[#022A4E]">
       
       {/* Navigation Bar */}
       <Navbar currentPage={currentPage} onNavigate={handleNavigate} />
@@ -148,17 +150,19 @@ export default function App() {
       {/* Main Page Router */}
       <main className="flex-1">
         
+        {/* HOMEPAGE - Notice: Founder & Leadership is NOT shown on homepage per requirement */}
         {currentPage === 'home' && (
           <div>
             <HeroSection onNavigate={handleNavigate} />
             <ServicesOverview onNavigate={handleNavigate} />
             <PortfolioShowcase onNavigate={handleNavigate} limit={3} />
             <TestimonialsSection onNavigate={handleNavigate} />
-            <AboutAgency onNavigate={handleNavigate} />
+            <AboutAgency onNavigate={handleNavigate} isAboutPage={false} />
             <ContactSection onNavigate={handleNavigate} />
           </div>
         )}
 
+        {/* SERVICES PAGE */}
         {currentPage === 'services' && (
           <div className="pt-16">
             <ServicesOverview onNavigate={handleNavigate} />
@@ -166,8 +170,10 @@ export default function App() {
           </div>
         )}
 
+        {/* SERVICE DETAIL PAGE */}
         {currentPage === 'service-detail' && renderServiceDetail()}
 
+        {/* PORTFOLIO / WORK PAGE */}
         {currentPage === 'portfolio' && (
           <div className="pt-16">
             <PortfolioShowcase onNavigate={handleNavigate} />
@@ -175,14 +181,16 @@ export default function App() {
           </div>
         )}
 
+        {/* ABOUT US PAGE - Includes Founder & Leadership Section */}
         {currentPage === 'about' && (
           <div className="pt-16">
-            <AboutAgency onNavigate={handleNavigate} />
+            <AboutAgency onNavigate={handleNavigate} isAboutPage={true} />
             <TestimonialsSection onNavigate={handleNavigate} />
             <ContactSection onNavigate={handleNavigate} />
           </div>
         )}
 
+        {/* TESTIMONIALS PAGE */}
         {currentPage === 'testimonials' && (
           <div className="pt-16">
             <TestimonialsSection onNavigate={handleNavigate} />
@@ -191,10 +199,21 @@ export default function App() {
           </div>
         )}
 
+        {/* CONTACT PAGE */}
         {currentPage === 'contact' && (
           <div className="pt-16">
             <ContactSection onNavigate={handleNavigate} />
           </div>
+        )}
+
+        {/* PRIVACY POLICY PAGE */}
+        {currentPage === 'privacy' && (
+          <PrivacyPolicy onNavigate={handleNavigate} />
+        )}
+
+        {/* TERMS OF SERVICE PAGE */}
+        {currentPage === 'terms' && (
+          <TermsOfService onNavigate={handleNavigate} />
         )}
 
       </main>

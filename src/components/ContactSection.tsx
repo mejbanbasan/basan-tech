@@ -31,12 +31,15 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ onNavigate, pres
   const [company, setCompany] = useState('');
   const [projectType, setProjectType] = useState<string>(() => {
     switch (preselectedService) {
-      case 'web-dev': return 'Web Application & SaaS Development';
-      case 'app-dev': return 'Mobile App (iOS & Android)';
-      case 'custom-software': return 'Custom Software & Enterprise Automation';
-      case 'desktop-software': return 'Desktop Software & Systems';
-      case 'social-media': return 'Social Media & Digital Marketing';
-      case 'ecommerce': return 'E-Commerce & Online Storefront';
+      case 'custom-software': return 'Custom Software Development';
+      case 'web-dev': return 'Web Development';
+      case 'mobile-app':
+      case 'app-dev': return 'Mobile App Development';
+      case 'ai-solutions': return 'AI Solutions';
+      case 'hubspot-dev': return 'HubSpot Development';
+      case 'reactjs-dev': return 'ReactJS Development';
+      case 'wordpress-dev': return 'WordPress Development';
+      case 'nodejs-dev': return 'Node.js Development';
       default: return '';
     }
   });
@@ -329,13 +332,15 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ onNavigate, pres
                         disabled={isSubmitting}
                         className="w-full px-3.5 py-2.5 text-sm bg-white border border-zinc-300 rounded-xl text-zinc-900 placeholder:text-zinc-400 focus:outline-none focus:ring-2 focus:ring-zinc-950/10 focus:border-zinc-950 transition-all shadow-2xs appearance-none pr-10 cursor-pointer disabled:bg-zinc-100"
                       >
-                        <option value="" disabled className="text-zinc-400">Choose a service area</option>
-                        <option value="Web Application & SaaS Development">Web Application & SaaS Development</option>
-                        <option value="Mobile App (iOS & Android)">Mobile App (iOS & Android)</option>
-                        <option value="Custom Software & Enterprise Automation">Custom Software & Enterprise Automation</option>
-                        <option value="Desktop Software & Systems">Desktop Software & Systems</option>
-                        <option value="Social Media & Digital Marketing">Social Media & Digital Marketing</option>
-                        <option value="E-Commerce & Online Storefront">E-Commerce & Online Storefront</option>
+                        <option value="" disabled className="text-zinc-400">Choose a practice area</option>
+                        <option value="Custom Software Development">Custom Software Development</option>
+                        <option value="Web Development">Web Development</option>
+                        <option value="Mobile App Development">Mobile App Development</option>
+                        <option value="AI Solutions">AI Solutions</option>
+                        <option value="HubSpot Development">HubSpot Development</option>
+                        <option value="ReactJS Development">ReactJS Development</option>
+                        <option value="WordPress Development">WordPress Development</option>
+                        <option value="Node.js Development">Node.js Development</option>
                         <option value="Other / Multi-disciplinary Engineering">Other / Multi-disciplinary Engineering</option>
                       </select>
                       <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-3.5 text-zinc-500">
@@ -373,7 +378,7 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ onNavigate, pres
                       type="submit"
                       id="contact-submit-btn"
                       disabled={isSubmitting}
-                      className="inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-full bg-zinc-950 hover:bg-zinc-800 text-white text-xs font-semibold transition-all shadow-sm shrink-0 cursor-pointer disabled:opacity-75"
+                      className="inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-full bg-[#022A4E] hover:bg-[#00976C] text-white text-xs font-bold transition-all duration-200 shadow-sm shrink-0 cursor-pointer disabled:opacity-75"
                     >
                       {isSubmitting ? (
                         <>

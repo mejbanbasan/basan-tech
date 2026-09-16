@@ -5,14 +5,23 @@ export type PageView =
   | 'portfolio' 
   | 'about' 
   | 'testimonials'
-  | 'contact';
+  | 'contact'
+  | 'privacy'
+  | 'terms';
 
 export type ServiceId = 
-  | 'web-dev' 
-  | 'app-dev' 
-  | 'custom-software' 
-  | 'desktop-software' 
-  | 'social-media' 
+  | 'custom-software'
+  | 'web-dev'
+  | 'mobile-app'
+  | 'ai-solutions'
+  | 'hubspot-dev'
+  | 'reactjs-dev'
+  | 'wordpress-dev'
+  | 'nodejs-dev'
+  // Backwards compatibility aliases
+  | 'app-dev'
+  | 'desktop-software'
+  | 'social-media'
   | 'ecommerce';
 
 export interface Service {
@@ -59,22 +68,15 @@ export interface CaseStudy {
   challenge: string;
   whatWeBuilt?: string;
   solution: string;
-  keyFeatures?: string[];
-  architecture: string[];
-  results?: {
-    metric: string;
-    label: string;
-    description: string;
-  }[];
+  architectureDetails?: string;
   techStack: string[];
-  duration?: string;
+  deliverables: string[];
+  resultsMetrics: {
+    label: string;
+    value: string;
+    change?: string;
+  }[];
   year: string;
-  testimonial?: {
-    quote: string;
-    author: string;
-    role: string;
-    avatar: string;
-  };
   featured: boolean;
   badge?: string;
 }
@@ -98,17 +100,7 @@ export interface Testimonial {
   avatar: string;
   rating: number;
   serviceType: string;
-  comment: string;
-  projectImpact: string;
-}
-
-export interface QuoteFormData {
-  fullName: string;
-  email: string;
-  company: string;
-  phone: string;
-  selectedServices: ServiceId[];
-  budgetRange: string;
-  estimatedTimeline: string;
-  projectDescription: string;
+  quote: string;
+  date: string;
+  verified: boolean;
 }

@@ -8,13 +8,12 @@ import {
   Globe, 
   Smartphone, 
   Cpu, 
-  Monitor, 
-  Share2, 
-  ShoppingBag,
-  CheckCircle2,
   Sparkles,
-  ExternalLink,
-  ShieldCheck
+  Layers,
+  Code2,
+  Server,
+  Layout,
+  ExternalLink
 } from 'lucide-react';
 
 interface HeroSectionProps {
@@ -23,18 +22,18 @@ interface HeroSectionProps {
 
 export const HeroSection: React.FC<HeroSectionProps> = ({ onNavigate }) => {
   return (
-    <section id="hero-section" className="relative min-h-[90vh] pt-32 pb-16 flex flex-col justify-center bg-zinc-50 border-b border-zinc-200">
+    <section id="hero-section" className="relative min-h-[90vh] pt-32 pb-16 flex flex-col justify-center bg-slate-50/60 border-b border-slate-200">
       
-      {/* Subtle architectural ambient background grid */}
-      <div className="absolute inset-0 bg-grid-pattern opacity-60 pointer-events-none" />
+      {/* Subtle ambient background grid with brand navy tint */}
+      <div className="absolute inset-0 bg-grid-pattern opacity-50 pointer-events-none" />
       
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
         
         {/* Studio Status Marker */}
         <div className="flex items-center gap-2 mb-6">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-white border border-zinc-200 text-xs text-zinc-700 font-mono shadow-xs">
-            <span className="w-2 h-2 rounded-full bg-emerald-500"></span>
-            <span>BASAN TECH • DIGITAL PRODUCT & SOFTWARE STUDIO</span>
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white border border-slate-200 text-xs font-semibold text-[#022A4E] shadow-2xs">
+            <span className="w-2 h-2 rounded-full bg-[#00976C] animate-pulse"></span>
+            <span>BASANTECH • SOFTWARE &amp; DIGITAL STUDIO</span>
           </div>
         </div>
 
@@ -42,50 +41,56 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onNavigate }) => {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start mb-16">
           
           <div className="lg:col-span-8 space-y-6">
-            <h1 className="font-display text-4xl sm:text-6xl lg:text-7xl font-bold tracking-tight text-zinc-950 leading-[1.08]">
+            <h1 className="text-4xl sm:text-6xl lg:text-7xl font-bold tracking-tight text-[#022A4E] leading-[1.08]">
               BasanTech — Engineering bespoke software, web apps, and digital platforms.
             </h1>
             
-            <p className="text-lg sm:text-xl text-zinc-600 font-normal leading-relaxed max-w-2xl">
-              Basan Tech is an engineering-first studio. We partner with growing businesses to deliver high-performance <strong className="text-zinc-900 font-semibold">Web Applications</strong>, <strong className="text-zinc-900 font-semibold">Mobile Apps</strong>, <strong className="text-zinc-900 font-semibold">Custom Software</strong>, <strong className="text-zinc-900 font-semibold">Desktop Systems</strong>, and <strong className="text-zinc-900 font-semibold">E-Commerce</strong>.
+            <p className="text-lg sm:text-xl text-slate-600 font-normal leading-relaxed max-w-2xl">
+              BasanTech builds clean, reliable, and high-performance digital solutions. We partner with founders and businesses to engineer <strong className="text-[#022A4E] font-semibold">Custom Software</strong>, <strong className="text-[#022A4E] font-semibold">Web Applications</strong>, <strong className="text-[#022A4E] font-semibold">Mobile Apps</strong>, and <strong className="text-[#022A4E] font-semibold">AI Solutions</strong> focused on long-term value.
             </p>
 
             <div className="flex flex-wrap items-center gap-4 pt-2">
               <button
                 id="hero-contact-btn"
                 onClick={() => onNavigate('contact')}
-                className="px-6 py-3.5 rounded-full text-sm font-semibold text-white bg-zinc-950 hover:bg-zinc-800 transition-colors flex items-center gap-2 shadow-sm cursor-pointer"
+                className="px-7 py-3.5 rounded-full text-sm font-bold text-white bg-[#022A4E] hover:bg-[#00976C] transition-all duration-200 flex items-center gap-2 shadow-sm cursor-pointer hover:shadow-md"
               >
                 <span>Initiate Project Inquiry</span>
-                <ArrowUpRight className="w-4 h-4" />
+                <ArrowUpRight className="w-4 h-4 text-emerald-300" />
               </button>
 
               <button
                 id="hero-portfolio-btn"
                 onClick={() => onNavigate('portfolio')}
-                className="px-6 py-3.5 rounded-full text-sm font-medium text-zinc-800 hover:text-zinc-950 bg-white hover:bg-zinc-100 border border-zinc-300 transition-colors flex items-center gap-2 shadow-sm cursor-pointer"
+                className="px-7 py-3.5 rounded-full text-sm font-semibold text-[#022A4E] hover:text-[#00976C] bg-white hover:bg-slate-50 border border-slate-300 hover:border-[#00976C] transition-colors flex items-center gap-2 shadow-2xs cursor-pointer"
               >
-                <span>View Our Real Work</span>
-                <ArrowRight className="w-4 h-4" />
+                <span>View Real Work &amp; Case Studies</span>
+                <ArrowRight className="w-4 h-4 text-[#00976C]" />
               </button>
             </div>
           </div>
 
           {/* Quick Practice Index */}
-          <div className="lg:col-span-4 bg-white border border-zinc-200 rounded-2xl p-6 space-y-4 shadow-sm">
-            <div className="flex items-center justify-between border-b border-zinc-100 pb-3">
-              <span className="text-xs font-mono uppercase tracking-wider text-zinc-500 font-semibold">Core Practices</span>
-              <span className="text-xs font-mono text-zinc-700 font-semibold bg-zinc-100 px-2 py-0.5 rounded border border-zinc-200">06 Capabilities</span>
+          <div className="lg:col-span-4 bg-white border border-slate-200 rounded-3xl p-6 space-y-4 shadow-sm">
+            <div className="flex items-center justify-between border-b border-slate-100 pb-3">
+              <span className="text-xs font-mono uppercase tracking-wider text-slate-400 font-bold">
+                Core Practices
+              </span>
+              <span className="text-xs font-semibold text-[#00976C] bg-emerald-50 px-2.5 py-0.5 rounded-full border border-emerald-200">
+                08 Capabilities
+              </span>
             </div>
 
-            <div className="space-y-2">
+            <div className="space-y-1">
               {[
-                { id: 'web-dev' as ServiceId, label: 'Web Development', icon: Globe, desc: 'High-Performance React & Next.js Platforms' },
-                { id: 'app-dev' as ServiceId, label: 'Mobile App Development', icon: Smartphone, desc: 'iOS & Android Native & Cross-Platform' },
-                { id: 'custom-software' as ServiceId, label: 'Custom Software & Automation', icon: Cpu, desc: 'Tailored Business Logic & Cloud Systems' },
-                { id: 'desktop-software' as ServiceId, label: 'Desktop Software', icon: Monitor, desc: 'Cross-Platform Windows & macOS Apps' },
-                { id: 'social-media' as ServiceId, label: 'Social Media Strategy', icon: Share2, desc: 'Digital Presence & Growth Marketing' },
-                { id: 'ecommerce' as ServiceId, label: 'E-Commerce Platforms', icon: ShoppingBag, desc: 'Online Storefronts & Custom Checkouts' }
+                { id: 'custom-software' as ServiceId, label: 'Custom Software Development', icon: Cpu, desc: 'Bespoke Business Logic & Systems' },
+                { id: 'web-dev' as ServiceId, label: 'Web Development', icon: Globe, desc: 'Modern React & Cloud Platforms' },
+                { id: 'mobile-app' as ServiceId, label: 'Mobile App Development', icon: Smartphone, desc: 'Cross-Platform iOS & Android Apps' },
+                { id: 'ai-solutions' as ServiceId, label: 'AI Solutions', icon: Sparkles, desc: 'Generative AI & LLM Automation' },
+                { id: 'hubspot-dev' as ServiceId, label: 'HubSpot Development', icon: Layers, desc: 'Custom CMS & Automated CRM' },
+                { id: 'reactjs-dev' as ServiceId, label: 'ReactJS Development', icon: Code2, desc: 'Modular SPAs & Frontends' },
+                { id: 'wordpress-dev' as ServiceId, label: 'WordPress Development', icon: Layout, desc: 'High-Speed Custom Themes' },
+                { id: 'nodejs-dev' as ServiceId, label: 'Node.js Development', icon: Server, desc: 'Scalable APIs & Microservices' },
               ].map((item) => {
                 const Icon = item.icon;
                 return (
@@ -93,33 +98,33 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onNavigate }) => {
                     key={item.id}
                     id={`hero-practice-card-${item.id}`}
                     onClick={() => onNavigate('service-detail', item.id)}
-                    className="w-full group flex items-start gap-3 p-2.5 rounded-xl hover:bg-zinc-50 text-left transition-colors cursor-pointer"
+                    className="w-full group flex items-start gap-3 p-2 rounded-xl hover:bg-slate-50 text-left transition-colors cursor-pointer border border-transparent hover:border-slate-200"
                   >
-                    <div className="p-2 rounded-lg bg-zinc-100 border border-zinc-200 group-hover:border-zinc-300 text-zinc-700 group-hover:text-zinc-950 transition-colors shrink-0">
+                    <div className="p-1.5 rounded-lg bg-slate-100 text-[#022A4E] group-hover:text-[#00976C] group-hover:bg-emerald-50 transition-colors shrink-0">
                       <Icon className="w-4 h-4" />
                     </div>
                     <div className="flex-1 min-w-0">
                       <div className="flex items-center justify-between">
-                        <span className="text-sm font-semibold text-zinc-800 group-hover:text-zinc-950 transition-colors">
+                        <span className="text-xs font-bold text-[#022A4E] group-hover:text-[#00976C] transition-colors truncate">
                           {item.label}
                         </span>
-                        <ArrowUpRight className="w-3.5 h-3.5 text-zinc-400 group-hover:text-zinc-950 opacity-0 group-hover:opacity-100 transition-opacity" />
+                        <ArrowUpRight className="w-3 h-3 text-slate-400 group-hover:text-[#00976C] opacity-0 group-hover:opacity-100 transition-opacity" />
                       </div>
-                      <p className="text-xs text-zinc-500 truncate mt-0.5">{item.desc}</p>
+                      <p className="text-[11px] text-slate-500 truncate">{item.desc}</p>
                     </div>
                   </button>
                 );
               })}
             </div>
 
-            <div className="pt-2 border-t border-zinc-100">
+            <div className="pt-2 border-t border-slate-100">
               <button
                 id="hero-view-all-services-link"
                 onClick={() => onNavigate('services')}
-                className="w-full text-center text-xs font-medium text-zinc-600 hover:text-zinc-950 py-1 transition-colors flex items-center justify-center gap-1 cursor-pointer"
+                className="w-full text-center text-xs font-semibold text-[#022A4E] hover:text-[#00976C] py-1 transition-colors flex items-center justify-center gap-1 cursor-pointer"
               >
-                <span>Explore All Practices & Capabilities</span>
-                <ArrowRight className="w-3 h-3" />
+                <span>Explore All 8 Services in Detail</span>
+                <ArrowRight className="w-3.5 h-3.5 text-[#00976C]" />
               </button>
             </div>
           </div>
@@ -127,10 +132,10 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onNavigate }) => {
         </div>
 
         {/* Realistic Animated Studio Stats Grid */}
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3 sm:gap-4 py-8 border-t border-zinc-200">
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3 sm:gap-4 py-8 border-t border-slate-200">
           {AGENCY_STATS.map((stat, i) => (
-            <div key={i} className="p-4 rounded-xl bg-white border border-zinc-200 shadow-xs hover:border-zinc-300 transition-colors">
-              <div className="font-display text-2xl sm:text-3xl font-bold text-zinc-950 tracking-tight flex items-baseline">
+            <div key={i} className="p-4 rounded-2xl bg-white border border-slate-200 shadow-xs hover:border-[#00976C] transition-colors">
+              <div className="text-2xl sm:text-3xl font-bold text-[#022A4E] tracking-tight flex items-baseline">
                 {stat.numericValue !== undefined ? (
                   <AnimatedCounter 
                     end={stat.numericValue} 
@@ -140,11 +145,11 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onNavigate }) => {
                   <span>{stat.value}</span>
                 )}
               </div>
-              <div className="text-xs text-zinc-800 mt-1 font-semibold">
+              <div className="text-xs text-slate-800 mt-1 font-semibold">
                 {stat.label}
               </div>
               {stat.desc && (
-                <div className="text-[11px] text-zinc-500 mt-0.5">
+                <div className="text-[11px] text-slate-500 mt-0.5">
                   {stat.desc}
                 </div>
               )}
@@ -153,28 +158,28 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onNavigate }) => {
         </div>
 
         {/* Real Projects & Verifiable Platforms Section */}
-        <div className="pt-10 border-t border-zinc-200">
+        <div className="pt-10 border-t border-slate-200">
           <div className="space-y-4">
             
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
               <div>
                 <div className="flex items-center gap-2">
-                  <span className="w-2 h-2 rounded-full bg-emerald-500"></span>
-                  <span className="text-xs font-mono uppercase tracking-wider text-zinc-600 font-semibold">
-                    Real Projects. Practical Solutions. Built for Business.
+                  <span className="w-2 h-2 rounded-full bg-[#00976C]"></span>
+                  <span className="text-xs font-mono uppercase tracking-wider text-emerald-800 font-bold">
+                    Proven Delivery • Real Live Platforms
                   </span>
                 </div>
-                <p className="text-xs text-zinc-500 mt-0.5">
-                  Our real work is our proof. Explore live platforms engineered and delivered by Basan Tech.
+                <p className="text-xs text-slate-500 mt-0.5">
+                  Explore verifiable production systems engineered and deployed by BasanTech.
                 </p>
               </div>
 
               <button
                 onClick={() => onNavigate('portfolio')}
-                className="text-xs font-medium text-zinc-900 hover:text-zinc-600 flex items-center gap-1 shrink-0 cursor-pointer"
+                className="text-xs font-semibold text-[#022A4E] hover:text-[#00976C] flex items-center gap-1 shrink-0 cursor-pointer"
               >
                 <span>View Full Portfolio Showcase</span>
-                <ArrowRight className="w-3.5 h-3.5" />
+                <ArrowRight className="w-3.5 h-3.5 text-[#00976C]" />
               </button>
             </div>
 
@@ -184,11 +189,11 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onNavigate }) => {
                 <div
                   key={idx}
                   id={`hero-platform-card-${platform.caseStudyId}`}
-                  className="p-4 rounded-xl bg-white border border-zinc-200 hover:border-zinc-300 hover:shadow-xs transition-all flex flex-col justify-between group"
+                  className="p-4 rounded-2xl bg-white border border-slate-200 hover:border-[#00976C] hover:shadow-xs transition-all flex flex-col justify-between group"
                 >
                   <div className="space-y-1.5">
                     <div className="flex items-center justify-between">
-                      <span className="font-display text-sm font-bold text-zinc-950 group-hover:text-zinc-700 transition-colors">
+                      <span className="text-sm font-bold text-[#022A4E] group-hover:text-[#00976C] transition-colors">
                         {platform.name}
                       </span>
                       <a
@@ -196,27 +201,27 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onNavigate }) => {
                         target="_blank"
                         rel="noopener noreferrer"
                         onClick={(e) => e.stopPropagation()}
-                        className="p-1 rounded text-zinc-400 hover:text-zinc-900 hover:bg-zinc-100 transition-colors"
+                        className="p-1 rounded-md text-slate-400 hover:text-[#022A4E] hover:bg-slate-100 transition-colors"
                         title={`Visit live site ${platform.name}`}
                       >
                         <ExternalLink className="w-3.5 h-3.5" />
                       </a>
                     </div>
-                    <p className="text-[11px] text-zinc-500 font-mono leading-tight">
+                    <p className="text-[11px] text-slate-500 font-mono leading-tight">
                       {platform.category}
                     </p>
                   </div>
 
-                  <div className="pt-3 mt-2 border-t border-zinc-100 flex items-center justify-between">
-                    <span className="text-[10px] text-zinc-600 truncate max-w-[130px]">
+                  <div className="pt-3 mt-2 border-t border-slate-100 flex items-center justify-between">
+                    <span className="text-[10px] text-slate-600 truncate max-w-[130px]">
                       {platform.tagline}
                     </span>
                     <button
                       onClick={() => onNavigate('portfolio')}
-                      className="text-[11px] font-medium text-zinc-700 group-hover:text-zinc-950 flex items-center gap-0.5 shrink-0"
+                      className="text-[11px] font-semibold text-slate-700 group-hover:text-[#00976C] flex items-center gap-0.5 shrink-0 cursor-pointer"
                     >
                       <span>Details</span>
-                      <ArrowUpRight className="w-3 h-3" />
+                      <ArrowUpRight className="w-3 h-3 text-[#00976C]" />
                     </button>
                   </div>
                 </div>
@@ -230,4 +235,3 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onNavigate }) => {
     </section>
   );
 };
-

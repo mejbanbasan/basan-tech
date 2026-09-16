@@ -1,15 +1,15 @@
 import React, { useState } from 'react';
 import { PageView, ServiceId } from '../types';
-import { SERVICES_DATA } from '../data/agencyData';
+import { SERVICES_DATA } from '../data/servicesData';
 import { 
   ArrowUpRight, 
   Mail, 
-  MapPin, 
   Phone, 
   Check, 
-  ShieldCheck, 
   Instagram,
-  MessageCircle
+  MessageCircle,
+  ShieldCheck,
+  Globe
 } from 'lucide-react';
 import confetti from 'canvas-confetti';
 
@@ -29,8 +29,8 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
     try {
       if (typeof confetti === 'function') {
         confetti({
-          particleCount: 50,
-          spread: 60,
+          particleCount: 40,
+          spread: 50,
           origin: { y: 0.85 }
         });
       }
@@ -40,206 +40,202 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
   };
 
   return (
-    <footer id="basan-footer" className="bg-white border-t border-zinc-200 pt-16 pb-12">
+    <footer id="basan-footer" className="bg-white border-t border-slate-200 pt-16 pb-12">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
-        {/* Top Pitch Card */}
-        <div className="mb-16 rounded-2xl p-8 sm:p-10 bg-zinc-950 border border-zinc-900 flex flex-col md:flex-row items-start md:items-center justify-between gap-6 shadow-xl shadow-zinc-950/5">
-          <div className="space-y-2">
-            <div className="text-xs font-mono uppercase tracking-wider text-zinc-400 font-semibold">
-              Engagement Capacity Available
+        {/* Top Engagement Pitch Card */}
+        <div className="mb-16 rounded-3xl p-8 sm:p-12 bg-gradient-to-br from-[#022A4E] to-[#011D36] text-white flex flex-col md:flex-row items-start md:items-center justify-between gap-8 shadow-xl">
+          <div className="space-y-3 max-w-2xl">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/20 border border-emerald-400/30 text-xs font-semibold text-emerald-300">
+              <span className="w-2 h-2 rounded-full bg-[#00976C] animate-ping" />
+              <span>ENGAGEMENT CAPACITY AVAILABLE</span>
             </div>
-            <h3 className="font-display text-2xl sm:text-3xl font-bold text-white tracking-tight">
-              Ready to engineer your next software product?
+            <h3 className="text-2xl sm:text-4xl font-bold tracking-tight text-white">
+              Ready to engineer your next digital solution?
             </h3>
-            <p className="text-zinc-400 text-sm max-w-xl">
-              We partner with founders and enterprise leaders to deliver high-craft digital systems with predictable velocity.
+            <p className="text-slate-300 text-sm sm:text-base leading-relaxed">
+              We partner with founders, businesses, and product teams to build clean, reliable, and high-performance software.
             </p>
           </div>
 
           <button
-            id="footer-start-project-btn"
             onClick={() => onNavigate('contact')}
-            className="px-6 py-3.5 rounded-full text-xs font-semibold text-zinc-950 bg-white hover:bg-zinc-100 transition-colors flex items-center gap-2 shrink-0 shadow-sm cursor-pointer"
+            className="px-7 py-3.5 rounded-full text-sm font-bold text-[#022A4E] bg-white hover:bg-emerald-50 transition-all duration-200 flex items-center gap-2 shrink-0 shadow-md hover:scale-105 cursor-pointer"
           >
-            <span>Start a Project</span>
-            <ArrowUpRight className="w-4 h-4" />
+            <span>Start a Project Inquiry</span>
+            <ArrowUpRight className="w-4 h-4 text-[#00976C]" />
           </button>
         </div>
 
-        {/* Main Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 pb-12 border-b border-zinc-200">
+        {/* 4-Column Footer Navigation */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 pb-12 border-b border-slate-200">
           
-          {/* Brand Col */}
-          <div className="lg:col-span-2 space-y-4">
-            <div className="flex items-center gap-2">
-              <span className="font-display font-bold text-xl tracking-tight text-zinc-950">
-                BASAN<span className="text-zinc-400">.</span>TECH
-              </span>
-            </div>
-            
-            <p className="text-zinc-600 text-sm leading-relaxed max-w-sm">
-              Basan Tech is an engineering-first software and digital product studio. We build web applications, native mobile apps, custom software, desktop systems, and e-commerce platforms.
+          {/* Column 1: Brand & Identity */}
+          <div className="lg:col-span-4 space-y-4">
+            <button 
+              onClick={() => onNavigate('home')} 
+              className="text-left focus:outline-none cursor-pointer group"
+              aria-label="BasanTech Home"
+            >
+              <img 
+                src="/basantech-logo-transparent.png" 
+                alt="BasanTech Software & Digital" 
+                className="h-9 w-auto object-contain transition-transform group-hover:scale-[1.02]" 
+              />
+            </button>
+
+            <p className="text-sm text-slate-600 leading-relaxed max-w-sm">
+              BasanTech is a software engineering and digital solutions company. We design and build clean, scalable web applications, custom software, mobile apps, and automated workflows.
             </p>
 
-            {/* Social Icons (Instagram, WhatsApp, Email) */}
-            <div className="flex items-center gap-2 pt-1 flex-wrap">
-              {/* Instagram */}
-              <a 
-                href="https://www.instagram.com/basan_tech/" 
-                target="_blank" 
-                rel="noopener noreferrer" 
-                aria-label="Instagram @basan_tech"
-                title="Instagram @basan_tech"
-                id="footer-social-instagram"
-                className="w-8 h-8 rounded-lg bg-zinc-100 border border-zinc-200 flex items-center justify-center text-pink-600 hover:text-pink-700 hover:bg-pink-50 transition-colors"
-              >
-                <Instagram className="w-4 h-4" />
-              </a>
+            <div className="flex items-center gap-2 text-xs font-semibold text-emerald-700 bg-emerald-50 px-3 py-1.5 rounded-lg w-fit border border-emerald-200">
+              <ShieldCheck className="w-4 h-4 text-[#00976C]" />
+              <span>100% Client-Owned Source Code</span>
+            </div>
+          </div>
 
-              {/* WhatsApp */}
-              <a 
-                href="https://wa.me/919624895641" 
-                target="_blank" 
-                rel="noopener noreferrer" 
-                aria-label="WhatsApp (+91 9624895641)"
-                title="WhatsApp (+91 9624895641)"
-                id="footer-social-whatsapp"
-                className="w-8 h-8 rounded-lg bg-zinc-100 border border-zinc-200 flex items-center justify-center text-emerald-600 hover:text-emerald-700 hover:bg-emerald-50 transition-colors"
-              >
-                <MessageCircle className="w-4 h-4" />
-              </a>
+          {/* Column 2: Services */}
+          <div className="lg:col-span-3 space-y-3">
+            <h4 className="text-xs font-mono font-bold uppercase tracking-wider text-[#022A4E]">
+              Our Practices
+            </h4>
+            <ul className="space-y-2 text-xs sm:text-sm text-slate-600">
+              {SERVICES_DATA.slice(0, 6).map((service) => (
+                <li key={service.id}>
+                  <button
+                    onClick={() => onNavigate('service-detail', service.id)}
+                    className="hover:text-[#00976C] transition-colors text-left cursor-pointer"
+                  >
+                    {service.title}
+                  </button>
+                </li>
+              ))}
+              <li>
+                <button
+                  onClick={() => onNavigate('services')}
+                  className="font-semibold text-[#00976C] hover:underline flex items-center gap-1 cursor-pointer pt-1"
+                >
+                  <span>View all 8 practices</span>
+                  <ArrowUpRight className="w-3 h-3" />
+                </button>
+              </li>
+            </ul>
+          </div>
 
-              {/* Email */}
+          {/* Column 3: Quick Links */}
+          <div className="lg:col-span-2 space-y-3">
+            <h4 className="text-xs font-mono font-bold uppercase tracking-wider text-[#022A4E]">
+              Company
+            </h4>
+            <ul className="space-y-2 text-xs sm:text-sm text-slate-600">
+              <li>
+                <button 
+                  onClick={() => onNavigate('home')}
+                  className="hover:text-[#00976C] transition-colors cursor-pointer"
+                >
+                  Home
+                </button>
+              </li>
+              <li>
+                <button 
+                  onClick={() => onNavigate('about')}
+                  className="hover:text-[#00976C] transition-colors cursor-pointer"
+                >
+                  About Us
+                </button>
+              </li>
+              <li>
+                <button 
+                  onClick={() => onNavigate('portfolio')}
+                  className="hover:text-[#00976C] transition-colors cursor-pointer"
+                >
+                  Work &amp; Case Studies
+                </button>
+              </li>
+              <li>
+                <button 
+                  onClick={() => onNavigate('services')}
+                  className="hover:text-[#00976C] transition-colors cursor-pointer"
+                >
+                  Services
+                </button>
+              </li>
+              <li>
+                <button 
+                  onClick={() => onNavigate('contact')}
+                  className="hover:text-[#00976C] transition-colors cursor-pointer"
+                >
+                  Contact &amp; Inquiries
+                </button>
+              </li>
+            </ul>
+          </div>
+
+          {/* Column 4: Direct Channels */}
+          <div className="lg:col-span-3 space-y-4">
+            <h4 className="text-xs font-mono font-bold uppercase tracking-wider text-[#022A4E]">
+              Direct Inquiries
+            </h4>
+
+            <div className="space-y-2.5 text-xs sm:text-sm">
               <a 
                 href="mailto:basantech1@gmail.com" 
-                aria-label="Email basantech1@gmail.com"
-                title="Email basantech1@gmail.com"
-                id="footer-social-email"
-                className="w-8 h-8 rounded-lg bg-zinc-100 border border-zinc-200 flex items-center justify-center text-zinc-700 hover:text-zinc-950 hover:bg-zinc-200 transition-colors"
+                className="flex items-center gap-2 text-slate-700 hover:text-[#00976C] transition-colors font-mono"
               >
-                <Mail className="w-4 h-4" />
+                <Mail className="w-4 h-4 text-[#022A4E] shrink-0" />
+                <span>basantech1@gmail.com</span>
               </a>
-            </div>
 
-            <div className="pt-2 flex items-center gap-2 text-xs text-zinc-500 font-medium">
-              <ShieldCheck className="w-4 h-4 text-zinc-600" />
-              <span>SOC2-ready standards & complete IP ownership</span>
-            </div>
-          </div>
-
-          {/* Services Col */}
-          <div className="space-y-3">
-            <div className="text-xs font-mono uppercase tracking-wider text-zinc-500 font-semibold">
-              Core Practices
-            </div>
-            <ul className="space-y-2 text-xs">
-              {SERVICES_DATA.map((s) => (
-                <li key={s.id}>
-                  <button
-                    id={`footer-service-${s.id}`}
-                    onClick={() => onNavigate('service-detail', s.id)}
-                    className="text-zinc-600 hover:text-zinc-950 transition-colors text-left cursor-pointer"
-                  >
-                    {s.title}
-                  </button>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Navigation Col */}
-          <div className="space-y-3">
-            <div className="text-xs font-mono uppercase tracking-wider text-zinc-500 font-semibold">
-              Studio
-            </div>
-            <ul className="space-y-2 text-xs">
-              {[
-                { label: 'Selected Works', page: 'portfolio' as PageView },
-                { label: 'About Studio', page: 'about' as PageView },
-                { label: 'Services Matrix', page: 'services' as PageView },
-                { label: 'Client Feedback', page: 'testimonials' as PageView },
-                { label: 'Start Engagement', page: 'contact' as PageView },
-              ].map((item) => (
-                <li key={item.label}>
-                  <button
-                    id={`footer-nav-${item.page}`}
-                    onClick={() => onNavigate(item.page)}
-                    className="text-zinc-600 hover:text-zinc-950 transition-colors text-left cursor-pointer"
-                  >
-                    {item.label}
-                  </button>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Contact Details & Direct Lines */}
-          <div className="space-y-3">
-            <div className="text-xs font-mono uppercase tracking-wider text-zinc-500 font-semibold">
-              Contact & Inquiries
-            </div>
-            <div className="space-y-2.5 text-xs text-zinc-600">
               <a 
-                href="mailto:basantech1@gmail.com"
-                id="footer-contact-email"
-                className="flex items-center gap-2 hover:text-zinc-950 transition-colors"
+                href="tel:+919624895641" 
+                className="flex items-center gap-2 text-slate-700 hover:text-[#00976C] transition-colors font-mono"
               >
-                <Mail className="w-3.5 h-3.5 text-zinc-500 shrink-0" />
-                <span className="text-zinc-900 font-mono font-medium">basantech1@gmail.com</span>
+                <Phone className="w-4 h-4 text-[#022A4E] shrink-0" />
+                <span>+91 9624895641</span>
               </a>
-              <a 
-                href="tel:+919624895641"
-                id="footer-contact-phone"
-                className="flex items-center gap-2 hover:text-zinc-950 transition-colors"
-              >
-                <Phone className="w-3.5 h-3.5 text-zinc-500 shrink-0" />
-                <span className="text-zinc-900 font-mono font-medium">+91 9624895641</span>
-              </a>
+
               <a 
                 href="https://wa.me/919624895641"
                 target="_blank"
                 rel="noopener noreferrer"
-                id="footer-contact-whatsapp"
-                className="flex items-center gap-2 text-emerald-700 hover:text-emerald-800 transition-colors"
+                className="flex items-center gap-2 text-emerald-700 hover:text-emerald-800 transition-colors font-mono font-medium"
               >
-                <MessageCircle className="w-3.5 h-3.5 text-emerald-600 shrink-0" />
-                <span className="font-mono font-medium">WhatsApp: +91 9624895641</span>
+                <MessageCircle className="w-4 h-4 text-[#00976C] shrink-0" />
+                <span>WhatsApp: +91 9624895641</span>
               </a>
+
               <a 
                 href="https://www.instagram.com/basan_tech/"
                 target="_blank"
                 rel="noopener noreferrer"
-                id="footer-contact-instagram"
-                className="flex items-center gap-2 text-pink-700 hover:text-pink-800 transition-colors"
+                className="flex items-center gap-2 text-pink-700 hover:text-pink-800 transition-colors font-medium"
               >
-                <Instagram className="w-3.5 h-3.5 text-pink-600 shrink-0" />
-                <span className="font-medium">Instagram: @basan_tech</span>
+                <Instagram className="w-4 h-4 text-pink-600 shrink-0" />
+                <span>Instagram: @basan_tech</span>
               </a>
             </div>
 
+            {/* Newsletter */}
             <div className="pt-2">
               {subscribed ? (
-                <div className="p-2.5 rounded-lg bg-zinc-50 border border-zinc-200 text-xs text-zinc-800 flex items-center gap-2">
-                  <Check className="w-3.5 h-3.5 text-emerald-600 shrink-0" />
-                  <span>Subscribed to updates</span>
+                <div className="p-2.5 rounded-xl bg-emerald-50 border border-emerald-200 text-xs text-emerald-800 flex items-center gap-2">
+                  <Check className="w-4 h-4 text-[#00976C] shrink-0" />
+                  <span>Subscribed to engineering updates!</span>
                 </div>
               ) : (
                 <form onSubmit={handleSubscribe} className="space-y-1.5">
                   <div className="flex items-center gap-1.5">
                     <input
                       type="email"
-                      id="footer-newsletter-input"
                       value={newsletterEmail}
                       onChange={(e) => setNewsletterEmail(e.target.value)}
                       placeholder="work@company.com"
                       required
-                      className="w-full px-3 py-1.5 text-xs bg-zinc-50 border border-zinc-200 rounded-lg text-zinc-900 placeholder:text-zinc-400 focus:outline-none focus:bg-white focus:border-zinc-950 transition-colors"
+                      className="w-full px-3 py-2 text-xs bg-slate-50 border border-slate-200 rounded-xl text-slate-900 placeholder:text-slate-400 focus:outline-none focus:bg-white focus:border-[#022A4E] transition-colors"
                     />
                     <button 
                       type="submit" 
-                      id="footer-newsletter-submit"
-                      className="px-3 py-1.5 rounded-lg bg-zinc-950 text-white text-xs font-semibold hover:bg-zinc-800 transition-colors shrink-0 shadow-xs cursor-pointer"
+                      className="px-3.5 py-2 rounded-xl bg-[#022A4E] text-white text-xs font-semibold hover:bg-[#00976C] transition-colors shrink-0 cursor-pointer"
                     >
                       Join
                     </button>
@@ -247,33 +243,33 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
                 </form>
               )}
             </div>
+
           </div>
 
         </div>
 
-        {/* Bottom Bar */}
-        <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-zinc-500">
-          <div className="flex flex-wrap items-center gap-2">
-            <span>© {new Date().getFullYear()} BasanTech. All rights reserved.</span>
-            <span>•</span>
-            <span>Founded by <strong className="text-zinc-800 font-semibold">Mejban Basan</strong></span>
+        {/* Bottom Bar with Required Copyright and Legal Links */}
+        <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500">
+          <div>
+            © 2026 BasanTech. All rights reserved.
           </div>
+          
           <div className="flex items-center gap-6">
             <button 
-              onClick={() => onNavigate('about')}
-              className="hover:text-zinc-950 transition-colors cursor-pointer"
+              onClick={() => onNavigate('privacy')}
+              className="font-medium text-slate-600 hover:text-[#00976C] transition-colors cursor-pointer underline-offset-4 hover:underline"
             >
-              Privacy
+              Privacy Policy
             </button>
             <button 
-              onClick={() => onNavigate('about')}
-              className="hover:text-zinc-950 transition-colors cursor-pointer"
+              onClick={() => onNavigate('terms')}
+              className="font-medium text-slate-600 hover:text-[#00976C] transition-colors cursor-pointer underline-offset-4 hover:underline"
             >
-              Terms
+              Terms of Service
             </button>
             <button 
               onClick={() => onNavigate('contact')}
-              className="hover:text-zinc-950 transition-colors cursor-pointer"
+              className="font-medium text-slate-600 hover:text-[#00976C] transition-colors cursor-pointer"
             >
               Security
             </button>
