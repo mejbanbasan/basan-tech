@@ -36,6 +36,45 @@ export default function App() {
     return () => window.removeEventListener('hashchange', onHashChange);
   }, []);
 
+  // Update browser tab document.title consistently across pages
+  React.useEffect(() => {
+    let pageTitle = 'BasanTech — Web & Software Development Agency';
+    switch (currentPage) {
+      case 'home':
+        pageTitle = 'BasanTech — Web & Software Development Agency';
+        break;
+      case 'services':
+        pageTitle = 'Services — BasanTech';
+        break;
+      case 'service-detail': {
+        const currentService = SERVICES_DATA.find(s => s.id === selectedServiceId);
+        pageTitle = `${currentService?.title || 'Practice Area'} — BasanTech`;
+        break;
+      }
+      case 'portfolio':
+        pageTitle = 'Work — BasanTech';
+        break;
+      case 'about':
+        pageTitle = 'About Us — BasanTech';
+        break;
+      case 'testimonials':
+        pageTitle = 'Client Reviews — BasanTech';
+        break;
+      case 'contact':
+        pageTitle = 'Contact Us — BasanTech';
+        break;
+      case 'privacy':
+        pageTitle = 'Privacy Policy — BasanTech';
+        break;
+      case 'terms':
+        pageTitle = 'Terms of Service — BasanTech';
+        break;
+      default:
+        pageTitle = 'BasanTech — Web & Software Development Agency';
+    }
+    document.title = pageTitle;
+  }, [currentPage, selectedServiceId]);
+
   const handleNavigate = (page: PageView, serviceId?: ServiceId) => {
     if (serviceId) {
       setSelectedServiceId(serviceId);

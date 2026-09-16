@@ -1,7 +1,6 @@
 import React from 'react';
 import { PageView, ServiceId } from '../types';
 import { AnimatedCounter } from './AnimatedCounter';
-import { FounderLeadership } from './FounderLeadership';
 import { 
   ShieldCheck, 
   ArrowUpRight, 
@@ -145,9 +144,6 @@ export const AboutAgency: React.FC<AboutAgencyProps> = ({ onNavigate, isAboutPag
             ))}
           </div>
         </div>
-
-        {/* ONLY RENDER FOUNDER & LEADERSHIP ON ABOUT PAGE */}
-        {isAboutPage && <FounderLeadership />}
 
         {/* Action Pitch */}
         <div className="p-8 sm:p-10 rounded-3xl bg-white border border-slate-200 shadow-sm flex flex-col md:flex-row items-center justify-between gap-6">
