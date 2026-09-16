@@ -165,10 +165,10 @@ export const AboutAgency: React.FC<AboutAgencyProps> = ({ onNavigate, isAboutPag
 
           <button
             onClick={() => onNavigate('contact')}
-            className="px-6 py-3.5 rounded-full text-xs font-bold text-white bg-[#022A4E] hover:bg-[#00976C] transition-all duration-200 flex items-center gap-2 shadow-xs shrink-0 cursor-pointer"
+            className="px-6 py-3.5 rounded-full text-xs font-bold text-white bg-[#00976C] hover:bg-[#00825B] transition-all duration-200 flex items-center gap-2 shadow-sm hover:shadow-md shrink-0 cursor-pointer"
           >
             <span>Initiate Project Inquiry</span>
-            <ArrowUpRight className="w-4 h-4 text-emerald-300" />
+            <ArrowUpRight className="w-4 h-4 text-emerald-100" />
           </button>
         </div>
 

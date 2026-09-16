@@ -42,7 +42,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onNavigate }) => {
           
           <div className="lg:col-span-8 space-y-6">
             <h1 className="text-4xl sm:text-6xl lg:text-7xl font-bold tracking-tight text-[#022A4E] leading-[1.08]">
-              BasanTech — Engineering bespoke software, web apps, and digital platforms.
+              BasanTech — Engineering <span className="text-[#00976C]">bespoke software</span>, web apps, and digital platforms.
             </h1>
             
             <p className="text-lg sm:text-xl text-slate-600 font-normal leading-relaxed max-w-2xl">
@@ -53,16 +53,16 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onNavigate }) => {
               <button
                 id="hero-contact-btn"
                 onClick={() => onNavigate('contact')}
-                className="px-7 py-3.5 rounded-full text-sm font-bold text-white bg-[#022A4E] hover:bg-[#00976C] transition-all duration-200 flex items-center gap-2 shadow-sm cursor-pointer hover:shadow-md"
+                className="px-7 py-3.5 rounded-full text-sm font-bold text-white bg-[#00976C] hover:bg-[#00825B] transition-all duration-200 flex items-center gap-2 shadow-sm hover:shadow-md hover:scale-[1.01] cursor-pointer"
               >
                 <span>Initiate Project Inquiry</span>
-                <ArrowUpRight className="w-4 h-4 text-emerald-300" />
+                <ArrowUpRight className="w-4 h-4 text-emerald-100" />
               </button>
 
               <button
                 id="hero-portfolio-btn"
                 onClick={() => onNavigate('portfolio')}
-                className="px-7 py-3.5 rounded-full text-sm font-semibold text-[#022A4E] hover:text-[#00976C] bg-white hover:bg-slate-50 border border-slate-300 hover:border-[#00976C] transition-colors flex items-center gap-2 shadow-2xs cursor-pointer"
+                className="px-7 py-3.5 rounded-full text-sm font-semibold text-[#022A4E] hover:text-[#00976C] bg-white hover:bg-emerald-50/40 border border-slate-300 hover:border-[#00976C] transition-colors flex items-center gap-2 shadow-2xs cursor-pointer"
               >
                 <span>View Real Work &amp; Case Studies</span>
                 <ArrowRight className="w-4 h-4 text-[#00976C]" />
@@ -71,7 +71,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onNavigate }) => {
           </div>
 
           {/* Quick Practice Index */}
-          <div className="lg:col-span-4 bg-white border border-slate-200 rounded-3xl p-6 space-y-4 shadow-sm">
+          <div className="lg:col-span-4 bg-white border border-slate-200 rounded-3xl p-6 space-y-4 shadow-sm hover:border-[#00976C]/50 transition-colors">
             <div className="flex items-center justify-between border-b border-slate-100 pb-3">
               <span className="text-xs font-mono uppercase tracking-wider text-slate-400 font-bold">
                 Core Practices
@@ -98,9 +98,9 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onNavigate }) => {
                     key={item.id}
                     id={`hero-practice-card-${item.id}`}
                     onClick={() => onNavigate('service-detail', item.id)}
-                    className="w-full group flex items-start gap-3 p-2 rounded-xl hover:bg-slate-50 text-left transition-colors cursor-pointer border border-transparent hover:border-slate-200"
+                    className="w-full group flex items-start gap-3 p-2 rounded-xl hover:bg-emerald-50/40 text-left transition-colors cursor-pointer border border-transparent hover:border-emerald-200"
                   >
-                    <div className="p-1.5 rounded-lg bg-slate-100 text-[#022A4E] group-hover:text-[#00976C] group-hover:bg-emerald-50 transition-colors shrink-0">
+                    <div className="p-1.5 rounded-lg bg-emerald-50 text-[#00976C] group-hover:bg-[#00976C] group-hover:text-white transition-colors shrink-0">
                       <Icon className="w-4 h-4" />
                     </div>
                     <div className="flex-1 min-w-0">

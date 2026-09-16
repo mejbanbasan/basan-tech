@@ -265,13 +265,13 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ onNavigate, pres
                         placeholder="Your name"
                         required
                         disabled={isSubmitting}
-                        className="w-full px-3.5 py-2.5 text-sm bg-white border border-zinc-300 rounded-xl text-zinc-900 placeholder:text-zinc-400 focus:outline-none focus:ring-2 focus:ring-zinc-950/10 focus:border-zinc-950 transition-all shadow-2xs disabled:bg-zinc-100"
+                        className="w-full px-3.5 py-2.5 text-sm bg-white border border-slate-300 rounded-xl text-slate-900 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-[#00976C]/20 focus:border-[#00976C] transition-all shadow-2xs disabled:bg-slate-100"
                       />
                     </div>
 
                     <div className="space-y-1.5">
-                      <label className="block text-xs font-semibold text-zinc-800">
-                        Email Address <span className="text-zinc-950">*</span>
+                      <label className="block text-xs font-semibold text-slate-800">
+                        Email Address <span className="text-[#00976C]">*</span>
                       </label>
                       <input
                         type="email"
@@ -281,7 +281,7 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ onNavigate, pres
                         placeholder="you@company.com"
                         required
                         disabled={isSubmitting}
-                        className="w-full px-3.5 py-2.5 text-sm bg-white border border-zinc-300 rounded-xl text-zinc-900 placeholder:text-zinc-400 focus:outline-none focus:ring-2 focus:ring-zinc-950/10 focus:border-zinc-950 transition-all shadow-2xs disabled:bg-zinc-100"
+                        className="w-full px-3.5 py-2.5 text-sm bg-white border border-slate-300 rounded-xl text-slate-900 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-[#00976C]/20 focus:border-[#00976C] transition-all shadow-2xs disabled:bg-slate-100"
                       />
                     </div>
                   </div>
@@ -289,7 +289,7 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ onNavigate, pres
                   {/* Row 2: Phone Number & Company or Organization */}
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                     <div className="space-y-1.5">
-                      <label className="block text-xs font-semibold text-zinc-800">
+                      <label className="block text-xs font-semibold text-slate-800">
                         Phone Number
                       </label>
                       <input
@@ -299,12 +299,12 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ onNavigate, pres
                         onChange={(e) => setPhone(e.target.value)}
                         placeholder="+91 9624895641"
                         disabled={isSubmitting}
-                        className="w-full px-3.5 py-2.5 text-sm bg-white border border-zinc-300 rounded-xl text-zinc-900 placeholder:text-zinc-400 focus:outline-none focus:ring-2 focus:ring-zinc-950/10 focus:border-zinc-950 transition-all shadow-2xs disabled:bg-zinc-100"
+                        className="w-full px-3.5 py-2.5 text-sm bg-white border border-slate-300 rounded-xl text-slate-900 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-[#00976C]/20 focus:border-[#00976C] transition-all shadow-2xs disabled:bg-slate-100"
                       />
                     </div>
 
                     <div className="space-y-1.5">
-                      <label className="block text-xs font-semibold text-zinc-800">
+                      <label className="block text-xs font-semibold text-slate-800">
                         Company or Organization
                       </label>
                       <input
@@ -314,14 +314,14 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ onNavigate, pres
                         onChange={(e) => setCompany(e.target.value)}
                         placeholder="Where do you work?"
                         disabled={isSubmitting}
-                        className="w-full px-3.5 py-2.5 text-sm bg-white border border-zinc-300 rounded-xl text-zinc-900 placeholder:text-zinc-400 focus:outline-none focus:ring-2 focus:ring-zinc-950/10 focus:border-zinc-950 transition-all shadow-2xs disabled:bg-zinc-100"
+                        className="w-full px-3.5 py-2.5 text-sm bg-white border border-slate-300 rounded-xl text-slate-900 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-[#00976C]/20 focus:border-[#00976C] transition-all shadow-2xs disabled:bg-slate-100"
                       />
                     </div>
                   </div>
 
                   {/* Row 3: What type of project is this? */}
                   <div className="space-y-1.5">
-                    <label className="block text-xs font-semibold text-zinc-800">
+                    <label className="block text-xs font-semibold text-slate-800">
                       What type of project is this?
                     </label>
                     <div className="relative">
@@ -330,9 +330,9 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ onNavigate, pres
                         value={projectType}
                         onChange={(e) => setProjectType(e.target.value)}
                         disabled={isSubmitting}
-                        className="w-full px-3.5 py-2.5 text-sm bg-white border border-zinc-300 rounded-xl text-zinc-900 placeholder:text-zinc-400 focus:outline-none focus:ring-2 focus:ring-zinc-950/10 focus:border-zinc-950 transition-all shadow-2xs appearance-none pr-10 cursor-pointer disabled:bg-zinc-100"
+                        className="w-full px-3.5 py-2.5 text-sm bg-white border border-slate-300 rounded-xl text-slate-900 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-[#00976C]/20 focus:border-[#00976C] transition-all shadow-2xs appearance-none pr-10 cursor-pointer disabled:bg-slate-100"
                       >
-                        <option value="" disabled className="text-zinc-400">Choose a practice area</option>
+                        <option value="" disabled className="text-slate-400">Choose a practice area</option>
                         <option value="Custom Software Development">Custom Software Development</option>
                         <option value="Web Development">Web Development</option>
                         <option value="Mobile App Development">Mobile App Development</option>
@@ -343,7 +343,7 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ onNavigate, pres
                         <option value="Node.js Development">Node.js Development</option>
                         <option value="Other / Multi-disciplinary Engineering">Other / Multi-disciplinary Engineering</option>
                       </select>
-                      <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-3.5 text-zinc-500">
+                      <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-3.5 text-slate-500">
                         <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
                         </svg>
@@ -353,8 +353,8 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ onNavigate, pres
 
                   {/* Row 4: Tell us about your project */}
                   <div className="space-y-1.5">
-                    <label className="block text-xs font-semibold text-zinc-800">
-                      Tell us about your project <span className="text-zinc-950">*</span>
+                    <label className="block text-xs font-semibold text-slate-800">
+                      Tell us about your project <span className="text-[#00976C]">*</span>
                     </label>
                     <textarea
                       id="contact-form-details"
@@ -365,9 +365,9 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ onNavigate, pres
                       required
                       disabled={isSubmitting}
                       placeholder="What are you trying to build? What problem does it solve? Any timelines or budget in mind?"
-                      className="w-full px-3.5 py-3 text-sm bg-white border border-zinc-300 rounded-xl text-zinc-900 placeholder:text-zinc-400 focus:outline-none focus:ring-2 focus:ring-zinc-950/10 focus:border-zinc-950 transition-all resize-y leading-relaxed shadow-2xs disabled:bg-zinc-100"
+                      className="w-full px-3.5 py-3 text-sm bg-white border border-slate-300 rounded-xl text-slate-900 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-[#00976C]/20 focus:border-[#00976C] transition-all resize-y leading-relaxed shadow-2xs disabled:bg-slate-100"
                     />
-                    <div className="text-right text-xs font-mono text-zinc-500">
+                    <div className="text-right text-xs font-mono text-slate-500">
                       {projectDetails.length} / 1200
                     </div>
                   </div>
@@ -378,7 +378,7 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ onNavigate, pres
                       type="submit"
                       id="contact-submit-btn"
                       disabled={isSubmitting}
-                      className="inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-full bg-[#022A4E] hover:bg-[#00976C] text-white text-xs font-bold transition-all duration-200 shadow-sm shrink-0 cursor-pointer disabled:opacity-75"
+                      className="inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-full bg-[#00976C] hover:bg-[#00825B] text-white text-xs font-bold transition-all duration-200 shadow-sm hover:shadow-md shrink-0 cursor-pointer disabled:opacity-75"
                     >
                       {isSubmitting ? (
                         <>
@@ -388,7 +388,7 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ onNavigate, pres
                       ) : (
                         <>
                           <span>Send Message</span>
-                          <Send className="w-3.5 h-3.5" />
+                          <Send className="w-3.5 h-3.5 text-emerald-100" />
                         </>
                       )}
                     </button>

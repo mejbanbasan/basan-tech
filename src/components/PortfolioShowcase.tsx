@@ -80,8 +80,8 @@ export const PortfolioShowcase: React.FC<PortfolioShowcaseProps> = ({ onNavigate
               onClick={() => setSelectedFilter(f.id)}
               className={`px-4 py-2 rounded-full text-xs font-semibold transition-all duration-150 cursor-pointer ${
                 selectedFilter === f.id
-                  ? 'bg-[#022A4E] text-white shadow-xs'
-                  : 'bg-white text-slate-600 hover:text-[#022A4E] hover:bg-slate-100 border border-slate-200 shadow-2xs'
+                  ? 'bg-[#00976C] text-white shadow-sm'
+                  : 'bg-white text-slate-700 hover:text-[#00976C] hover:border-emerald-300 hover:bg-emerald-50/30 border border-slate-200 shadow-2xs'
               }`}
             >
               {f.label}
@@ -95,23 +95,23 @@ export const PortfolioShowcase: React.FC<PortfolioShowcaseProps> = ({ onNavigate
             <div
               key={study.id}
               id={`case-card-${study.id}`}
-              className="group rounded-3xl bg-white border border-zinc-200 hover:border-zinc-400 overflow-hidden transition-all duration-300 flex flex-col justify-between cursor-pointer shadow-xs hover:shadow-md hover:-translate-y-0.5"
+              className="group rounded-3xl bg-white border border-slate-200 hover:border-[#00976C] overflow-hidden transition-all duration-300 flex flex-col justify-between cursor-pointer shadow-xs hover:shadow-md hover:-translate-y-0.5"
               onClick={() => setActiveModalStudy(study)}
             >
               {/* Media Preview */}
               <div>
-                <div className="relative h-60 w-full overflow-hidden bg-zinc-100">
+                <div className="relative h-60 w-full overflow-hidden bg-slate-100">
                   <img
                     src={study.heroImage}
                     alt={study.title}
                     referrerPolicy="no-referrer"
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-zinc-950/80 via-zinc-950/20 to-transparent" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#022A4E]/90 via-[#022A4E]/20 to-transparent" />
                   
                   {/* Category Badge */}
                   <div className="absolute top-4 left-4">
-                    <span className="px-2.5 py-1 rounded-md text-[11px] font-mono bg-zinc-950/85 backdrop-blur-md text-white border border-zinc-700 font-medium">
+                    <span className="px-2.5 py-1 rounded-md text-[11px] font-mono bg-[#022A4E]/85 backdrop-blur-md text-white border border-slate-600/50 font-medium">
                       {study.categoryLabel}
                     </span>
                   </div>
@@ -124,20 +124,20 @@ export const PortfolioShowcase: React.FC<PortfolioShowcaseProps> = ({ onNavigate
                         target="_blank"
                         rel="noopener noreferrer"
                         onClick={(e) => e.stopPropagation()}
-                        className="px-2.5 py-1 rounded-full bg-white/95 hover:bg-white text-zinc-900 backdrop-blur-md transition-all inline-flex items-center gap-1 shadow-xs text-[11px] font-semibold"
+                        className="px-2.5 py-1 rounded-full bg-white/95 hover:bg-[#00976C] text-slate-800 hover:text-white backdrop-blur-md transition-all inline-flex items-center gap-1 shadow-xs text-[11px] font-semibold group/live"
                         title={`Open live platform: ${study.title}`}
                       >
-                        <Globe className="w-3 h-3 text-zinc-900" />
+                        <Globe className="w-3 h-3 text-[#00976C] group-hover/live:text-white" />
                         <span>Live Site</span>
-                        <ExternalLink className="w-2.5 h-2.5 text-zinc-500" />
+                        <ExternalLink className="w-2.5 h-2.5 text-slate-400 group-hover/live:text-white" />
                       </a>
                     </div>
                   )}
 
                   {/* Bottom info banner */}
-                  <div className="absolute bottom-3 left-4 right-4 flex items-center justify-between text-xs text-zinc-200 font-mono">
+                  <div className="absolute bottom-3 left-4 right-4 flex items-center justify-between text-xs text-slate-200 font-mono">
                     <span className="font-semibold text-white truncate max-w-[200px]">{study.client}</span>
-                    <span className="text-zinc-300">{study.year}</span>
+                    <span className="text-emerald-300">{study.year}</span>
                   </div>
                 </div>
 
@@ -145,23 +145,23 @@ export const PortfolioShowcase: React.FC<PortfolioShowcaseProps> = ({ onNavigate
                 <div className="p-6 space-y-4">
                   <div className="space-y-1.5">
                     <div className="flex items-center justify-between gap-2">
-                      <h3 className="font-display text-lg font-bold text-zinc-950 group-hover:text-zinc-800 transition-colors line-clamp-1">
+                      <h3 className="text-lg font-bold text-[#022A4E] group-hover:text-[#00976C] transition-colors line-clamp-1">
                         {study.title}
                       </h3>
-                      <ArrowUpRight className="w-4 h-4 text-zinc-400 group-hover:text-zinc-950 transition-colors shrink-0" />
+                      <ArrowUpRight className="w-4 h-4 text-slate-400 group-hover:text-[#00976C] transition-colors shrink-0" />
                     </div>
-                    <p className="text-xs text-zinc-600 line-clamp-2 leading-relaxed">
+                    <p className="text-xs text-slate-600 line-clamp-2 leading-relaxed">
                       {study.summary}
                     </p>
                   </div>
 
                   {/* What We Built Highlight */}
-                  <div className="p-3 rounded-xl bg-zinc-50 border border-zinc-200 space-y-1">
-                    <div className="text-[10px] font-mono uppercase font-bold text-zinc-500 flex items-center gap-1">
-                      <Code2 className="w-3 h-3 text-zinc-950" />
+                  <div className="p-3 rounded-xl bg-emerald-50/40 border border-emerald-200/70 space-y-1">
+                    <div className="text-[10px] font-mono uppercase font-bold text-[#00976C] flex items-center gap-1">
+                      <Code2 className="w-3 h-3 text-[#00976C]" />
                       <span>What We Built</span>
                     </div>
-                    <p className="text-xs text-zinc-800 line-clamp-2 leading-snug">
+                    <p className="text-xs text-slate-800 line-clamp-2 leading-snug">
                       {study.whatWeBuilt || study.solution}
                     </p>
                   </div>

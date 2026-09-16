@@ -74,13 +74,13 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
           <div className="lg:col-span-4 space-y-4">
             <button 
               onClick={() => onNavigate('home')} 
-              className="text-left focus:outline-none cursor-pointer group"
+              className="text-left focus:outline-none cursor-pointer group py-1"
               aria-label="BasanTech Home"
             >
               <img 
-                src="/basantech-logo-transparent.png" 
+                src="/basantech-logo.png" 
                 alt="BasanTech Software & Digital" 
-                className="h-9 w-auto object-contain transition-transform group-hover:scale-[1.02]" 
+                className="h-10 sm:h-11 w-auto object-contain transition-transform group-hover:scale-[1.02] mix-blend-multiply" 
               />
             </button>
 
@@ -235,7 +235,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
                     />
                     <button 
                       type="submit" 
-                      className="px-3.5 py-2 rounded-xl bg-[#022A4E] text-white text-xs font-semibold hover:bg-[#00976C] transition-colors shrink-0 cursor-pointer"
+                      className="px-3.5 py-2 rounded-xl bg-[#00976C] text-white text-xs font-semibold hover:bg-[#00825B] transition-colors shrink-0 cursor-pointer shadow-xs"
                     >
                       Join
                     </button>
