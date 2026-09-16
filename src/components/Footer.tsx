@@ -80,7 +80,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
               <img 
                 src="/basantech-logo.png" 
                 alt="BasanTech Software & Digital" 
-                className="h-10 sm:h-11 w-auto object-contain transition-transform group-hover:scale-[1.02] mix-blend-multiply" 
+                className="h-11 sm:h-12 w-auto object-contain transition-transform group-hover:scale-[1.02]" 
               />
             </button>
 

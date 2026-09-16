@@ -68,17 +68,17 @@ export const Navbar: React.FC<NavbarProps> = ({ currentPage, onNavigate }) => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between">
           
-          {/* Attached Full Brand Logo */}
+          {/* Attached Full Brand Logo (Transparent & Proportionate) */}
           <button 
             id="nav-logo-btn"
             onClick={() => onNavigate('home')}
-            className="flex items-center gap-3 text-left group focus:outline-none cursor-pointer py-1"
+            className="flex items-center self-center text-left group focus:outline-none cursor-pointer py-0.5"
             aria-label="BasanTech Home"
           >
             <img 
               src="/basantech-logo.png" 
               alt="BasanTech Software & Digital" 
-              className="h-10 sm:h-11 md:h-12 w-auto object-contain transition-transform duration-200 group-hover:scale-[1.02] mix-blend-multiply" 
+              className="h-11 sm:h-12 md:h-[50px] w-auto object-contain transition-transform duration-200 group-hover:scale-[1.02]" 
             />
           </button>
 
