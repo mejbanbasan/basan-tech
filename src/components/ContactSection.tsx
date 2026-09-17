@@ -12,9 +12,7 @@ import {
   Copy,
   Check,
   Instagram,
-  MessageCircle,
-  Loader2,
-  AlertCircle
+  MessageCircle
 } from 'lucide-react';
 import confetti from 'canvas-confetti';
 
@@ -50,76 +48,76 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
   });
   const [projectDetails, setProjectDetails] = useState('');
 
-  const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
-  const [submitError, setSubmitError] = useState<string | null>(null);
   const [ticketId, setTicketId] = useState('');
   const [copiedSummary, setCopiedSummary] = useState(false);
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  // Clean, professional email subject
+  const formattedSubject = `New Project Inquiry: [${fullName || 'Client'}] - ${projectType || 'Software Development'} | BasanTech`;
+
+  // Clean, structured email body
+  const formattedBody = `==================================================
+           BASANTECH PROJECT INQUIRY
+==================================================
+
+CLIENT CONTACT DETAILS:
+• Full Name:           ${fullName}
+• Email Address:       ${email}
+• Phone / WhatsApp:    ${phone || 'Not provided'}
+• Company / Startup:   ${company || 'Not provided'}
+• Selected Service:    ${projectType || 'General Software Engineering'}
+
+--------------------------------------------------
+PROJECT REQUIREMENTS & SCOPE:
+--------------------------------------------------
+${projectDetails}
+
+--------------------------------------------------
+Submitted from: basantech.online Contact Portal
+Headquarters: Palanpur, Gujarat 385001, India
+Official Email: basantech1@gmail.com
+Direct Line / WA: +91 9624895641
+==================================================`;
+
+  const directMailtoUrl = `mailto:basantech1@gmail.com?subject=${encodeURIComponent(formattedSubject)}&body=${encodeURIComponent(formattedBody)}`;
+
+  const directGmailWebUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=basantech1@gmail.com&su=${encodeURIComponent(formattedSubject)}&body=${encodeURIComponent(formattedBody)}`;
+
+  const directWhatsAppUrl = `https://wa.me/919624895641?text=${encodeURIComponent(`Hello BasanTech Team, I would like to discuss a project.\n\nName: ${fullName || 'Client'}\nEmail: ${email || 'N/A'}\nPhone: ${phone || 'N/A'}\nService: ${projectType || 'General'}\n\nProject Details:\n${projectDetails}`)}`;
+
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (!fullName || !email || !projectDetails) return;
 
-    setIsSubmitting(true);
-    setSubmitError(null);
+    const randomId = `BSN-${Math.floor(100000 + Math.random() * 900000)}`;
+    setTicketId(randomId);
+    setSubmitted(true);
 
-    const randomId = `MSG-${Math.floor(100000 + Math.random() * 900000)}`;
-
+    // Trigger celebration confetti
     try {
-      // Send form data directly to basantech1@gmail.com
-      const response = await fetch('https://formsubmit.co/ajax/basantech1@gmail.com', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'Accept': 'application/json'
-        },
-        body: JSON.stringify({
-          name: fullName,
-          email: email,
-          phone: phone || 'Not provided',
-          company: company || 'Not provided',
-          projectType: projectType || 'General Inquiry',
-          message: projectDetails,
-          _subject: `New Basan Tech Inquiry: ${fullName} (${projectType || 'General'})`,
-          _template: 'table',
-          _captcha: 'false'
-        })
-      });
-
-      const data = await response.json().catch(() => ({}));
-
-      if (response.ok || data.success === 'true' || data.success === true) {
-        setTicketId(randomId);
-        setSubmitted(true);
-        setIsSubmitting(false);
-
-        try {
-          if (typeof confetti === 'function') {
-            confetti({
-              particleCount: 60,
-              spread: 70,
-              origin: { y: 0.6 }
-            });
-          }
-        } catch {
-          // Ignore if canvas is restricted in iframe
-        }
-      } else {
-        throw new Error(data.message || 'Unable to submit the form at this moment.');
+      if (typeof confetti === 'function') {
+        confetti({
+          particleCount: 60,
+          spread: 70,
+          origin: { y: 0.6 }
+        });
       }
-    } catch (err: any) {
-      console.error('Form submission error:', err);
-      // Even if external network API blocked by sandbox/cross-origin, provide clear recovery
-      setSubmitError(err?.message || 'Failed to send message. Please try again or use direct email / WhatsApp below.');
-      setIsSubmitting(false);
+    } catch {
+      // Ignore if canvas is restricted
+    }
+
+    // Direct native email invocation without any 3rd party integration
+    try {
+      window.location.href = directMailtoUrl;
+    } catch {
+      // Fallback handled by the UI options
     }
   };
 
   const copySummary = () => {
-    const text = `Basan Tech Project Inquiry [${ticketId}]\nName: ${fullName}\nEmail: ${email}\nPhone: ${phone || 'N/A'}\nCompany: ${company || 'N/A'}\nType: ${projectType || 'General'}\nDetails:\n${projectDetails}`;
     try {
       if (navigator?.clipboard?.writeText) {
-        navigator.clipboard.writeText(text).catch(() => {});
+        navigator.clipboard.writeText(formattedBody).catch(() => {});
       }
     } catch {
       // Ignore clipboard restrictions
@@ -127,10 +125,6 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
     setCopiedSummary(true);
     setTimeout(() => setCopiedSummary(false), 3000);
   };
-
-  const directMailtoUrl = `mailto:basantech1@gmail.com?subject=${encodeURIComponent(`Inquiry from ${fullName || 'Client'} - Basan Tech`)}&body=${encodeURIComponent(`Name: ${fullName}\nEmail: ${email}\nPhone: ${phone}\nCompany: ${company}\nProject Type: ${projectType}\n\nProject Details:\n${projectDetails}`)}`;
-
-  const directWhatsAppUrl = `https://wa.me/919624895641?text=${encodeURIComponent(`Hello Basan Tech Team, I would like to discuss a project.\n\nName: ${fullName || 'Client'}\nEmail: ${email || 'N/A'}\nType: ${projectType || 'General'}\nDetails: ${projectDetails || 'I need your software engineering services.'}`)}`;
 
   return (
     <section id="contact-section" className={`${showBreadcrumb ? 'pt-28 sm:pt-36 pb-20' : 'py-20'} bg-zinc-50 border-b border-zinc-200`}>
@@ -165,109 +159,97 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
               </div>
 
               {submitted ? (
-                <div className="p-8 sm:p-10 rounded-xl bg-zinc-50 border border-zinc-200 text-center space-y-6">
-                  <div className="w-12 h-12 rounded-full bg-zinc-950 text-white flex items-center justify-center mx-auto shadow-sm">
-                    <CheckCircle2 className="w-6 h-6 text-emerald-400" />
+                <div className="p-8 sm:p-10 rounded-2xl bg-white border border-slate-200 text-center space-y-6 shadow-xs">
+                  <div className="w-14 h-14 rounded-full bg-emerald-50 border border-emerald-200 text-[#00976C] flex items-center justify-center mx-auto shadow-xs">
+                    <CheckCircle2 className="w-8 h-8 text-[#00976C]" />
                   </div>
                   
                   <div className="space-y-2">
-                    <span className="text-xs font-mono text-zinc-600 uppercase tracking-wider font-semibold">
+                    <span className="text-xs font-mono text-emerald-700 bg-emerald-50 px-3 py-1 rounded-full border border-emerald-200 uppercase tracking-wider font-semibold">
                       Reference #{ticketId}
                     </span>
-                    <h3 className="font-display text-2xl font-bold text-zinc-950">
-                      Message Successfully Sent!
+                    <h3 className="font-display text-2xl sm:text-3xl font-bold text-[#022A4E]">
+                      Inquiry Formatted & Ready to Send!
                     </h3>
-                    <p className="text-sm text-zinc-600 max-w-lg mx-auto leading-relaxed">
-                      Thank you, <strong>{fullName}</strong>. Your project brief has been sent to <strong>basantech1@gmail.com</strong>. Our engineering lead will review it and reply to <strong>{email}</strong> within 24 hours.
+                    <p className="text-sm text-slate-600 max-w-xl mx-auto leading-relaxed">
+                      Thank you, <strong>{fullName}</strong>. Your project brief has been formatted with an official subject line for <strong>basantech1@gmail.com</strong>. Your mail app should have launched automatically. If not, choose any direct option below:
                     </p>
                   </div>
 
-                  <div className="p-4 rounded-xl bg-white border border-zinc-200 text-left max-w-md mx-auto space-y-2 text-xs text-zinc-700 shadow-2xs">
-                    <div className="flex justify-between">
-                      <span className="text-zinc-500">Recipient:</span>
-                      <strong className="text-zinc-950">basantech1@gmail.com</strong>
+                  {/* Pre-formatted Message Details Card */}
+                  <div className="p-5 rounded-2xl bg-slate-50 border border-slate-200 text-left max-w-lg mx-auto space-y-3 text-xs text-slate-700 shadow-2xs font-mono">
+                    <div className="flex flex-col sm:flex-row sm:justify-between border-b border-slate-200/80 pb-2">
+                      <span className="text-slate-500">To:</span>
+                      <strong className="text-[#022A4E]">basantech1@gmail.com</strong>
                     </div>
-                    <div className="flex justify-between">
-                      <span className="text-zinc-500">Project Type:</span>
-                      <strong className="text-zinc-950">{projectType || 'General Software Project'}</strong>
+                    <div className="flex flex-col sm:flex-row sm:justify-between border-b border-slate-200/80 pb-2">
+                      <span className="text-slate-500">Subject:</span>
+                      <strong className="text-[#00976C] truncate max-w-xs">{formattedSubject}</strong>
                     </div>
-                    {company && (
-                      <div className="flex justify-between">
-                        <span className="text-zinc-500">Organization:</span>
-                        <strong className="text-zinc-950">{company}</strong>
-                      </div>
-                    )}
-                    {phone && (
-                      <div className="flex justify-between">
-                        <span className="text-zinc-500">Phone:</span>
-                        <strong className="text-zinc-950">{phone}</strong>
-                      </div>
-                    )}
+                    <div className="flex flex-col sm:flex-row sm:justify-between border-b border-slate-200/80 pb-2">
+                      <span className="text-slate-500">Sender:</span>
+                      <strong className="text-slate-900">{fullName} ({email})</strong>
+                    </div>
+                    <div className="flex flex-col sm:flex-row sm:justify-between">
+                      <span className="text-slate-500">Service:</span>
+                      <strong className="text-slate-900">{projectType || 'Custom Software Development'}</strong>
+                    </div>
                   </div>
 
-                  <div className="flex flex-wrap items-center justify-center gap-3 pt-2">
-                    <button
-                      onClick={copySummary}
-                      className="px-4 py-2.5 rounded-full bg-white border border-zinc-300 text-zinc-800 hover:text-zinc-950 hover:bg-zinc-50 text-xs font-medium transition-colors flex items-center gap-1.5 shadow-2xs cursor-pointer"
+                  {/* Direct Action Options (Zero 3rd-party) */}
+                  <div className="flex flex-wrap items-center justify-center gap-3 pt-3">
+                    <a
+                      href={directGmailWebUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="px-5 py-3 rounded-full bg-[#022A4E] hover:bg-[#00976C] text-white text-xs font-bold transition-all duration-200 flex items-center gap-2 shadow-xs"
                     >
-                      {copiedSummary ? <Check className="w-3.5 h-3.5 text-emerald-600" /> : <Copy className="w-3.5 h-3.5" />}
-                      <span>{copiedSummary ? 'Copied to Clipboard' : 'Copy Message Summary'}</span>
-                    </button>
+                      <Mail className="w-4 h-4 text-emerald-300" />
+                      <span>Open in Gmail (Browser)</span>
+                      <ArrowUpRight className="w-3.5 h-3.5" />
+                    </a>
+
+                    <a
+                      href={directMailtoUrl}
+                      className="px-5 py-3 rounded-full bg-white hover:bg-slate-50 border border-slate-300 text-slate-800 text-xs font-semibold transition-all duration-200 flex items-center gap-2 shadow-2xs"
+                    >
+                      <Send className="w-4 h-4 text-[#00976C]" />
+                      <span>Open in Mail App</span>
+                    </a>
 
                     <a
                       href={directWhatsAppUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="px-4 py-2.5 rounded-full bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-semibold transition-colors flex items-center gap-1.5 shadow-2xs"
+                      className="px-5 py-3 rounded-full bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold transition-all duration-200 flex items-center gap-2 shadow-xs"
                     >
-                      <MessageCircle className="w-3.5 h-3.5" />
-                      <span>Chat on WhatsApp (+91 9624895641)</span>
+                      <MessageCircle className="w-4 h-4" />
+                      <span>Send via WhatsApp (+91 9624895641)</span>
                     </a>
 
+                    <button
+                      onClick={copySummary}
+                      className="px-4 py-3 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-semibold transition-all duration-200 flex items-center gap-1.5 cursor-pointer"
+                    >
+                      {copiedSummary ? <Check className="w-3.5 h-3.5 text-emerald-600" /> : <Copy className="w-3.5 h-3.5" />}
+                      <span>{copiedSummary ? 'Copied to Clipboard' : 'Copy Email Text'}</span>
+                    </button>
+                  </div>
+
+                  <div className="pt-3">
                     <button
                       onClick={() => {
                         setSubmitted(false);
                         setProjectDetails('');
                       }}
-                      className="px-5 py-2.5 rounded-full bg-zinc-950 text-white text-xs font-semibold hover:bg-zinc-800 transition-colors shadow-2xs cursor-pointer"
+                      className="text-xs text-slate-500 hover:text-slate-900 underline underline-offset-4 font-medium transition-colors cursor-pointer"
                     >
-                      Send Another Message
+                      ← Start another inquiry
                     </button>
                   </div>
                 </div>
               ) : (
                 <form onSubmit={handleSubmit} className="space-y-6">
-                  
-                  {/* Error Notification if Submission Fails */}
-                  {submitError && (
-                    <div className="p-4 rounded-xl bg-rose-50 border border-rose-200 text-rose-800 text-xs space-y-2">
-                      <div className="flex items-center gap-2 font-semibold">
-                        <AlertCircle className="w-4 h-4 text-rose-600 shrink-0" />
-                        <span>Sending failed: {submitError}</span>
-                      </div>
-                      <p className="text-rose-700">
-                        You can retry submitting or connect with us immediately via:
-                      </p>
-                      <div className="flex flex-wrap gap-2 pt-1">
-                        <a 
-                          href={directMailtoUrl}
-                          className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white border border-rose-300 text-rose-900 font-semibold hover:bg-rose-100 transition-colors"
-                        >
-                          <Mail className="w-3.5 h-3.5" />
-                          <span>Send directly to basantech1@gmail.com</span>
-                        </a>
-                        <a 
-                          href={directWhatsAppUrl}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-emerald-600 text-white font-semibold hover:bg-emerald-700 transition-colors"
-                        >
-                          <MessageCircle className="w-3.5 h-3.5" />
-                          <span>WhatsApp (+91 9624895641)</span>
-                        </a>
-                      </div>
-                    </div>
-                  )}
 
                   {/* Row 1: Full Name & Email Address */}
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
@@ -282,8 +264,7 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
                         onChange={(e) => setFullName(e.target.value)}
                         placeholder="Your name"
                         required
-                        disabled={isSubmitting}
-                        className="w-full px-3.5 py-2.5 text-sm bg-white border border-slate-300 rounded-xl text-slate-900 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-[#00976C]/20 focus:border-[#00976C] transition-all shadow-2xs disabled:bg-slate-100"
+                        className="w-full px-3.5 py-2.5 text-sm bg-white border border-slate-300 rounded-xl text-slate-900 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-[#00976C]/20 focus:border-[#00976C] transition-all shadow-2xs"
                       />
                     </div>
 
@@ -298,8 +279,7 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
                         onChange={(e) => setEmail(e.target.value)}
                         placeholder="you@company.com"
                         required
-                        disabled={isSubmitting}
-                        className="w-full px-3.5 py-2.5 text-sm bg-white border border-slate-300 rounded-xl text-slate-900 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-[#00976C]/20 focus:border-[#00976C] transition-all shadow-2xs disabled:bg-slate-100"
+                        className="w-full px-3.5 py-2.5 text-sm bg-white border border-slate-300 rounded-xl text-slate-900 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-[#00976C]/20 focus:border-[#00976C] transition-all shadow-2xs"
                       />
                     </div>
                   </div>
@@ -316,8 +296,7 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
                         value={phone}
                         onChange={(e) => setPhone(e.target.value)}
                         placeholder="+91 9624895641"
-                        disabled={isSubmitting}
-                        className="w-full px-3.5 py-2.5 text-sm bg-white border border-slate-300 rounded-xl text-slate-900 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-[#00976C]/20 focus:border-[#00976C] transition-all shadow-2xs disabled:bg-slate-100"
+                        className="w-full px-3.5 py-2.5 text-sm bg-white border border-slate-300 rounded-xl text-slate-900 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-[#00976C]/20 focus:border-[#00976C] transition-all shadow-2xs"
                       />
                     </div>
 
@@ -331,8 +310,7 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
                         value={company}
                         onChange={(e) => setCompany(e.target.value)}
                         placeholder="Where do you work?"
-                        disabled={isSubmitting}
-                        className="w-full px-3.5 py-2.5 text-sm bg-white border border-slate-300 rounded-xl text-slate-900 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-[#00976C]/20 focus:border-[#00976C] transition-all shadow-2xs disabled:bg-slate-100"
+                        className="w-full px-3.5 py-2.5 text-sm bg-white border border-slate-300 rounded-xl text-slate-900 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-[#00976C]/20 focus:border-[#00976C] transition-all shadow-2xs"
                       />
                     </div>
                   </div>
@@ -347,8 +325,7 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
                         id="contact-form-project-type"
                         value={projectType}
                         onChange={(e) => setProjectType(e.target.value)}
-                        disabled={isSubmitting}
-                        className="w-full px-3.5 py-2.5 text-sm bg-white border border-slate-300 rounded-xl text-slate-900 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-[#00976C]/20 focus:border-[#00976C] transition-all shadow-2xs appearance-none pr-10 cursor-pointer disabled:bg-slate-100"
+                        className="w-full px-3.5 py-2.5 text-sm bg-white border border-slate-300 rounded-xl text-slate-900 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-[#00976C]/20 focus:border-[#00976C] transition-all shadow-2xs appearance-none pr-10 cursor-pointer"
                       >
                         <option value="" disabled className="text-slate-400">Choose a service area</option>
                         <option value="Website Development">Website Development</option>
@@ -379,39 +356,28 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
                       maxLength={1200}
                       rows={5}
                       required
-                      disabled={isSubmitting}
                       placeholder="What are you trying to build? What problem does it solve? Any timelines or budget in mind?"
-                      className="w-full px-3.5 py-3 text-sm bg-white border border-slate-300 rounded-xl text-slate-900 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-[#00976C]/20 focus:border-[#00976C] transition-all resize-y leading-relaxed shadow-2xs disabled:bg-slate-100"
+                      className="w-full px-3.5 py-3 text-sm bg-white border border-slate-300 rounded-xl text-slate-900 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-[#00976C]/20 focus:border-[#00976C] transition-all resize-y leading-relaxed shadow-2xs"
                     />
                     <div className="text-right text-xs font-mono text-slate-500">
                       {projectDetails.length} / 1200
                     </div>
                   </div>
 
-                  {/* Row 5: Action Button & Privacy Notice */}
+                  {/* Row 5: Action Button & Direct Delivery Guarantee */}
                   <div className="pt-2 flex flex-col sm:flex-row sm:items-center gap-4">
                     <button
                       type="submit"
                       id="contact-submit-btn"
-                      disabled={isSubmitting}
-                      className="inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-full bg-[#00976C] hover:bg-[#00825B] text-white text-xs font-bold transition-all duration-200 shadow-sm hover:shadow-md shrink-0 cursor-pointer disabled:opacity-75"
+                      className="inline-flex items-center justify-center gap-2 px-8 py-3.5 rounded-full bg-[#00976C] hover:bg-[#00825B] text-white text-xs font-bold transition-all duration-200 shadow-sm hover:shadow-md shrink-0 cursor-pointer"
                     >
-                      {isSubmitting ? (
-                        <>
-                          <Loader2 className="w-3.5 h-3.5 animate-spin" />
-                          <span>Sending Message to basantech1@gmail.com...</span>
-                        </>
-                      ) : (
-                        <>
-                          <span>Send Message</span>
-                          <Send className="w-3.5 h-3.5 text-emerald-100" />
-                        </>
-                      )}
+                      <span>Send to basantech1@gmail.com</span>
+                      <Send className="w-3.5 h-3.5 text-emerald-100" />
                     </button>
 
-                    <div className="flex items-center gap-1.5 text-xs text-zinc-500">
-                      <Shield className="w-4 h-4 text-zinc-700 shrink-0" />
-                      <span>Your information stays strictly confidential & encrypted</span>
+                    <div className="flex items-center gap-1.5 text-xs text-slate-500">
+                      <Shield className="w-4 h-4 text-[#00976C] shrink-0" />
+                      <span>Direct email dispatch • Zero 3rd-party trackers • 100% confidential</span>
                     </div>
                   </div>
 
