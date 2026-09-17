@@ -9,7 +9,8 @@ import {
   Instagram,
   MessageCircle,
   ShieldCheck,
-  Globe
+  Globe,
+  MapPin
 } from 'lucide-react';
 import confetti from 'canvas-confetti';
 
@@ -88,9 +89,15 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
               BasanTech is a software engineering and digital solutions company. We design and build clean, scalable web applications, custom software, mobile apps, and automated workflows.
             </p>
 
-            <div className="flex items-center gap-2 text-xs font-semibold text-emerald-700 bg-emerald-50 px-3 py-1.5 rounded-lg w-fit border border-emerald-200">
-              <ShieldCheck className="w-4 h-4 text-[#00976C]" />
-              <span>100% Client-Owned Source Code</span>
+            <div className="flex flex-wrap items-center gap-2">
+              <div className="flex items-center gap-2 text-xs font-semibold text-emerald-700 bg-emerald-50 px-3 py-1.5 rounded-lg w-fit border border-emerald-200">
+                <ShieldCheck className="w-4 h-4 text-[#00976C]" />
+                <span>100% Client-Owned Source Code</span>
+              </div>
+              <div className="flex items-center gap-1.5 text-xs text-slate-500 font-medium px-1">
+                <MapPin className="w-3.5 h-3.5 text-[#00976C]" />
+                <span>Palanpur, Gujarat, India</span>
+              </div>
             </div>
           </div>
 
@@ -178,6 +185,11 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
             </h4>
 
             <div className="space-y-2.5 text-xs sm:text-sm">
+              <div className="flex items-start gap-2 text-slate-700 font-medium">
+                <MapPin className="w-4 h-4 text-[#00976C] shrink-0 mt-0.5" />
+                <span>Palanpur, Gujarat 385001, India</span>
+              </div>
+
               <a 
                 href="mailto:basantech1@gmail.com" 
                 className="flex items-center gap-2 text-slate-700 hover:text-[#00976C] transition-colors font-mono"

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { PageView, ServiceId } from './types';
 import { Navbar } from './components/Navbar';
 import { Footer } from './components/Footer';
@@ -10,41 +10,90 @@ import { TestimonialsSection } from './components/TestimonialsSection';
 import { ContactSection } from './components/ContactSection';
 import { PrivacyPolicy } from './components/PrivacyPolicy';
 import { TermsOfService } from './components/TermsOfService';
+import { PageHero } from './components/PageHero';
+import { EngineeringProcess } from './components/EngineeringProcess';
 import { SERVICES_DATA } from './data/servicesData';
-import { ArrowLeft, ArrowUpRight } from 'lucide-react';
+import { 
+  ArrowLeft, 
+  ArrowUpRight, 
+  CheckCircle2, 
+  Layers, 
+  Code2, 
+  MapPin, 
+  ShieldCheck, 
+  Zap,
+  HelpCircle,
+  ChevronDown
+} from 'lucide-react';
+
+// Helper to determine active page and service from URL pathname & hash
+const getRouteFromLocation = (): { page: PageView; serviceId?: ServiceId } => {
+  if (typeof window === 'undefined') return { page: 'home' };
+
+  const pathname = window.location.pathname.toLowerCase();
+  const hash = window.location.hash.replace('#', '').toLowerCase();
+
+  // Check for /services/:id route
+  const serviceMatch = pathname.match(/^\/services\/([a-z0-9-]+)/);
+  if (serviceMatch) {
+    const sId = serviceMatch[1] as ServiceId;
+    const exists = SERVICES_DATA.some(s => s.id === sId);
+    if (exists) {
+      return { page: 'service-detail', serviceId: sId };
+    }
+  }
+
+  // Check clean pathnames
+  const cleanPath = pathname.replace(/^\//, '').replace(/\/$/, '');
+  const validPages: PageView[] = ['services', 'portfolio', 'about', 'testimonials', 'contact', 'privacy', 'terms'];
+
+  if (cleanPath === 'work') return { page: 'portfolio' };
+  if (validPages.includes(cleanPath as PageView)) {
+    return { page: cleanPath as PageView };
+  }
+
+  // Fallback to hash if present (for old bookmarks/links)
+  if (hash === 'work') return { page: 'portfolio' };
+  if (validPages.includes(hash as PageView)) {
+    return { page: hash as PageView };
+  }
+
+  return { page: 'home' };
+};
 
 export default function App() {
-  const [currentPage, setCurrentPage] = useState<PageView>(() => {
-    if (typeof window !== 'undefined') {
-      const hash = window.location.hash.replace('#', '').toLowerCase();
-      if (['services', 'portfolio', 'about', 'testimonials', 'contact', 'privacy', 'terms'].includes(hash)) {
-        return hash as PageView;
-      }
-    }
-    return 'home';
-  });
-  const [selectedServiceId, setSelectedServiceId] = useState<ServiceId>('custom-software');
+  const initialRoute = getRouteFromLocation();
+  const [currentPage, setCurrentPage] = useState<PageView>(initialRoute.page);
+  const [selectedServiceId, setSelectedServiceId] = useState<ServiceId>(initialRoute.serviceId || 'custom-software');
+  const [openFaqIndex, setOpenFaqIndex] = useState<number | null>(null);
 
-  React.useEffect(() => {
-    const onHashChange = () => {
-      const hash = window.location.hash.replace('#', '').toLowerCase();
-      if (['services', 'portfolio', 'about', 'testimonials', 'contact', 'privacy', 'terms', 'home'].includes(hash)) {
-        setCurrentPage(hash === 'home' ? 'home' : (hash as PageView));
+  // Listen to popstate (browser back/forward buttons) and hashchange
+  useEffect(() => {
+    const handleLocationChange = () => {
+      const route = getRouteFromLocation();
+      setCurrentPage(route.page);
+      if (route.serviceId) {
+        setSelectedServiceId(route.serviceId);
       }
     };
-    window.addEventListener('hashchange', onHashChange);
-    return () => window.removeEventListener('hashchange', onHashChange);
+
+    window.addEventListener('popstate', handleLocationChange);
+    window.addEventListener('hashchange', handleLocationChange);
+    return () => {
+      window.removeEventListener('popstate', handleLocationChange);
+      window.removeEventListener('hashchange', handleLocationChange);
+    };
   }, []);
 
   // Update browser tab document.title consistently across pages
-  React.useEffect(() => {
+  useEffect(() => {
     let pageTitle = 'BasanTech — Web & Software Development Agency';
     switch (currentPage) {
       case 'home':
         pageTitle = 'BasanTech — Web & Software Development Agency';
         break;
       case 'services':
-        pageTitle = 'Services — BasanTech';
+        pageTitle = 'Our Services & Practices — BasanTech';
         break;
       case 'service-detail': {
         const currentService = SERVICES_DATA.find(s => s.id === selectedServiceId);
@@ -52,16 +101,16 @@ export default function App() {
         break;
       }
       case 'portfolio':
-        pageTitle = 'Work — BasanTech';
+        pageTitle = 'Work & Case Studies — BasanTech';
         break;
       case 'about':
-        pageTitle = 'About Us — BasanTech';
+        pageTitle = 'About Us — BasanTech | Palanpur, Gujarat';
         break;
       case 'testimonials':
-        pageTitle = 'Client Reviews — BasanTech';
+        pageTitle = 'Client Reviews & Reputation — BasanTech';
         break;
       case 'contact':
-        pageTitle = 'Contact Us — BasanTech';
+        pageTitle = 'Contact Us — BasanTech | Palanpur, Gujarat';
         break;
       case 'privacy':
         pageTitle = 'Privacy Policy — BasanTech';
@@ -82,11 +131,14 @@ export default function App() {
     setCurrentPage(page);
 
     try {
-      if (page === 'home') {
-        history.replaceState(null, '', window.location.pathname);
-      } else if (page !== 'service-detail') {
-        history.pushState(null, '', `#${page}`);
+      let targetPath = '/';
+      if (page === 'service-detail' && serviceId) {
+        targetPath = `/services/${serviceId}`;
+      } else if (page !== 'home') {
+        targetPath = `/${page}`;
       }
+
+      history.pushState(null, '', targetPath);
     } catch {
       // ignore
     }
@@ -189,7 +241,7 @@ export default function App() {
       {/* Main Page Router */}
       <main className="flex-1">
         
-        {/* HOMEPAGE - Notice: Founder & Leadership is NOT shown on homepage per requirement */}
+        {/* HOMEPAGE */}
         {currentPage === 'home' && (
           <div>
             <HeroSection onNavigate={handleNavigate} />
@@ -201,10 +253,26 @@ export default function App() {
           </div>
         )}
 
-        {/* SERVICES PAGE */}
+        {/* SERVICES PAGE (Dedicated Page) */}
         {currentPage === 'services' && (
-          <div className="pt-16">
+          <div>
+            <PageHero
+              breadcrumbs={[{ label: 'Services' }]}
+              badge="ENGINEERING PRACTICES • 06 CAPABILITIES"
+              title="Full-Stack Software Engineering & Digital Services"
+              description="Explore our 6 core capabilities: Website Development, Mobile Apps, Custom Business Software, Desktop Systems, E-Commerce Stores, and AI Solutions. Built with modern frameworks and 100% intellectual property handover."
+              stats={[
+                { label: 'Core Practices', value: '06', highlight: true },
+                { label: 'Client IP Ownership', value: '100%' },
+                { label: 'Included Warranty', value: '30-Day' },
+                { label: 'Development Cycle', value: 'Agile Sprints' },
+              ]}
+              ctaText="Start a Practice Inquiry"
+              ctaPage="contact"
+              onNavigate={handleNavigate}
+            />
             <ServicesOverview onNavigate={handleNavigate} />
+            <EngineeringProcess onNavigate={handleNavigate} />
             <ContactSection onNavigate={handleNavigate} />
           </div>
         )}
@@ -212,35 +280,93 @@ export default function App() {
         {/* SERVICE DETAIL PAGE */}
         {currentPage === 'service-detail' && renderServiceDetail()}
 
-        {/* PORTFOLIO / WORK PAGE */}
+        {/* PORTFOLIO / WORK PAGE (Dedicated Page) */}
         {currentPage === 'portfolio' && (
-          <div className="pt-16">
+          <div>
+            <PageHero
+              breadcrumbs={[{ label: 'Work & Case Studies' }]}
+              badge="PROVEN DELIVERY • VERIFIED PLATFORMS"
+              title="Our Work & Delivered Production Systems"
+              description="Explore live software applications, education portals, e-commerce storefronts, and bio-incubation platforms engineered and deployed by BasanTech for real-world organizations."
+              stats={[
+                { label: 'Active Platforms', value: '5+', highlight: true },
+                { label: 'Live Deployments', value: '100% Verifiable' },
+                { label: 'Vendor Lock-in', value: 'Zero' },
+                { label: 'Performance', value: '95+ Lighthouse' },
+              ]}
+              ctaText="Discuss Your Project Idea"
+              ctaPage="contact"
+              onNavigate={handleNavigate}
+            />
             <PortfolioShowcase onNavigate={handleNavigate} />
             <ContactSection onNavigate={handleNavigate} />
           </div>
         )}
 
-        {/* ABOUT US PAGE - Includes Founder & Leadership Section */}
+        {/* ABOUT US PAGE (Dedicated Page) */}
         {currentPage === 'about' && (
-          <div className="pt-16">
+          <div>
+            <PageHero
+              breadcrumbs={[{ label: 'About Us' }]}
+              badge="ABOUT BASANTECH • PALANPUR, GUJARAT"
+              title="An Engineering Studio Built on Quality & Craftsmanship"
+              description="BasanTech is an independent technology and software engineering company headquartered in Palanpur, Gujarat, India. We partner with founders and business teams worldwide to engineer scalable, dependable digital products."
+              stats={[
+                { label: 'Headquarters', value: 'Palanpur, Gujarat', highlight: true },
+                { label: 'Developer Access', value: '100% Direct' },
+                { label: 'Repository Ownership', value: '100% Client' },
+                { label: 'Client Reach', value: 'Global' },
+              ]}
+              ctaText="Connect With Our Team"
+              ctaPage="contact"
+              onNavigate={handleNavigate}
+            />
             <AboutAgency onNavigate={handleNavigate} isAboutPage={true} />
             <TestimonialsSection onNavigate={handleNavigate} />
             <ContactSection onNavigate={handleNavigate} />
           </div>
         )}
 
-        {/* TESTIMONIALS PAGE */}
+        {/* TESTIMONIALS PAGE (Dedicated Page) */}
         {currentPage === 'testimonials' && (
-          <div className="pt-16">
+          <div>
+            <PageHero
+              breadcrumbs={[{ label: 'Testimonials' }]}
+              badge="CLIENT REPUTATION & REVIEWS"
+              title="What Our Clients Say About Partnering With Us"
+              description="Authentic feedback from founders, program coordinators, and engineering leaders who trusted BasanTech with their core technology and digital platforms."
+              stats={[
+                { label: 'Average Client Rating', value: '5.0 / 5.0', highlight: true },
+                { label: 'Milestone Delivery', value: '100% On-Time' },
+                { label: 'Verified Reviews', value: '6+ Direct' },
+                { label: 'Hypercare Warranty', value: '30 Days' },
+              ]}
+              ctaText="Partner With BasanTech"
+              ctaPage="contact"
+              onNavigate={handleNavigate}
+            />
             <TestimonialsSection onNavigate={handleNavigate} />
             <PortfolioShowcase onNavigate={handleNavigate} limit={3} />
             <ContactSection onNavigate={handleNavigate} />
           </div>
         )}
 
-        {/* CONTACT PAGE */}
+        {/* CONTACT PAGE (Dedicated Page) */}
         {currentPage === 'contact' && (
-          <div className="pt-16">
+          <div>
+            <PageHero
+              breadcrumbs={[{ label: 'Contact Us' }]}
+              badge="DIRECT TECHNICAL CONSULTATION"
+              title="Let's Build Something Exceptional Together"
+              description="Whether you have a detailed technical blueprint or a new digital concept, our engineering team in Palanpur, Gujarat reviews every brief and responds within 24 hours."
+              stats={[
+                { label: 'Response Time', value: '< 24 Hours', highlight: true },
+                { label: 'Strategy Call', value: '30m Free' },
+                { label: 'Engineering Hub', value: 'Palanpur, Gujarat' },
+                { label: 'Direct Line', value: '+91 9624895641' },
+              ]}
+              onNavigate={handleNavigate}
+            />
             <ContactSection onNavigate={handleNavigate} />
           </div>
         )}

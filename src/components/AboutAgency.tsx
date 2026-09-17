@@ -7,7 +7,8 @@ import {
   Zap, 
   Target, 
   Code2, 
-  CheckCircle2 
+  CheckCircle2,
+  MapPin
 } from 'lucide-react';
 
 interface AboutAgencyProps {
@@ -34,7 +35,7 @@ export const AboutAgency: React.FC<AboutAgencyProps> = ({ onNavigate, isAboutPag
             </h2>
 
             <p className="text-slate-800 text-base sm:text-lg leading-relaxed font-medium">
-              BasanTech is a technology studio dedicated to building clean, dependable digital solutions for businesses looking to grow online.
+              BasanTech is an independent software studio headquartered in Palanpur, Gujarat, dedicated to building clean, dependable digital solutions for businesses looking to grow online.
             </p>
 
             <p className="text-slate-600 text-sm sm:text-base leading-relaxed">
@@ -86,9 +87,15 @@ export const AboutAgency: React.FC<AboutAgencyProps> = ({ onNavigate, isAboutPag
                 <p className="text-xs text-slate-600 leading-relaxed">
                   We eliminate bureaucratic layers. You collaborate directly with technical builders who understand modern full-stack ecosystems, deadlines, and business goals.
                 </p>
-                <div className="pt-2 flex items-center gap-2 text-xs text-slate-600 font-medium">
-                  <CheckCircle2 className="w-4 h-4 text-[#00976C]" />
-                  <span>Transparent sprint milestones &amp; live staging links</span>
+                <div className="pt-2 flex flex-col gap-2 text-xs text-slate-600 font-medium">
+                  <div className="flex items-center gap-2">
+                    <CheckCircle2 className="w-4 h-4 text-[#00976C] shrink-0" />
+                    <span>Transparent sprint milestones &amp; live staging links</span>
+                  </div>
+                  <div className="flex items-center gap-2 text-emerald-800 font-semibold bg-emerald-50/70 p-2 rounded-xl border border-emerald-200/60">
+                    <MapPin className="w-4 h-4 text-[#00976C] shrink-0" />
+                    <span>Engineering Studio: Palanpur, Gujarat, India</span>
+                  </div>
                 </div>
               </div>
             </div>

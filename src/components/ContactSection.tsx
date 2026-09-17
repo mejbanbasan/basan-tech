@@ -514,7 +514,7 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ onNavigate, pres
               <div className="space-y-3 text-xs text-slate-600 leading-relaxed">
                 <div>
                   <strong className="text-[#022A4E] block mb-0.5">Primary Studio:</strong>
-                  Palanpur, Ahmedabad, Gujarat 382421, India
+                  Palanpur, Gujarat 385001, India
                 </div>
                 <div className="pt-2 border-t border-slate-100">
                   <strong className="text-[#022A4E] block mb-0.5">Global Client Engagement:</strong>
