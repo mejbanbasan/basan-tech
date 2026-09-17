@@ -14,17 +14,35 @@ import {
 interface AboutAgencyProps {
   onNavigate: (page: PageView, serviceId?: ServiceId) => void;
   isAboutPage?: boolean;
+  showBreadcrumb?: boolean;
 }
 
-export const AboutAgency: React.FC<AboutAgencyProps> = ({ onNavigate, isAboutPage = false }) => {
+export const AboutAgency: React.FC<AboutAgencyProps> = ({ 
+  onNavigate, 
+  isAboutPage = false,
+  showBreadcrumb = false
+}) => {
   return (
-    <section id="about-section" className="py-20 bg-slate-50/70 border-b border-slate-200">
+    <section id="about-section" className={`${isAboutPage || showBreadcrumb ? 'pt-28 sm:pt-36 pb-20' : 'py-20'} bg-slate-50/70 border-b border-slate-200`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-20">
         
         {/* Studio Overview */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
           
           <div className="lg:col-span-7 space-y-6">
+            {showBreadcrumb && (
+              <nav aria-label="Breadcrumb" className="flex items-center gap-1.5 text-xs text-slate-500 font-medium pb-1">
+                <button 
+                  onClick={() => onNavigate('home')} 
+                  className="hover:text-[#00976C] transition-colors cursor-pointer"
+                >
+                  Home
+                </button>
+                <span>/</span>
+                <span className="text-[#022A4E] font-semibold">About Us</span>
+              </nav>
+            )}
+
             <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-emerald-50 border border-emerald-200 text-xs font-semibold text-emerald-800">
               <span className="w-2 h-2 rounded-full bg-[#00976C]"></span>
               <span>ABOUT BASANTECH</span>

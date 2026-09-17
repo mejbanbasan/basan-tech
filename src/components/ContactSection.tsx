@@ -21,9 +21,14 @@ import confetti from 'canvas-confetti';
 interface ContactSectionProps {
   onNavigate: (page: PageView, serviceId?: ServiceId) => void;
   preselectedService?: ServiceId;
+  showBreadcrumb?: boolean;
 }
 
-export const ContactSection: React.FC<ContactSectionProps> = ({ onNavigate, preselectedService }) => {
+export const ContactSection: React.FC<ContactSectionProps> = ({ 
+  onNavigate, 
+  preselectedService,
+  showBreadcrumb = false 
+}) => {
   // Form fields
   const [fullName, setFullName] = useState('');
   const [email, setEmail] = useState('');
@@ -128,9 +133,22 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ onNavigate, pres
   const directWhatsAppUrl = `https://wa.me/919624895641?text=${encodeURIComponent(`Hello Basan Tech Team, I would like to discuss a project.\n\nName: ${fullName || 'Client'}\nEmail: ${email || 'N/A'}\nType: ${projectType || 'General'}\nDetails: ${projectDetails || 'I need your software engineering services.'}`)}`;
 
   return (
-    <section id="contact-section" className="py-20 bg-zinc-50 border-b border-zinc-200">
+    <section id="contact-section" className={`${showBreadcrumb ? 'pt-28 sm:pt-36 pb-20' : 'py-20'} bg-zinc-50 border-b border-zinc-200`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
+        {showBreadcrumb && (
+          <nav aria-label="Breadcrumb" className="flex items-center gap-1.5 text-xs text-slate-500 font-medium pb-6">
+            <button 
+              onClick={() => onNavigate('home')} 
+              className="hover:text-[#00976C] transition-colors cursor-pointer"
+            >
+              Home
+            </button>
+            <span>/</span>
+            <span className="text-[#022A4E] font-semibold">Contact Us</span>
+          </nav>
+        )}
+
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
           
           {/* Main Contact Form */}

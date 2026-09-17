@@ -26,11 +26,13 @@ import {
 interface ServicesOverviewProps {
   onNavigate: (page: PageView, serviceId?: ServiceId) => void;
   initialServiceId?: ServiceId;
+  showBreadcrumb?: boolean;
 }
 
 export const ServicesOverview: React.FC<ServicesOverviewProps> = ({ 
   onNavigate, 
-  initialServiceId 
+  initialServiceId,
+  showBreadcrumb = false
 }) => {
   const [selectedModalService, setSelectedModalService] = useState<Service | null>(null);
   const [activeFilter, setActiveFilter] = useState<'all' | 'web' | 'mobile' | 'software' | 'ai'>('all');
@@ -89,7 +91,7 @@ export const ServicesOverview: React.FC<ServicesOverviewProps> = ({
   });
 
   return (
-    <section id="services-section" className="py-24 sm:py-32 bg-slate-50/70 border-b border-slate-200 relative overflow-hidden">
+    <section id="services-section" className={`${showBreadcrumb ? 'pt-28 sm:pt-36 pb-24' : 'py-24 sm:py-32'} bg-slate-50/70 border-b border-slate-200 relative overflow-hidden`}>
       
       {/* Dynamic Ambient Glowing Cones (Crazy Tech Visual) */}
       <div className="absolute top-1/3 left-1/4 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[500px] bg-gradient-to-br from-emerald-400/15 via-[#00976C]/10 to-transparent blur-3xl pointer-events-none rounded-full" />
@@ -101,6 +103,19 @@ export const ServicesOverview: React.FC<ServicesOverviewProps> = ({
         {/* Section Header */}
         <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-8">
           <div className="max-w-3xl space-y-4">
+            {showBreadcrumb && (
+              <nav aria-label="Breadcrumb" className="flex items-center gap-1.5 text-xs text-slate-500 font-medium pb-1">
+                <button 
+                  onClick={() => onNavigate('home')} 
+                  className="hover:text-[#00976C] transition-colors cursor-pointer"
+                >
+                  Home
+                </button>
+                <span>/</span>
+                <span className="text-[#022A4E] font-semibold">Services</span>
+              </nav>
+            )}
+
             <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white border border-emerald-200/80 text-xs font-semibold text-emerald-800 shadow-xs backdrop-blur-md">
               <span className="w-2 h-2 rounded-full bg-[#00976C] animate-pulse"></span>
               <span className="font-mono uppercase tracking-wider text-[11px] font-bold text-[#00976C]">

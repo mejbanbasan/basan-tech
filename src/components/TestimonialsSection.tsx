@@ -14,17 +14,34 @@ import {
 
 interface TestimonialsSectionProps {
   onNavigate: (page: PageView) => void;
+  showBreadcrumb?: boolean;
 }
 
-export const TestimonialsSection: React.FC<TestimonialsSectionProps> = ({ onNavigate }) => {
+export const TestimonialsSection: React.FC<TestimonialsSectionProps> = ({ 
+  onNavigate,
+  showBreadcrumb = false 
+}) => {
   return (
-    <section id="testimonials-section" className="py-20 sm:py-24 bg-slate-50/70 border-b border-slate-200 relative overflow-hidden">
+    <section id="testimonials-section" className={`${showBreadcrumb ? 'pt-28 sm:pt-36 pb-20' : 'py-20 sm:py-24'} bg-slate-50/70 border-b border-slate-200 relative overflow-hidden`}>
       
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 space-y-16">
         
         {/* Section Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
           <div className="max-w-2xl space-y-3">
+            {showBreadcrumb && (
+              <nav aria-label="Breadcrumb" className="flex items-center gap-1.5 text-xs text-slate-500 font-medium pb-1">
+                <button 
+                  onClick={() => onNavigate('home')} 
+                  className="hover:text-[#00976C] transition-colors cursor-pointer"
+                >
+                  Home
+                </button>
+                <span>/</span>
+                <span className="text-[#022A4E] font-semibold">Testimonials</span>
+              </nav>
+            )}
+
             <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-emerald-50 border border-emerald-200 text-xs font-semibold text-emerald-800">
               <span className="w-2 h-2 rounded-full bg-[#00976C]"></span>
               <span>TESTIMONIALS &amp; REPUTATION</span>

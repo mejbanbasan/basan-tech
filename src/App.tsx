@@ -10,7 +10,6 @@ import { TestimonialsSection } from './components/TestimonialsSection';
 import { ContactSection } from './components/ContactSection';
 import { PrivacyPolicy } from './components/PrivacyPolicy';
 import { TermsOfService } from './components/TermsOfService';
-import { PageHero } from './components/PageHero';
 import { EngineeringProcess } from './components/EngineeringProcess';
 import { SERVICES_DATA } from './data/servicesData';
 import { 
@@ -256,22 +255,7 @@ export default function App() {
         {/* SERVICES PAGE (Dedicated Page) */}
         {currentPage === 'services' && (
           <div>
-            <PageHero
-              breadcrumbs={[{ label: 'Services' }]}
-              badge="ENGINEERING PRACTICES • 06 CAPABILITIES"
-              title="Full-Stack Software Engineering & Digital Services"
-              description="Explore our 6 core capabilities: Website Development, Mobile Apps, Custom Business Software, Desktop Systems, E-Commerce Stores, and AI Solutions. Built with modern frameworks and 100% intellectual property handover."
-              stats={[
-                { label: 'Core Practices', value: '06', highlight: true },
-                { label: 'Client IP Ownership', value: '100%' },
-                { label: 'Included Warranty', value: '30-Day' },
-                { label: 'Development Cycle', value: 'Agile Sprints' },
-              ]}
-              ctaText="Start a Practice Inquiry"
-              ctaPage="contact"
-              onNavigate={handleNavigate}
-            />
-            <ServicesOverview onNavigate={handleNavigate} />
+            <ServicesOverview onNavigate={handleNavigate} showBreadcrumb={true} />
             <EngineeringProcess onNavigate={handleNavigate} />
             <ContactSection onNavigate={handleNavigate} />
           </div>
@@ -283,22 +267,7 @@ export default function App() {
         {/* PORTFOLIO / WORK PAGE (Dedicated Page) */}
         {currentPage === 'portfolio' && (
           <div>
-            <PageHero
-              breadcrumbs={[{ label: 'Work & Case Studies' }]}
-              badge="PROVEN DELIVERY • VERIFIED PLATFORMS"
-              title="Our Work & Delivered Production Systems"
-              description="Explore live software applications, education portals, e-commerce storefronts, and bio-incubation platforms engineered and deployed by BasanTech for real-world organizations."
-              stats={[
-                { label: 'Active Platforms', value: '5+', highlight: true },
-                { label: 'Live Deployments', value: '100% Verifiable' },
-                { label: 'Vendor Lock-in', value: 'Zero' },
-                { label: 'Performance', value: '95+ Lighthouse' },
-              ]}
-              ctaText="Discuss Your Project Idea"
-              ctaPage="contact"
-              onNavigate={handleNavigate}
-            />
-            <PortfolioShowcase onNavigate={handleNavigate} />
+            <PortfolioShowcase onNavigate={handleNavigate} showBreadcrumb={true} />
             <ContactSection onNavigate={handleNavigate} />
           </div>
         )}
@@ -306,22 +275,7 @@ export default function App() {
         {/* ABOUT US PAGE (Dedicated Page) */}
         {currentPage === 'about' && (
           <div>
-            <PageHero
-              breadcrumbs={[{ label: 'About Us' }]}
-              badge="ABOUT BASANTECH • PALANPUR, GUJARAT"
-              title="An Engineering Studio Built on Quality & Craftsmanship"
-              description="BasanTech is an independent technology and software engineering company headquartered in Palanpur, Gujarat, India. We partner with founders and business teams worldwide to engineer scalable, dependable digital products."
-              stats={[
-                { label: 'Headquarters', value: 'Palanpur, Gujarat', highlight: true },
-                { label: 'Developer Access', value: '100% Direct' },
-                { label: 'Repository Ownership', value: '100% Client' },
-                { label: 'Client Reach', value: 'Global' },
-              ]}
-              ctaText="Connect With Our Team"
-              ctaPage="contact"
-              onNavigate={handleNavigate}
-            />
-            <AboutAgency onNavigate={handleNavigate} isAboutPage={true} />
+            <AboutAgency onNavigate={handleNavigate} isAboutPage={true} showBreadcrumb={true} />
             <TestimonialsSection onNavigate={handleNavigate} />
             <ContactSection onNavigate={handleNavigate} />
           </div>
@@ -330,22 +284,7 @@ export default function App() {
         {/* TESTIMONIALS PAGE (Dedicated Page) */}
         {currentPage === 'testimonials' && (
           <div>
-            <PageHero
-              breadcrumbs={[{ label: 'Testimonials' }]}
-              badge="CLIENT REPUTATION & REVIEWS"
-              title="What Our Clients Say About Partnering With Us"
-              description="Authentic feedback from founders, program coordinators, and engineering leaders who trusted BasanTech with their core technology and digital platforms."
-              stats={[
-                { label: 'Average Client Rating', value: '5.0 / 5.0', highlight: true },
-                { label: 'Milestone Delivery', value: '100% On-Time' },
-                { label: 'Verified Reviews', value: '6+ Direct' },
-                { label: 'Hypercare Warranty', value: '30 Days' },
-              ]}
-              ctaText="Partner With BasanTech"
-              ctaPage="contact"
-              onNavigate={handleNavigate}
-            />
-            <TestimonialsSection onNavigate={handleNavigate} />
+            <TestimonialsSection onNavigate={handleNavigate} showBreadcrumb={true} />
             <PortfolioShowcase onNavigate={handleNavigate} limit={3} />
             <ContactSection onNavigate={handleNavigate} />
           </div>
@@ -354,20 +293,7 @@ export default function App() {
         {/* CONTACT PAGE (Dedicated Page) */}
         {currentPage === 'contact' && (
           <div>
-            <PageHero
-              breadcrumbs={[{ label: 'Contact Us' }]}
-              badge="DIRECT TECHNICAL CONSULTATION"
-              title="Let's Build Something Exceptional Together"
-              description="Whether you have a detailed technical blueprint or a new digital concept, our engineering team in Palanpur, Gujarat reviews every brief and responds within 24 hours."
-              stats={[
-                { label: 'Response Time', value: '< 24 Hours', highlight: true },
-                { label: 'Strategy Call', value: '30m Free' },
-                { label: 'Engineering Hub', value: 'Palanpur, Gujarat' },
-                { label: 'Direct Line', value: '+91 9624895641' },
-              ]}
-              onNavigate={handleNavigate}
-            />
-            <ContactSection onNavigate={handleNavigate} />
+            <ContactSection onNavigate={handleNavigate} showBreadcrumb={true} />
           </div>
         )}
 
