@@ -160,7 +160,7 @@ export const Navbar: React.FC<NavbarProps> = ({ currentPage, onNavigate }) => {
                               }}
                               className="w-full py-1.5 text-center text-xs font-semibold text-[#022A4E] hover:text-[#00976C] flex items-center justify-center gap-1.5 transition-colors cursor-pointer"
                             >
-                              <span>Explore All 8 Services &amp; Stacks</span>
+                              <span>Explore All 6 Services &amp; Capabilities</span>
                               <ArrowUpRight className="w-3.5 h-3.5 text-[#00976C]" />
                             </button>
                           </div>
