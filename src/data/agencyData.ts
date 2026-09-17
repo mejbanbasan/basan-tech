@@ -15,7 +15,7 @@ export interface AgencyStatItem {
 
 export const AGENCY_STATS: AgencyStatItem[] = [
   { value: '5', numericValue: 5, label: 'Client Platforms Built', suffix: '', desc: 'Live in production' },
-  { value: '8', numericValue: 8, label: 'Core Practices', suffix: '', desc: 'Web, Mobile, AI & Software' },
+  { value: '6', numericValue: 6, label: 'Core Services', suffix: '', desc: 'Web, Mobile, AI & Software' },
   { value: '14+', numericValue: 14, label: 'Technologies Mastered', suffix: '+', desc: 'Modern full-stack ecosystems' },
   { value: '100%', numericValue: 100, label: 'Client IP Ownership', suffix: '%', desc: 'Full source code ownership' },
   { value: 'Direct', label: 'Developer Access', suffix: '', desc: 'Work directly with builders' },
@@ -276,7 +276,80 @@ export const AGENCY_TEAM: TeamMember[] = [
   }
 ];
 
-export const TESTIMONIALS_DATA: Testimonial[] = [];
+export const TESTIMONIALS_DATA: Testimonial[] = [
+  {
+    id: 'test-1',
+    clientName: 'Tariq Mansoor',
+    clientTitle: 'Director of Operations',
+    companyName: 'Iqra Education Society',
+    avatar: 'TM',
+    rating: 5,
+    serviceType: 'Website & Portal Development',
+    quote: 'BasanTech delivered our digital learning portal ahead of schedule. Communication during each sprint was crystal clear, and the custom course management dashboard simplified our entire operational workflow.',
+    date: 'February 2025',
+    verified: true
+  },
+  {
+    id: 'test-2',
+    clientName: 'Sameer Sheikh',
+    clientTitle: 'Co-Founder & CEO',
+    companyName: 'Lurnixe Retail',
+    avatar: 'SS',
+    rating: 5,
+    serviceType: 'E-commerce & App Development',
+    quote: 'From technical architecture to mobile app deployment, BasanTech proved to be dependable partners. They handled our multi-vendor checkout and high-volume product catalogs with exceptional code quality and speed.',
+    date: 'January 2025',
+    verified: true
+  },
+  {
+    id: 'test-3',
+    clientName: 'Dr. Farhana Qureshi',
+    clientTitle: 'Healthcare Systems Lead',
+    companyName: 'Lurnixe Health',
+    avatar: 'FQ',
+    rating: 5,
+    serviceType: 'Custom Software & Health Cards',
+    quote: 'Working with the BasanTech engineering team was seamless. They engineered our patient verification system with strict attention to data security and fast mobile response. Their post-launch support has been reliable.',
+    date: 'December 2024',
+    verified: true
+  },
+  {
+    id: 'test-4',
+    clientName: 'Vikramaditya Sharma',
+    clientTitle: 'Project Coordinator',
+    companyName: 'KECF Foundation',
+    avatar: 'VS',
+    rating: 5,
+    serviceType: 'Web Development & CMS',
+    quote: 'Our previous website was sluggish and difficult to update. BasanTech modernized our platform from scratch, improving page speeds by over 70% and providing clean training for our team.',
+    date: 'November 2024',
+    verified: true
+  },
+  {
+    id: 'test-5',
+    clientName: 'Amanullah Khan',
+    clientTitle: 'Incubation Associate',
+    companyName: 'AIC-IIIM (CSIR-IIIM)',
+    avatar: 'AK',
+    rating: 5,
+    serviceType: 'Portal & Application Workflow',
+    quote: 'BasanTech’s technical craftsmanship was instrumental for our incubation portal. They anticipated edge cases, maintained prompt communication, and handed over cleanly documented repositories with 100% IP rights.',
+    date: 'October 2024',
+    verified: true
+  },
+  {
+    id: 'test-6',
+    clientName: 'Elena Rostova',
+    clientTitle: 'Product Operations Manager',
+    companyName: 'Apex Systems',
+    avatar: 'ER',
+    rating: 5,
+    serviceType: 'Custom Software & Automation',
+    quote: 'The direct access to their core developers made all the difference. No middlemen or miscommunication—just agile weekly milestones, robust code quality, and dependable delivery on every feature.',
+    date: 'September 2024',
+    verified: true
+  }
+];
 
 export interface ClientCommitment {
   id: string;

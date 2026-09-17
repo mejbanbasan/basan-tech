@@ -97,10 +97,10 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
           {/* Column 2: Services */}
           <div className="lg:col-span-3 space-y-3">
             <h4 className="text-xs font-mono font-bold uppercase tracking-wider text-[#022A4E]">
-              Our Practices
+              Our Services
             </h4>
             <ul className="space-y-2 text-xs sm:text-sm text-slate-600">
-              {SERVICES_DATA.slice(0, 6).map((service) => (
+              {SERVICES_DATA.map((service) => (
                 <li key={service.id}>
                   <button
                     onClick={() => onNavigate('service-detail', service.id)}
@@ -115,7 +115,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
                   onClick={() => onNavigate('services')}
                   className="font-semibold text-[#00976C] hover:underline flex items-center gap-1 cursor-pointer pt-1"
                 >
-                  <span>View all 8 practices</span>
+                  <span>Explore All Services</span>
                   <ArrowUpRight className="w-3 h-3" />
                 </button>
               </li>

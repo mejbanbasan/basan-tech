@@ -31,15 +31,15 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ onNavigate, pres
   const [company, setCompany] = useState('');
   const [projectType, setProjectType] = useState<string>(() => {
     switch (preselectedService) {
+      case 'website-dev':
+      case 'web-dev': return 'Website Development';
+      case 'app-dev':
+      case 'mobile-app': return 'App Development (Android & iOS)';
       case 'custom-software': return 'Custom Software Development';
-      case 'web-dev': return 'Web Development';
-      case 'mobile-app':
-      case 'app-dev': return 'Mobile App Development';
+      case 'desktop-software': return 'Desktop Software Development';
+      case 'ecommerce-dev':
+      case 'ecommerce': return 'E-commerce Development';
       case 'ai-solutions': return 'AI Solutions';
-      case 'hubspot-dev': return 'HubSpot Development';
-      case 'reactjs-dev': return 'ReactJS Development';
-      case 'wordpress-dev': return 'WordPress Development';
-      case 'nodejs-dev': return 'Node.js Development';
       default: return '';
     }
   });
@@ -332,15 +332,13 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ onNavigate, pres
                         disabled={isSubmitting}
                         className="w-full px-3.5 py-2.5 text-sm bg-white border border-slate-300 rounded-xl text-slate-900 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-[#00976C]/20 focus:border-[#00976C] transition-all shadow-2xs appearance-none pr-10 cursor-pointer disabled:bg-slate-100"
                       >
-                        <option value="" disabled className="text-slate-400">Choose a practice area</option>
+                        <option value="" disabled className="text-slate-400">Choose a service area</option>
+                        <option value="Website Development">Website Development</option>
+                        <option value="App Development (Android & iOS)">App Development (Android & iOS)</option>
                         <option value="Custom Software Development">Custom Software Development</option>
-                        <option value="Web Development">Web Development</option>
-                        <option value="Mobile App Development">Mobile App Development</option>
+                        <option value="Desktop Software Development">Desktop Software Development</option>
+                        <option value="E-commerce Development">E-commerce Development</option>
                         <option value="AI Solutions">AI Solutions</option>
-                        <option value="HubSpot Development">HubSpot Development</option>
-                        <option value="ReactJS Development">ReactJS Development</option>
-                        <option value="WordPress Development">WordPress Development</option>
-                        <option value="Node.js Development">Node.js Development</option>
                         <option value="Other / Multi-disciplinary Engineering">Other / Multi-disciplinary Engineering</option>
                       </select>
                       <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-3.5 text-slate-500">

@@ -10,10 +10,8 @@ import {
   Smartphone, 
   Cpu, 
   Sparkles,
-  Layers,
-  Code2,
-  Server,
-  Layout
+  Laptop,
+  ShoppingBag
 } from 'lucide-react';
 
 interface NavbarProps {
@@ -36,15 +34,23 @@ export const Navbar: React.FC<NavbarProps> = ({ currentPage, onNavigate }) => {
 
   const getServiceIcon = (id: ServiceId) => {
     switch (id) {
-      case 'custom-software': return <Cpu className="w-4 h-4 text-[#022A4E]" />;
-      case 'web-dev': return <Globe className="w-4 h-4 text-[#00976C]" />;
-      case 'mobile-app': case 'app-dev': return <Smartphone className="w-4 h-4 text-[#022A4E]" />;
-      case 'ai-solutions': return <Sparkles className="w-4 h-4 text-[#00976C]" />;
-      case 'hubspot-dev': return <Layers className="w-4 h-4 text-amber-600" />;
-      case 'reactjs-dev': return <Code2 className="w-4 h-4 text-sky-600" />;
-      case 'wordpress-dev': return <Layout className="w-4 h-4 text-[#00976C]" />;
-      case 'nodejs-dev': return <Server className="w-4 h-4 text-emerald-700" />;
-      default: return <Cpu className="w-4 h-4 text-[#022A4E]" />;
+      case 'website-dev':
+      case 'web-dev':
+        return <Globe className="w-4 h-4 text-[#00976C]" />;
+      case 'app-dev':
+      case 'mobile-app':
+        return <Smartphone className="w-4 h-4 text-[#022A4E]" />;
+      case 'custom-software':
+        return <Cpu className="w-4 h-4 text-[#022A4E]" />;
+      case 'desktop-software':
+        return <Laptop className="w-4 h-4 text-[#00976C]" />;
+      case 'ecommerce-dev':
+      case 'ecommerce':
+        return <ShoppingBag className="w-4 h-4 text-[#022A4E]" />;
+      case 'ai-solutions':
+        return <Sparkles className="w-4 h-4 text-[#00976C]" />;
+      default:
+        return <Cpu className="w-4 h-4 text-[#022A4E]" />;
     }
   };
 
@@ -112,7 +118,7 @@ export const Navbar: React.FC<NavbarProps> = ({ currentPage, onNavigate }) => {
                         <div className="rounded-2xl p-3 shadow-xl border border-slate-200 bg-white backdrop-blur-xl space-y-1">
                           <div className="px-3 py-1.5 mb-1 border-b border-slate-100 flex items-center justify-between">
                             <span className="text-[11px] font-mono uppercase tracking-wider text-slate-400 font-semibold">
-                              Our 8 Core Practices
+                              Our 6 Core Services
                             </span>
                             <span className="text-[10px] font-semibold text-[#00976C] bg-emerald-50 px-2 py-0.5 rounded-full border border-emerald-200/60">
                               Expert Delivery

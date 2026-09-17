@@ -1,6 +1,6 @@
 import React from 'react';
 import { PageView, ServiceId } from '../types';
-import { AGENCY_STATS, VERIFIED_CLIENT_PLATFORMS } from '../data/agencyData';
+import { AGENCY_STATS } from '../data/agencyData';
 import { AnimatedCounter } from './AnimatedCounter';
 import { 
   ArrowUpRight, 
@@ -9,11 +9,8 @@ import {
   Smartphone, 
   Cpu, 
   Sparkles,
-  Layers,
-  Code2,
-  Server,
-  Layout,
-  ExternalLink
+  Laptop,
+  ShoppingBag
 } from 'lucide-react';
 
 interface HeroSectionProps {
@@ -22,7 +19,7 @@ interface HeroSectionProps {
 
 export const HeroSection: React.FC<HeroSectionProps> = ({ onNavigate }) => {
   return (
-    <section id="hero-section" className="relative min-h-[90vh] pt-32 pb-16 flex flex-col justify-center bg-slate-50/60 border-b border-slate-200">
+    <section id="hero-section" className="relative min-h-[85vh] pt-32 pb-16 flex flex-col justify-center bg-slate-50/60 border-b border-slate-200">
       
       {/* Subtle ambient background grid with brand navy tint */}
       <div className="absolute inset-0 bg-grid-pattern opacity-50 pointer-events-none" />
@@ -74,23 +71,21 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onNavigate }) => {
           <div className="lg:col-span-4 bg-white border border-slate-200 rounded-3xl p-6 space-y-4 shadow-sm hover:border-[#00976C]/50 transition-colors">
             <div className="flex items-center justify-between border-b border-slate-100 pb-3">
               <span className="text-xs font-mono uppercase tracking-wider text-slate-400 font-bold">
-                Core Practices
+                Core Services
               </span>
               <span className="text-xs font-semibold text-[#00976C] bg-emerald-50 px-2.5 py-0.5 rounded-full border border-emerald-200">
-                08 Capabilities
+                06 Capabilities
               </span>
             </div>
 
             <div className="space-y-1">
               {[
+                { id: 'website-dev' as ServiceId, label: 'Website Development', icon: Globe, desc: 'High-Speed Web & SaaS Platforms' },
+                { id: 'app-dev' as ServiceId, label: 'App Development (Android & iOS)', icon: Smartphone, desc: 'Native & Cross-Platform Mobile Apps' },
                 { id: 'custom-software' as ServiceId, label: 'Custom Software Development', icon: Cpu, desc: 'Bespoke Business Logic & Systems' },
-                { id: 'web-dev' as ServiceId, label: 'Web Development', icon: Globe, desc: 'Modern React & Cloud Platforms' },
-                { id: 'mobile-app' as ServiceId, label: 'Mobile App Development', icon: Smartphone, desc: 'Cross-Platform iOS & Android Apps' },
-                { id: 'ai-solutions' as ServiceId, label: 'AI Solutions', icon: Sparkles, desc: 'Generative AI & LLM Automation' },
-                { id: 'hubspot-dev' as ServiceId, label: 'HubSpot Development', icon: Layers, desc: 'Custom CMS & Automated CRM' },
-                { id: 'reactjs-dev' as ServiceId, label: 'ReactJS Development', icon: Code2, desc: 'Modular SPAs & Frontends' },
-                { id: 'wordpress-dev' as ServiceId, label: 'WordPress Development', icon: Layout, desc: 'High-Speed Custom Themes' },
-                { id: 'nodejs-dev' as ServiceId, label: 'Node.js Development', icon: Server, desc: 'Scalable APIs & Microservices' },
+                { id: 'desktop-software' as ServiceId, label: 'Desktop Software Development', icon: Laptop, desc: 'Windows, macOS & Linux Applications' },
+                { id: 'ecommerce-dev' as ServiceId, label: 'E-commerce Development', icon: ShoppingBag, desc: 'Scalable Stores & Checkout Funnels' },
+                { id: 'ai-solutions' as ServiceId, label: 'AI Solutions', icon: Sparkles, desc: 'Custom LLMs, Agents & Automations' },
               ].map((item) => {
                 const Icon = item.icon;
                 return (
@@ -123,7 +118,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onNavigate }) => {
                 onClick={() => onNavigate('services')}
                 className="w-full text-center text-xs font-semibold text-[#022A4E] hover:text-[#00976C] py-1 transition-colors flex items-center justify-center gap-1 cursor-pointer"
               >
-                <span>Explore All 8 Services in Detail</span>
+                <span>Explore All 6 Services in Detail</span>
                 <ArrowRight className="w-3.5 h-3.5 text-[#00976C]" />
               </button>
             </div>
@@ -155,80 +150,6 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onNavigate }) => {
               )}
             </div>
           ))}
-        </div>
-
-        {/* Real Projects & Verifiable Platforms Section */}
-        <div className="pt-10 border-t border-slate-200">
-          <div className="space-y-4">
-            
-            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
-              <div>
-                <div className="flex items-center gap-2">
-                  <span className="w-2 h-2 rounded-full bg-[#00976C]"></span>
-                  <span className="text-xs font-mono uppercase tracking-wider text-emerald-800 font-bold">
-                    Proven Delivery • Real Live Platforms
-                  </span>
-                </div>
-                <p className="text-xs text-slate-500 mt-0.5">
-                  Explore verifiable production systems engineered and deployed by BasanTech.
-                </p>
-              </div>
-
-              <button
-                onClick={() => onNavigate('portfolio')}
-                className="text-xs font-semibold text-[#022A4E] hover:text-[#00976C] flex items-center gap-1 shrink-0 cursor-pointer"
-              >
-                <span>View Full Portfolio Showcase</span>
-                <ArrowRight className="w-3.5 h-3.5 text-[#00976C]" />
-              </button>
-            </div>
-
-            {/* Real Client Platforms Grid */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3 pt-2">
-              {VERIFIED_CLIENT_PLATFORMS.map((platform, idx) => (
-                <div
-                  key={idx}
-                  id={`hero-platform-card-${platform.caseStudyId}`}
-                  className="p-4 rounded-2xl bg-white border border-slate-200 hover:border-[#00976C] hover:shadow-xs transition-all flex flex-col justify-between group"
-                >
-                  <div className="space-y-1.5">
-                    <div className="flex items-center justify-between">
-                      <span className="text-sm font-bold text-[#022A4E] group-hover:text-[#00976C] transition-colors">
-                        {platform.name}
-                      </span>
-                      <a
-                        href={platform.url}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        onClick={(e) => e.stopPropagation()}
-                        className="p-1 rounded-md text-slate-400 hover:text-[#022A4E] hover:bg-slate-100 transition-colors"
-                        title={`Visit live site ${platform.name}`}
-                      >
-                        <ExternalLink className="w-3.5 h-3.5" />
-                      </a>
-                    </div>
-                    <p className="text-[11px] text-slate-500 font-mono leading-tight">
-                      {platform.category}
-                    </p>
-                  </div>
-
-                  <div className="pt-3 mt-2 border-t border-slate-100 flex items-center justify-between">
-                    <span className="text-[10px] text-slate-600 truncate max-w-[130px]">
-                      {platform.tagline}
-                    </span>
-                    <button
-                      onClick={() => onNavigate('portfolio')}
-                      className="text-[11px] font-semibold text-slate-700 group-hover:text-[#00976C] flex items-center gap-0.5 shrink-0 cursor-pointer"
-                    >
-                      <span>Details</span>
-                      <ArrowUpRight className="w-3 h-3 text-[#00976C]" />
-                    </button>
-                  </div>
-                </div>
-              ))}
-            </div>
-
-          </div>
         </div>
 
       </div>

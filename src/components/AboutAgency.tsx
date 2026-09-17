@@ -53,9 +53,9 @@ export const AboutAgency: React.FC<AboutAgencyProps> = ({ onNavigate, isAboutPag
 
               <div className="p-4 rounded-2xl bg-white border border-slate-200 shadow-xs">
                 <div className="text-2xl sm:text-3xl font-bold text-[#00976C] flex items-baseline">
-                  <AnimatedCounter end={8} />
+                  <AnimatedCounter end={6} />
                 </div>
-                <div className="text-xs text-slate-800 mt-1 font-semibold">Core Practices</div>
+                <div className="text-xs text-slate-800 mt-1 font-semibold">Core Services</div>
                 <div className="text-[11px] text-slate-500">Web, Mobile, AI &amp; Software</div>
               </div>
 

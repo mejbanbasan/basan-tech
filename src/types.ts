@@ -10,17 +10,19 @@ export type PageView =
   | 'terms';
 
 export type ServiceId = 
+  | 'website-dev'
+  | 'app-dev'
   | 'custom-software'
+  | 'desktop-software'
+  | 'ecommerce-dev'
+  | 'ai-solutions'
+  // Backwards compatibility aliases
   | 'web-dev'
   | 'mobile-app'
-  | 'ai-solutions'
   | 'hubspot-dev'
   | 'reactjs-dev'
   | 'wordpress-dev'
   | 'nodejs-dev'
-  // Backwards compatibility aliases
-  | 'app-dev'
-  | 'desktop-software'
   | 'social-media'
   | 'ecommerce';
 
