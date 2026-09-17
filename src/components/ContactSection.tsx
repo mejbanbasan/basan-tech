@@ -406,150 +406,150 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ onNavigate, pres
           {/* Side Column: Studio Inquiries & Direct Lines */}
           <div className="lg:col-span-4 space-y-6">
             
-            {/* Quick Response SLA Card */}
-            <div className="p-6 rounded-2xl bg-white border border-zinc-200 shadow-sm space-y-4">
-              <div className="flex items-center gap-2 border-b border-zinc-100 pb-3">
-                <Sparkles className="w-4 h-4 text-zinc-950" />
-                <span className="text-xs font-mono uppercase tracking-wider text-zinc-800 font-semibold">
-                  Response SLA Guarantee
-                </span>
-              </div>
-              
-              <div className="space-y-3 text-xs">
-                <div className="flex justify-between border-b border-zinc-100 pb-2">
-                  <span className="text-zinc-500">Engineering Review:</span>
-                  <strong className="text-zinc-950 font-semibold">Under 24 Hours</strong>
+            {/* Direct Communication Channels (Consolidated, No Duplicates) */}
+            <div className="p-6 sm:p-7 rounded-3xl bg-white border border-slate-200/90 shadow-xs space-y-5">
+              <div className="space-y-1 border-b border-slate-100 pb-3">
+                <div className="text-[11px] font-mono uppercase tracking-wider text-[#00976C] font-bold flex items-center gap-1.5">
+                  <span className="w-1.5 h-1.5 rounded-full bg-[#00976C]"></span>
+                  <span>Direct Communication</span>
                 </div>
-                <div className="flex justify-between border-b border-zinc-100 pb-2">
-                  <span className="text-zinc-500">Direct Delivery:</span>
-                  <strong className="text-zinc-950 font-semibold font-mono">basantech1@gmail.com</strong>
-                </div>
-                <div className="flex justify-between border-b border-zinc-100 pb-2">
-                  <span className="text-zinc-500">Initial Strategy Call:</span>
-                  <strong className="text-zinc-950 font-semibold">Complimentary (30m)</strong>
-                </div>
-                <div className="flex justify-between border-b border-zinc-100 pb-2">
-                  <span className="text-zinc-500">IP & Code Rights:</span>
-                  <strong className="text-emerald-700 font-semibold">100% Client Owned</strong>
-                </div>
-              </div>
-
-              <p className="text-xs text-zinc-600 leading-relaxed pt-1">
-                Every project submission is reviewed directly by our principal software engineers to provide actionable architectural feedback.
-              </p>
-            </div>
-
-            {/* Direct Lines Box with Updated Contact Details */}
-            <div className="p-6 rounded-2xl bg-white border border-zinc-200 shadow-sm space-y-6">
-              <div className="space-y-1">
-                <div className="text-xs font-mono uppercase tracking-wider text-zinc-500 font-semibold">
-                  Direct Inquiries
-                </div>
-                <h3 className="font-display text-base font-bold text-zinc-950">
-                  Prefer a direct email, call, or chat?
+                <h3 className="text-base font-bold text-[#022A4E]">
+                  Connect Directly With Our Team
                 </h3>
               </div>
 
-              <div className="space-y-3 text-xs text-zinc-700">
-                {/* Email Item */}
+              <div className="space-y-3.5">
+                {/* Official Email */}
                 <a 
                   href="mailto:basantech1@gmail.com" 
                   id="contact-direct-email-link"
-                  className="p-3.5 rounded-xl bg-zinc-50 hover:bg-zinc-100 border border-zinc-200 flex flex-col space-y-1 transition-colors block group"
+                  className="p-4 rounded-2xl bg-slate-50 hover:bg-emerald-50/50 border border-slate-200/80 hover:border-[#00976C]/60 flex flex-col space-y-1.5 transition-all group block shadow-2xs"
                 >
-                  <div className="flex items-center justify-between text-zinc-500 font-medium">
+                  <div className="flex items-center justify-between text-slate-500 font-medium text-xs">
                     <div className="flex items-center gap-2">
-                      <Mail className="w-3.5 h-3.5 text-zinc-950" />
-                      <span>Inquiries Email</span>
+                      <div className="w-7 h-7 rounded-lg bg-white border border-slate-200 flex items-center justify-center text-[#022A4E] group-hover:text-[#00976C] transition-colors">
+                        <Mail className="w-3.5 h-3.5" />
+                      </div>
+                      <span className="font-semibold text-slate-700">Official Inquiries Email</span>
                     </div>
-                    <ArrowUpRight className="w-3.5 h-3.5 text-zinc-400 group-hover:text-zinc-950 transition-colors" />
+                    <ArrowUpRight className="w-3.5 h-3.5 text-slate-400 group-hover:text-[#00976C] transition-colors" />
                   </div>
-                  <div className="font-mono text-zinc-950 text-xs font-semibold pl-5.5">
+                  <div className="font-mono text-[#022A4E] text-xs font-bold pl-9">
                     basantech1@gmail.com
                   </div>
                 </a>
 
-                {/* Phone Call Item */}
-                <a 
-                  href="tel:+919624895641"
-                  id="contact-direct-phone-link"
-                  className="p-3.5 rounded-xl bg-zinc-50 hover:bg-zinc-100 border border-zinc-200 flex flex-col space-y-1 transition-colors block group"
-                >
-                  <div className="flex items-center justify-between text-zinc-500 font-medium">
+                {/* Unified Phone & WhatsApp Channel - Shown once with instant call & chat actions */}
+                <div className="p-4 rounded-2xl bg-slate-50 border border-slate-200/80 space-y-2.5 shadow-2xs">
+                  <div className="flex items-center justify-between text-slate-500 text-xs font-medium">
                     <div className="flex items-center gap-2">
-                      <Phone className="w-3.5 h-3.5 text-zinc-950" />
-                      <span>Phone & Direct Call</span>
+                      <div className="w-7 h-7 rounded-lg bg-white border border-slate-200 flex items-center justify-center text-[#00976C]">
+                        <Phone className="w-3.5 h-3.5" />
+                      </div>
+                      <span className="font-semibold text-slate-700">Direct Line &amp; WhatsApp</span>
                     </div>
-                    <ArrowUpRight className="w-3.5 h-3.5 text-zinc-400 group-hover:text-zinc-950 transition-colors" />
+                    <span className="text-[10px] font-mono text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded-md font-semibold border border-emerald-200/60">
+                      Active
+                    </span>
                   </div>
-                  <div className="font-mono text-zinc-950 text-xs font-semibold pl-5.5">
+
+                  <div className="font-mono text-[#022A4E] text-sm font-bold pl-9">
                     +91 9624895641
                   </div>
-                </a>
 
-                {/* WhatsApp Chat Item */}
-                <a 
-                  href="https://wa.me/919624895641"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  id="contact-direct-whatsapp-link"
-                  className="p-3.5 rounded-xl bg-emerald-50 hover:bg-emerald-100/80 border border-emerald-200/90 flex flex-col space-y-1 transition-colors block group"
-                >
-                  <div className="flex items-center justify-between text-emerald-800 font-medium">
-                    <div className="flex items-center gap-2">
-                      <MessageCircle className="w-3.5 h-3.5 text-emerald-700" />
-                      <span>WhatsApp Direct Chat</span>
-                    </div>
-                    <ArrowUpRight className="w-3.5 h-3.5 text-emerald-600 group-hover:text-emerald-950 transition-colors" />
+                  {/* Dual Action Buttons (Call & WhatsApp) */}
+                  <div className="grid grid-cols-2 gap-2 pt-1">
+                    <a
+                      href="tel:+919624895641"
+                      id="contact-direct-phone-call-btn"
+                      className="px-3 py-2 rounded-xl bg-white hover:bg-slate-100 border border-slate-200 text-[#022A4E] hover:text-[#00976C] text-xs font-semibold flex items-center justify-center gap-1.5 transition-colors shadow-2xs"
+                    >
+                      <Phone className="w-3 h-3 text-[#00976C]" />
+                      <span>Call Direct</span>
+                    </a>
+                    <a
+                      href="https://wa.me/919624895641"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      id="contact-direct-whatsapp-chat-btn"
+                      className="px-3 py-2 rounded-xl bg-[#00976C] hover:bg-[#00825B] text-white text-xs font-semibold flex items-center justify-center gap-1.5 transition-colors shadow-2xs"
+                    >
+                      <MessageCircle className="w-3 h-3 text-white" />
+                      <span>WhatsApp</span>
+                    </a>
                   </div>
-                  <div className="font-mono text-emerald-950 text-xs font-semibold pl-5.5">
-                    +91 9624895641
-                  </div>
-                </a>
+                </div>
 
-                {/* Instagram Profile Item */}
+                {/* Instagram Profile */}
                 <a 
                   href="https://www.instagram.com/basan_tech/"
                   target="_blank"
                   rel="noopener noreferrer"
                   id="contact-direct-instagram-link"
-                  className="p-3.5 rounded-xl bg-pink-50/60 hover:bg-pink-100/70 border border-pink-200/90 flex flex-col space-y-1 transition-colors block group"
+                  className="p-3.5 rounded-2xl bg-slate-50 hover:bg-pink-50/50 border border-slate-200/80 hover:border-pink-300 flex items-center justify-between transition-colors group block shadow-2xs"
                 >
-                  <div className="flex items-center justify-between text-pink-800 font-medium">
-                    <div className="flex items-center gap-2">
-                      <Instagram className="w-3.5 h-3.5 text-pink-700" />
-                      <span>Instagram Official</span>
+                  <div className="flex items-center gap-2 text-xs">
+                    <div className="w-7 h-7 rounded-lg bg-white border border-slate-200 flex items-center justify-center text-pink-600">
+                      <Instagram className="w-3.5 h-3.5" />
                     </div>
-                    <ArrowUpRight className="w-3.5 h-3.5 text-pink-600 group-hover:text-pink-950 transition-colors" />
+                    <div>
+                      <div className="font-semibold text-slate-700 group-hover:text-pink-900 transition-colors">Instagram Profile</div>
+                      <div className="font-mono text-[11px] text-slate-500">@basan_tech</div>
+                    </div>
                   </div>
-                  <div className="font-mono text-pink-950 text-xs font-semibold pl-5.5">
-                    @basan_tech
-                  </div>
+                  <ArrowUpRight className="w-3.5 h-3.5 text-slate-400 group-hover:text-pink-600 transition-colors" />
                 </a>
               </div>
+            </div>
 
-              {/* Hub Locations */}
-              <div className="space-y-3 pt-4 border-t border-zinc-200">
-                <div className="text-xs font-mono uppercase tracking-wider text-zinc-500 font-semibold">
-                  Studio Hubs
-                </div>
-                
-                <div className="space-y-2.5 text-xs text-zinc-600">
-                  <div className="flex items-start gap-2">
-                    <MapPin className="w-3.5 h-3.5 text-zinc-500 mt-0.5 shrink-0" />
-                    <div>
-                      <strong className="text-zinc-900">India:</strong> Palanpur, Ahmedabad, Gujarat 382421, India
-                    </div>
-                  </div>
-                  <div className="flex items-start gap-2">
-                    <Phone className="w-3.5 h-3.5 text-zinc-500 mt-0.5 shrink-0" />
-                    <div>
-                      <strong className="text-zinc-900">Phone:</strong> +91 9624895641
-                    </div>
-                  </div>
-                </div>
+            {/* Studio Engineering Hub & Presence (No duplicate phone numbers!) */}
+            <div className="p-6 sm:p-7 rounded-3xl bg-white border border-slate-200/90 shadow-xs space-y-4">
+              <div className="flex items-center gap-2 border-b border-slate-100 pb-3">
+                <MapPin className="w-4 h-4 text-[#00976C]" />
+                <span className="text-xs font-mono uppercase tracking-wider text-slate-700 font-bold">
+                  Engineering Hub &amp; Global Reach
+                </span>
               </div>
 
+              <div className="space-y-3 text-xs text-slate-600 leading-relaxed">
+                <div>
+                  <strong className="text-[#022A4E] block mb-0.5">Primary Studio:</strong>
+                  Palanpur, Ahmedabad, Gujarat 382421, India
+                </div>
+                <div className="pt-2 border-t border-slate-100">
+                  <strong className="text-[#022A4E] block mb-0.5">Global Client Engagement:</strong>
+                  We engineer software for startups and established enterprises across India, the US, the UK, and the Middle East.
+                </div>
+              </div>
+            </div>
+
+            {/* Response SLA Guarantee Card */}
+            <div className="p-6 sm:p-7 rounded-3xl bg-white border border-slate-200/90 shadow-xs space-y-4">
+              <div className="flex items-center gap-2 border-b border-slate-100 pb-3">
+                <Sparkles className="w-4 h-4 text-[#00976C]" />
+                <span className="text-xs font-mono uppercase tracking-wider text-slate-700 font-bold">
+                  Engagement Standards
+                </span>
+              </div>
+              
+              <div className="space-y-2.5 text-xs">
+                <div className="flex justify-between border-b border-slate-100 pb-2">
+                  <span className="text-slate-500">Engineering Review:</span>
+                  <strong className="text-[#022A4E] font-semibold">Under 24 Hours</strong>
+                </div>
+                <div className="flex justify-between border-b border-slate-100 pb-2">
+                  <span className="text-slate-500">Initial Strategy Call:</span>
+                  <strong className="text-[#022A4E] font-semibold">Complimentary (30m)</strong>
+                </div>
+                <div className="flex justify-between border-b border-slate-100 pb-2">
+                  <span className="text-slate-500">IP &amp; Code Rights:</span>
+                  <strong className="text-emerald-700 font-semibold">100% Client-Owned</strong>
+                </div>
+                <div className="flex justify-between">
+                  <span className="text-slate-500">Warranty Support:</span>
+                  <strong className="text-[#00976C] font-semibold">30-Day Hypercare Included</strong>
+                </div>
+              </div>
             </div>
 
           </div>
