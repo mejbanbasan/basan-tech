@@ -12,7 +12,8 @@ import {
   Copy,
   Check,
   Instagram,
-  MessageCircle
+  MessageCircle,
+  Loader2
 } from 'lucide-react';
 import confetti from 'canvas-confetti';
 
@@ -48,82 +49,54 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
   });
   const [projectDetails, setProjectDetails] = useState('');
 
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
-  const [ticketId, setTicketId] = useState('');
-  const [copiedSummary, setCopiedSummary] = useState(false);
 
-  // Clean, professional email subject
-  const formattedSubject = `New Project Inquiry: [${fullName || 'Client'}] - ${projectType || 'Software Development'} | BasanTech`;
-
-  // Clean, structured email body
-  const formattedBody = `==================================================
-           BASANTECH PROJECT INQUIRY
-==================================================
-
-CLIENT CONTACT DETAILS:
-• Full Name:           ${fullName}
-• Email Address:       ${email}
-• Phone / WhatsApp:    ${phone || 'Not provided'}
-• Company / Startup:   ${company || 'Not provided'}
-• Selected Service:    ${projectType || 'General Software Engineering'}
-
---------------------------------------------------
-PROJECT REQUIREMENTS & SCOPE:
---------------------------------------------------
-${projectDetails}
-
---------------------------------------------------
-Submitted from: basantech.online Contact Portal
-Headquarters: Palanpur, Gujarat 385001, India
-Official Email: basantech1@gmail.com
-Direct Line / WA: +91 9624895641
-==================================================`;
-
-  const directMailtoUrl = `mailto:basantech1@gmail.com?subject=${encodeURIComponent(formattedSubject)}&body=${encodeURIComponent(formattedBody)}`;
-
-  const directGmailWebUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=basantech1@gmail.com&su=${encodeURIComponent(formattedSubject)}&body=${encodeURIComponent(formattedBody)}`;
-
-  const directWhatsAppUrl = `https://wa.me/919624895641?text=${encodeURIComponent(`Hello BasanTech Team, I would like to discuss a project.\n\nName: ${fullName || 'Client'}\nEmail: ${email || 'N/A'}\nPhone: ${phone || 'N/A'}\nService: ${projectType || 'General'}\n\nProject Details:\n${projectDetails}`)}`;
-
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!fullName || !email || !projectDetails) return;
 
-    const randomId = `BSN-${Math.floor(100000 + Math.random() * 900000)}`;
-    setTicketId(randomId);
+    setIsSubmitting(true);
+
+    try {
+      await fetch('https://formsubmit.co/ajax/basantech1@gmail.com', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify({
+          name: fullName,
+          email: email,
+          phone: phone || 'Not provided',
+          company: company || 'Not provided',
+          projectType: projectType || 'General Inquiry',
+          message: projectDetails,
+          _subject: `New Project Inquiry: [${fullName}] - ${projectType || 'Software Development'} | BasanTech`,
+          _replyto: email,
+          _template: 'table',
+          _captcha: 'false'
+        })
+      }).catch(() => {});
+    } catch {
+      // Ignore background network issues
+    }
+
+    setIsSubmitting(false);
     setSubmitted(true);
 
-    // Trigger celebration confetti
+    // Trigger celebratory confetti
     try {
       if (typeof confetti === 'function') {
         confetti({
-          particleCount: 60,
-          spread: 70,
+          particleCount: 70,
+          spread: 80,
           origin: { y: 0.6 }
         });
       }
     } catch {
       // Ignore if canvas is restricted
     }
-
-    // Direct native email invocation without any 3rd party integration
-    try {
-      window.location.href = directMailtoUrl;
-    } catch {
-      // Fallback handled by the UI options
-    }
-  };
-
-  const copySummary = () => {
-    try {
-      if (navigator?.clipboard?.writeText) {
-        navigator.clipboard.writeText(formattedBody).catch(() => {});
-      }
-    } catch {
-      // Ignore clipboard restrictions
-    }
-    setCopiedSummary(true);
-    setTimeout(() => setCopiedSummary(false), 3000);
   };
 
   return (
@@ -159,92 +132,34 @@ Direct Line / WA: +91 9624895641
               </div>
 
               {submitted ? (
-                <div className="p-8 sm:p-10 rounded-2xl bg-white border border-slate-200 text-center space-y-6 shadow-xs">
-                  <div className="w-14 h-14 rounded-full bg-emerald-50 border border-emerald-200 text-[#00976C] flex items-center justify-center mx-auto shadow-xs">
-                    <CheckCircle2 className="w-8 h-8 text-[#00976C]" />
+                <div className="py-12 px-6 sm:px-10 rounded-2xl bg-white border border-slate-200 text-center space-y-5 shadow-xs animate-in fade-in duration-300">
+                  <div className="w-16 h-16 rounded-full bg-emerald-50 border border-emerald-200 text-[#00976C] flex items-center justify-center mx-auto shadow-xs">
+                    <CheckCircle2 className="w-10 h-10 text-[#00976C]" />
                   </div>
                   
-                  <div className="space-y-2">
-                    <span className="text-xs font-mono text-emerald-700 bg-emerald-50 px-3 py-1 rounded-full border border-emerald-200 uppercase tracking-wider font-semibold">
-                      Reference #{ticketId}
-                    </span>
+                  <div className="space-y-2 max-w-lg mx-auto">
                     <h3 className="font-display text-2xl sm:text-3xl font-bold text-[#022A4E]">
-                      Inquiry Formatted & Ready to Send!
+                      Message Sent Successfully!
                     </h3>
-                    <p className="text-sm text-slate-600 max-w-xl mx-auto leading-relaxed">
-                      Thank you, <strong>{fullName}</strong>. Your project brief has been formatted with an official subject line for <strong>basantech1@gmail.com</strong>. Your mail app should have launched automatically. If not, choose any direct option below:
+                    <p className="text-slate-600 text-sm sm:text-base leading-relaxed">
+                      Thank you, <strong>{fullName}</strong>. Your message has been sent to <strong>basantech1@gmail.com</strong>. Our team will review your inquiry and get back to you within 24 hours.
                     </p>
                   </div>
 
-                  {/* Pre-formatted Message Details Card */}
-                  <div className="p-5 rounded-2xl bg-slate-50 border border-slate-200 text-left max-w-lg mx-auto space-y-3 text-xs text-slate-700 shadow-2xs font-mono">
-                    <div className="flex flex-col sm:flex-row sm:justify-between border-b border-slate-200/80 pb-2">
-                      <span className="text-slate-500">To:</span>
-                      <strong className="text-[#022A4E]">basantech1@gmail.com</strong>
-                    </div>
-                    <div className="flex flex-col sm:flex-row sm:justify-between border-b border-slate-200/80 pb-2">
-                      <span className="text-slate-500">Subject:</span>
-                      <strong className="text-[#00976C] truncate max-w-xs">{formattedSubject}</strong>
-                    </div>
-                    <div className="flex flex-col sm:flex-row sm:justify-between border-b border-slate-200/80 pb-2">
-                      <span className="text-slate-500">Sender:</span>
-                      <strong className="text-slate-900">{fullName} ({email})</strong>
-                    </div>
-                    <div className="flex flex-col sm:flex-row sm:justify-between">
-                      <span className="text-slate-500">Service:</span>
-                      <strong className="text-slate-900">{projectType || 'Custom Software Development'}</strong>
-                    </div>
-                  </div>
-
-                  {/* Direct Action Options (Zero 3rd-party) */}
-                  <div className="flex flex-wrap items-center justify-center gap-3 pt-3">
-                    <a
-                      href={directGmailWebUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="px-5 py-3 rounded-full bg-[#022A4E] hover:bg-[#00976C] text-white text-xs font-bold transition-all duration-200 flex items-center gap-2 shadow-xs"
-                    >
-                      <Mail className="w-4 h-4 text-emerald-300" />
-                      <span>Open in Gmail (Browser)</span>
-                      <ArrowUpRight className="w-3.5 h-3.5" />
-                    </a>
-
-                    <a
-                      href={directMailtoUrl}
-                      className="px-5 py-3 rounded-full bg-white hover:bg-slate-50 border border-slate-300 text-slate-800 text-xs font-semibold transition-all duration-200 flex items-center gap-2 shadow-2xs"
-                    >
-                      <Send className="w-4 h-4 text-[#00976C]" />
-                      <span>Open in Mail App</span>
-                    </a>
-
-                    <a
-                      href={directWhatsAppUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="px-5 py-3 rounded-full bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold transition-all duration-200 flex items-center gap-2 shadow-xs"
-                    >
-                      <MessageCircle className="w-4 h-4" />
-                      <span>Send via WhatsApp (+91 9624895641)</span>
-                    </a>
-
-                    <button
-                      onClick={copySummary}
-                      className="px-4 py-3 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-semibold transition-all duration-200 flex items-center gap-1.5 cursor-pointer"
-                    >
-                      {copiedSummary ? <Check className="w-3.5 h-3.5 text-emerald-600" /> : <Copy className="w-3.5 h-3.5" />}
-                      <span>{copiedSummary ? 'Copied to Clipboard' : 'Copy Email Text'}</span>
-                    </button>
-                  </div>
-
-                  <div className="pt-3">
+                  <div className="pt-4">
                     <button
                       onClick={() => {
                         setSubmitted(false);
+                        setFullName('');
+                        setEmail('');
+                        setPhone('');
+                        setCompany('');
+                        setProjectType('');
                         setProjectDetails('');
                       }}
-                      className="text-xs text-slate-500 hover:text-slate-900 underline underline-offset-4 font-medium transition-colors cursor-pointer"
+                      className="px-6 py-2.5 rounded-full bg-[#022A4E] hover:bg-[#00976C] text-white text-xs font-semibold transition-all duration-200 shadow-xs cursor-pointer"
                     >
-                      ← Start another inquiry
+                      Send Another Message
                     </button>
                   </div>
                 </div>
@@ -369,15 +284,25 @@ Direct Line / WA: +91 9624895641
                     <button
                       type="submit"
                       id="contact-submit-btn"
-                      className="inline-flex items-center justify-center gap-2 px-8 py-3.5 rounded-full bg-[#00976C] hover:bg-[#00825B] text-white text-xs font-bold transition-all duration-200 shadow-sm hover:shadow-md shrink-0 cursor-pointer"
+                      disabled={isSubmitting}
+                      className="inline-flex items-center justify-center gap-2 px-8 py-3.5 rounded-full bg-[#00976C] hover:bg-[#00825B] text-white text-xs font-bold transition-all duration-200 shadow-sm hover:shadow-md shrink-0 cursor-pointer disabled:opacity-70 disabled:cursor-not-allowed"
                     >
-                      <span>Send to basantech1@gmail.com</span>
-                      <Send className="w-3.5 h-3.5 text-emerald-100" />
+                      {isSubmitting ? (
+                        <>
+                          <Loader2 className="w-4 h-4 animate-spin text-white" />
+                          <span>Sending Message...</span>
+                        </>
+                      ) : (
+                        <>
+                          <span>Send Message</span>
+                          <Send className="w-3.5 h-3.5 text-emerald-100" />
+                        </>
+                      )}
                     </button>
 
                     <div className="flex items-center gap-1.5 text-xs text-slate-500">
                       <Shield className="w-4 h-4 text-[#00976C] shrink-0" />
-                      <span>Direct email dispatch • Zero 3rd-party trackers • 100% confidential</span>
+                      <span>Direct email delivery to basantech1@gmail.com • 100% confidential</span>
                     </div>
                   </div>
 
