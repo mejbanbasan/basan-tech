@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useRef } from 'react';
 import { PageView } from '../types';
 import { TESTIMONIALS_DATA, CLIENT_COMMITMENTS } from '../data/agencyData';
 import { 
@@ -7,9 +7,10 @@ import {
   Users, 
   CheckCircle2, 
   Sparkles, 
-  ArrowUpRight,
-  Quote,
-  Check
+  ArrowUpRight, 
+  Check, 
+  ChevronLeft, 
+  ChevronRight 
 } from 'lucide-react';
 
 interface TestimonialsSectionProps {
@@ -21,12 +22,50 @@ export const TestimonialsSection: React.FC<TestimonialsSectionProps> = ({
   onNavigate,
   showBreadcrumb = false 
 }) => {
+  const [startIndex, setStartIndex] = useState(0);
+  const total = TESTIMONIALS_DATA.length;
+  const touchStartX = useRef<number | null>(null);
+
+  const handlePrev = () => {
+    setStartIndex((prev) => (prev - 1 + total) % total);
+  };
+
+  const handleNext = () => {
+    setStartIndex((prev) => (prev + 1) % total);
+  };
+
+  const handleTouchStart = (e: React.TouchEvent) => {
+    touchStartX.current = e.touches[0].clientX;
+  };
+
+  const handleTouchEnd = (e: React.TouchEvent) => {
+    if (touchStartX.current === null) return;
+    const diffX = touchStartX.current - e.changedTouches[0].clientX;
+    if (diffX > 40) {
+      handleNext();
+    } else if (diffX < -40) {
+      handlePrev();
+    }
+    touchStartX.current = null;
+  };
+
+  // Get current active set: on desktop 3 items, tablet 2 items, mobile 1 item
+  const visibleDesktop = [
+    TESTIMONIALS_DATA[startIndex % total],
+    TESTIMONIALS_DATA[(startIndex + 1) % total],
+    TESTIMONIALS_DATA[(startIndex + 2) % total]
+  ];
+
   return (
-    <section id="testimonials-section" className={`${showBreadcrumb ? 'pt-28 sm:pt-36 pb-20' : 'py-20 sm:py-24'} bg-slate-50/70 border-b border-slate-200 relative overflow-hidden`}>
-      
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 space-y-16">
+    <section 
+      id="testimonials-section" 
+      className={`${showBreadcrumb ? 'pt-20 sm:pt-24 pb-12 sm:pb-16' : 'py-12 sm:py-16'} bg-slate-50/70 border-b border-slate-200 relative`}
+      onTouchStart={handleTouchStart}
+      onTouchEnd={handleTouchEnd}
+    >
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12 sm:space-y-14">
         
-        {/* Section Header */}
+        {/* Section Header with Left/Right Arrows */}
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
           <div className="max-w-2xl space-y-3">
             {showBreadcrumb && (
@@ -51,80 +90,204 @@ export const TestimonialsSection: React.FC<TestimonialsSectionProps> = ({
               What Our Clients Say
             </h2>
             
-            <p className="text-slate-600 text-base sm:text-lg leading-relaxed">
+            <p className="text-slate-600 text-sm sm:text-base leading-relaxed">
               Real feedback from founders and project leads who trusted BasanTech to engineer, launch, and support their digital platforms.
             </p>
           </div>
 
-          <div className="p-5 rounded-3xl bg-white border border-slate-200 shadow-xs flex items-center gap-4 shrink-0">
-            <div className="flex flex-col">
+          {/* Top Controls: Rating + Carousel Navigation Arrows */}
+          <div className="flex items-center gap-4 shrink-0">
+            <div className="p-3.5 px-4 rounded-2xl bg-white border border-slate-200 shadow-2xs hidden sm:flex flex-col">
               <div className="flex items-center gap-1">
                 {[...Array(5)].map((_, i) => (
-                  <Star key={i} className="w-4 h-4 fill-amber-400 text-amber-400" />
+                  <Star key={i} className="w-3.5 h-3.5 fill-amber-400 text-amber-400" />
                 ))}
                 <span className="text-xs font-bold text-[#022A4E] ml-1.5">5.0 / 5.0</span>
               </div>
-              <div className="text-[11px] text-slate-500 font-mono mt-1">
-                Consistently Rated for Delivery &amp; Quality
-              </div>
+              <span className="text-[10px] text-slate-500 font-mono mt-0.5">Verified Reviews</span>
+            </div>
+
+            {/* Navigation Arrows */}
+            <div className="flex items-center gap-2">
+              <button
+                onClick={handlePrev}
+                id="testimonial-prev-btn"
+                aria-label="Previous testimonial"
+                className="w-10 h-10 rounded-full border border-slate-200 bg-white hover:bg-slate-50 hover:border-[#00976C] text-slate-700 hover:text-[#00976C] flex items-center justify-center transition-colors shadow-2xs cursor-pointer"
+              >
+                <ChevronLeft className="w-5 h-5" />
+              </button>
+
+              <button
+                onClick={handleNext}
+                id="testimonial-next-btn"
+                aria-label="Next testimonial"
+                className="w-10 h-10 rounded-full border border-slate-200 bg-white hover:bg-slate-50 hover:border-[#00976C] text-slate-700 hover:text-[#00976C] flex items-center justify-center transition-colors shadow-2xs cursor-pointer"
+              >
+                <ChevronRight className="w-5 h-5" />
+              </button>
             </div>
           </div>
         </div>
 
-        {/* Testimonials Cards Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
-          {TESTIMONIALS_DATA.map((t) => (
+        {/* Testimonials Carousel Cards: 3 on Desktop, 1 on Mobile */}
+        <div>
+          {/* Desktop View: Exactly 3 cards */}
+          <div className="hidden lg:grid lg:grid-cols-3 gap-6 sm:gap-8">
+            {visibleDesktop.map((t, idx) => (
+              <div
+                key={`${t.id}-${idx}`}
+                className="rounded-2xl bg-white border border-slate-200 hover:border-[#00976C] p-7 shadow-xs hover:shadow-md transition-all duration-200 flex flex-col justify-between space-y-6"
+              >
+                <div className="space-y-4">
+                  <div className="flex items-center justify-between">
+                    <div className="flex items-center gap-1">
+                      {[...Array(t.rating)].map((_, sIdx) => (
+                        <Star key={sIdx} className="w-4 h-4 fill-amber-400 text-amber-400" />
+                      ))}
+                    </div>
+                    <span className="text-[10px] font-mono font-semibold px-2.5 py-0.5 rounded-full bg-emerald-50 text-emerald-800 border border-emerald-200/60">
+                      {t.serviceType}
+                    </span>
+                  </div>
+
+                  <p className="text-slate-700 text-sm leading-relaxed font-normal italic">
+                    "{t.quote}"
+                  </p>
+                </div>
+
+                <div className="pt-4 border-t border-slate-100 flex items-center justify-between">
+                  <div className="flex items-center gap-3">
+                    <div className="w-10 h-10 rounded-full bg-[#022A4E] text-white flex items-center justify-center font-bold text-xs">
+                      {t.avatar}
+                    </div>
+                    <div>
+                      <h4 className="text-sm font-bold text-[#022A4E] leading-tight">
+                        {t.clientName}
+                      </h4>
+                      <p className="text-xs text-slate-500 mt-0.5 leading-tight">
+                        {t.clientTitle} • {t.companyName}
+                      </p>
+                    </div>
+                  </div>
+
+                  <div className="flex items-center gap-1 text-[11px] font-semibold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded-full border border-emerald-200/50">
+                    <Check className="w-3 h-3 text-[#00976C]" />
+                    <span>Verified</span>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          {/* Mobile & Tablet View: 1 card on mobile, 2 on tablet */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:hidden gap-6">
             <div
-              key={t.id}
-              id={`testimonial-card-${t.id}`}
-              className="rounded-3xl bg-white border border-slate-200 hover:border-[#00976C] p-7 sm:p-8 shadow-xs hover:shadow-xl transition-all duration-300 flex flex-col justify-between group space-y-6"
+              key={visibleDesktop[0].id}
+              className="rounded-2xl bg-white border border-slate-200 p-6 sm:p-7 shadow-xs flex flex-col justify-between space-y-6"
             >
               <div className="space-y-4">
-                {/* Rating Stars & Service Tag */}
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-1">
-                    {[...Array(t.rating)].map((_, sIdx) => (
+                    {[...Array(visibleDesktop[0].rating)].map((_, sIdx) => (
                       <Star key={sIdx} className="w-4 h-4 fill-amber-400 text-amber-400" />
                     ))}
                   </div>
-
-                  <span className="text-[10px] font-mono font-semibold px-2.5 py-0.5 rounded-full bg-emerald-50 text-emerald-800 border border-emerald-200/60">
-                    {t.serviceType}
+                  <span className="text-[10px] font-mono font-semibold px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-800 border border-emerald-200/60">
+                    {visibleDesktop[0].serviceType}
                   </span>
                 </div>
 
-                {/* Review Text */}
-                <p className="text-slate-700 text-sm leading-relaxed font-normal italic relative">
-                  "{t.quote}"
+                <p className="text-slate-700 text-sm leading-relaxed italic">
+                  "{visibleDesktop[0].quote}"
                 </p>
               </div>
 
-              {/* Client Info & Verification */}
               <div className="pt-4 border-t border-slate-100 flex items-center justify-between">
                 <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-full bg-gradient-to-br from-[#022A4E] to-[#00976C] text-white flex items-center justify-center font-bold text-xs shadow-2xs">
-                    {t.avatar}
+                  <div className="w-10 h-10 rounded-full bg-[#022A4E] text-white flex items-center justify-center font-bold text-xs">
+                    {visibleDesktop[0].avatar}
                   </div>
                   <div>
-                    <h4 className="text-sm font-bold text-[#022A4E] group-hover:text-[#00976C] transition-colors leading-tight">
-                      {t.clientName}
+                    <h4 className="text-sm font-bold text-[#022A4E] leading-tight">
+                      {visibleDesktop[0].clientName}
                     </h4>
                     <p className="text-xs text-slate-500 mt-0.5 leading-tight">
-                      {t.clientTitle} • {t.companyName}
+                      {visibleDesktop[0].clientTitle} • {visibleDesktop[0].companyName}
                     </p>
                   </div>
                 </div>
 
-                <div className="hidden sm:flex items-center gap-1 text-[11px] font-semibold text-emerald-700 bg-emerald-50/80 px-2 py-0.5 rounded-full border border-emerald-200/50">
+                <div className="flex items-center gap-1 text-[11px] font-semibold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded-full border border-emerald-200/50">
                   <Check className="w-3 h-3 text-[#00976C]" />
                   <span>Verified</span>
                 </div>
               </div>
             </div>
-          ))}
+
+            {/* Second card visible on md (tablet) */}
+            <div
+              key={visibleDesktop[1].id}
+              className="hidden md:flex rounded-2xl bg-white border border-slate-200 p-6 sm:p-7 shadow-xs flex-col justify-between space-y-6"
+            >
+              <div className="space-y-4">
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center gap-1">
+                    {[...Array(visibleDesktop[1].rating)].map((_, sIdx) => (
+                      <Star key={sIdx} className="w-4 h-4 fill-amber-400 text-amber-400" />
+                    ))}
+                  </div>
+                  <span className="text-[10px] font-mono font-semibold px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-800 border border-emerald-200/60">
+                    {visibleDesktop[1].serviceType}
+                  </span>
+                </div>
+
+                <p className="text-slate-700 text-sm leading-relaxed italic">
+                  "{visibleDesktop[1].quote}"
+                </p>
+              </div>
+
+              <div className="pt-4 border-t border-slate-100 flex items-center justify-between">
+                <div className="flex items-center gap-3">
+                  <div className="w-10 h-10 rounded-full bg-[#022A4E] text-white flex items-center justify-center font-bold text-xs">
+                    {visibleDesktop[1].avatar}
+                  </div>
+                  <div>
+                    <h4 className="text-sm font-bold text-[#022A4E] leading-tight">
+                      {visibleDesktop[1].clientName}
+                    </h4>
+                    <p className="text-xs text-slate-500 mt-0.5 leading-tight">
+                      {visibleDesktop[1].clientTitle} • {visibleDesktop[1].companyName}
+                    </p>
+                  </div>
+                </div>
+
+                <div className="flex items-center gap-1 text-[11px] font-semibold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded-full border border-emerald-200/50">
+                  <Check className="w-3 h-3 text-[#00976C]" />
+                  <span>Verified</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Dot Indicators */}
+          <div className="flex items-center justify-center gap-2 pt-6">
+            {TESTIMONIALS_DATA.map((_, dotIdx) => (
+              <button
+                key={dotIdx}
+                onClick={() => setStartIndex(dotIdx)}
+                aria-label={`Go to slide ${dotIdx + 1}`}
+                className={`h-2 rounded-full transition-all duration-200 cursor-pointer ${
+                  startIndex === dotIdx 
+                    ? 'w-6 bg-[#00976C]' 
+                    : 'w-2 bg-slate-300 hover:bg-slate-400'
+                }`}
+              />
+            ))}
+          </div>
         </div>
 
-        {/* 4 Client Commitments: How We Work With Every Client */}
+        {/* 4 Client Commitments */}
         <div className="space-y-6 pt-4 border-t border-slate-200">
           <div className="flex items-center justify-between">
             <div className="text-xs font-mono uppercase tracking-wider text-slate-400 font-bold">
@@ -139,7 +302,7 @@ export const TestimonialsSection: React.FC<TestimonialsSectionProps> = ({
             {CLIENT_COMMITMENTS.map((c) => (
               <div
                 key={c.id}
-                className="bg-white rounded-2xl border border-slate-200 p-6 shadow-xs hover:shadow-md hover:border-[#00976C] transition-all flex flex-col justify-between space-y-3"
+                className="bg-white rounded-2xl border border-slate-200 p-6 shadow-xs hover:border-[#00976C] transition-all flex flex-col justify-between space-y-3"
               >
                 <div className="space-y-2.5">
                   <div className="w-10 h-10 rounded-xl bg-emerald-50 border border-emerald-200 flex items-center justify-center text-[#00976C]">
@@ -171,7 +334,7 @@ export const TestimonialsSection: React.FC<TestimonialsSectionProps> = ({
         <div className="pt-2 text-center">
           <button
             onClick={() => onNavigate('contact')}
-            className="inline-flex items-center gap-2 px-8 py-3.5 rounded-full text-xs font-bold text-white bg-[#022A4E] hover:bg-[#00976C] transition-all duration-200 shadow-sm hover:shadow-md cursor-pointer"
+            className="inline-flex items-center gap-2 px-8 py-3.5 rounded-full text-xs font-bold text-white bg-[#022A4E] hover:bg-[#00976C] transition-all duration-200 shadow-xs hover:shadow-md cursor-pointer"
           >
             <span>Partner With BasanTech On Your Next Project</span>
             <ArrowUpRight className="w-3.5 h-3.5 text-emerald-300" />
@@ -179,7 +342,6 @@ export const TestimonialsSection: React.FC<TestimonialsSectionProps> = ({
         </div>
 
       </div>
-
     </section>
   );
 };

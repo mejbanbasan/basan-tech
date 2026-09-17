@@ -46,8 +46,8 @@ export const PortfolioShowcase: React.FC<PortfolioShowcaseProps> = ({
   const displayedStudies = limit ? filteredStudies.slice(0, limit) : filteredStudies;
 
   return (
-    <section id="portfolio-section" className={`${showBreadcrumb ? 'pt-28 sm:pt-36 pb-20' : 'py-20'} bg-slate-50/60 border-b border-slate-200`}>
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+    <section id="portfolio-section" className={`${showBreadcrumb ? 'pt-24 sm:pt-28 pb-12 sm:pb-16' : 'py-12 sm:py-16'} bg-slate-50/60 border-b border-slate-200`}>
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10 sm:space-y-12">
         
         {/* Section Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">

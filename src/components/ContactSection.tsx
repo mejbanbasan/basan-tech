@@ -100,7 +100,7 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
   };
 
   return (
-    <section id="contact-section" className={`${showBreadcrumb ? 'pt-28 sm:pt-36 pb-20' : 'py-20'} bg-zinc-50 border-b border-zinc-200`}>
+    <section id="contact-section" className={`${showBreadcrumb ? 'pt-24 sm:pt-28 pb-12 sm:pb-16' : 'py-12 sm:py-16'} bg-zinc-50 border-b border-zinc-200`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {showBreadcrumb && (

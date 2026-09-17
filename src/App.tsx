@@ -14,24 +14,44 @@ import { ServiceDetailPage } from './components/ServiceDetailPage';
 import { EngineeringProcess } from './components/EngineeringProcess';
 import { SERVICES_DATA } from './data/servicesData';
 
+// Helper to normalize and map service IDs & legacy aliases
+const normalizeServiceId = (rawId: string): ServiceId | null => {
+  const cleanId = rawId.toLowerCase().trim();
+  if (cleanId === 'web-dev') return 'website-dev';
+  if (cleanId === 'mobile-app') return 'app-dev';
+  if (cleanId === 'ecommerce') return 'ecommerce-dev';
+  
+  const found = SERVICES_DATA.find(s => s.id === cleanId);
+  return found ? (cleanId as ServiceId) : null;
+};
+
 // Helper to determine active page and service from URL pathname & hash
 const getRouteFromLocation = (): { page: PageView; serviceId?: ServiceId } => {
   if (typeof window === 'undefined') return { page: 'home' };
 
   const pathname = window.location.pathname.toLowerCase();
-  const hash = window.location.hash.replace('#', '').toLowerCase();
+  const hash = window.location.hash.replace('#', '').replace(/^\//, '').toLowerCase();
 
-  // Check for /services/:id route
-  const serviceMatch = pathname.match(/^\/services\/([a-z0-9-]+)/);
+  // 1. Check for /services/:id path (e.g. /services/app-dev or /services/app-dev/)
+  const serviceMatch = pathname.match(/^\/services\/([a-z0-9-]+)\/?$/);
   if (serviceMatch) {
-    const sId = serviceMatch[1] as ServiceId;
-    const exists = SERVICES_DATA.some(s => s.id === sId);
-    if (exists) {
-      return { page: 'service-detail', serviceId: sId };
+    const matchedId = normalizeServiceId(serviceMatch[1]);
+    if (matchedId) {
+      return { page: 'service-detail', serviceId: matchedId };
+    }
+    return { page: 'services' };
+  }
+
+  // 2. Fallback hash for /services/:id (e.g. #/services/app-dev)
+  const hashServiceMatch = hash.match(/^services\/([a-z0-9-]+)\/?$/);
+  if (hashServiceMatch) {
+    const matchedId = normalizeServiceId(hashServiceMatch[1]);
+    if (matchedId) {
+      return { page: 'service-detail', serviceId: matchedId };
     }
   }
 
-  // Check clean pathnames
+  // 3. Check clean pathnames
   const cleanPath = pathname.replace(/^\//, '').replace(/\/$/, '');
   const validPages: PageView[] = ['services', 'portfolio', 'about', 'testimonials', 'contact', 'privacy', 'terms'];
 
@@ -40,7 +60,7 @@ const getRouteFromLocation = (): { page: PageView; serviceId?: ServiceId } => {
     return { page: cleanPath as PageView };
   }
 
-  // Fallback to hash if present (for old bookmarks/links)
+  // 4. Fallback to hash if present (for old bookmarks/links)
   if (hash === 'work') return { page: 'portfolio' };
   if (validPages.includes(hash as PageView)) {
     return { page: hash as PageView };

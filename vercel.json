@@ -6,7 +6,7 @@
   "trailingSlash": false,
   "rewrites": [
     {
-      "source": "/((?!assets|robots\\.txt|sitemap\\.xml|favicon\\.svg|og-image\\.(?:jpg|png)).*)",
+      "source": "/(.*)",
       "destination": "/index.html"
     }
   ]

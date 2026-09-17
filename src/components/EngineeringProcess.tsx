@@ -53,8 +53,8 @@ export const EngineeringProcess: React.FC<EngineeringProcessProps> = ({ onNaviga
   ];
 
   return (
-    <section className="py-20 bg-white border-b border-slate-200">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
+    <section className="py-12 sm:py-16 bg-white border-b border-slate-200">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10 sm:space-y-16">
         
         {/* Header */}
         <div className="max-w-3xl space-y-3">

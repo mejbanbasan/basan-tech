@@ -11,12 +11,50 @@
     <priority>1.0</priority>
   </url>
 
-  <!-- Services Page -->
+  <!-- Services Overview Page -->
   <url>
     <loc>https://basantech.online/services</loc>
     <lastmod>2026-09-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
+  </url>
+
+  <!-- Service Detail Pages -->
+  <url>
+    <loc>https://basantech.online/services/website-dev</loc>
+    <lastmod>2026-09-17</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://basantech.online/services/app-dev</loc>
+    <lastmod>2026-09-17</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://basantech.online/services/custom-software</loc>
+    <lastmod>2026-09-17</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://basantech.online/services/desktop-software</loc>
+    <lastmod>2026-09-17</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://basantech.online/services/ecommerce-dev</loc>
+    <lastmod>2026-09-17</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://basantech.online/services/ai-solutions</loc>
+    <lastmod>2026-09-17</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
   </url>
 
   <!-- Portfolio / Work Page -->

@@ -23,8 +23,8 @@ export const AboutAgency: React.FC<AboutAgencyProps> = ({
   showBreadcrumb = false
 }) => {
   return (
-    <section id="about-section" className={`${isAboutPage || showBreadcrumb ? 'pt-28 sm:pt-36 pb-20' : 'py-20'} bg-slate-50/70 border-b border-slate-200`}>
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-20">
+    <section id="about-section" className={`${isAboutPage || showBreadcrumb ? 'pt-24 sm:pt-28 pb-12 sm:pb-16' : 'py-12 sm:py-16'} bg-slate-50/70 border-b border-slate-200`}>
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12 sm:space-y-16 lg:space-y-20">
         
         {/* Studio Overview */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">

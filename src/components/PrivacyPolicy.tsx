@@ -8,7 +8,7 @@ interface PrivacyPolicyProps {
 
 export const PrivacyPolicy: React.FC<PrivacyPolicyProps> = ({ onNavigate }) => {
   return (
-    <div className="pt-28 pb-20 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+    <div className="pt-24 sm:pt-28 pb-12 sm:pb-16 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10 sm:space-y-12">
       
       {/* Back Button */}
       <div>

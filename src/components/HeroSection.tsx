@@ -19,7 +19,7 @@ interface HeroSectionProps {
 
 export const HeroSection: React.FC<HeroSectionProps> = ({ onNavigate }) => {
   return (
-    <section id="hero-section" className="relative min-h-[85vh] pt-32 pb-16 flex flex-col justify-center bg-slate-50/60 border-b border-slate-200">
+    <section id="hero-section" className="relative min-h-[85vh] pt-24 sm:pt-32 pb-12 sm:pb-16 flex flex-col justify-center bg-slate-50/60 border-b border-slate-200">
       
       {/* Subtle ambient background grid with brand navy tint */}
       <div className="absolute inset-0 bg-grid-pattern opacity-50 pointer-events-none" />
@@ -35,7 +35,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onNavigate }) => {
         </div>
 
         {/* Hero Title & Pitch */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start mb-16">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start mb-10 sm:mb-16">
           
           <div className="lg:col-span-8 space-y-6">
             <h1 className="text-4xl sm:text-6xl lg:text-7xl font-bold tracking-tight text-[#022A4E] leading-[1.08]">
