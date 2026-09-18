@@ -96,13 +96,13 @@ export interface TeamMember {
 
 export interface Testimonial {
   id: string;
-  clientName: string;
+  clientName?: string;
   clientTitle: string;
-  companyName: string;
-  avatar: string;
+  companyName?: string;
+  avatar?: string;
   rating: number;
   serviceType: string;
   quote: string;
   date: string;
-  verified: boolean;
+  verified?: boolean;
 }

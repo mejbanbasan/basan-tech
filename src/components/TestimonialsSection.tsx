@@ -8,7 +8,6 @@ import {
   CheckCircle2, 
   Sparkles, 
   ArrowUpRight, 
-  Check, 
   ChevronLeft, 
   ChevronRight 
 } from 'lucide-react';
@@ -156,24 +155,17 @@ export const TestimonialsSection: React.FC<TestimonialsSectionProps> = ({
                   </p>
                 </div>
 
-                <div className="pt-4 border-t border-slate-100 flex items-center justify-between">
-                  <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 rounded-full bg-[#022A4E] text-white flex items-center justify-center font-bold text-xs">
-                      {t.avatar}
-                    </div>
-                    <div>
-                      <h4 className="text-sm font-bold text-[#022A4E] leading-tight">
-                        {t.clientName}
-                      </h4>
-                      <p className="text-xs text-slate-500 mt-0.5 leading-tight">
-                        {t.companyName ? `${t.clientTitle} • ${t.companyName}` : t.clientTitle}
-                      </p>
-                    </div>
+                <div className="pt-4 border-t border-slate-100 flex items-center gap-3">
+                  <div className="w-10 h-10 rounded-full bg-[#022A4E] text-white flex items-center justify-center font-bold text-xs shrink-0">
+                    {t.avatar}
                   </div>
-
-                  <div className="flex items-center gap-1 text-[11px] font-semibold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded-full border border-emerald-200/50">
-                    <Check className="w-3 h-3 text-[#00976C]" />
-                    <span>Verified</span>
+                  <div>
+                    <h4 className="text-sm font-bold text-[#022A4E] leading-tight">
+                      {t.clientTitle}
+                    </h4>
+                    <p className="text-[11px] text-slate-500 mt-0.5 leading-tight">
+                      Client Project Review
+                    </p>
                   </div>
                 </div>
               </div>
@@ -203,24 +195,17 @@ export const TestimonialsSection: React.FC<TestimonialsSectionProps> = ({
                 </p>
               </div>
 
-              <div className="pt-4 border-t border-slate-100 flex items-center justify-between">
-                <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-full bg-[#022A4E] text-white flex items-center justify-center font-bold text-xs">
-                    {visibleDesktop[0].avatar}
-                  </div>
-                  <div>
-                    <h4 className="text-sm font-bold text-[#022A4E] leading-tight">
-                      {visibleDesktop[0].clientName}
-                    </h4>
-                    <p className="text-xs text-slate-500 mt-0.5 leading-tight">
-                      {visibleDesktop[0].companyName ? `${visibleDesktop[0].clientTitle} • ${visibleDesktop[0].companyName}` : visibleDesktop[0].clientTitle}
-                    </p>
-                  </div>
+              <div className="pt-4 border-t border-slate-100 flex items-center gap-3">
+                <div className="w-10 h-10 rounded-full bg-[#022A4E] text-white flex items-center justify-center font-bold text-xs shrink-0">
+                  {visibleDesktop[0].avatar}
                 </div>
-
-                <div className="flex items-center gap-1 text-[11px] font-semibold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded-full border border-emerald-200/50">
-                  <Check className="w-3 h-3 text-[#00976C]" />
-                  <span>Verified</span>
+                <div>
+                  <h4 className="text-sm font-bold text-[#022A4E] leading-tight">
+                    {visibleDesktop[0].clientTitle}
+                  </h4>
+                  <p className="text-[11px] text-slate-500 mt-0.5 leading-tight">
+                    Client Project Review
+                  </p>
                 </div>
               </div>
             </div>
@@ -247,24 +232,17 @@ export const TestimonialsSection: React.FC<TestimonialsSectionProps> = ({
                 </p>
               </div>
 
-              <div className="pt-4 border-t border-slate-100 flex items-center justify-between">
-                <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-full bg-[#022A4E] text-white flex items-center justify-center font-bold text-xs">
-                    {visibleDesktop[1].avatar}
-                  </div>
-                  <div>
-                    <h4 className="text-sm font-bold text-[#022A4E] leading-tight">
-                      {visibleDesktop[1].clientName}
-                    </h4>
-                    <p className="text-xs text-slate-500 mt-0.5 leading-tight">
-                      {visibleDesktop[1].companyName ? `${visibleDesktop[1].clientTitle} • ${visibleDesktop[1].companyName}` : visibleDesktop[1].clientTitle}
-                    </p>
-                  </div>
+              <div className="pt-4 border-t border-slate-100 flex items-center gap-3">
+                <div className="w-10 h-10 rounded-full bg-[#022A4E] text-white flex items-center justify-center font-bold text-xs shrink-0">
+                  {visibleDesktop[1].avatar}
                 </div>
-
-                <div className="flex items-center gap-1 text-[11px] font-semibold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded-full border border-emerald-200/50">
-                  <Check className="w-3 h-3 text-[#00976C]" />
-                  <span>Verified</span>
+                <div>
+                  <h4 className="text-sm font-bold text-[#022A4E] leading-tight">
+                    {visibleDesktop[1].clientTitle}
+                  </h4>
+                  <p className="text-[11px] text-slate-500 mt-0.5 leading-tight">
+                    Client Project Review
+                  </p>
                 </div>
               </div>
             </div>

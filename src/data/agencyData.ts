@@ -279,75 +279,57 @@ export const AGENCY_TEAM: TeamMember[] = [
 export const TESTIMONIALS_DATA: Testimonial[] = [
   {
     id: 'test-1',
-    clientName: 'Dr. Tariq Mansoor',
     clientTitle: 'Founder, EdTech Platform',
-    companyName: '',
-    avatar: 'TM',
+    avatar: 'ED',
     rating: 5,
     serviceType: 'Learning Platform & Student Portal',
     quote: 'BasanTech engineered our digital learning platform from the ground up. Their communication across weekly sprints was crystal clear, the student-parent dashboard is lightning-fast, and their post-launch support helped us onboard over 1,200 active learners with zero downtime.',
-    date: 'February 2025',
-    verified: true
+    date: 'February 2025'
   },
   {
     id: 'test-2',
-    clientName: 'Farhan Memon',
     clientTitle: 'Admin Head, Community Management System',
-    companyName: '',
-    avatar: 'FM',
+    avatar: 'CM',
     rating: 5,
     serviceType: 'Custom Web & Operations Software',
     quote: 'We needed a centralized system to handle resident dues, maintenance tickets, and gate security. The BasanTech team listened closely to our ground workflow, delivered clean and dependable code, and our non-technical staff uses it effortlessly every day.',
-    date: 'January 2025',
-    verified: true
+    date: 'January 2025'
   },
   {
     id: 'test-3',
-    clientName: 'Qasim Patel',
     clientTitle: 'Project Lead, Institutional Website',
-    companyName: '',
-    avatar: 'QP',
+    avatar: 'IW',
     rating: 5,
     serviceType: 'Institutional Website & CMS Portal',
     quote: 'BasanTech treated our institutional web portal with immense dedication. The responsive layout, transparent donation tracking, and bilingual support exceeded our expectations. Even months after launch, their team is always available whenever we need quick assistance.',
-    date: 'December 2024',
-    verified: true
+    date: 'December 2024'
   },
   {
     id: 'test-4',
-    clientName: 'Sameer Merchant',
     clientTitle: 'Operations Director, E-Commerce Platform',
-    companyName: '',
-    avatar: 'SM',
+    avatar: 'EC',
     rating: 5,
     serviceType: 'E-Commerce & Payment Flow',
     quote: 'Our previous storefront struggled with cart drop-offs and slow mobile checkout. BasanTech re-engineered our platform with instant UPI and card gateways plus real-time inventory sync. Our mobile checkout conversion rate increased noticeably within weeks.',
-    date: 'November 2024',
-    verified: true
+    date: 'November 2024'
   },
   {
     id: 'test-5',
-    clientName: 'Arif Vhora',
     clientTitle: 'Product Lead, Mobile Application',
-    companyName: '',
-    avatar: 'AV',
+    avatar: 'MA',
     rating: 5,
     serviceType: 'App Development (Android & iOS)',
     quote: 'Having direct access to the actual developers building our mobile app made the entire journey seamless. They handled Google Play and App Store compliance without a hitch, and the app runs smoothly at 60 FPS across both operating systems.',
-    date: 'October 2024',
-    verified: true
+    date: 'October 2024'
   },
   {
     id: 'test-6',
-    clientName: 'Dr. Farhana Siddiqui',
     clientTitle: 'Technical Director, Custom Healthcare System',
-    companyName: '',
-    avatar: 'FS',
+    avatar: 'HS',
     rating: 5,
     serviceType: 'Custom Software & Health Records',
     quote: 'Data privacy and quick access to records were non-negotiable for our clinic operations. BasanTech delivered a dependable, well-documented architecture with complete code handover and zero vendor lock-in. Their 30-day warranty support was top tier.',
-    date: 'September 2024',
-    verified: true
+    date: 'September 2024'
   }
 ];
 
