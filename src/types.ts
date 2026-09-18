@@ -73,6 +73,8 @@ export interface CaseStudy {
   architectureDetails?: string;
   techStack: string[];
   deliverables: string[];
+  keyFeatures?: string[];
+  architecture?: string[];
   resultsMetrics: {
     label: string;
     value: string;

@@ -14,6 +14,7 @@ import {
   MessageCircle, 
   Layers, 
   CheckCircle2,
+  HelpCircle,
   Database,
   Server,
   Lock,
