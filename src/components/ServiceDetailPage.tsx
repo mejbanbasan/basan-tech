@@ -4,16 +4,13 @@ import { ContactSection } from './ContactSection';
 import { 
   ArrowUpRight, 
   Check, 
-  Code2, 
   ShieldCheck, 
-  Clock, 
   Cpu, 
   Globe, 
   Smartphone, 
   Laptop, 
   ShoppingBag, 
   Sparkles, 
-  HelpCircle, 
   MessageCircle, 
   Layers, 
   CheckCircle2,
@@ -537,11 +534,9 @@ export const ServiceDetailPage: React.FC<ServiceDetailPageProps> = ({
         </div>
       )}
 
-      {/* 4. Deliverables & Production Tech Stack */}
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
-        
-        {/* Deliverables Checklist */}
-        <div className="lg:col-span-6 p-8 rounded-3xl bg-white border border-slate-200 shadow-xs space-y-6">
+      {/* 4. Standard Project Deliverables */}
+      {service.deliverables && service.deliverables.length > 0 && (
+        <div className="p-6 sm:p-10 rounded-3xl bg-white border border-slate-200 shadow-xs space-y-6">
           <div className="space-y-1">
             <span className="text-[11px] font-mono uppercase tracking-wider text-[#00976C] font-bold flex items-center gap-1.5">
               <CheckCircle2 className="w-3.5 h-3.5" />
@@ -552,9 +547,9 @@ export const ServiceDetailPage: React.FC<ServiceDetailPageProps> = ({
             </h3>
           </div>
 
-          <div className="space-y-3">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3.5">
             {service.deliverables.map((item, dIdx) => (
-              <div key={dIdx} className="flex items-start gap-3 text-sm text-slate-700">
+              <div key={dIdx} className="p-4 rounded-xl bg-slate-50/80 border border-slate-200/80 flex items-start gap-3 text-sm">
                 <div className="w-5 h-5 rounded-full bg-emerald-50 border border-emerald-200 flex items-center justify-center text-[#00976C] shrink-0 mt-0.5">
                   <Check className="w-3 h-3 stroke-[3]" />
                 </div>
@@ -563,45 +558,7 @@ export const ServiceDetailPage: React.FC<ServiceDetailPageProps> = ({
             ))}
           </div>
         </div>
-
-        {/* Production Tech Stack */}
-        <div className="lg:col-span-6 p-8 rounded-3xl bg-white border border-slate-200 shadow-xs space-y-6">
-          <div className="space-y-1">
-            <span className="text-[11px] font-mono uppercase tracking-wider text-[#00976C] font-bold flex items-center gap-1.5">
-              <Code2 className="w-3.5 h-3.5" />
-              <span>Frameworks &amp; Tooling</span>
-            </span>
-            <h3 className="text-xl sm:text-2xl font-bold text-[#022A4E]">
-              Production Technology Stack
-            </h3>
-          </div>
-
-          <div className="space-y-5">
-            {service.techStack && service.techStack.length > 0 ? (
-              service.techStack.map((category, cIdx) => (
-                <div key={cIdx} className="space-y-2">
-                  <div className="text-xs font-semibold text-slate-500 font-mono">
-                    {category.category}
-                  </div>
-                  <div className="flex flex-wrap gap-2">
-                    {category.items.map((tech, tIdx) => (
-                      <span 
-                        key={tIdx}
-                        className="px-3 py-1.5 rounded-lg bg-slate-50 border border-slate-200 text-xs font-mono font-semibold text-slate-800"
-                      >
-                        {tech}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-              ))
-            ) : (
-              <p className="text-sm text-slate-500">Industry standard full-stack frameworks.</p>
-            )}
-          </div>
-        </div>
-
-      </div>
+      )}
 
       {/* 5. Real-World Use Cases */}
       {service.useCases && service.useCases.length > 0 && (

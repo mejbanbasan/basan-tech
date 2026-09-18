@@ -166,7 +166,7 @@ export const TestimonialsSection: React.FC<TestimonialsSectionProps> = ({
                         {t.clientName}
                       </h4>
                       <p className="text-xs text-slate-500 mt-0.5 leading-tight">
-                        {t.clientTitle} • {t.companyName}
+                        {t.companyName ? `${t.clientTitle} • ${t.companyName}` : t.clientTitle}
                       </p>
                     </div>
                   </div>
@@ -213,7 +213,7 @@ export const TestimonialsSection: React.FC<TestimonialsSectionProps> = ({
                       {visibleDesktop[0].clientName}
                     </h4>
                     <p className="text-xs text-slate-500 mt-0.5 leading-tight">
-                      {visibleDesktop[0].clientTitle} • {visibleDesktop[0].companyName}
+                      {visibleDesktop[0].companyName ? `${visibleDesktop[0].clientTitle} • ${visibleDesktop[0].companyName}` : visibleDesktop[0].clientTitle}
                     </p>
                   </div>
                 </div>
@@ -257,7 +257,7 @@ export const TestimonialsSection: React.FC<TestimonialsSectionProps> = ({
                       {visibleDesktop[1].clientName}
                     </h4>
                     <p className="text-xs text-slate-500 mt-0.5 leading-tight">
-                      {visibleDesktop[1].clientTitle} • {visibleDesktop[1].companyName}
+                      {visibleDesktop[1].companyName ? `${visibleDesktop[1].clientTitle} • ${visibleDesktop[1].companyName}` : visibleDesktop[1].clientTitle}
                     </p>
                   </div>
                 </div>
