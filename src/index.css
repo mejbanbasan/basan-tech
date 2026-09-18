@@ -109,3 +109,66 @@
 .animate-pulse-subtle {
   animation: pulse-subtle 4s infinite ease-in-out;
 }
+
+/* Service 1: Web Dev - Gentle Floating & Elevation */
+@keyframes service-float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-8px); }
+}
+.animate-service-float {
+  animation: service-float 4.5s ease-in-out infinite;
+}
+
+/* Service 2: Mobile App - Smooth Radar Pulse Ring */
+@keyframes service-radar {
+  0% { transform: scale(0.95); opacity: 0.8; }
+  50% { transform: scale(1.15); opacity: 0.2; }
+  100% { transform: scale(0.95); opacity: 0.8; }
+}
+.animate-service-radar {
+  animation: service-radar 3.5s ease-in-out infinite;
+}
+
+/* Service 3: Custom Software - Slow Elegant Node Orbit */
+@keyframes service-spin-slow {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+.animate-service-spin-slow {
+  animation: service-spin-slow 24s linear infinite;
+}
+@keyframes service-spin-reverse {
+  from { transform: rotate(360deg); }
+  to { transform: rotate(0deg); }
+}
+.animate-service-spin-reverse {
+  animation: service-spin-reverse 18s linear infinite;
+}
+
+/* Service 4: Desktop Software - Terminal Scan & Gauge */
+@keyframes service-scanline {
+  0%, 100% { transform: translateY(-100%); opacity: 0; }
+  20%, 80% { opacity: 0.7; }
+  50% { transform: translateY(120%); opacity: 0.8; }
+}
+.animate-service-scan {
+  animation: service-scanline 3.2s ease-in-out infinite;
+}
+
+/* Service 5: E-commerce - Upward Growth Trend & Cart Float */
+@keyframes service-growth {
+  0%, 100% { transform: translateY(0px) scale(1); }
+  50% { transform: translateY(-6px) scale(1.03); }
+}
+.animate-service-growth {
+  animation: service-growth 3.8s ease-in-out infinite;
+}
+
+/* Service 6: AI Solutions - Synaptic Glow Breathing */
+@keyframes service-synapse {
+  0%, 100% { transform: scale(1); filter: drop-shadow(0 0 4px rgba(0, 151, 108, 0.3)); }
+  50% { transform: scale(1.08); filter: drop-shadow(0 0 16px rgba(0, 151, 108, 0.75)); }
+}
+.animate-service-synapse {
+  animation: service-synapse 2.8s ease-in-out infinite;
+}
