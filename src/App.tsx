@@ -1,19 +1,21 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, Suspense, lazy } from 'react';
 import { PageView, ServiceId } from './types';
 import { Navbar } from './components/Navbar';
 import { Footer } from './components/Footer';
 import { HeroSection } from './components/HeroSection';
-import { ServicesOverview } from './components/ServicesOverview';
-import { PortfolioShowcase } from './components/PortfolioShowcase';
-import { AboutAgency } from './components/AboutAgency';
-import { TestimonialsSection } from './components/TestimonialsSection';
-import { ContactSection } from './components/ContactSection';
-import { PrivacyPolicy } from './components/PrivacyPolicy';
-import { TermsOfService } from './components/TermsOfService';
-import { ServiceDetailPage } from './components/ServiceDetailPage';
-import { EngineeringProcess } from './components/EngineeringProcess';
 import { ErrorBoundary } from './components/ErrorBoundary';
 import { SERVICES_DATA } from './data/servicesData';
+
+// Code-split heavy below-the-fold sections and individual detail pages
+const ServicesOverview = lazy(() => import('./components/ServicesOverview').then(m => ({ default: m.ServicesOverview })));
+const PortfolioShowcase = lazy(() => import('./components/PortfolioShowcase').then(m => ({ default: m.PortfolioShowcase })));
+const AboutAgency = lazy(() => import('./components/AboutAgency').then(m => ({ default: m.AboutAgency })));
+const TestimonialsSection = lazy(() => import('./components/TestimonialsSection').then(m => ({ default: m.TestimonialsSection })));
+const ContactSection = lazy(() => import('./components/ContactSection').then(m => ({ default: m.ContactSection })));
+const PrivacyPolicy = lazy(() => import('./components/PrivacyPolicy').then(m => ({ default: m.PrivacyPolicy })));
+const TermsOfService = lazy(() => import('./components/TermsOfService').then(m => ({ default: m.TermsOfService })));
+const ServiceDetailPage = lazy(() => import('./components/ServiceDetailPage').then(m => ({ default: m.ServiceDetailPage })));
+const EngineeringProcess = lazy(() => import('./components/EngineeringProcess').then(m => ({ default: m.EngineeringProcess })));
 
 // Helper to normalize and map service IDs & legacy aliases
 const normalizeServiceId = (rawId: string): ServiceId | null => {
@@ -184,72 +186,74 @@ export default function App() {
       {/* Main Page Router */}
       <main className="flex-1">
         <ErrorBoundary>
-          {/* HOMEPAGE */}
-          {currentPage === 'home' && (
-            <div>
-              <HeroSection onNavigate={handleNavigate} />
-              <ServicesOverview onNavigate={handleNavigate} />
-              <PortfolioShowcase onNavigate={handleNavigate} limit={3} />
-              <TestimonialsSection onNavigate={handleNavigate} />
-              <AboutAgency onNavigate={handleNavigate} isAboutPage={false} />
-              <ContactSection onNavigate={handleNavigate} />
-            </div>
-          )}
+          <Suspense fallback={<div className="min-h-[300px] flex items-center justify-center"><div className="w-8 h-8 rounded-full border-2 border-[#00976C] border-t-transparent animate-spin" /></div>}>
+            {/* HOMEPAGE */}
+            {currentPage === 'home' && (
+              <div>
+                <HeroSection onNavigate={handleNavigate} />
+                <ServicesOverview onNavigate={handleNavigate} />
+                <PortfolioShowcase onNavigate={handleNavigate} limit={3} />
+                <TestimonialsSection onNavigate={handleNavigate} />
+                <AboutAgency onNavigate={handleNavigate} isAboutPage={false} />
+                <ContactSection onNavigate={handleNavigate} />
+              </div>
+            )}
 
-          {/* SERVICES PAGE (Dedicated Page) */}
-          {currentPage === 'services' && (
-            <div>
-              <ServicesOverview onNavigate={handleNavigate} showBreadcrumb={true} />
-              <EngineeringProcess onNavigate={handleNavigate} />
-              <ContactSection onNavigate={handleNavigate} />
-            </div>
-          )}
+            {/* SERVICES PAGE (Dedicated Page) */}
+            {currentPage === 'services' && (
+              <div>
+                <ServicesOverview onNavigate={handleNavigate} showBreadcrumb={true} />
+                <EngineeringProcess onNavigate={handleNavigate} />
+                <ContactSection onNavigate={handleNavigate} />
+              </div>
+            )}
 
-          {/* SERVICE DETAIL PAGE */}
-          {currentPage === 'service-detail' && renderServiceDetail()}
+            {/* SERVICE DETAIL PAGE */}
+            {currentPage === 'service-detail' && renderServiceDetail()}
 
-          {/* PORTFOLIO / WORK PAGE (Dedicated Page) */}
-          {currentPage === 'portfolio' && (
-            <div>
-              <PortfolioShowcase onNavigate={handleNavigate} showBreadcrumb={true} />
-              <ContactSection onNavigate={handleNavigate} />
-            </div>
-          )}
+            {/* PORTFOLIO / WORK PAGE (Dedicated Page) */}
+            {currentPage === 'portfolio' && (
+              <div>
+                <PortfolioShowcase onNavigate={handleNavigate} showBreadcrumb={true} />
+                <ContactSection onNavigate={handleNavigate} />
+              </div>
+            )}
 
-          {/* ABOUT US PAGE (Dedicated Page) */}
-          {currentPage === 'about' && (
-            <div>
-              <AboutAgency onNavigate={handleNavigate} isAboutPage={true} showBreadcrumb={true} />
-              <TestimonialsSection onNavigate={handleNavigate} />
-              <ContactSection onNavigate={handleNavigate} />
-            </div>
-          )}
+            {/* ABOUT US PAGE (Dedicated Page) */}
+            {currentPage === 'about' && (
+              <div>
+                <AboutAgency onNavigate={handleNavigate} isAboutPage={true} showBreadcrumb={true} />
+                <TestimonialsSection onNavigate={handleNavigate} />
+                <ContactSection onNavigate={handleNavigate} />
+              </div>
+            )}
 
-          {/* TESTIMONIALS PAGE (Dedicated Page) */}
-          {currentPage === 'testimonials' && (
-            <div>
-              <TestimonialsSection onNavigate={handleNavigate} showBreadcrumb={true} />
-              <PortfolioShowcase onNavigate={handleNavigate} limit={3} />
-              <ContactSection onNavigate={handleNavigate} />
-            </div>
-          )}
+            {/* TESTIMONIALS PAGE (Dedicated Page) */}
+            {currentPage === 'testimonials' && (
+              <div>
+                <TestimonialsSection onNavigate={handleNavigate} showBreadcrumb={true} />
+                <PortfolioShowcase onNavigate={handleNavigate} limit={3} />
+                <ContactSection onNavigate={handleNavigate} />
+              </div>
+            )}
 
-          {/* CONTACT PAGE (Dedicated Page) */}
-          {currentPage === 'contact' && (
-            <div>
-              <ContactSection onNavigate={handleNavigate} showBreadcrumb={true} />
-            </div>
-          )}
+            {/* CONTACT PAGE (Dedicated Page) */}
+            {currentPage === 'contact' && (
+              <div>
+                <ContactSection onNavigate={handleNavigate} showBreadcrumb={true} />
+              </div>
+            )}
 
-          {/* PRIVACY POLICY PAGE */}
-          {currentPage === 'privacy' && (
-            <PrivacyPolicy onNavigate={handleNavigate} />
-          )}
+            {/* PRIVACY POLICY PAGE */}
+            {currentPage === 'privacy' && (
+              <PrivacyPolicy onNavigate={handleNavigate} />
+            )}
 
-          {/* TERMS OF SERVICE PAGE */}
-          {currentPage === 'terms' && (
-            <TermsOfService onNavigate={handleNavigate} />
-          )}
+            {/* TERMS OF SERVICE PAGE */}
+            {currentPage === 'terms' && (
+              <TermsOfService onNavigate={handleNavigate} />
+            )}
+          </Suspense>
         </ErrorBoundary>
       </main>
 

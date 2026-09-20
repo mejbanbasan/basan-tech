@@ -12,7 +12,6 @@ import {
   Globe,
   MapPin
 } from 'lucide-react';
-import confetti from 'canvas-confetti';
 
 interface FooterProps {
   onNavigate: (page: PageView, serviceId?: ServiceId) => void;
@@ -22,14 +21,16 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
   const [newsletterEmail, setNewsletterEmail] = useState('');
   const [subscribed, setSubscribed] = useState(false);
 
-  const handleSubscribe = (e: React.FormEvent) => {
+  const handleSubscribe = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!newsletterEmail || !newsletterEmail.includes('@')) return;
     
     setSubscribed(true);
     try {
-      if (typeof confetti === 'function') {
-        confetti({
+      const confettiModule = await import('canvas-confetti');
+      const confettiFn = confettiModule.default;
+      if (typeof confettiFn === 'function') {
+        confettiFn({
           particleCount: 40,
           spread: 50,
           origin: { y: 0.85 }
@@ -51,9 +52,9 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
               <span className="w-2 h-2 rounded-full bg-[#00976C] animate-ping" />
               <span>ENGAGEMENT CAPACITY AVAILABLE</span>
             </div>
-            <h3 className="text-2xl sm:text-4xl font-bold tracking-tight text-white">
+            <h2 className="text-2xl sm:text-4xl font-bold tracking-tight text-white">
               Ready to engineer your next digital solution?
-            </h3>
+            </h2>
             <p className="text-slate-300 text-sm sm:text-base leading-relaxed">
               We partner with founders, businesses, and product teams to build clean, reliable, and high-performance software.
             </p>
@@ -81,6 +82,10 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
               <img 
                 src="/basantech-logo.png" 
                 alt="BasanTech Software & Digital" 
+                width={180}
+                height={42}
+                loading="lazy"
+                decoding="async"
                 className="h-11 sm:h-12 w-auto object-contain transition-transform group-hover:scale-[1.02]" 
               />
             </button>
@@ -103,9 +108,9 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
 
           {/* Column 2: Services */}
           <div className="lg:col-span-3 space-y-3">
-            <h4 className="text-xs font-mono font-bold uppercase tracking-wider text-[#022A4E]">
+            <h3 className="text-xs font-mono font-bold uppercase tracking-wider text-[#022A4E]">
               Our Services
-            </h4>
+            </h3>
             <ul className="space-y-2 text-xs sm:text-sm text-slate-600">
               {SERVICES_DATA.map((service) => (
                 <li key={service.id}>
@@ -131,9 +136,9 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
 
           {/* Column 3: Quick Links */}
           <div className="lg:col-span-2 space-y-3">
-            <h4 className="text-xs font-mono font-bold uppercase tracking-wider text-[#022A4E]">
+            <h3 className="text-xs font-mono font-bold uppercase tracking-wider text-[#022A4E]">
               Company
-            </h4>
+            </h3>
             <ul className="space-y-2 text-xs sm:text-sm text-slate-600">
               <li>
                 <button 
@@ -179,10 +184,10 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
           </div>
 
           {/* Column 4: Direct Channels */}
-          <div className="lg:col-span-3 space-y-4">
-            <h4 className="text-xs font-mono font-bold uppercase tracking-wider text-[#022A4E]">
+          <div className="lg:col-span-3 space-y-3">
+            <h3 className="text-xs font-mono font-bold uppercase tracking-wider text-[#022A4E]">
               Direct Inquiries
-            </h4>
+            </h3>
 
             <div className="space-y-2.5 text-xs sm:text-sm">
               <div className="flex items-start gap-2 text-slate-700 font-medium">
@@ -236,18 +241,22 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
                 </div>
               ) : (
                 <form onSubmit={handleSubscribe} className="space-y-1.5">
+                  <label htmlFor="footer-newsletter-email" className="sr-only">
+                    Work email address for updates
+                  </label>
                   <div className="flex items-center gap-1.5">
                     <input
                       type="email"
+                      id="footer-newsletter-email"
                       value={newsletterEmail}
                       onChange={(e) => setNewsletterEmail(e.target.value)}
                       placeholder="work@company.com"
                       required
-                      className="w-full px-3 py-2 text-xs bg-slate-50 border border-slate-200 rounded-xl text-slate-900 placeholder:text-slate-400 focus:outline-none focus:bg-white focus:border-[#022A4E] transition-colors"
+                      className="w-full px-3 py-2.5 min-h-[44px] text-xs bg-slate-50 border border-slate-200 rounded-xl text-slate-900 placeholder:text-slate-400 focus:outline-none focus:bg-white focus:border-[#022A4E] transition-colors"
                     />
                     <button 
                       type="submit" 
-                      className="px-3.5 py-2 rounded-xl bg-[#00976C] text-white text-xs font-semibold hover:bg-[#00825B] transition-colors shrink-0 cursor-pointer shadow-xs"
+                      className="px-4 py-2.5 min-h-[44px] rounded-xl bg-[#00976C] text-white text-xs font-semibold hover:bg-[#00825B] transition-colors shrink-0 cursor-pointer shadow-xs flex items-center justify-center"
                     >
                       Join
                     </button>
@@ -266,22 +275,22 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
             © 2026 BasanTech. All rights reserved.
           </div>
           
-          <div className="flex items-center gap-6">
+          <div className="flex items-center gap-4 sm:gap-6 flex-wrap">
             <button 
               onClick={() => onNavigate('privacy')}
-              className="font-medium text-slate-600 hover:text-[#00976C] transition-colors cursor-pointer underline-offset-4 hover:underline"
+              className="font-medium text-slate-600 hover:text-[#00976C] transition-colors cursor-pointer underline-offset-4 hover:underline py-2.5 min-h-[44px] inline-flex items-center"
             >
               Privacy Policy
             </button>
             <button 
               onClick={() => onNavigate('terms')}
-              className="font-medium text-slate-600 hover:text-[#00976C] transition-colors cursor-pointer underline-offset-4 hover:underline"
+              className="font-medium text-slate-600 hover:text-[#00976C] transition-colors cursor-pointer underline-offset-4 hover:underline py-2.5 min-h-[44px] inline-flex items-center"
             >
               Terms of Service
             </button>
             <button 
               onClick={() => onNavigate('contact')}
-              className="font-medium text-slate-600 hover:text-[#00976C] transition-colors cursor-pointer"
+              className="font-medium text-slate-600 hover:text-[#00976C] transition-colors cursor-pointer py-2.5 min-h-[44px] inline-flex items-center"
             >
               Security
             </button>

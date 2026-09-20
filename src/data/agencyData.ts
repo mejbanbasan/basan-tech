@@ -1,6 +1,6 @@
 import { Service, CaseStudy, TeamMember, Testimonial } from '../types';
-import iqraHeroImg from '../assets/images/iqra_islamic_madrasa_1787989336430.jpg';
-import lurnixeHeroImg from '../assets/images/lurnixe_orange_white_1787989665999.jpg';
+import iqraHeroImg from '../assets/images/iqra_islamic_madrasa_1787989336430.webp';
+import lurnixeHeroImg from '../assets/images/lurnixe_orange_white_1787989665999.webp';
 import { SERVICES_DATA } from './servicesData';
 
 export { SERVICES_DATA };

@@ -15,7 +15,6 @@ import {
   MessageCircle,
   Loader2
 } from 'lucide-react';
-import confetti from 'canvas-confetti';
 
 interface ContactSectionProps {
   onNavigate: (page: PageView, serviceId?: ServiceId) => void;
@@ -85,10 +84,12 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
     setIsSubmitting(false);
     setSubmitted(true);
 
-    // Trigger celebratory confetti
+    // Trigger celebratory confetti (dynamically imported to avoid bundle bloat)
     try {
-      if (typeof confetti === 'function') {
-        confetti({
+      const confettiModule = await import('canvas-confetti');
+      const confettiFn = confettiModule.default;
+      if (typeof confettiFn === 'function') {
+        confettiFn({
           particleCount: 70,
           spread: 80,
           origin: { y: 0.6 }
@@ -169,8 +170,8 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
                   {/* Row 1: Full Name & Email Address */}
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                     <div className="space-y-1.5">
-                      <label className="block text-xs font-semibold text-zinc-800">
-                        Full Name <span className="text-zinc-950">*</span>
+                      <label htmlFor="contact-form-name" className="block text-xs font-semibold text-slate-800">
+                        Full Name <span className="text-[#00976C]">*</span>
                       </label>
                       <input
                         type="text"
@@ -179,12 +180,12 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
                         onChange={(e) => setFullName(e.target.value)}
                         placeholder="Your name"
                         required
-                        className="w-full px-3.5 py-2.5 text-sm bg-white border border-slate-300 rounded-xl text-slate-900 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-[#00976C]/20 focus:border-[#00976C] transition-all shadow-2xs"
+                        className="w-full px-3.5 py-3 text-sm bg-white border border-slate-300 rounded-xl text-slate-900 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-[#00976C]/20 focus:border-[#00976C] transition-all shadow-2xs min-h-[44px]"
                       />
                     </div>
 
                     <div className="space-y-1.5">
-                      <label className="block text-xs font-semibold text-slate-800">
+                      <label htmlFor="contact-form-email" className="block text-xs font-semibold text-slate-800">
                         Email Address <span className="text-[#00976C]">*</span>
                       </label>
                       <input
@@ -194,7 +195,7 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
                         onChange={(e) => setEmail(e.target.value)}
                         placeholder="you@company.com"
                         required
-                        className="w-full px-3.5 py-2.5 text-sm bg-white border border-slate-300 rounded-xl text-slate-900 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-[#00976C]/20 focus:border-[#00976C] transition-all shadow-2xs"
+                        className="w-full px-3.5 py-3 text-sm bg-white border border-slate-300 rounded-xl text-slate-900 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-[#00976C]/20 focus:border-[#00976C] transition-all shadow-2xs min-h-[44px]"
                       />
                     </div>
                   </div>
@@ -202,7 +203,7 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
                   {/* Row 2: Phone Number & Company or Organization */}
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                     <div className="space-y-1.5">
-                      <label className="block text-xs font-semibold text-slate-800">
+                      <label htmlFor="contact-form-phone" className="block text-xs font-semibold text-slate-800">
                         Phone Number
                       </label>
                       <input
@@ -211,12 +212,12 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
                         value={phone}
                         onChange={(e) => setPhone(e.target.value)}
                         placeholder="+91 9624895641"
-                        className="w-full px-3.5 py-2.5 text-sm bg-white border border-slate-300 rounded-xl text-slate-900 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-[#00976C]/20 focus:border-[#00976C] transition-all shadow-2xs"
+                        className="w-full px-3.5 py-3 text-sm bg-white border border-slate-300 rounded-xl text-slate-900 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-[#00976C]/20 focus:border-[#00976C] transition-all shadow-2xs min-h-[44px]"
                       />
                     </div>
 
                     <div className="space-y-1.5">
-                      <label className="block text-xs font-semibold text-slate-800">
+                      <label htmlFor="contact-form-company" className="block text-xs font-semibold text-slate-800">
                         Company or Organization
                       </label>
                       <input
@@ -225,14 +226,14 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
                         value={company}
                         onChange={(e) => setCompany(e.target.value)}
                         placeholder="Where do you work?"
-                        className="w-full px-3.5 py-2.5 text-sm bg-white border border-slate-300 rounded-xl text-slate-900 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-[#00976C]/20 focus:border-[#00976C] transition-all shadow-2xs"
+                        className="w-full px-3.5 py-3 text-sm bg-white border border-slate-300 rounded-xl text-slate-900 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-[#00976C]/20 focus:border-[#00976C] transition-all shadow-2xs min-h-[44px]"
                       />
                     </div>
                   </div>
 
                   {/* Row 3: What type of project is this? */}
                   <div className="space-y-1.5">
-                    <label className="block text-xs font-semibold text-slate-800">
+                    <label htmlFor="contact-form-project-type" className="block text-xs font-semibold text-slate-800">
                       What type of project is this?
                     </label>
                     <div className="relative">
@@ -240,7 +241,7 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
                         id="contact-form-project-type"
                         value={projectType}
                         onChange={(e) => setProjectType(e.target.value)}
-                        className="w-full px-3.5 py-2.5 text-sm bg-white border border-slate-300 rounded-xl text-slate-900 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-[#00976C]/20 focus:border-[#00976C] transition-all shadow-2xs appearance-none pr-10 cursor-pointer"
+                        className="w-full px-3.5 py-3 text-sm bg-white border border-slate-300 rounded-xl text-slate-900 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-[#00976C]/20 focus:border-[#00976C] transition-all shadow-2xs appearance-none pr-10 cursor-pointer min-h-[44px]"
                       >
                         <option value="" disabled className="text-slate-400">Choose a service area</option>
                         <option value="Website Development">Website Development</option>
@@ -261,7 +262,7 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
 
                   {/* Row 4: Tell us about your project */}
                   <div className="space-y-1.5">
-                    <label className="block text-xs font-semibold text-slate-800">
+                    <label htmlFor="contact-form-details" className="block text-xs font-semibold text-slate-800">
                       Tell us about your project <span className="text-[#00976C]">*</span>
                     </label>
                     <textarea
@@ -285,7 +286,7 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
                       type="submit"
                       id="contact-submit-btn"
                       disabled={isSubmitting}
-                      className="inline-flex items-center justify-center gap-2 px-8 py-3.5 rounded-full bg-[#00976C] hover:bg-[#00825B] text-white text-xs font-bold transition-all duration-200 shadow-sm hover:shadow-md shrink-0 cursor-pointer disabled:opacity-70 disabled:cursor-not-allowed"
+                      className="inline-flex items-center justify-center gap-2 px-8 py-3.5 min-h-[44px] rounded-full bg-[#00976C] hover:bg-[#00825B] text-white text-xs font-bold transition-all duration-200 shadow-sm hover:shadow-md shrink-0 cursor-pointer disabled:opacity-70 disabled:cursor-not-allowed"
                     >
                       {isSubmitting ? (
                         <>

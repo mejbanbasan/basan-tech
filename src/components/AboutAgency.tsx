@@ -94,6 +94,10 @@ export const AboutAgency: React.FC<AboutAgencyProps> = ({
               <img
                 src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=800&q=80"
                 alt="BasanTech Engineering Collaboration"
+                width={800}
+                height={450}
+                loading="lazy"
+                decoding="async"
                 className="w-full h-64 object-cover"
                 referrerPolicy="no-referrer"
               />

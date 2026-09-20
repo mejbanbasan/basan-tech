@@ -112,7 +112,7 @@ export const TestimonialsSection: React.FC<TestimonialsSectionProps> = ({
                 onClick={handlePrev}
                 id="testimonial-prev-btn"
                 aria-label="Previous testimonial"
-                className="w-10 h-10 rounded-full border border-slate-200 bg-white hover:bg-slate-50 hover:border-[#00976C] text-slate-700 hover:text-[#00976C] flex items-center justify-center transition-colors shadow-2xs cursor-pointer"
+                className="w-11 h-11 min-w-[44px] min-h-[44px] rounded-full border border-slate-200 bg-white hover:bg-slate-50 hover:border-[#00976C] text-slate-700 hover:text-[#00976C] flex items-center justify-center transition-colors shadow-2xs cursor-pointer"
               >
                 <ChevronLeft className="w-5 h-5" />
               </button>
@@ -121,7 +121,7 @@ export const TestimonialsSection: React.FC<TestimonialsSectionProps> = ({
                 onClick={handleNext}
                 id="testimonial-next-btn"
                 aria-label="Next testimonial"
-                className="w-10 h-10 rounded-full border border-slate-200 bg-white hover:bg-slate-50 hover:border-[#00976C] text-slate-700 hover:text-[#00976C] flex items-center justify-center transition-colors shadow-2xs cursor-pointer"
+                className="w-11 h-11 min-w-[44px] min-h-[44px] rounded-full border border-slate-200 bg-white hover:bg-slate-50 hover:border-[#00976C] text-slate-700 hover:text-[#00976C] flex items-center justify-center transition-colors shadow-2xs cursor-pointer"
               >
                 <ChevronRight className="w-5 h-5" />
               </button>
@@ -160,9 +160,9 @@ export const TestimonialsSection: React.FC<TestimonialsSectionProps> = ({
                     {t.avatar}
                   </div>
                   <div>
-                    <h4 className="text-sm font-bold text-[#022A4E] leading-tight">
+                    <h3 className="text-sm font-bold text-[#022A4E] leading-tight">
                       {t.clientTitle}
-                    </h4>
+                    </h3>
                     <p className="text-[11px] text-slate-500 mt-0.5 leading-tight">
                       Client Project Review
                     </p>
@@ -200,9 +200,9 @@ export const TestimonialsSection: React.FC<TestimonialsSectionProps> = ({
                   {visibleDesktop[0].avatar}
                 </div>
                 <div>
-                  <h4 className="text-sm font-bold text-[#022A4E] leading-tight">
+                  <h3 className="text-sm font-bold text-[#022A4E] leading-tight">
                     {visibleDesktop[0].clientTitle}
-                  </h4>
+                  </h3>
                   <p className="text-[11px] text-slate-500 mt-0.5 leading-tight">
                     Client Project Review
                   </p>
@@ -237,9 +237,9 @@ export const TestimonialsSection: React.FC<TestimonialsSectionProps> = ({
                   {visibleDesktop[1].avatar}
                 </div>
                 <div>
-                  <h4 className="text-sm font-bold text-[#022A4E] leading-tight">
+                  <h3 className="text-sm font-bold text-[#022A4E] leading-tight">
                     {visibleDesktop[1].clientTitle}
-                  </h4>
+                  </h3>
                   <p className="text-[11px] text-slate-500 mt-0.5 leading-tight">
                     Client Project Review
                   </p>
@@ -248,19 +248,23 @@ export const TestimonialsSection: React.FC<TestimonialsSectionProps> = ({
             </div>
           </div>
 
-          {/* Dot Indicators */}
-          <div className="flex items-center justify-center gap-2 pt-6">
+          {/* Dot Indicators with 44px touch targets */}
+          <div className="flex items-center justify-center gap-1 pt-6">
             {TESTIMONIALS_DATA.map((_, dotIdx) => (
               <button
                 key={dotIdx}
                 onClick={() => setStartIndex(dotIdx)}
                 aria-label={`Go to slide ${dotIdx + 1}`}
-                className={`h-2 rounded-full transition-all duration-200 cursor-pointer ${
-                  startIndex === dotIdx 
-                    ? 'w-6 bg-[#00976C]' 
-                    : 'w-2 bg-slate-300 hover:bg-slate-400'
-                }`}
-              />
+                className="w-11 h-11 min-w-[44px] min-h-[44px] flex items-center justify-center cursor-pointer group"
+              >
+                <span
+                  className={`h-2 rounded-full transition-all duration-200 block ${
+                    startIndex === dotIdx 
+                      ? 'w-6 bg-[#00976C]' 
+                      : 'w-2 bg-slate-300 group-hover:bg-slate-400'
+                  }`}
+                />
+              </button>
             ))}
           </div>
         </div>
@@ -290,9 +294,9 @@ export const TestimonialsSection: React.FC<TestimonialsSectionProps> = ({
                     {c.icon === 'Sparkles' && <Sparkles className="w-5 h-5" />}
                   </div>
 
-                  <h4 className="text-sm font-bold text-[#022A4E]">
+                  <h3 className="text-sm font-bold text-[#022A4E]">
                     {c.title}
-                  </h4>
+                  </h3>
 
                   <p className="text-xs text-slate-600 leading-relaxed">
                     {c.description}
