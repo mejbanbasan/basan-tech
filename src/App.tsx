@@ -3,11 +3,11 @@ import { PageView, ServiceId } from './types';
 import { Navbar } from './components/Navbar';
 import { Footer } from './components/Footer';
 import { HeroSection } from './components/HeroSection';
+import { ServicesOverview } from './components/ServicesOverview';
 import { ErrorBoundary } from './components/ErrorBoundary';
 import { SERVICES_DATA } from './data/servicesData';
 
 // Code-split heavy below-the-fold sections and individual detail pages
-const ServicesOverview = lazy(() => import('./components/ServicesOverview').then(m => ({ default: m.ServicesOverview })));
 const PortfolioShowcase = lazy(() => import('./components/PortfolioShowcase').then(m => ({ default: m.PortfolioShowcase })));
 const AboutAgency = lazy(() => import('./components/AboutAgency').then(m => ({ default: m.AboutAgency })));
 const TestimonialsSection = lazy(() => import('./components/TestimonialsSection').then(m => ({ default: m.TestimonialsSection })));
@@ -16,6 +16,27 @@ const PrivacyPolicy = lazy(() => import('./components/PrivacyPolicy').then(m => 
 const TermsOfService = lazy(() => import('./components/TermsOfService').then(m => ({ default: m.TermsOfService })));
 const ServiceDetailPage = lazy(() => import('./components/ServiceDetailPage').then(m => ({ default: m.ServiceDetailPage })));
 const EngineeringProcess = lazy(() => import('./components/EngineeringProcess').then(m => ({ default: m.EngineeringProcess })));
+
+// Dimension-matched skeleton fallback for subpages to completely eliminate CLS
+const PageSkeleton = () => (
+  <div className="w-full animate-pulse" aria-hidden="true">
+    <div className="pt-24 sm:pt-32 pb-12 sm:pb-16 bg-slate-50/70 border-b border-slate-200">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-5">
+        <div className="h-6 w-36 bg-slate-200/80 rounded-full" />
+        <div className="h-12 sm:h-14 w-3/4 max-w-2xl bg-slate-200/80 rounded-2xl" />
+        <div className="h-5 w-full max-w-xl bg-slate-200/60 rounded" />
+      </div>
+    </div>
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-8">
+      <div className="h-64 bg-slate-200/40 rounded-3xl" />
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div className="h-44 bg-slate-200/40 rounded-2xl" />
+        <div className="h-44 bg-slate-200/40 rounded-2xl" />
+        <div className="h-44 bg-slate-200/40 rounded-2xl" />
+      </div>
+    </div>
+  </div>
+);
 
 // Helper to normalize and map service IDs & legacy aliases
 const normalizeServiceId = (rawId: string): ServiceId | null => {
@@ -186,74 +207,89 @@ export default function App() {
       {/* Main Page Router */}
       <main className="flex-1">
         <ErrorBoundary>
-          <Suspense fallback={<div className="min-h-[300px] flex items-center justify-center"><div className="w-8 h-8 rounded-full border-2 border-[#00976C] border-t-transparent animate-spin" /></div>}>
-            {/* HOMEPAGE */}
-            {currentPage === 'home' && (
-              <div>
-                <HeroSection onNavigate={handleNavigate} />
-                <ServicesOverview onNavigate={handleNavigate} />
+          {/* HOMEPAGE: Above-the-fold hero & services render synchronously with zero delay, zero blank gap, and zero CLS */}
+          {currentPage === 'home' && (
+            <div>
+              <HeroSection onNavigate={handleNavigate} />
+              <ServicesOverview onNavigate={handleNavigate} />
+
+              <Suspense fallback={<div className="min-h-[600px] bg-slate-50/50" />}>
                 <PortfolioShowcase onNavigate={handleNavigate} limit={3} />
+              </Suspense>
+
+              <Suspense fallback={<div className="min-h-[420px] bg-white" />}>
                 <TestimonialsSection onNavigate={handleNavigate} />
+              </Suspense>
+
+              <Suspense fallback={<div className="min-h-[500px] bg-slate-50/70" />}>
                 <AboutAgency onNavigate={handleNavigate} isAboutPage={false} />
+              </Suspense>
+
+              <Suspense fallback={<div className="min-h-[600px] bg-slate-900" />}>
                 <ContactSection onNavigate={handleNavigate} />
-              </div>
-            )}
+              </Suspense>
+            </div>
+          )}
 
-            {/* SERVICES PAGE (Dedicated Page) */}
-            {currentPage === 'services' && (
-              <div>
-                <ServicesOverview onNavigate={handleNavigate} showBreadcrumb={true} />
-                <EngineeringProcess onNavigate={handleNavigate} />
-                <ContactSection onNavigate={handleNavigate} />
-              </div>
-            )}
+          {/* DEDICATED SUBPAGES: Wrapped in dimension-matched PageSkeleton to eliminate CLS on direct loads */}
+          {currentPage !== 'home' && (
+            <Suspense fallback={<PageSkeleton />}>
+              {/* SERVICES PAGE (Dedicated Page) */}
+              {currentPage === 'services' && (
+                <div>
+                  <ServicesOverview onNavigate={handleNavigate} showBreadcrumb={true} />
+                  <EngineeringProcess onNavigate={handleNavigate} />
+                  <ContactSection onNavigate={handleNavigate} />
+                </div>
+              )}
 
-            {/* SERVICE DETAIL PAGE */}
-            {currentPage === 'service-detail' && renderServiceDetail()}
+              {/* SERVICE DETAIL PAGE */}
+              {currentPage === 'service-detail' && renderServiceDetail()}
 
-            {/* PORTFOLIO / WORK PAGE (Dedicated Page) */}
-            {currentPage === 'portfolio' && (
-              <div>
-                <PortfolioShowcase onNavigate={handleNavigate} showBreadcrumb={true} />
-                <ContactSection onNavigate={handleNavigate} />
-              </div>
-            )}
+              {/* PORTFOLIO / WORK PAGE (Dedicated Page) */}
+              {currentPage === 'portfolio' && (
+                <div>
+                  <PortfolioShowcase onNavigate={handleNavigate} showBreadcrumb={true} />
+                  <ContactSection onNavigate={handleNavigate} />
+                </div>
+              )}
 
-            {/* ABOUT US PAGE (Dedicated Page) */}
-            {currentPage === 'about' && (
-              <div>
-                <AboutAgency onNavigate={handleNavigate} isAboutPage={true} showBreadcrumb={true} />
-                <TestimonialsSection onNavigate={handleNavigate} />
-                <ContactSection onNavigate={handleNavigate} />
-              </div>
-            )}
+              {/* ABOUT US PAGE (Dedicated Page) */}
+              {currentPage === 'about' && (
+                <div>
+                  <AboutAgency onNavigate={handleNavigate} isAboutPage={true} showBreadcrumb={true} />
+                  <TestimonialsSection onNavigate={handleNavigate} />
+                  <ContactSection onNavigate={handleNavigate} />
+                </div>
+              )}
 
-            {/* TESTIMONIALS PAGE (Dedicated Page) */}
-            {currentPage === 'testimonials' && (
-              <div>
-                <TestimonialsSection onNavigate={handleNavigate} showBreadcrumb={true} />
-                <PortfolioShowcase onNavigate={handleNavigate} limit={3} />
-                <ContactSection onNavigate={handleNavigate} />
-              </div>
-            )}
+              {/* TESTIMONIALS PAGE (Dedicated Page) */}
+              {currentPage === 'testimonials' && (
+                <div>
+                  <TestimonialsSection onNavigate={handleNavigate} showBreadcrumb={true} />
+                  <PortfolioShowcase onNavigate={handleNavigate} limit={3} />
+                  <ContactSection onNavigate={handleNavigate} />
+                </div>
+              )}
 
-            {/* CONTACT PAGE (Dedicated Page) */}
-            {currentPage === 'contact' && (
-              <div>
-                <ContactSection onNavigate={handleNavigate} showBreadcrumb={true} />
-              </div>
-            )}
+              {/* CONTACT PAGE (Dedicated Page) */}
+              {currentPage === 'contact' && (
+                <div>
+                  <ContactSection onNavigate={handleNavigate} showBreadcrumb={true} />
+                </div>
+              )}
 
-            {/* PRIVACY POLICY PAGE */}
-            {currentPage === 'privacy' && (
-              <PrivacyPolicy onNavigate={handleNavigate} />
-            )}
+              {/* PRIVACY POLICY PAGE */}
+              {currentPage === 'privacy' && (
+                <PrivacyPolicy onNavigate={handleNavigate} />
+              )}
 
-            {/* TERMS OF SERVICE PAGE */}
-            {currentPage === 'terms' && (
-              <TermsOfService onNavigate={handleNavigate} />
-            )}
-          </Suspense>
+              {/* TERMS OF SERVICE PAGE */}
+              {currentPage === 'terms' && (
+                <TermsOfService onNavigate={handleNavigate} />
+              )}
+            </Suspense>
+          )}
         </ErrorBoundary>
       </main>
 

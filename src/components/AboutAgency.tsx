@@ -10,6 +10,7 @@ import {
   CheckCircle2,
   MapPin
 } from 'lucide-react';
+import aboutCollabImg from '../assets/images/about_collaboration.webp';
 
 interface AboutAgencyProps {
   onNavigate: (page: PageView, serviceId?: ServiceId) => void;
@@ -92,14 +93,13 @@ export const AboutAgency: React.FC<AboutAgencyProps> = ({
           <div className="lg:col-span-5">
             <div className="rounded-3xl overflow-hidden border border-slate-200 bg-white shadow-sm space-y-0">
               <img
-                src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=800&q=80"
+                src={aboutCollabImg}
                 alt="BasanTech Engineering Collaboration"
-                width={800}
-                height={450}
+                width={640}
+                height={360}
                 loading="lazy"
                 decoding="async"
                 className="w-full h-64 object-cover"
-                referrerPolicy="no-referrer"
               />
               <div className="p-6 space-y-3">
                 <div className="flex items-center justify-between text-xs font-mono text-slate-500 border-b border-slate-100 pb-2 font-medium">

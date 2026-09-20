@@ -82,14 +82,17 @@ export const Navbar: React.FC<NavbarProps> = ({ currentPage, onNavigate }) => {
             className="flex items-center self-center text-left group focus:outline-none cursor-pointer py-0.5"
             aria-label="BasanTech Home"
           >
-            <img 
-              src="/basantech-logo.png" 
-              alt="BasanTech Software & Digital" 
-              width={200}
-              height={48}
-              decoding="async"
-              className="h-11 sm:h-12 md:h-[50px] w-auto object-contain transition-transform duration-200 group-hover:scale-[1.02]" 
-            />
+            <picture>
+              <source srcSet="/basantech-logo.webp" type="image/webp" />
+              <img 
+                src="/basantech-logo.png" 
+                alt="BasanTech Software & Digital" 
+                width={200}
+                height={48}
+                decoding="async"
+                className="h-11 sm:h-12 md:h-[50px] w-auto object-contain transition-transform duration-200 group-hover:scale-[1.02]" 
+              />
+            </picture>
           </button>
 
           {/* Desktop Navigation Links */}

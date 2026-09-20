@@ -79,6 +79,8 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
               className="text-left focus:outline-none cursor-pointer group py-1"
               aria-label="BasanTech Home"
             >
+              <picture>
+              <source srcSet="/basantech-logo.webp" type="image/webp" />
               <img 
                 src="/basantech-logo.png" 
                 alt="BasanTech Software & Digital" 
@@ -88,7 +90,8 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
                 decoding="async"
                 className="h-11 sm:h-12 w-auto object-contain transition-transform group-hover:scale-[1.02]" 
               />
-            </button>
+            </picture>
+          </button>
 
             <p className="text-sm text-slate-600 leading-relaxed max-w-sm">
               BasanTech is a software engineering and digital solutions company. We design and build clean, scalable web applications, custom software, mobile apps, and automated workflows.
