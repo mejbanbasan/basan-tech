@@ -24,7 +24,7 @@ export const EngineeringProcess: React.FC<EngineeringProcessProps> = ({ onNaviga
     },
     {
       num: '02',
-      title: 'Iterative Sprint Sprints & Live Staging',
+      title: 'Iterative Engineering Sprints & Live Staging',
       desc: 'Our engineers build in rapid weekly sprints. You review interactive staging deployments on private URLs with full visibility into progress and code commits.',
       icon: Code2,
       tag: 'Build Phase'

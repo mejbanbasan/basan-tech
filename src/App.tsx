@@ -117,43 +117,111 @@ export default function App() {
     };
   }, []);
 
-  // Update browser tab document.title consistently across pages
+  // Helper to set or create meta tags dynamically across page navigations
+  const updateMetaTag = (attributeName: string, attributeValue: string, content: string) => {
+    let element = document.querySelector(`meta[${attributeName}="${attributeValue}"]`);
+    if (!element) {
+      element = document.createElement('meta');
+      element.setAttribute(attributeName, attributeValue);
+      document.head.appendChild(element);
+    }
+    element.setAttribute('content', content);
+  };
+
+  const updateCanonicalUrl = (url: string) => {
+    let link = document.querySelector('link[rel="canonical"]');
+    if (!link) {
+      link = document.createElement('link');
+      link.setAttribute('rel', 'canonical');
+      document.head.appendChild(link);
+    }
+    link.setAttribute('href', url);
+  };
+
+  // Update browser tab document.title, meta descriptions, Open Graph, and Twitter tags consistently across pages
   useEffect(() => {
     let pageTitle = 'BasanTech — Web & Software Development Agency';
+    let metaDescription = 'BasanTech is an engineering studio building custom software, web applications, mobile apps, and AI solutions for ambitious startups and growing businesses.';
+    let canonicalUrl = 'https://basantech.online/';
+
     switch (currentPage) {
       case 'home':
         pageTitle = 'BasanTech — Web & Software Development Agency';
+        metaDescription = 'BasanTech is an engineering studio building custom software, web applications, mobile apps, and AI solutions for ambitious startups and growing businesses.';
+        canonicalUrl = 'https://basantech.online/';
         break;
       case 'services':
         pageTitle = 'Our Services & Practices — BasanTech';
+        metaDescription = 'Explore BasanTech software engineering practices: custom web development, mobile applications, bespoke software, desktop systems, e-commerce, and AI solutions.';
+        canonicalUrl = 'https://basantech.online/services';
         break;
       case 'service-detail': {
         const currentService = SERVICES_DATA.find(s => s.id === selectedServiceId);
-        pageTitle = `${currentService?.title || 'Practice Area'} — BasanTech`;
+        if (currentService) {
+          pageTitle = `${currentService.title} Services — BasanTech`;
+          metaDescription = `BasanTech engineers ${currentService.shortDescription.toLowerCase()}`;
+          canonicalUrl = `https://basantech.online/services/${currentService.id}`;
+        } else {
+          pageTitle = 'Software Engineering Services — BasanTech';
+          metaDescription = 'Explore custom software, mobile apps, and web application engineering services by BasanTech.';
+          canonicalUrl = 'https://basantech.online/services';
+        }
         break;
       }
       case 'portfolio':
         pageTitle = 'Work & Case Studies — BasanTech';
+        metaDescription = 'Inspect production platforms and case studies engineered by BasanTech across e-commerce, healthcare, digital education, NGOs, and startup incubation.';
+        canonicalUrl = 'https://basantech.online/work';
         break;
       case 'about':
         pageTitle = 'About Us — BasanTech | Palanpur, Gujarat';
+        metaDescription = 'Learn about BasanTech, an engineering-led software company in Palanpur, Gujarat, dedicated to clean code, craftsman-level quality, and 100% client IP ownership.';
+        canonicalUrl = 'https://basantech.online/about';
         break;
       case 'testimonials':
         pageTitle = 'Client Reviews & Reputation — BasanTech';
+        metaDescription = 'Read genuine client reviews and project outcomes from founders who trusted BasanTech to engineer, launch, and support their digital platforms.';
+        canonicalUrl = 'https://basantech.online/testimonials';
         break;
       case 'contact':
         pageTitle = 'Contact Us — BasanTech | Palanpur, Gujarat';
+        metaDescription = 'Connect directly with BasanTech software engineers for project scoping and consultations. Direct developer communication with zero sales bureaucracy.';
+        canonicalUrl = 'https://basantech.online/contact';
         break;
       case 'privacy':
         pageTitle = 'Privacy Policy — BasanTech';
+        metaDescription = 'Review the privacy policy and data governance practices of BasanTech, ensuring complete confidentiality for client source code and project data.';
+        canonicalUrl = 'https://basantech.online/privacy-policy';
         break;
       case 'terms':
         pageTitle = 'Terms of Service — BasanTech';
+        metaDescription = 'Review the terms of service governing software development engagements, intellectual property transfer, and warranty commitments with BasanTech.';
+        canonicalUrl = 'https://basantech.online/terms-of-service';
         break;
       default:
         pageTitle = 'BasanTech — Web & Software Development Agency';
+        metaDescription = 'BasanTech is an engineering studio building custom software, web applications, mobile apps, and AI solutions for ambitious startups and growing businesses.';
+        canonicalUrl = 'https://basantech.online/';
     }
+
+    // Set page title
     document.title = pageTitle;
+
+    // Set standard meta description
+    updateMetaTag('name', 'description', metaDescription);
+
+    // Set Open Graph tags
+    updateMetaTag('property', 'og:title', pageTitle);
+    updateMetaTag('property', 'og:description', metaDescription);
+    updateMetaTag('property', 'og:url', canonicalUrl);
+    updateMetaTag('property', 'og:site_name', 'BasanTech');
+
+    // Set Twitter card tags
+    updateMetaTag('name', 'twitter:title', pageTitle);
+    updateMetaTag('name', 'twitter:description', metaDescription);
+
+    // Set canonical link
+    updateCanonicalUrl(canonicalUrl);
   }, [currentPage, selectedServiceId]);
 
   const handleNavigate = (page: PageView, serviceId?: ServiceId) => {
