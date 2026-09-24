@@ -34,7 +34,7 @@ export const ServiceDetailPage: React.FC<ServiceDetailPageProps> = ({
   onNavigate 
 }) => {
   const whatsappInquiryUrl = `https://wa.me/919624895641?text=${encodeURIComponent(
-    `Hello BasanTech Team, I would like to discuss a project regarding ${service.title}.\n\nPlease let me know your availability for a quick consultation.`
+    `Hello Basan Tech Team, I would like to discuss a project regarding ${service.title}.\n\nPlease let me know your availability for a quick consultation.`
   )}`;
 
   const renderServiceVisual = () => {
@@ -128,7 +128,7 @@ export const ServiceDetailPage: React.FC<ServiceDetailPageProps> = ({
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-1.5">
                     <Smartphone className="w-4 h-4 text-[#00976C]" />
-                    <span className="text-[11px] font-bold text-white">BasanTech Mobile</span>
+                    <span className="text-[11px] font-bold text-white">Basan Tech Mobile</span>
                   </div>
                   <span className="text-[10px] font-mono text-emerald-400 bg-emerald-950/60 px-2 py-0.5 rounded-full border border-emerald-500/30">iOS + Android</span>
                 </div>

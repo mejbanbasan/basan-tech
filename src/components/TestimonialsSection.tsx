@@ -90,7 +90,7 @@ export const TestimonialsSection: React.FC<TestimonialsSectionProps> = ({
             </h2>
             
             <p className="text-slate-600 text-sm sm:text-base leading-relaxed">
-              Real feedback from founders and project leads who trusted BasanTech to engineer, launch, and support their digital platforms.
+              Real feedback from founders and project leads who trusted Basan Tech to engineer, launch, and support their digital platforms.
             </p>
           </div>
 
@@ -318,7 +318,7 @@ export const TestimonialsSection: React.FC<TestimonialsSectionProps> = ({
             onClick={() => onNavigate('contact')}
             className="inline-flex items-center gap-2 px-8 py-3.5 rounded-full text-xs font-bold text-white bg-[#022A4E] hover:bg-[#00976C] transition-all duration-200 shadow-xs hover:shadow-md cursor-pointer"
           >
-            <span>Partner With BasanTech On Your Next Project</span>
+            <span>Partner With Basan Tech On Your Next Project</span>
             <ArrowUpRight className="w-3.5 h-3.5 text-emerald-300" />
           </button>
         </div>

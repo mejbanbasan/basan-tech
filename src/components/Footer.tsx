@@ -77,13 +77,13 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
             <button 
               onClick={() => onNavigate('home')} 
               className="text-left focus:outline-none cursor-pointer group py-1"
-              aria-label="BasanTech Home"
+              aria-label="Basan Tech Home"
             >
               <picture>
               <source srcSet="/basantech-logo.webp" type="image/webp" />
               <img 
                 src="/basantech-logo.png" 
-                alt="BasanTech Software & Digital" 
+                alt="Basan Tech Software & Digital" 
                 width={180}
                 height={42}
                 loading="lazy"
@@ -94,7 +94,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
           </button>
 
             <p className="text-sm text-slate-600 leading-relaxed max-w-sm">
-              BasanTech is a software engineering and digital solutions company. We design and build clean, scalable web applications, custom software, mobile apps, and automated workflows.
+              Basan Tech is a software engineering and digital solutions company. We design and build clean, scalable web applications, custom software, mobile apps, and automated workflows.
             </p>
 
             <div className="flex flex-wrap items-center gap-2">
@@ -275,7 +275,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
         {/* Bottom Bar with Required Copyright and Legal Links */}
         <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500">
           <div>
-            © 2026 BasanTech. All rights reserved.
+            © 2026 Basan Tech. All rights reserved.
           </div>
           
           <div className="flex items-center gap-4 sm:gap-6 flex-wrap">

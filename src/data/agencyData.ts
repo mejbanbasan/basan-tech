@@ -85,9 +85,9 @@ export const CASE_STUDIES: CaseStudy[] = [
       'https://images.unsplash.com/photo-1532012164546-f432f2e3777a?auto=format&fit=crop&w=800&q=80'
     ],
     tagline: 'Comprehensive Islamic online courses, digital library, and scholar-guided learning platform.',
-    summary: 'Iqra Society is an Islamic education and Da\'wah platform engineered by BasanTech using React.js and Node.js. The platform delivers structured online Islamic courses, a comprehensive digital library, scholar-guided learning modules, research publications, and interactive student learning resources on a modern responsive web architecture.',
+    summary: 'Iqra Society is an Islamic education and Da\'wah platform engineered by Basan Tech using React.js and Node.js. The platform delivers structured online Islamic courses, a comprehensive digital library, scholar-guided learning modules, research publications, and interactive student learning resources on a modern responsive web architecture.',
     problemObjective: 'Provide an authentic, accessible, and structured digital platform for global students to access Islamic courses, classical literature, Quranic studies, Arabic learning materials, and research articles with a fast, mobile-friendly experience.',
-    whatWeBuilt: 'BasanTech architected and engineered the full-stack web platform using React.js and Node.js. We built interactive learning dashboards, digital library search and reading catalogs, scholar lecture repositories, article and publication indexing, and a fully responsive learning experience.',
+    whatWeBuilt: 'Basan Tech architected and engineered the full-stack web platform using React.js and Node.js. We built interactive learning dashboards, digital library search and reading catalogs, scholar lecture repositories, article and publication indexing, and a fully responsive learning experience.',
     challenge: 'Organizing diverse educational resources—ranging from foundational courses to specialized scholarly articles and multi-volume digital books—into an intuitive, fast-loading, and mobile-optimized digital experience.',
     solution: 'Developed a performant, component-driven React.js web application powered by a Node.js backend. Implemented clear navigation hierarchies, categorized course catalogs, digital library filters, and responsive typography tailored for multilingual reading.',
     resultsMetrics: [
@@ -122,9 +122,9 @@ export const CASE_STUDIES: CaseStudy[] = [
       'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=800&q=80'
     ],
     tagline: 'Full-scale multi-vendor marketplace with seller portals, order workflows, and companion mobile app.',
-    summary: 'Lurnixe is a complete multi-vendor e-commerce marketplace platform. BasanTech built the full-featured website and is developing the companion mobile application planned for Play Store availability. The platform empowers sellers with dedicated dashboards and offers customers seamless product browsing, shopping carts, and order management.',
+    summary: 'Lurnixe is a complete multi-vendor e-commerce marketplace platform. Basan Tech built the full-featured website and is developing the companion mobile application planned for Play Store availability. The platform empowers sellers with dedicated dashboards and offers customers seamless product browsing, shopping carts, and order management.',
     problemObjective: 'Create an end-to-end multi-vendor commerce ecosystem that allows independent sellers to manage inventories and fulfill orders, while providing buyers with a smooth, responsive browsing and checkout experience across web and mobile.',
-    whatWeBuilt: 'BasanTech engineered the responsive multi-vendor web platform including seller onboarding, merchant dashboards, unified product management, shopping cart, customer accounts, and order tracking workflows. BasanTech is also engineering the mobile application for Android/Play Store.',
+    whatWeBuilt: 'Basan Tech engineered the responsive multi-vendor web platform including seller onboarding, merchant dashboards, unified product management, shopping cart, customer accounts, and order tracking workflows. Basan Tech is also engineering the mobile application for Android/Play Store.',
     challenge: 'Designing a scalable architecture capable of handling multi-merchant product catalogs, distinct seller dashboards, customer shopping carts, and synchronized state between web and mobile interfaces.',
     solution: 'Engineered a modular web application with dedicated role-based portals for sellers, customers, and administrators. Built clean REST APIs for catalog management, shopping cart persistence, and mobile application synchronization.',
     resultsMetrics: [
@@ -160,7 +160,7 @@ export const CASE_STUDIES: CaseStudy[] = [
     tagline: 'Digital Family Health Card with QR profile verification, medical records, and doctor booking.',
     summary: 'Lurnixe Health is a digital healthcare platform engineered to modernize family health management. The platform provides a unified Digital Family Health Card, QR-based rapid profile verification for emergency access, secure digital health records, doctor and clinic connectivity, and streamlined appointment booking.',
     problemObjective: 'Streamline family healthcare access by digitizing health profiles, enabling rapid emergency access to critical health data via QR verification, and connecting patients directly with healthcare providers and clinics.',
-    whatWeBuilt: 'BasanTech designed and developed the digital healthcare platform featuring Digital Family Health Card issuance, QR code generation and verification workflows, digital medical records management, clinic/doctor appointment booking, and admin management tools.',
+    whatWeBuilt: 'Basan Tech designed and developed the digital healthcare platform featuring Digital Family Health Card issuance, QR code generation and verification workflows, digital medical records management, clinic/doctor appointment booking, and admin management tools.',
     challenge: 'Ensuring rapid, secure access to essential health details during emergency consultations while maintaining data confidentiality and providing an easy interface for multi-member family health records.',
     solution: 'Implemented QR-based profile verification for instant access to critical health summaries. Designed modular health profile managers and intuitive appointment booking systems for seamless doctor-patient interactions.',
     resultsMetrics: [
@@ -194,9 +194,9 @@ export const CASE_STUDIES: CaseStudy[] = [
       'https://images.unsplash.com/photo-1469571486292-0ba58a3f068b?auto=format&fit=crop&w=800&q=80'
     ],
     tagline: 'Non-profit digital hub empowering digital education, youth sports, health camps, and community support.',
-    summary: 'KECF India (Khidmat-e-Khalq Educational & Charitable Foundation) is an NGO dedicated to social impact, education, and community empowerment. BasanTech engineered a professional digital platform showcasing their work across digital education, sports and youth development, health and wellbeing, mentorship, skill and livelihood development, volunteer engagement, and transparent online donations.',
+    summary: 'KECF India (Khidmat-e-Khalq Educational & Charitable Foundation) is an NGO dedicated to social impact, education, and community empowerment. Basan Tech engineered a professional digital platform showcasing their work across digital education, sports and youth development, health and wellbeing, mentorship, skill and livelihood development, volunteer engagement, and transparent online donations.',
     problemObjective: 'Provide KECF India with a modern, transparent, and engaging web presence to mobilize community support, facilitate donations, attract volunteers, and showcase active education and youth development programs.',
-    whatWeBuilt: 'BasanTech delivered a clean, mobile-responsive web platform featuring comprehensive initiative overviews, online donation pathways, volunteer registration portals, youth mentorship highlights, and community impact showcases.',
+    whatWeBuilt: 'Basan Tech delivered a clean, mobile-responsive web platform featuring comprehensive initiative overviews, online donation pathways, volunteer registration portals, youth mentorship highlights, and community impact showcases.',
     challenge: 'Presenting a multi-faceted non-profit organization\'s diverse initiatives in an inspiring, clean, and easily navigable structure that encourages donor and volunteer participation.',
     solution: 'Structured clear programmatic pillars with dedicated sections for Digital Education, Youth Sports, Healthcare Outreach, Mentorship, and Skill Training. Integrated intuitive donation and volunteer onboarding pathways.',
     resultsMetrics: [
@@ -230,9 +230,9 @@ export const CASE_STUDIES: CaseStudy[] = [
       'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=800&q=80'
     ],
     tagline: 'Bio-innovation incubation portal, startup mentorship, hackathons, and skill development programs.',
-    summary: 'AIC-IIIM (Atal Incubation Centre - CSIR-IIIM Bio-Innovation Foundation) is a premier incubator established under the Atal Innovation Mission (NITI Aayog) to foster bio-entrepreneurship, startup creation, and technological innovation. BasanTech delivered the official web portal showcasing incubator facilities, startup onboarding, skill development courses, hackathon challenges, and research commercialization.',
+    summary: 'AIC-IIIM (Atal Incubation Centre - CSIR-IIIM Bio-Innovation Foundation) is a premier incubator established under the Atal Innovation Mission (NITI Aayog) to foster bio-entrepreneurship, startup creation, and technological innovation. Basan Tech delivered the official web portal showcasing incubator facilities, startup onboarding, skill development courses, hackathon challenges, and research commercialization.',
     problemObjective: 'Provide an authoritative, accessible institutional web portal for startups, researchers, and innovators to connect with incubation resources, apply for startup MoUs, participate in hackathons, and access specialized technical skill training.',
-    whatWeBuilt: 'BasanTech engineered the official AIC-IIIM web portal with dedicated sections for incubator facilities, startup incubation programs, skill training courses, hackathon competition registration, news announcements, and institutional linkages.',
+    whatWeBuilt: 'Basan Tech engineered the official AIC-IIIM web portal with dedicated sections for incubator facilities, startup incubation programs, skill training courses, hackathon competition registration, news announcements, and institutional linkages.',
     challenge: 'Organizing scientific research infrastructure, incubation guidelines, government initiative details, and startup application channels into a polished, modern, and user-friendly digital experience.',
     solution: 'Designed an institutional web architecture with clear navigation for innovators and researchers. Implemented dedicated landing modules for skill development programs, hackathon registrations, startup incubatee showcases, and institutional updates.',
     resultsMetrics: [
@@ -261,7 +261,7 @@ export const AGENCY_TEAM: TeamMember[] = [
     role: 'Founder',
     department: 'Leadership & Architecture',
     avatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=400&q=80',
-    bio: 'Basan founded BasanTech to build clean, reliable digital solutions for businesses looking to grow online. He helps startups and growing businesses launch modern websites, web applications, and custom software with a focus on quality and long-term value.',
+    bio: 'Basan founded Basan Tech to build clean, reliable digital solutions for businesses looking to grow online. He helps startups and growing businesses launch modern websites, web applications, and custom software with a focus on quality and long-term value.',
     skills: ['Web & Software Development', 'Business-focused Digital Solutions', 'Scalable, Modern Technology'],
     linkedin: 'https://www.linkedin.com/in/mejbanbasan/'
   },
@@ -270,7 +270,7 @@ export const AGENCY_TEAM: TeamMember[] = [
     role: 'Leadership',
     department: 'Client & Delivery Management',
     avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=400&q=80',
-    bio: "Ahnaf helps shape BasanTech's project execution and client experience, making sure every website is delivered with attention to detail and technical quality. He specializes in WordPress development and helps clients bring their vision to life online.",
+    bio: "Ahnaf helps shape Basan Tech's project execution and client experience, making sure every website is delivered with attention to detail and technical quality. He specializes in WordPress development and helps clients bring their vision to life online.",
     skills: ['WordPress Development', 'Client Project & Delivery Management', 'Quality-focused Execution'],
     linkedin: 'https://www.linkedin.com/in/ahnafmadhiya/'
   }
@@ -283,7 +283,7 @@ export const TESTIMONIALS_DATA: Testimonial[] = [
     avatar: 'ED',
     rating: 5,
     serviceType: 'Learning Platform & Student Portal',
-    quote: 'BasanTech engineered our digital learning platform from the ground up. Their communication across weekly sprints was crystal clear, the student-parent dashboard is lightning-fast, and their post-launch support helped us onboard over 1,200 active learners with zero downtime.',
+    quote: 'Basan Tech engineered our digital learning platform from the ground up. Their communication across weekly sprints was crystal clear, the student-parent dashboard is lightning-fast, and their post-launch support helped us onboard over 1,200 active learners with zero downtime.',
     date: 'February 2025'
   },
   {
@@ -292,7 +292,7 @@ export const TESTIMONIALS_DATA: Testimonial[] = [
     avatar: 'CM',
     rating: 5,
     serviceType: 'Custom Web & Operations Software',
-    quote: 'We needed a centralized system to handle resident dues, maintenance tickets, and gate security. The BasanTech team listened closely to our ground workflow, delivered clean and dependable code, and our non-technical staff uses it effortlessly every day.',
+    quote: 'We needed a centralized system to handle resident dues, maintenance tickets, and gate security. The Basan Tech team listened closely to our ground workflow, delivered clean and dependable code, and our non-technical staff uses it effortlessly every day.',
     date: 'January 2025'
   },
   {
@@ -301,7 +301,7 @@ export const TESTIMONIALS_DATA: Testimonial[] = [
     avatar: 'IW',
     rating: 5,
     serviceType: 'Institutional Website & CMS Portal',
-    quote: 'BasanTech treated our institutional web portal with immense dedication. The responsive layout, transparent donation tracking, and bilingual support exceeded our expectations. Even months after launch, their team is always available whenever we need quick assistance.',
+    quote: 'Basan Tech treated our institutional web portal with immense dedication. The responsive layout, transparent donation tracking, and bilingual support exceeded our expectations. Even months after launch, their team is always available whenever we need quick assistance.',
     date: 'December 2024'
   },
   {
@@ -310,7 +310,7 @@ export const TESTIMONIALS_DATA: Testimonial[] = [
     avatar: 'EC',
     rating: 5,
     serviceType: 'E-Commerce & Payment Flow',
-    quote: 'Our previous storefront struggled with cart drop-offs and slow mobile checkout. BasanTech re-engineered our platform with instant UPI and card gateways plus real-time inventory sync. Our mobile checkout conversion rate increased noticeably within weeks.',
+    quote: 'Our previous storefront struggled with cart drop-offs and slow mobile checkout. Basan Tech re-engineered our platform with instant UPI and card gateways plus real-time inventory sync. Our mobile checkout conversion rate increased noticeably within weeks.',
     date: 'November 2024'
   },
   {
@@ -328,7 +328,7 @@ export const TESTIMONIALS_DATA: Testimonial[] = [
     avatar: 'HS',
     rating: 5,
     serviceType: 'Custom Software & Health Records',
-    quote: 'Data privacy and quick access to records were non-negotiable for our clinic operations. BasanTech delivered a dependable, well-documented architecture with complete code handover and zero vendor lock-in. Their 30-day warranty support was top tier.',
+    quote: 'Data privacy and quick access to records were non-negotiable for our clinic operations. Basan Tech delivered a dependable, well-documented architecture with complete code handover and zero vendor lock-in. Their 30-day warranty support was top tier.',
     date: 'September 2024'
   }
 ];
@@ -370,7 +370,7 @@ export const CLIENT_COMMITMENTS: ClientCommitment[] = [
 export const AGENCY_FAQS = [
   {
     category: 'General & Engagement',
-    question: 'How do we get started working with BasanTech?',
+    question: 'How do we get started working with Basan Tech?',
     answer: 'Getting started is simple: submit your project details through our contact form or reach out directly. We will review your goals, formulate a clear technical blueprint, and provide a fixed proposal and timeline within 24–48 hours.'
   },
   {
@@ -380,7 +380,7 @@ export const AGENCY_FAQS = [
   },
   {
     category: 'Technology & Quality',
-    question: 'How does BasanTech ensure code quality and security?',
+    question: 'How does Basan Tech ensure code quality and security?',
     answer: 'Every project follows modern clean code principles, strict TypeScript type-checking, responsive design verification across viewports, and OWASP security practices before deployment.'
   },
   {

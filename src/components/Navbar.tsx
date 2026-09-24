@@ -80,13 +80,13 @@ export const Navbar: React.FC<NavbarProps> = ({ currentPage, onNavigate }) => {
             id="nav-logo-btn"
             onClick={() => onNavigate('home')}
             className="flex items-center self-center text-left group focus:outline-none cursor-pointer py-0.5"
-            aria-label="BasanTech Home"
+            aria-label="Basan Tech Home"
           >
             <picture>
               <source srcSet="/basantech-logo.webp" type="image/webp" />
               <img 
                 src="/basantech-logo.png" 
-                alt="BasanTech Software & Digital" 
+                alt="Basan Tech Software & Digital" 
                 width={200}
                 height={48}
                 decoding="async"
