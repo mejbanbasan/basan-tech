@@ -89,40 +89,43 @@ export const TestimonialsSection: React.FC<TestimonialsSectionProps> = ({
               {marqueeItems.map((item, idx) => (
                 <div
                   key={`${item.id}-${idx}`}
-                  className="w-[290px] sm:w-[360px] md:w-[400px] shrink-0 rounded-2xl bg-white border border-slate-200 hover:border-[#00976C] p-6 sm:p-7 shadow-xs hover:shadow-md transition-all duration-200 flex flex-col justify-between space-y-5 select-none"
+                  className="w-[280px] sm:w-[350px] md:w-[380px] shrink-0 rounded-2xl bg-white border border-slate-200 hover:border-[#00976C] p-5 sm:p-6 shadow-xs hover:shadow-md transition-all duration-200 flex flex-col justify-between space-y-4 select-none"
                 >
-                  <div className="space-y-3.5">
-                    {/* Top: 5-Star Rating + Service Tag */}
-                    <div className="flex items-center justify-between gap-2">
-                      <div className="flex items-center gap-1">
-                        {[...Array(item.rating)].map((_, sIdx) => (
-                          <Star key={sIdx} className="w-4 h-4 fill-amber-400 text-amber-400" />
-                        ))}
+                  <div className="space-y-3">
+                    {/* Card Top: Client Avatar + Client Name (Lurnixe, Iqra Society, etc.) & Role */}
+                    <div className="flex items-start gap-3">
+                      <div className="w-10 h-10 rounded-xl bg-[#022A4E] text-white flex items-center justify-center font-bold text-xs shrink-0 shadow-2xs mt-0.5">
+                        {item.avatar}
                       </div>
-                      <span className="text-[10px] font-mono font-semibold px-2.5 py-0.5 rounded-full bg-emerald-50 text-emerald-800 border border-emerald-200/60 shrink-0">
-                        {item.serviceType}
-                      </span>
+                      <div className="min-w-0 flex-1">
+                        <h3 className="text-base sm:text-lg font-bold text-[#022A4E] leading-snug break-words">
+                          {item.clientName}
+                        </h3>
+                        <p className="text-xs text-slate-500 font-medium leading-snug mt-0.5 break-words">
+                          {item.clientTitle}
+                        </p>
+                      </div>
+                    </div>
+
+                    {/* 5-Star Rating Row */}
+                    <div className="flex items-center gap-1 pt-0.5">
+                      {[...Array(item.rating)].map((_, sIdx) => (
+                        <Star key={sIdx} className="w-3.5 h-3.5 fill-amber-400 text-amber-400" />
+                      ))}
                     </div>
 
                     {/* Testimonial Quote */}
-                    <p className="text-slate-700 text-xs sm:text-sm leading-relaxed italic font-normal">
+                    <p className="text-slate-700 text-xs sm:text-sm leading-relaxed italic font-normal break-words pt-1">
                       "{item.quote}"
                     </p>
                   </div>
 
-                  {/* Review Author: Initials Avatar + Role Label (No fake names) */}
-                  <div className="pt-4 border-t border-slate-100 flex items-center gap-3">
-                    <div className="w-10 h-10 rounded-xl bg-[#022A4E] text-white flex items-center justify-center font-bold text-xs shrink-0 shadow-2xs">
-                      {item.avatar}
-                    </div>
-                    <div className="min-w-0 flex-1">
-                      <h3 className="text-sm font-bold text-[#022A4E] leading-snug break-words">
-                        {item.clientTitle}
-                      </h3>
-                      <p className="text-[11px] text-slate-500 mt-0.5 leading-snug">
-                        Client Project Review
-                      </p>
-                    </div>
+                  {/* Card Bottom: Delivered Project / Service (Properly wrapped, no overflow on mobile) */}
+                  <div className="pt-3 border-t border-slate-100 flex items-center gap-2">
+                    <span className="w-1.5 h-1.5 rounded-full bg-[#00976C] shrink-0" />
+                    <span className="text-[11px] sm:text-xs font-semibold text-[#00976C] leading-snug break-words flex-1 min-w-0">
+                      {item.serviceType}
+                    </span>
                   </div>
                 </div>
               ))}

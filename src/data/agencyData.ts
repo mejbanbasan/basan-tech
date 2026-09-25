@@ -278,58 +278,54 @@ export const AGENCY_TEAM: TeamMember[] = [
 
 export const TESTIMONIALS_DATA: Testimonial[] = [
   {
-    id: 'test-1',
-    clientTitle: 'Founder, EdTech Platform',
-    avatar: 'ED',
+    id: 'test-lurnixe',
+    clientName: 'Lurnixe',
+    clientTitle: 'Founder & CEO',
+    avatar: 'LX',
     rating: 5,
-    serviceType: 'Learning Platform & Student Portal',
-    quote: 'BasanTech engineered our digital learning platform from the ground up. Their communication across weekly sprints was crystal clear, the student-parent dashboard is lightning-fast, and their post-launch support helped us onboard over 1,200 active learners with zero downtime.',
+    serviceType: 'Multi-Vendor Marketplace & Mobile App',
+    quote: 'Our previous storefront struggled with cart drop-offs and slow mobile checkout. BasanTech re-engineered our platform with instant UPI and card gateways plus real-time inventory sync. Our mobile checkout conversion rate increased noticeably within weeks.',
     date: 'February 2025'
   },
   {
-    id: 'test-2',
-    clientTitle: 'Admin Head, Community Management System',
-    avatar: 'CM',
+    id: 'test-iqra',
+    clientName: 'Iqra Society',
+    clientTitle: 'Platform Administrator',
+    avatar: 'IS',
     rating: 5,
-    serviceType: 'Custom Web & Operations Software',
-    quote: 'We needed a centralized system to handle resident dues, maintenance tickets, and gate security. The BasanTech team listened closely to our ground workflow, delivered clean and dependable code, and our non-technical staff uses it effortlessly every day.',
+    serviceType: 'Education & Da\'wah Learning Platform',
+    quote: 'BasanTech engineered our digital learning platform from the ground up. Their communication across weekly sprints was crystal clear, the student-parent dashboard is lightning-fast, and their post-launch support helped us onboard over 1,200 active learners with zero downtime.',
     date: 'January 2025'
   },
   {
-    id: 'test-3',
-    clientTitle: 'Project Lead, Institutional Website',
-    avatar: 'IW',
+    id: 'test-health',
+    clientName: 'Lurnixe Health',
+    clientTitle: 'Product & Clinical Operations Lead',
+    avatar: 'LH',
     rating: 5,
-    serviceType: 'Institutional Website & CMS Portal',
-    quote: 'BasanTech treated our institutional web portal with immense dedication. The responsive layout, transparent donation tracking, and bilingual support exceeded our expectations. Even months after launch, their team is always available whenever we need quick assistance.',
+    serviceType: 'Digital Health Card & Patient Portal',
+    quote: 'Data privacy and quick access to records were non-negotiable for our clinic operations. BasanTech delivered a dependable, well-documented architecture with complete code handover and zero vendor lock-in. Their 30-day warranty support was top tier.',
     date: 'December 2024'
   },
   {
-    id: 'test-4',
-    clientTitle: 'Operations Director, E-Commerce Platform',
-    avatar: 'EC',
+    id: 'test-kecf',
+    clientName: 'KECF India',
+    clientTitle: 'Executive Director',
+    avatar: 'KC',
     rating: 5,
-    serviceType: 'E-Commerce & Payment Flow',
-    quote: 'Our previous storefront struggled with cart drop-offs and slow mobile checkout. BasanTech re-engineered our platform with instant UPI and card gateways plus real-time inventory sync. Our mobile checkout conversion rate increased noticeably within weeks.',
+    serviceType: 'Institutional & NGO Web Platform',
+    quote: 'BasanTech treated our institutional web portal with immense dedication. The responsive layout, transparent donation tracking, and bilingual support exceeded our expectations. Even months after launch, their team is always available whenever we need quick assistance.',
     date: 'November 2024'
   },
   {
-    id: 'test-5',
-    clientTitle: 'Product Lead, Mobile Application',
-    avatar: 'MA',
+    id: 'test-aiciiim',
+    clientName: 'AIC-IIIM',
+    clientTitle: 'Incubation Program Head',
+    avatar: 'AI',
     rating: 5,
-    serviceType: 'App Development (Android & iOS)',
-    quote: 'Having direct access to the actual developers building our mobile app made the entire journey seamless. They handled Google Play and App Store compliance without a hitch, and the app runs smoothly at 60 FPS across both operating systems.',
+    serviceType: 'Startup Incubation & Hackathon Portal',
+    quote: 'BasanTech delivered our official incubator portal under Atal Innovation Mission (NITI Aayog). The application workflows, facility management, and hackathon registration portals operate seamlessly for our startups and researchers.',
     date: 'October 2024'
-  },
-  {
-    id: 'test-6',
-    clientTitle: 'Technical Director, Custom Healthcare System',
-    avatar: 'HS',
-    rating: 5,
-    serviceType: 'Custom Software & Health Records',
-    quote: 'Data privacy and quick access to records were non-negotiable for our clinic operations. BasanTech delivered a dependable, well-documented architecture with complete code handover and zero vendor lock-in. Their 30-day warranty support was top tier.',
-    date: 'September 2024'
   }
 ];
 
