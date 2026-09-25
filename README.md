@@ -1,4 +1,4 @@
-# Basan Tech
+# BasanTech
 
 > Full-Service Digital Product & Software Engineering Agency specializing in Web, Mobile, Custom & Desktop Software, E-Commerce, and Social Media Management.
 

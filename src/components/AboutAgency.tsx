@@ -46,7 +46,7 @@ export const AboutAgency: React.FC<AboutAgencyProps> = ({
 
             <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-emerald-50 border border-emerald-200 text-xs font-semibold text-emerald-800">
               <span className="w-2 h-2 rounded-full bg-[#00976C]"></span>
-              <span>ABOUT BASAN TECH</span>
+              <span>ABOUT BASANTECH</span>
             </div>
 
             <h2 className="text-3xl sm:text-5xl font-bold text-[#022A4E] tracking-tight leading-tight">
@@ -54,7 +54,7 @@ export const AboutAgency: React.FC<AboutAgencyProps> = ({
             </h2>
 
             <p className="text-slate-800 text-base sm:text-lg leading-relaxed font-medium">
-              Basan Tech is an independent software studio headquartered in Palanpur, Gujarat, dedicated to building clean, dependable digital solutions for businesses looking to grow online.
+              BasanTech is an independent software studio headquartered in Palanpur, Gujarat, dedicated to building clean, dependable digital solutions for businesses looking to grow online.
             </p>
 
             <p className="text-slate-600 text-sm sm:text-base leading-relaxed">
@@ -94,7 +94,7 @@ export const AboutAgency: React.FC<AboutAgencyProps> = ({
             <div className="rounded-3xl overflow-hidden border border-slate-200 bg-white shadow-sm space-y-0">
               <img
                 src={aboutCollabImg}
-                alt="Basan Tech Engineering Collaboration"
+                alt="BasanTech Engineering Collaboration"
                 width={640}
                 height={360}
                 loading="lazy"

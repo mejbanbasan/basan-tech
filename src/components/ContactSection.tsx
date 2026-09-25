@@ -71,7 +71,7 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
           company: company || 'Not provided',
           projectType: projectType || 'General Inquiry',
           message: projectDetails,
-          _subject: `New Project Inquiry: [${fullName}] - ${projectType || 'Software Development'} | Basan Tech`,
+          _subject: `New Project Inquiry: [${fullName}] - ${projectType || 'Software Development'} | BasanTech`,
           _replyto: email,
           _template: 'table',
           _captcha: 'false'
