@@ -74,9 +74,10 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
           
           {/* Column 1: Brand & Identity */}
           <div className="lg:col-span-4 space-y-4">
-            <button 
-              onClick={() => onNavigate('home')} 
-              className="text-left focus:outline-none cursor-pointer group py-1"
+            <a 
+              href="/"
+              onClick={(e) => { e.preventDefault(); onNavigate('home'); }} 
+              className="text-left focus:outline-none cursor-pointer group py-1 inline-block"
               aria-label="Basan Tech Home"
             >
               <picture>
@@ -91,7 +92,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
                 className="h-11 sm:h-12 w-auto object-contain transition-transform group-hover:scale-[1.02]" 
               />
             </picture>
-          </button>
+          </a>
 
             <p className="text-sm text-slate-600 leading-relaxed max-w-sm">
               Basan Tech is a software engineering and digital solutions company. We design and build clean, scalable web applications, custom software, mobile apps, and automated workflows.
@@ -117,22 +118,24 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
             <ul className="space-y-2 text-xs sm:text-sm text-slate-600">
               {SERVICES_DATA.map((service) => (
                 <li key={service.id}>
-                  <button
-                    onClick={() => onNavigate('service-detail', service.id)}
-                    className="hover:text-[#00976C] transition-colors text-left cursor-pointer"
+                  <a
+                    href={`/services/${service.id}`}
+                    onClick={(e) => { e.preventDefault(); onNavigate('service-detail', service.id); }}
+                    className="hover:text-[#00976C] transition-colors text-left cursor-pointer inline-block"
                   >
                     {service.title}
-                  </button>
+                  </a>
                 </li>
               ))}
               <li>
-                <button
-                  onClick={() => onNavigate('services')}
+                <a
+                  href="/services"
+                  onClick={(e) => { e.preventDefault(); onNavigate('services'); }}
                   className="font-semibold text-[#00976C] hover:underline flex items-center gap-1 cursor-pointer pt-1"
                 >
                   <span>Explore All Services</span>
                   <ArrowUpRight className="w-3 h-3" />
-                </button>
+                </a>
               </li>
             </ul>
           </div>
@@ -144,44 +147,58 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
             </h3>
             <ul className="space-y-2 text-xs sm:text-sm text-slate-600">
               <li>
-                <button 
-                  onClick={() => onNavigate('home')}
-                  className="hover:text-[#00976C] transition-colors cursor-pointer"
+                <a 
+                  href="/"
+                  onClick={(e) => { e.preventDefault(); onNavigate('home'); }}
+                  className="hover:text-[#00976C] transition-colors cursor-pointer inline-block"
                 >
                   Home
-                </button>
+                </a>
               </li>
               <li>
-                <button 
-                  onClick={() => onNavigate('about')}
-                  className="hover:text-[#00976C] transition-colors cursor-pointer"
+                <a 
+                  href="/about"
+                  onClick={(e) => { e.preventDefault(); onNavigate('about'); }}
+                  className="hover:text-[#00976C] transition-colors cursor-pointer inline-block"
                 >
                   About Us
-                </button>
+                </a>
               </li>
               <li>
-                <button 
-                  onClick={() => onNavigate('portfolio')}
-                  className="hover:text-[#00976C] transition-colors cursor-pointer"
+                <a 
+                  href="/work"
+                  onClick={(e) => { e.preventDefault(); onNavigate('portfolio'); }}
+                  className="hover:text-[#00976C] transition-colors cursor-pointer inline-block"
                 >
                   Work &amp; Case Studies
-                </button>
+                </a>
               </li>
               <li>
-                <button 
-                  onClick={() => onNavigate('services')}
-                  className="hover:text-[#00976C] transition-colors cursor-pointer"
+                <a 
+                  href="/services"
+                  onClick={(e) => { e.preventDefault(); onNavigate('services'); }}
+                  className="hover:text-[#00976C] transition-colors cursor-pointer inline-block"
                 >
                   Services
-                </button>
+                </a>
               </li>
               <li>
-                <button 
-                  onClick={() => onNavigate('contact')}
-                  className="hover:text-[#00976C] transition-colors cursor-pointer"
+                <a 
+                  href="/testimonials"
+                  onClick={(e) => { e.preventDefault(); onNavigate('testimonials'); }}
+                  className="hover:text-[#00976C] transition-colors cursor-pointer inline-block"
+                >
+                  Client Deliveries
+                </a>
+              </li>
+              <li>
+                <a 
+                  href="/contact"
+                  onClick={(e) => { e.preventDefault(); onNavigate('contact'); }}
+                  className="hover:text-[#00976C] transition-colors cursor-pointer inline-block"
                 >
                   Contact &amp; Inquiries
-                </button>
+                </a>
               </li>
             </ul>
           </div>
@@ -279,24 +296,27 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
           </div>
           
           <div className="flex items-center gap-4 sm:gap-6 flex-wrap">
-            <button 
-              onClick={() => onNavigate('privacy')}
+            <a 
+              href="/privacy-policy"
+              onClick={(e) => { e.preventDefault(); onNavigate('privacy'); }}
               className="font-medium text-slate-600 hover:text-[#00976C] transition-colors cursor-pointer underline-offset-4 hover:underline py-2.5 min-h-[44px] inline-flex items-center"
             >
               Privacy Policy
-            </button>
-            <button 
-              onClick={() => onNavigate('terms')}
+            </a>
+            <a 
+              href="/terms-of-service"
+              onClick={(e) => { e.preventDefault(); onNavigate('terms'); }}
               className="font-medium text-slate-600 hover:text-[#00976C] transition-colors cursor-pointer underline-offset-4 hover:underline py-2.5 min-h-[44px] inline-flex items-center"
             >
               Terms of Service
-            </button>
-            <button 
-              onClick={() => onNavigate('contact')}
+            </a>
+            <a 
+              href="/contact"
+              onClick={(e) => { e.preventDefault(); onNavigate('contact'); }}
               className="font-medium text-slate-600 hover:text-[#00976C] transition-colors cursor-pointer py-2.5 min-h-[44px] inline-flex items-center"
             >
               Security
-            </button>
+            </a>
           </div>
         </div>
 

@@ -394,26 +394,67 @@ export const ServiceDetailPage: React.FC<ServiceDetailPageProps> = ({
     }
   };
 
+  const breadcrumbSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      {
+        '@type': 'ListItem',
+        position: 1,
+        name: 'Home',
+        item: 'https://basantech.online/'
+      },
+      {
+        '@type': 'ListItem',
+        position: 2,
+        name: 'Services',
+        item: 'https://basantech.online/services'
+      },
+      {
+        '@type': 'ListItem',
+        position: 3,
+        name: service.title,
+        item: `https://basantech.online/services/${service.id}`
+      }
+    ]
+  };
+
   return (
     <div className="pt-24 sm:pt-28 pb-16 sm:pb-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16 sm:space-y-20">
       
-      {/* 1. Sleek Top Navigation Breadcrumb */}
-      <nav aria-label="Breadcrumb" className="flex items-center gap-2 text-xs text-slate-500 font-medium">
-        <button 
-          onClick={() => onNavigate('home')} 
-          className="hover:text-[#00976C] transition-colors cursor-pointer"
-        >
-          Home
-        </button>
-        <span>/</span>
-        <button 
-          onClick={() => onNavigate('services')} 
-          className="hover:text-[#00976C] transition-colors cursor-pointer"
-        >
-          Services
-        </button>
-        <span>/</span>
-        <span className="text-[#022A4E] font-semibold">{service.title}</span>
+      {/* Dynamic JSON-LD Breadcrumb Schema for Google Sitelinks */}
+      <script 
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
+
+      {/* 1. Sleek Semantic Breadcrumb Navigation */}
+      <nav aria-label="Breadcrumb">
+        <ol className="flex items-center gap-2 text-xs text-slate-500 font-medium list-none p-0 m-0 flex-wrap">
+          <li className="flex items-center gap-2">
+            <a 
+              href="/"
+              onClick={(e) => { e.preventDefault(); onNavigate('home'); }} 
+              className="hover:text-[#00976C] transition-colors cursor-pointer"
+            >
+              Home
+            </a>
+            <span className="text-slate-300">/</span>
+          </li>
+          <li className="flex items-center gap-2">
+            <a 
+              href="/services"
+              onClick={(e) => { e.preventDefault(); onNavigate('services'); }} 
+              className="hover:text-[#00976C] transition-colors cursor-pointer"
+            >
+              Services
+            </a>
+            <span className="text-slate-300">/</span>
+          </li>
+          <li className="text-[#022A4E] font-semibold" aria-current="page">
+            {service.title}
+          </li>
+        </ol>
       </nav>
 
       {/* 2. Hero Section with 2-Column Responsive Layout */}

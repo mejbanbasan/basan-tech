@@ -55,12 +55,12 @@ export const Navbar: React.FC<NavbarProps> = ({ currentPage, onNavigate }) => {
     }
   };
 
-  const navLinks: { label: string; page: PageView; hasDropdown?: boolean }[] = [
-    { label: 'Home', page: 'home' },
-    { label: 'Services', page: 'services', hasDropdown: true },
-    { label: 'Work', page: 'portfolio' },
-    { label: 'About', page: 'about' },
-    { label: 'Contact', page: 'contact' },
+  const navLinks: { label: string; page: PageView; href: string; hasDropdown?: boolean }[] = [
+    { label: 'Home', page: 'home', href: '/' },
+    { label: 'Services', page: 'services', href: '/services', hasDropdown: true },
+    { label: 'Work', page: 'portfolio', href: '/work' },
+    { label: 'About', page: 'about', href: '/about' },
+    { label: 'Contact', page: 'contact', href: '/contact' },
   ];
 
   return (
@@ -76,9 +76,10 @@ export const Navbar: React.FC<NavbarProps> = ({ currentPage, onNavigate }) => {
         <div className="flex items-center justify-between">
           
           {/* Attached Full Brand Logo (Transparent & Proportionate) */}
-          <button 
+          <a 
             id="nav-logo-btn"
-            onClick={() => onNavigate('home')}
+            href="/"
+            onClick={(e) => { e.preventDefault(); onNavigate('home'); }}
             className="flex items-center self-center text-left group focus:outline-none cursor-pointer py-0.5"
             aria-label="Basan Tech Home"
           >
@@ -93,7 +94,7 @@ export const Navbar: React.FC<NavbarProps> = ({ currentPage, onNavigate }) => {
                 className="h-11 sm:h-12 md:h-[50px] w-auto object-contain transition-transform duration-200 group-hover:scale-[1.02]" 
               />
             </picture>
-          </button>
+          </a>
 
           {/* Desktop Navigation Links */}
           <nav className="hidden md:flex items-center gap-1 bg-slate-50/90 border border-slate-200 px-2 py-1.5 rounded-full shadow-2xs">
@@ -124,22 +125,26 @@ export const Navbar: React.FC<NavbarProps> = ({ currentPage, onNavigate }) => {
                       <div className="absolute top-full left-0 w-64 pt-2 z-50">
                         <div className="rounded-xl py-2 px-1.5 shadow-lg border border-slate-200 bg-white">
                           {SERVICES_DATA.map((service) => (
-                            <button
+                            <a
                               key={service.id}
+                              href={`/services/${service.id}`}
                               id={`nav-service-${service.id}`}
-                              onClick={() => {
+                              onClick={(e) => {
+                                e.preventDefault();
                                 onNavigate('service-detail', service.id);
                                 setServicesDropdownOpen(false);
                               }}
                               className="w-full text-left px-3 py-2 text-xs font-medium text-slate-700 hover:text-[#00976C] hover:bg-slate-50 rounded-lg transition-colors block cursor-pointer"
                             >
                               {service.title}
-                            </button>
+                            </a>
                           ))}
                           <div className="mt-1.5 pt-1.5 border-t border-slate-100">
-                            <button
+                            <a
+                              href="/services"
                               id="nav-all-services-link"
-                              onClick={() => {
+                              onClick={(e) => {
+                                e.preventDefault();
                                 onNavigate('services');
                                 setServicesDropdownOpen(false);
                               }}
@@ -147,7 +152,7 @@ export const Navbar: React.FC<NavbarProps> = ({ currentPage, onNavigate }) => {
                             >
                               <span>All Services Overview</span>
                               <span>→</span>
-                            </button>
+                            </a>
                           </div>
                         </div>
                       </div>
@@ -157,10 +162,14 @@ export const Navbar: React.FC<NavbarProps> = ({ currentPage, onNavigate }) => {
               }
 
               return (
-                <button
+                <a
                   key={link.label}
+                  href={link.href}
                   id={`nav-link-${link.page}`}
-                  onClick={() => onNavigate(link.page)}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    onNavigate(link.page);
+                  }}
                   className={`px-3.5 py-2 min-h-[44px] inline-flex items-center text-xs font-semibold rounded-full transition-all duration-150 cursor-pointer ${
                     currentPage === link.page
                       ? 'bg-[#022A4E] text-white shadow-xs'
@@ -168,7 +177,7 @@ export const Navbar: React.FC<NavbarProps> = ({ currentPage, onNavigate }) => {
                   }`}
                 >
                   {link.label}
-                </button>
+                </a>
               );
             })}
           </nav>
@@ -238,10 +247,12 @@ export const Navbar: React.FC<NavbarProps> = ({ currentPage, onNavigate }) => {
                     >
                       <div className="pl-3 pr-1 py-1.5 flex flex-col gap-1 border-l-2 border-emerald-300 ml-3">
                         {SERVICES_DATA.map((service) => (
-                          <button
+                          <a
                             key={service.id}
+                            href={`/services/${service.id}`}
                             id={`mobile-service-item-${service.id}`}
-                            onClick={() => {
+                            onClick={(e) => {
+                              e.preventDefault();
                               onNavigate('service-detail', service.id);
                               setMobileMenuOpen(false);
                             }}
@@ -249,11 +260,13 @@ export const Navbar: React.FC<NavbarProps> = ({ currentPage, onNavigate }) => {
                           >
                             <span>{service.title}</span>
                             <span className="text-[10px] text-slate-400 font-mono">→</span>
-                          </button>
+                          </a>
                         ))}
-                        <button
+                        <a
+                          href="/services"
                           id="mobile-all-services-link"
-                          onClick={() => {
+                          onClick={(e) => {
+                            e.preventDefault();
                             onNavigate('services');
                             setMobileMenuOpen(false);
                           }}
@@ -261,7 +274,7 @@ export const Navbar: React.FC<NavbarProps> = ({ currentPage, onNavigate }) => {
                         >
                           <span>Explore All Services Overview</span>
                           <span>→</span>
-                        </button>
+                        </a>
                       </div>
                     </div>
                   </div>
@@ -269,10 +282,12 @@ export const Navbar: React.FC<NavbarProps> = ({ currentPage, onNavigate }) => {
               }
 
               return (
-                <button
+                <a
                   key={link.label}
+                  href={link.href}
                   id={`mobile-nav-${link.page}`}
-                  onClick={() => {
+                  onClick={(e) => {
+                    e.preventDefault();
                     onNavigate(link.page);
                     setMobileMenuOpen(false);
                   }}
@@ -283,7 +298,7 @@ export const Navbar: React.FC<NavbarProps> = ({ currentPage, onNavigate }) => {
                   }`}
                 >
                   <span>{link.label}</span>
-                </button>
+                </a>
               );
             })}
 

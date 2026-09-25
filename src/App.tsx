@@ -79,13 +79,17 @@ const getRouteFromLocation = (): { page: PageView; serviceId?: ServiceId } => {
   const cleanPath = pathname.replace(/^\//, '').replace(/\/$/, '');
   const validPages: PageView[] = ['services', 'portfolio', 'about', 'testimonials', 'contact', 'privacy', 'terms'];
 
-  if (cleanPath === 'work') return { page: 'portfolio' };
+  if (cleanPath === 'work' || cleanPath === 'portfolio') return { page: 'portfolio' };
+  if (cleanPath === 'privacy-policy' || cleanPath === 'privacy') return { page: 'privacy' };
+  if (cleanPath === 'terms-of-service' || cleanPath === 'terms') return { page: 'terms' };
   if (validPages.includes(cleanPath as PageView)) {
     return { page: cleanPath as PageView };
   }
 
   // 4. Fallback to hash if present (for old bookmarks/links)
-  if (hash === 'work') return { page: 'portfolio' };
+  if (hash === 'work' || hash === 'portfolio') return { page: 'portfolio' };
+  if (hash === 'privacy-policy' || hash === 'privacy') return { page: 'privacy' };
+  if (hash === 'terms-of-service' || hash === 'terms') return { page: 'terms' };
   if (validPages.includes(hash as PageView)) {
     return { page: hash as PageView };
   }
@@ -234,6 +238,12 @@ export default function App() {
       let targetPath = '/';
       if (page === 'service-detail' && serviceId) {
         targetPath = `/services/${serviceId}`;
+      } else if (page === 'portfolio') {
+        targetPath = '/work';
+      } else if (page === 'privacy') {
+        targetPath = '/privacy-policy';
+      } else if (page === 'terms') {
+        targetPath = '/terms-of-service';
       } else if (page !== 'home') {
         targetPath = `/${page}`;
       }

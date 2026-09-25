@@ -276,6 +276,88 @@ export const AGENCY_TEAM: TeamMember[] = [
   }
 ];
 
+export interface ProjectDeliveryCredit {
+  id: string;
+  clientName: string;
+  projectCredit: string;
+  fullLabel: string;
+  category: string;
+  liveUrl: string;
+  techStack: string[];
+  keyOutcome: string;
+  metrics: string;
+  year: string;
+  initials: string;
+}
+
+export const PROJECTS_DELIVERED_FOR: ProjectDeliveryCredit[] = [
+  {
+    id: 'credit-iqra',
+    clientName: 'Iqra Society',
+    projectCredit: 'Community Management System',
+    fullLabel: 'Iqra Society — Community Management System',
+    category: 'Education & Da\'wah Platform',
+    liveUrl: 'https://iqra-society.com/',
+    techStack: ['React.js', 'Node.js', 'Digital Library'],
+    keyOutcome: 'Digital learning platform with structured courses, research publications, digital library search, and student dashboards.',
+    metrics: '1,200+ Learners • 100% Responsive',
+    year: '2024–2025',
+    initials: 'IS'
+  },
+  {
+    id: 'credit-lurnixe',
+    clientName: 'Lurnixe',
+    projectCredit: 'EdTech Platform',
+    fullLabel: 'Lurnixe — EdTech Platform',
+    category: 'Multi-Vendor Marketplace',
+    liveUrl: 'https://www.lurnixe.com/',
+    techStack: ['React.js', 'REST APIs', 'Multi-Vendor'],
+    keyOutcome: 'Full-featured multi-vendor marketplace with merchant dashboards, product management, shopping carts, and companion mobile app.',
+    metrics: 'Multi-Vendor Engine • Web + Mobile',
+    year: '2024–2025',
+    initials: 'LX'
+  },
+  {
+    id: 'credit-health',
+    clientName: 'Lurnixe Health',
+    projectCredit: 'Healthcare Booking System',
+    fullLabel: 'Lurnixe Health — Healthcare Booking System',
+    category: 'Digital Health & Emergency QR',
+    liveUrl: 'https://lurnixehealth.com/',
+    techStack: ['React.js', 'Node.js', 'QR Verification'],
+    keyOutcome: 'Digital Family Health Card issuance, rapid QR profile verification for emergency access, medical records hub, and clinic bookings.',
+    metrics: '< 2s Emergency QR • Multi-Member',
+    year: '2024–2025',
+    initials: 'LH'
+  },
+  {
+    id: 'credit-kecf',
+    clientName: 'KECF India',
+    projectCredit: 'Institutional Website',
+    fullLabel: 'KECF India — Institutional Website',
+    category: 'NGO & Social Impact Platform',
+    liveUrl: 'https://kecfindia.org/',
+    techStack: ['React.js', 'Donations API', 'Tailwind CSS'],
+    keyOutcome: 'Professional NGO digital hub showcasing digital education, youth sports, health initiatives, volunteer onboarding, and online donations.',
+    metrics: '5+ Core Programs • Transparent Donations',
+    year: '2024–2025',
+    initials: 'KC'
+  },
+  {
+    id: 'credit-aiciiim',
+    clientName: 'AIC-IIIM',
+    projectCredit: 'Incubation Center Website',
+    fullLabel: 'AIC-IIIM — Incubation Center Website',
+    category: 'Bio-Innovation Incubation Portal',
+    liveUrl: 'https://aiciiim.in/',
+    techStack: ['React.js', 'Node.js', 'AIM / NITI Aayog'],
+    keyOutcome: 'Official incubator web portal established under Atal Innovation Mission (NITI Aayog) for bio-entrepreneurship, hackathons, and startup MoUs.',
+    metrics: 'AIM Approved • Streamlined Applications',
+    year: '2024–2025',
+    initials: 'AI'
+  }
+];
+
 export const TESTIMONIALS_DATA: Testimonial[] = [
   {
     id: 'test-1',
