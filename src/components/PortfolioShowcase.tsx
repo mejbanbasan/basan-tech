@@ -73,7 +73,7 @@ export const PortfolioShowcase: React.FC<PortfolioShowcaseProps> = ({
               Our Work &amp; Delivered Projects
             </h2>
             <p className="text-slate-600 text-base sm:text-lg leading-relaxed">
-              Explore production platforms built by BasanTech. Every project features clean engineering, responsive design, and verified live platform links.
+              Explore production platforms built by Basan Tech. Every project features clean engineering, responsive design, and verified live platform links.
             </p>
           </div>
 
@@ -366,7 +366,7 @@ export const PortfolioShowcase: React.FC<PortfolioShowcaseProps> = ({
 
                 <div className="p-5 rounded-2xl bg-zinc-50 border border-zinc-200 space-y-2">
                   <div className="text-xs font-mono uppercase tracking-wider text-zinc-500 font-semibold">
-                    What BasanTech Built
+                    What Basan Tech Built
                   </div>
                   <p className="text-xs sm:text-sm text-zinc-700 leading-relaxed">
                     {activeModalStudy.whatWeBuilt || activeModalStudy.solution}
@@ -434,7 +434,7 @@ export const PortfolioShowcase: React.FC<PortfolioShowcaseProps> = ({
             {/* Modal Footer */}
             <div className="px-4 sm:px-6 py-3.5 sm:py-4 bg-slate-50 border-t border-slate-200 flex flex-col sm:flex-row items-center justify-between gap-3 sticky bottom-0 z-20">
               <div className="text-xs text-slate-600 font-medium text-center sm:text-left">
-                Ready to build a reliable platform with BasanTech?
+                Ready to build a reliable platform with Basan Tech?
               </div>
               <div className="flex items-center gap-2.5 w-full sm:w-auto">
                 {activeModalStudy.liveUrl && (

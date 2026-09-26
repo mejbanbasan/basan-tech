@@ -30,7 +30,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onNavigate }) => {
         <div className="flex items-center gap-2 mb-6">
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white border border-slate-200 text-xs font-semibold text-[#022A4E] shadow-2xs">
             <span className="w-2 h-2 rounded-full bg-[#00976C] animate-pulse"></span>
-            <span>BASANTECH • SOFTWARE &amp; DIGITAL STUDIO</span>
+            <span>BASAN TECH • SOFTWARE &amp; DIGITAL STUDIO</span>
           </div>
         </div>
 
@@ -39,11 +39,11 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onNavigate }) => {
           
           <div className="lg:col-span-8 space-y-6">
             <h1 className="text-4xl sm:text-6xl lg:text-7xl font-bold tracking-tight text-[#022A4E] leading-[1.08]">
-              BasanTech — Engineering <span className="text-[#00976C]">bespoke software</span>, web apps, and digital platforms.
+              Basan Tech — Engineering <span className="text-[#00976C]">bespoke software</span>, web apps, and digital platforms.
             </h1>
             
             <p className="text-lg sm:text-xl text-slate-600 font-normal leading-relaxed max-w-2xl">
-              BasanTech builds clean, reliable, and high-performance digital solutions. We partner with founders and businesses to engineer <strong className="text-[#022A4E] font-semibold">Custom Software</strong>, <strong className="text-[#022A4E] font-semibold">Web Applications</strong>, <strong className="text-[#022A4E] font-semibold">Mobile Apps</strong>, and <strong className="text-[#022A4E] font-semibold">AI Solutions</strong> focused on long-term value.
+              Basan Tech builds clean, reliable, and high-performance digital solutions. We partner with founders and businesses to engineer <strong className="text-[#022A4E] font-semibold">Custom Software</strong>, <strong className="text-[#022A4E] font-semibold">Web Applications</strong>, <strong className="text-[#022A4E] font-semibold">Mobile Apps</strong>, and <strong className="text-[#022A4E] font-semibold">AI Solutions</strong> focused on long-term value.
             </p>
 
             <div className="flex flex-wrap items-center gap-4 pt-2">
