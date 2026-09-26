@@ -104,7 +104,7 @@ export const CASE_STUDIES: CaseStudy[] = [
     ],
     techStack: ['React.js', 'Node.js', 'Tailwind CSS', 'REST APIs'],
     deliverables: ['Responsive Web App', 'Digital Library Catalog', 'Course Modules', 'Scholar Portals'],
-    year: '2024',
+    year: '2026',
     featured: true,
     badge: 'Education & Da\'wah'
   },
@@ -141,7 +141,7 @@ export const CASE_STUDIES: CaseStudy[] = [
     ],
     techStack: ['React.js', 'Node.js', 'Tailwind CSS', 'Mobile App'],
     deliverables: ['Multi-Vendor Storefront', 'Merchant Portals', 'Cart & Checkout', 'Mobile App Architecture'],
-    year: '2024',
+    year: '2026',
     featured: true,
     badge: 'Multi-Vendor & Mobile'
   },
@@ -177,7 +177,7 @@ export const CASE_STUDIES: CaseStudy[] = [
     ],
     techStack: ['React.js', 'Node.js', 'QR Engine', 'Tailwind CSS'],
     deliverables: ['Digital Health Card', 'QR Profile Verification', 'Doctor Scheduling', 'Medical Records Hub'],
-    year: '2024',
+    year: '2026',
     featured: true,
     badge: 'Digital Health & QR'
   },
@@ -213,7 +213,7 @@ export const CASE_STUDIES: CaseStudy[] = [
     ],
     techStack: ['React.js', 'Node.js', 'Donations API', 'Tailwind CSS'],
     deliverables: ['NGO Web Portal', 'Volunteer Registration', 'Donation System', 'Program Showcase'],
-    year: '2024',
+    year: '2026',
     featured: true,
     badge: 'NGO & Social Impact'
   },
@@ -249,7 +249,7 @@ export const CASE_STUDIES: CaseStudy[] = [
     ],
     techStack: ['React.js', 'Node.js', 'Tailwind CSS', 'REST APIs'],
     deliverables: ['Incubation Portal', 'Startup Application Funnel', 'Course Catalog', 'Facility Directory'],
-    year: '2024',
+    year: '2026',
     featured: true,
     badge: 'Incubation & Research'
   }
@@ -285,7 +285,7 @@ export const TESTIMONIALS_DATA: Testimonial[] = [
     rating: 5,
     serviceType: 'Multi-Vendor Marketplace & Mobile App',
     quote: 'Our previous storefront struggled with cart drop-offs and slow mobile checkout. Basan Tech re-engineered our platform with instant UPI and card gateways plus real-time inventory sync. Our mobile checkout conversion rate increased noticeably within weeks.',
-    date: 'February 2025'
+    date: 'August 2026'
   },
   {
     id: 'test-iqra',
@@ -295,7 +295,7 @@ export const TESTIMONIALS_DATA: Testimonial[] = [
     rating: 5,
     serviceType: 'Education & Da\'wah Learning Platform',
     quote: 'Basan Tech engineered our digital learning platform from the ground up. Their communication across weekly sprints was crystal clear, the student-parent dashboard is lightning-fast, and their post-launch support helped us onboard over 1,200 active learners with zero downtime.',
-    date: 'January 2025'
+    date: 'July 2026'
   },
   {
     id: 'test-health',
@@ -305,7 +305,7 @@ export const TESTIMONIALS_DATA: Testimonial[] = [
     rating: 5,
     serviceType: 'Digital Health Card & Patient Portal',
     quote: 'Data privacy and quick access to records were non-negotiable for our clinic operations. Basan Tech delivered a dependable, well-documented architecture with complete code handover and zero vendor lock-in. Their 30-day warranty support was top tier.',
-    date: 'December 2024'
+    date: 'June 2026'
   },
   {
     id: 'test-kecf',
@@ -315,7 +315,7 @@ export const TESTIMONIALS_DATA: Testimonial[] = [
     rating: 5,
     serviceType: 'Institutional & NGO Web Platform',
     quote: 'Basan Tech treated our institutional web portal with immense dedication. The responsive layout, transparent donation tracking, and bilingual support exceeded our expectations. Even months after launch, their team is always available whenever we need quick assistance.',
-    date: 'November 2024'
+    date: 'May 2026'
   },
   {
     id: 'test-aiciiim',
@@ -325,7 +325,7 @@ export const TESTIMONIALS_DATA: Testimonial[] = [
     rating: 5,
     serviceType: 'Startup Incubation & Hackathon Portal',
     quote: 'Basan Tech delivered our official incubator portal under Atal Innovation Mission (NITI Aayog). The application workflows, facility management, and hackathon registration portals operate seamlessly for our startups and researchers.',
-    date: 'October 2024'
+    date: 'April 2026'
   }
 ];
 
