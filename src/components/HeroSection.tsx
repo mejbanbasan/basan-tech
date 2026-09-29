@@ -2,12 +2,12 @@ import React from 'react';
 import { PageView, ServiceId } from '../types';
 import { AGENCY_STATS } from '../data/agencyData';
 import { AnimatedCounter } from './AnimatedCounter';
-import { 
-  ArrowUpRight, 
+import {
+  ArrowUpRight,
   ArrowRight,
-  Globe, 
-  Smartphone, 
-  Cpu, 
+  Globe,
+  Smartphone,
+  Cpu,
   Sparkles,
   Laptop,
   ShoppingBag
@@ -20,30 +20,30 @@ interface HeroSectionProps {
 export const HeroSection: React.FC<HeroSectionProps> = ({ onNavigate }) => {
   return (
     <section id="hero-section" className="relative min-h-[85vh] pt-24 sm:pt-32 pb-12 sm:pb-16 flex flex-col justify-center bg-slate-50/60 border-b border-slate-200">
-      
+
       {/* Subtle ambient background grid with brand navy tint */}
       <div className="absolute inset-0 bg-grid-pattern opacity-50 pointer-events-none" />
-      
+
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
-        
+
         {/* Studio Status Marker */}
         <div className="flex items-center gap-2 mb-6">
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white border border-slate-200 text-xs font-semibold text-[#022A4E] shadow-2xs">
             <span className="w-2 h-2 rounded-full bg-[#00976C] animate-pulse"></span>
-            <span>BASANTECH • SOFTWARE &amp; DIGITAL STUDIO</span>
+            <span>BASAN TECH • SOFTWARE &amp; DIGITAL STUDIO</span>
           </div>
         </div>
 
         {/* Hero Title & Pitch */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start mb-10 sm:mb-16">
-          
+
           <div className="lg:col-span-8 space-y-6">
             <h1 className="text-4xl sm:text-6xl lg:text-7xl font-bold tracking-tight text-[#022A4E] leading-[1.08]">
-              BasanTech — Engineering <span className="text-[#00976C]">bespoke software</span>, web apps, and digital platforms.
+              Basan Tech — Engineering <span className="text-[#00976C]">bespoke software</span>, web apps, and digital platforms.
             </h1>
-            
+
             <p className="text-lg sm:text-xl text-slate-600 font-normal leading-relaxed max-w-2xl">
-              BasanTech builds clean, reliable, and high-performance digital solutions. We partner with founders and businesses to engineer <strong className="text-[#022A4E] font-semibold">Custom Software</strong>, <strong className="text-[#022A4E] font-semibold">Web Applications</strong>, <strong className="text-[#022A4E] font-semibold">Mobile Apps</strong>, and <strong className="text-[#022A4E] font-semibold">AI Solutions</strong> focused on long-term value.
+              Basan Tech builds clean, reliable, and high-performance digital solutions. We partner with founders and businesses to engineer <strong className="text-[#022A4E] font-semibold">Custom Software</strong>, <strong className="text-[#022A4E] font-semibold">Web Applications</strong>, <strong className="text-[#022A4E] font-semibold">Mobile Apps</strong>, and <strong className="text-[#022A4E] font-semibold">AI Solutions</strong> focused on long-term value.
             </p>
 
             <div className="flex flex-wrap items-center gap-4 pt-2">
@@ -132,9 +132,9 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onNavigate }) => {
             <div key={i} className="p-4 rounded-2xl bg-white border border-slate-200 shadow-xs hover:border-[#00976C] transition-colors">
               <div className="text-2xl sm:text-3xl font-bold text-[#022A4E] tracking-tight flex items-baseline">
                 {stat.numericValue !== undefined ? (
-                  <AnimatedCounter 
-                    end={stat.numericValue} 
-                    suffix={stat.suffix || ''} 
+                  <AnimatedCounter
+                    end={stat.numericValue}
+                    suffix={stat.suffix || ''}
                   />
                 ) : (
                   <span>{stat.value}</span>

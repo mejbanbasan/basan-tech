@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import { PageView, ServiceId, CaseStudy } from '../types';
 import { CASE_STUDIES } from '../data/agencyData';
-import { 
-  ArrowUpRight, 
-  X, 
-  Check, 
+import {
+  ArrowUpRight,
+  X,
+  Check,
   Layers,
   ExternalLink,
   Globe,
@@ -21,10 +21,10 @@ interface PortfolioShowcaseProps {
   showBreadcrumb?: boolean;
 }
 
-export const PortfolioShowcase: React.FC<PortfolioShowcaseProps> = ({ 
-  onNavigate, 
+export const PortfolioShowcase: React.FC<PortfolioShowcaseProps> = ({
+  onNavigate,
   limit,
-  showBreadcrumb = false 
+  showBreadcrumb = false
 }) => {
   const [selectedFilter, setSelectedFilter] = useState<string>('all');
   const [activeModalStudy, setActiveModalStudy] = useState<CaseStudy | null>(null);
@@ -48,14 +48,14 @@ export const PortfolioShowcase: React.FC<PortfolioShowcaseProps> = ({
   return (
     <section id="portfolio-section" className={`${showBreadcrumb ? 'pt-24 sm:pt-28 pb-12 sm:pb-16' : 'py-12 sm:py-16'} bg-slate-50/60 border-b border-slate-200`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10 sm:space-y-12">
-        
+
         {/* Section Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
           <div className="space-y-3 max-w-2xl">
             {showBreadcrumb && (
               <nav aria-label="Breadcrumb" className="flex items-center gap-1.5 text-xs text-slate-500 font-medium pb-1">
-                <button 
-                  onClick={() => onNavigate('home')} 
+                <button
+                  onClick={() => onNavigate('home')}
                   className="hover:text-[#00976C] transition-colors cursor-pointer"
                 >
                   Home
@@ -73,7 +73,7 @@ export const PortfolioShowcase: React.FC<PortfolioShowcaseProps> = ({
               Our Work &amp; Delivered Projects
             </h2>
             <p className="text-slate-600 text-base sm:text-lg leading-relaxed">
-              Explore production platforms built by BasanTech. Every project features clean engineering, responsive design, and verified live platform links.
+              Explore production platforms built by Basan Tech. Every project features clean engineering, responsive design, and verified live platform links.
             </p>
           </div>
 
@@ -96,11 +96,10 @@ export const PortfolioShowcase: React.FC<PortfolioShowcaseProps> = ({
               key={f.id}
               id={`portfolio-filter-${f.id}`}
               onClick={() => setSelectedFilter(f.id)}
-              className={`px-4 py-2.5 min-h-[44px] inline-flex items-center justify-center rounded-full text-xs font-semibold transition-all duration-150 cursor-pointer ${
-                selectedFilter === f.id
+              className={`px-4 py-2.5 min-h-[44px] inline-flex items-center justify-center rounded-full text-xs font-semibold transition-all duration-150 cursor-pointer ${selectedFilter === f.id
                   ? 'bg-[#00976C] text-white shadow-sm'
                   : 'bg-white text-slate-700 hover:text-[#00976C] hover:border-emerald-300 hover:bg-emerald-50/30 border border-slate-200 shadow-2xs'
-              }`}
+                }`}
             >
               {f.label}
             </button>
@@ -130,7 +129,7 @@ export const PortfolioShowcase: React.FC<PortfolioShowcaseProps> = ({
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-[#022A4E]/90 via-[#022A4E]/20 to-transparent" />
-                  
+
                   {/* Category Badge & Live Link Header (Flex row to prevent colliding/overlapping on mobile) */}
                   <div className="absolute top-3 left-3 right-3 flex items-center justify-between gap-2 z-10">
                     <span className="px-2.5 py-1 rounded-md text-[10px] sm:text-[11px] font-mono bg-[#022A4E]/85 backdrop-blur-md text-white border border-slate-600/50 font-medium truncate max-w-[65%]">
@@ -255,15 +254,15 @@ export const PortfolioShowcase: React.FC<PortfolioShowcaseProps> = ({
 
       {/* Comprehensive Project Detail Modal */}
       {activeModalStudy && (
-        <div 
+        <div
           className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6 bg-black/75 backdrop-blur-sm overflow-y-auto"
           onClick={() => setActiveModalStudy(null)}
         >
-          <div 
+          <div
             className="relative w-full max-w-4xl bg-white border border-slate-200 rounded-2xl sm:rounded-3xl shadow-2xl overflow-hidden my-4 sm:my-8 max-h-[92vh] flex flex-col"
             onClick={(e) => e.stopPropagation()}
           >
-            
+
             {/* Modal Header */}
             <div className="px-4 sm:px-6 py-3 sm:py-4 bg-slate-50 border-b border-slate-200 flex items-center justify-between gap-3 sticky top-0 z-20">
               <div className="flex items-center gap-2 min-w-0">
@@ -300,7 +299,7 @@ export const PortfolioShowcase: React.FC<PortfolioShowcaseProps> = ({
 
             {/* Modal Body */}
             <div className="p-4 sm:p-8 space-y-6 sm:space-y-8 overflow-y-auto">
-              
+
               {/* Project Title & Metadata Block (Placed cleanly above image, no overlapping text!) */}
               <div className="space-y-2.5">
                 <div className="flex flex-wrap items-center gap-2">
@@ -318,7 +317,7 @@ export const PortfolioShowcase: React.FC<PortfolioShowcaseProps> = ({
                 <h2 className="text-xl sm:text-3xl font-bold text-[#022A4E] tracking-tight leading-tight">
                   {activeModalStudy.title}
                 </h2>
-                
+
                 <p className="text-xs sm:text-sm text-slate-600 leading-relaxed font-normal">
                   {activeModalStudy.tagline}
                 </p>
@@ -366,7 +365,7 @@ export const PortfolioShowcase: React.FC<PortfolioShowcaseProps> = ({
 
                 <div className="p-5 rounded-2xl bg-zinc-50 border border-zinc-200 space-y-2">
                   <div className="text-xs font-mono uppercase tracking-wider text-zinc-500 font-semibold">
-                    What BasanTech Built
+                    What Basan Tech Built
                   </div>
                   <p className="text-xs sm:text-sm text-zinc-700 leading-relaxed">
                     {activeModalStudy.whatWeBuilt || activeModalStudy.solution}
@@ -434,7 +433,7 @@ export const PortfolioShowcase: React.FC<PortfolioShowcaseProps> = ({
             {/* Modal Footer */}
             <div className="px-4 sm:px-6 py-3.5 sm:py-4 bg-slate-50 border-t border-slate-200 flex flex-col sm:flex-row items-center justify-between gap-3 sticky bottom-0 z-20">
               <div className="text-xs text-slate-600 font-medium text-center sm:text-left">
-                Ready to build a reliable platform with BasanTech?
+                Ready to build a reliable platform with Basan Tech?
               </div>
               <div className="flex items-center gap-2.5 w-full sm:w-auto">
                 {activeModalStudy.liveUrl && (

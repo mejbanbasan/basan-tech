@@ -1,18 +1,18 @@
 import React from 'react';
 import { PageView, ServiceId, Service } from '../types';
 import { ContactSection } from './ContactSection';
-import { 
-  ArrowUpRight, 
-  Check, 
-  ShieldCheck, 
-  Cpu, 
-  Globe, 
-  Smartphone, 
-  Laptop, 
-  ShoppingBag, 
-  Sparkles, 
-  MessageCircle, 
-  Layers, 
+import {
+  ArrowUpRight,
+  Check,
+  ShieldCheck,
+  Cpu,
+  Globe,
+  Smartphone,
+  Laptop,
+  ShoppingBag,
+  Sparkles,
+  MessageCircle,
+  Layers,
   CheckCircle2,
   HelpCircle,
   Database,
@@ -29,12 +29,12 @@ interface ServiceDetailPageProps {
   onNavigate: (page: PageView, serviceId?: ServiceId) => void;
 }
 
-export const ServiceDetailPage: React.FC<ServiceDetailPageProps> = ({ 
-  service, 
-  onNavigate 
+export const ServiceDetailPage: React.FC<ServiceDetailPageProps> = ({
+  service,
+  onNavigate
 }) => {
   const whatsappInquiryUrl = `https://wa.me/919624895641?text=${encodeURIComponent(
-    `Hello BasanTech Team, I would like to discuss a project regarding ${service.title}.\n\nPlease let me know your availability for a quick consultation.`
+    `Hello Basan Tech Team, I would like to discuss a project regarding ${service.title}.\n\nPlease let me know your availability for a quick consultation.`
   )}`;
 
   const renderServiceVisual = () => {
@@ -128,7 +128,7 @@ export const ServiceDetailPage: React.FC<ServiceDetailPageProps> = ({
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-1.5">
                     <Smartphone className="w-4 h-4 text-[#00976C]" />
-                    <span className="text-[11px] font-bold text-white">BasanTech Mobile</span>
+                    <span className="text-[11px] font-bold text-white">Basan Tech Mobile</span>
                   </div>
                   <span className="text-[10px] font-mono text-emerald-400 bg-emerald-950/60 px-2 py-0.5 rounded-full border border-emerald-500/30">iOS + Android</span>
                 </div>
@@ -172,7 +172,7 @@ export const ServiceDetailPage: React.FC<ServiceDetailPageProps> = ({
             {/* Outer Orbiting Constellation */}
             <div className="absolute inset-0 flex items-center justify-center animate-service-spin-slow">
               <div className="w-60 h-60 rounded-full border border-dashed border-emerald-500/30" />
-              
+
               {/* Satellite Node 1 - Database */}
               <div className="absolute top-0 flex items-center justify-center">
                 <div className="animate-service-spin-reverse px-2.5 py-1 rounded-lg bg-white border border-slate-200 shadow-md text-[11px] font-bold text-[#022A4E] flex items-center gap-1">
@@ -421,9 +421,9 @@ export const ServiceDetailPage: React.FC<ServiceDetailPageProps> = ({
 
   return (
     <div className="pt-24 sm:pt-28 pb-16 sm:pb-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16 sm:space-y-20">
-      
+
       {/* Dynamic JSON-LD Breadcrumb Schema for Google Sitelinks */}
-      <script 
+      <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
       />
@@ -432,9 +432,9 @@ export const ServiceDetailPage: React.FC<ServiceDetailPageProps> = ({
       <nav aria-label="Breadcrumb">
         <ol className="flex items-center gap-2 text-xs text-slate-500 font-medium list-none p-0 m-0 flex-wrap">
           <li className="flex items-center gap-2">
-            <a 
+            <a
               href="/"
-              onClick={(e) => { e.preventDefault(); onNavigate('home'); }} 
+              onClick={(e) => { e.preventDefault(); onNavigate('home'); }}
               className="hover:text-[#00976C] transition-colors cursor-pointer"
             >
               Home
@@ -442,9 +442,9 @@ export const ServiceDetailPage: React.FC<ServiceDetailPageProps> = ({
             <span className="text-slate-300">/</span>
           </li>
           <li className="flex items-center gap-2">
-            <a 
+            <a
               href="/services"
-              onClick={(e) => { e.preventDefault(); onNavigate('services'); }} 
+              onClick={(e) => { e.preventDefault(); onNavigate('services'); }}
               className="hover:text-[#00976C] transition-colors cursor-pointer"
             >
               Services
@@ -460,7 +460,7 @@ export const ServiceDetailPage: React.FC<ServiceDetailPageProps> = ({
       {/* 2. Hero Section with 2-Column Responsive Layout */}
       <div className="rounded-3xl p-6 sm:p-10 lg:p-12 bg-white border border-slate-200/90 shadow-xs space-y-8">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
-          
+
           {/* Left Column: Heading, Description, Badges, CTAs */}
           <div className="lg:col-span-7 space-y-5">
             <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-50 border border-emerald-200 text-xs font-semibold text-emerald-800">
@@ -555,7 +555,7 @@ export const ServiceDetailPage: React.FC<ServiceDetailPageProps> = ({
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {service.features.map((feat, idx) => (
-              <div 
+              <div
                 key={idx}
                 className="p-7 rounded-2xl bg-white border border-slate-200/90 shadow-xs space-y-3 flex flex-col justify-between"
               >
@@ -617,7 +617,7 @@ export const ServiceDetailPage: React.FC<ServiceDetailPageProps> = ({
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             {service.useCases.map((uc, uIdx) => (
-              <div 
+              <div
                 key={uIdx}
                 className="p-4 rounded-xl bg-white border border-slate-200 flex items-center gap-3 text-xs sm:text-sm text-slate-800 font-medium shadow-2xs"
               >
@@ -644,7 +644,7 @@ export const ServiceDetailPage: React.FC<ServiceDetailPageProps> = ({
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
             {service.faqs.map((faq, fIdx) => (
-              <div 
+              <div
                 key={fIdx}
                 className="p-6 rounded-2xl bg-white border border-slate-200 shadow-xs space-y-2.5"
               >
@@ -662,9 +662,9 @@ export const ServiceDetailPage: React.FC<ServiceDetailPageProps> = ({
 
       {/* 7. Dedicated Contact / Consultation Section */}
       <div id="service-contact-container" className="pt-8 border-t border-slate-200">
-        <ContactSection 
-          onNavigate={onNavigate} 
-          preselectedService={service.id} 
+        <ContactSection
+          onNavigate={onNavigate}
+          preselectedService={service.id}
         />
       </div>
 

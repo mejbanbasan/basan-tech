@@ -9,7 +9,7 @@ interface TermsOfServiceProps {
 export const TermsOfService: React.FC<TermsOfServiceProps> = ({ onNavigate }) => {
   return (
     <div className="pt-24 sm:pt-28 pb-12 sm:pb-16 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10 sm:space-y-12">
-      
+
       {/* Back Button */}
       <div>
         <button
@@ -37,12 +37,12 @@ export const TermsOfService: React.FC<TermsOfServiceProps> = ({ onNavigate }) =>
 
       {/* Content */}
       <div className="space-y-10 text-slate-700 text-sm sm:text-base leading-relaxed">
-        
+
         {/* Intro */}
         <div className="space-y-3">
           <p>
-            Welcome to <strong>BasanTech</strong> ("Company," "we," "our," or "us"). By accessing or utilizing our website{' '}
-            (<a href="https://basantech.online" className="text-[#00976C] font-semibold hover:underline">https://basantech.online</a>) 
+            Welcome to <strong>Basan Tech</strong> ("Company," "we," "our," or "us"). By accessing or utilizing our website{' '}
+            (<a href="https://basantech.online" className="text-[#00976C] font-semibold hover:underline">https://basantech.online</a>)
             or contracting our software engineering, web development, mobile development, or consulting services, you agree to be bound by the following Terms of Service.
           </p>
         </div>
@@ -54,7 +54,7 @@ export const TermsOfService: React.FC<TermsOfServiceProps> = ({ onNavigate }) =>
             <span>1. Services &amp; Project Engagements</span>
           </h2>
           <p className="text-sm text-slate-600">
-            BasanTech provides custom software engineering, full-stack web applications, mobile application development, AI integrations, and digital solutions. Each engagement is governed by a mutually agreed Statement of Work (SOW), detailing project milestones, deliverables, tech specifications, and payment terms.
+            Basan Tech provides custom software engineering, full-stack web applications, mobile application development, AI integrations, and digital solutions. Each engagement is governed by a mutually agreed Statement of Work (SOW), detailing project milestones, deliverables, tech specifications, and payment terms.
           </p>
           <p className="text-sm text-slate-600">
             Any scope changes requested during active development will be evaluated and quoted via formal change requests before implementation.
@@ -93,10 +93,10 @@ export const TermsOfService: React.FC<TermsOfServiceProps> = ({ onNavigate }) =>
             <span>4. Warranty &amp; Limitation of Liability</span>
           </h2>
           <p className="text-sm text-slate-600">
-            BasanTech warrants that all deliverables will conform substantially to the documented specifications. We include a standard 30-day post-launch warranty period to remediate bugs or defects arising directly from our authored code.
+            Basan Tech warrants that all deliverables will conform substantially to the documented specifications. We include a standard 30-day post-launch warranty period to remediate bugs or defects arising directly from our authored code.
           </p>
           <p className="text-sm text-slate-600">
-            In no event shall BasanTech be liable for any indirect, incidental, or consequential damages resulting from third-party hosting outages, third-party API changes, or unauthorized modifications made to the codebase by external developers.
+            In no event shall Basan Tech be liable for any indirect, incidental, or consequential damages resulting from third-party hosting outages, third-party API changes, or unauthorized modifications made to the codebase by external developers.
           </p>
         </div>
 

@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import { PageView, ServiceId } from '../types';
 import { SERVICES_DATA } from '../data/servicesData';
-import { 
-  ArrowUpRight, 
-  Mail, 
-  Phone, 
-  Check, 
+import {
+  ArrowUpRight,
+  Mail,
+  Phone,
+  Check,
   Instagram,
   MessageCircle,
   ShieldCheck,
@@ -24,7 +24,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
   const handleSubscribe = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!newsletterEmail || !newsletterEmail.includes('@')) return;
-    
+
     setSubscribed(true);
     try {
       const confettiModule = await import('canvas-confetti');
@@ -44,7 +44,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
   return (
     <footer id="basan-footer" className="bg-white border-t border-slate-200 pt-16 pb-12">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        
+
         {/* Top Engagement Pitch Card */}
         <div className="mb-16 rounded-3xl p-8 sm:p-12 bg-gradient-to-br from-[#022A4E] to-[#011D36] text-white flex flex-col md:flex-row items-start md:items-center justify-between gap-8 shadow-xl">
           <div className="space-y-3 max-w-2xl">
@@ -71,31 +71,31 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
 
         {/* 4-Column Footer Navigation */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 pb-12 border-b border-slate-200">
-          
+
           {/* Column 1: Brand & Identity */}
           <div className="lg:col-span-4 space-y-4">
-            <a 
+            <a
               href="/"
-              onClick={(e) => { e.preventDefault(); onNavigate('home'); }} 
+              onClick={(e) => { e.preventDefault(); onNavigate('home'); }}
               className="text-left focus:outline-none cursor-pointer group py-1 inline-block"
-              aria-label="BasanTech Home"
+              aria-label="Basan Tech Home"
             >
               <picture>
-              <source srcSet="/basantech-logo.webp" type="image/webp" />
-              <img 
-                src="/basantech-logo.png" 
-                alt="BasanTech Software & Digital" 
-                width={180}
-                height={42}
-                loading="lazy"
-                decoding="async"
-                className="h-11 sm:h-12 w-auto object-contain transition-transform group-hover:scale-[1.02]" 
-              />
-            </picture>
-          </a>
+                <source srcSet="/basantech-logo.webp" type="image/webp" />
+                <img
+                  src="/basantech-logo.png"
+                  alt="Basan Tech Software & Digital"
+                  width={180}
+                  height={42}
+                  loading="lazy"
+                  decoding="async"
+                  className="h-11 sm:h-12 w-auto object-contain transition-transform group-hover:scale-[1.02]"
+                />
+              </picture>
+            </a>
 
             <p className="text-sm text-slate-600 leading-relaxed max-w-sm">
-              BasanTech is a software engineering and digital solutions company. We design and build clean, scalable web applications, custom software, mobile apps, and automated workflows.
+              Basan Tech is a software engineering and digital solutions company. We design and build clean, scalable web applications, custom software, mobile apps, and automated workflows.
             </p>
 
             <div className="flex flex-wrap items-center gap-2">
@@ -147,7 +147,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
             </h3>
             <ul className="space-y-2 text-xs sm:text-sm text-slate-600">
               <li>
-                <a 
+                <a
                   href="/"
                   onClick={(e) => { e.preventDefault(); onNavigate('home'); }}
                   className="hover:text-[#00976C] transition-colors cursor-pointer inline-block"
@@ -156,7 +156,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
                 </a>
               </li>
               <li>
-                <a 
+                <a
                   href="/about"
                   onClick={(e) => { e.preventDefault(); onNavigate('about'); }}
                   className="hover:text-[#00976C] transition-colors cursor-pointer inline-block"
@@ -165,7 +165,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
                 </a>
               </li>
               <li>
-                <a 
+                <a
                   href="/work"
                   onClick={(e) => { e.preventDefault(); onNavigate('portfolio'); }}
                   className="hover:text-[#00976C] transition-colors cursor-pointer inline-block"
@@ -174,7 +174,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
                 </a>
               </li>
               <li>
-                <a 
+                <a
                   href="/services"
                   onClick={(e) => { e.preventDefault(); onNavigate('services'); }}
                   className="hover:text-[#00976C] transition-colors cursor-pointer inline-block"
@@ -183,7 +183,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
                 </a>
               </li>
               <li>
-                <a 
+                <a
                   href="/testimonials"
                   onClick={(e) => { e.preventDefault(); onNavigate('testimonials'); }}
                   className="hover:text-[#00976C] transition-colors cursor-pointer inline-block"
@@ -192,7 +192,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
                 </a>
               </li>
               <li>
-                <a 
+                <a
                   href="/contact"
                   onClick={(e) => { e.preventDefault(); onNavigate('contact'); }}
                   className="hover:text-[#00976C] transition-colors cursor-pointer inline-block"
@@ -215,23 +215,23 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
                 <span>Palanpur, Gujarat 385001, India</span>
               </div>
 
-              <a 
-                href="mailto:basantech1@gmail.com" 
+              <a
+                href="mailto:basantech1@gmail.com"
                 className="flex items-center gap-2 text-slate-700 hover:text-[#00976C] transition-colors font-mono"
               >
                 <Mail className="w-4 h-4 text-[#022A4E] shrink-0" />
                 <span>basantech1@gmail.com</span>
               </a>
 
-              <a 
-                href="tel:+919624895641" 
+              <a
+                href="tel:+919624895641"
                 className="flex items-center gap-2 text-slate-700 hover:text-[#00976C] transition-colors font-mono"
               >
                 <Phone className="w-4 h-4 text-[#022A4E] shrink-0" />
                 <span>+91 9624895641</span>
               </a>
 
-              <a 
+              <a
                 href="https://wa.me/919624895641"
                 target="_blank"
                 rel="noopener noreferrer"
@@ -241,7 +241,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
                 <span>WhatsApp: +91 9624895641</span>
               </a>
 
-              <a 
+              <a
                 href="https://www.instagram.com/basan_tech/"
                 target="_blank"
                 rel="noopener noreferrer"
@@ -274,8 +274,8 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
                       required
                       className="w-full px-3 py-2.5 min-h-[44px] text-xs bg-slate-50 border border-slate-200 rounded-xl text-slate-900 placeholder:text-slate-400 focus:outline-none focus:bg-white focus:border-[#022A4E] transition-colors"
                     />
-                    <button 
-                      type="submit" 
+                    <button
+                      type="submit"
                       className="px-4 py-2.5 min-h-[44px] rounded-xl bg-[#00976C] text-white text-xs font-semibold hover:bg-[#00825B] transition-colors shrink-0 cursor-pointer shadow-xs flex items-center justify-center"
                     >
                       Join
@@ -292,25 +292,25 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
         {/* Bottom Bar with Required Copyright and Legal Links */}
         <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500">
           <div>
-            © 2026 BasanTech. All rights reserved.
+            © 2026 Basan Tech. All rights reserved.
           </div>
-          
+
           <div className="flex items-center gap-4 sm:gap-6 flex-wrap">
-            <a 
+            <a
               href="/privacy-policy"
               onClick={(e) => { e.preventDefault(); onNavigate('privacy'); }}
               className="font-medium text-slate-600 hover:text-[#00976C] transition-colors cursor-pointer underline-offset-4 hover:underline py-2.5 min-h-[44px] inline-flex items-center"
             >
               Privacy Policy
             </a>
-            <a 
+            <a
               href="/terms-of-service"
               onClick={(e) => { e.preventDefault(); onNavigate('terms'); }}
               className="font-medium text-slate-600 hover:text-[#00976C] transition-colors cursor-pointer underline-offset-4 hover:underline py-2.5 min-h-[44px] inline-flex items-center"
             >
               Terms of Service
             </a>
-            <a 
+            <a
               href="/contact"
               onClick={(e) => { e.preventDefault(); onNavigate('contact'); }}
               className="font-medium text-slate-600 hover:text-[#00976C] transition-colors cursor-pointer py-2.5 min-h-[44px] inline-flex items-center"

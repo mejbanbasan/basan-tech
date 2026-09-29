@@ -1,12 +1,12 @@
 import React from 'react';
 import { PageView, ServiceId } from '../types';
 import { AnimatedCounter } from './AnimatedCounter';
-import { 
-  ShieldCheck, 
-  ArrowUpRight, 
-  Zap, 
-  Target, 
-  Code2, 
+import {
+  ShieldCheck,
+  ArrowUpRight,
+  Zap,
+  Target,
+  Code2,
   CheckCircle2,
   MapPin
 } from 'lucide-react';
@@ -18,23 +18,23 @@ interface AboutAgencyProps {
   showBreadcrumb?: boolean;
 }
 
-export const AboutAgency: React.FC<AboutAgencyProps> = ({ 
-  onNavigate, 
+export const AboutAgency: React.FC<AboutAgencyProps> = ({
+  onNavigate,
   isAboutPage = false,
   showBreadcrumb = false
 }) => {
   return (
     <section id="about-section" className={`${isAboutPage || showBreadcrumb ? 'pt-24 sm:pt-28 pb-12 sm:pb-16' : 'py-12 sm:py-16'} bg-slate-50/70 border-b border-slate-200`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12 sm:space-y-16 lg:space-y-20">
-        
+
         {/* Studio Overview */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-          
+
           <div className="lg:col-span-7 space-y-6">
             {showBreadcrumb && (
               <nav aria-label="Breadcrumb" className="flex items-center gap-1.5 text-xs text-slate-500 font-medium pb-1">
-                <button 
-                  onClick={() => onNavigate('home')} 
+                <button
+                  onClick={() => onNavigate('home')}
                   className="hover:text-[#00976C] transition-colors cursor-pointer"
                 >
                   Home
@@ -46,7 +46,7 @@ export const AboutAgency: React.FC<AboutAgencyProps> = ({
 
             <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-emerald-50 border border-emerald-200 text-xs font-semibold text-emerald-800">
               <span className="w-2 h-2 rounded-full bg-[#00976C]"></span>
-              <span>ABOUT BASANTECH</span>
+              <span>ABOUT BASAN TECH</span>
             </div>
 
             <h2 className="text-3xl sm:text-5xl font-bold text-[#022A4E] tracking-tight leading-tight">
@@ -54,7 +54,7 @@ export const AboutAgency: React.FC<AboutAgencyProps> = ({
             </h2>
 
             <p className="text-slate-800 text-base sm:text-lg leading-relaxed font-medium">
-              BasanTech is an independent software studio headquartered in Palanpur, Gujarat, dedicated to building clean, dependable digital solutions for businesses looking to grow online.
+              Basan Tech is an independent software studio headquartered in Palanpur, Gujarat, dedicated to building clean, dependable digital solutions for businesses looking to grow online.
             </p>
 
             <p className="text-slate-600 text-sm sm:text-base leading-relaxed">
@@ -94,7 +94,7 @@ export const AboutAgency: React.FC<AboutAgencyProps> = ({
             <div className="rounded-3xl overflow-hidden border border-slate-200 bg-white shadow-sm space-y-0">
               <img
                 src={aboutCollabImg}
-                alt="BasanTech Engineering Collaboration"
+                alt="Basan Tech Engineering Collaboration"
                 width={640}
                 height={360}
                 loading="lazy"

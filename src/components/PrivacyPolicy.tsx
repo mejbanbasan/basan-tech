@@ -9,7 +9,7 @@ interface PrivacyPolicyProps {
 export const PrivacyPolicy: React.FC<PrivacyPolicyProps> = ({ onNavigate }) => {
   return (
     <div className="pt-24 sm:pt-28 pb-12 sm:pb-16 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10 sm:space-y-12">
-      
+
       {/* Back Button */}
       <div>
         <button
@@ -37,11 +37,11 @@ export const PrivacyPolicy: React.FC<PrivacyPolicyProps> = ({ onNavigate }) => {
 
       {/* Content */}
       <div className="space-y-10 text-slate-700 text-sm sm:text-base leading-relaxed">
-        
+
         {/* Intro */}
         <div className="space-y-3">
           <p>
-            At <strong>BasanTech</strong> ("we," "our," or "us"), accessible via{' '}
+            At <strong>Basan Tech</strong> ("we," "our," or "us"), accessible via{' '}
             <a href="https://basantech.online" className="text-[#00976C] font-semibold hover:underline">
               https://basantech.online
             </a>, we respect your personal privacy and are committed to protecting the data and confidential information you entrust with us.
@@ -112,7 +112,7 @@ export const PrivacyPolicy: React.FC<PrivacyPolicyProps> = ({ onNavigate }) => {
             <span>3. Client Code &amp; Intellectual Property Confidentiality</span>
           </h2>
           <p className="text-sm text-slate-600">
-            BasanTech operates under strict Non-Disclosure Principles. All proprietary client algorithms, repository code, database credentials, design files, and customer lists handled during development remain the exclusive intellectual property of the client.
+            Basan Tech operates under strict Non-Disclosure Principles. All proprietary client algorithms, repository code, database credentials, design files, and customer lists handled during development remain the exclusive intellectual property of the client.
           </p>
           <p className="text-sm text-slate-600">
             Our developers utilize encrypted git repositories, role-based access tokens, and zero-trust cloud deployment protocols to prevent unauthorized access.

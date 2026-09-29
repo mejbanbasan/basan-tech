@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 import { PageView, ServiceId } from '../types';
-import { 
-  Send, 
-  Shield, 
-  CheckCircle2, 
-  Mail, 
-  Phone, 
-  MapPin, 
+import {
+  Send,
+  Shield,
+  CheckCircle2,
+  Mail,
+  Phone,
+  MapPin,
   ArrowUpRight,
   Sparkles,
   Copy,
@@ -22,10 +22,10 @@ interface ContactSectionProps {
   showBreadcrumb?: boolean;
 }
 
-export const ContactSection: React.FC<ContactSectionProps> = ({ 
-  onNavigate, 
+export const ContactSection: React.FC<ContactSectionProps> = ({
+  onNavigate,
   preselectedService,
-  showBreadcrumb = false 
+  showBreadcrumb = false
 }) => {
   // Form fields
   const [fullName, setFullName] = useState('');
@@ -71,12 +71,12 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
           company: company || 'Not provided',
           projectType: projectType || 'General Inquiry',
           message: projectDetails,
-          _subject: `New Project Inquiry: [${fullName}] - ${projectType || 'Software Development'} | BasanTech`,
+          _subject: `New Project Inquiry: [${fullName}] - ${projectType || 'Software Development'} | Basan Tech`,
           _replyto: email,
           _template: 'table',
           _captcha: 'false'
         })
-      }).catch(() => {});
+      }).catch(() => { });
     } catch {
       // Ignore background network issues
     }
@@ -103,11 +103,11 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
   return (
     <section id="contact-section" className={`${showBreadcrumb ? 'pt-24 sm:pt-28 pb-12 sm:pb-16' : 'py-12 sm:py-16'} bg-zinc-50 border-b border-zinc-200`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        
+
         {showBreadcrumb && (
           <nav aria-label="Breadcrumb" className="flex items-center gap-1.5 text-xs text-slate-500 font-medium pb-6">
-            <button 
-              onClick={() => onNavigate('home')} 
+            <button
+              onClick={() => onNavigate('home')}
               className="hover:text-[#00976C] transition-colors cursor-pointer"
             >
               Home
@@ -118,11 +118,11 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
         )}
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
-          
+
           {/* Main Contact Form */}
           <div className="lg:col-span-8">
             <div className="bg-white border border-zinc-200/90 rounded-2xl p-6 sm:p-10 shadow-sm">
-              
+
               <div className="mb-8">
                 <h2 className="text-2xl sm:text-3xl font-bold font-display text-zinc-950 tracking-tight">
                   Send us a message
@@ -137,7 +137,7 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
                   <div className="w-16 h-16 rounded-full bg-emerald-50 border border-emerald-200 text-[#00976C] flex items-center justify-center mx-auto shadow-xs">
                     <CheckCircle2 className="w-10 h-10 text-[#00976C]" />
                   </div>
-                  
+
                   <div className="space-y-2 max-w-lg mx-auto">
                     <h3 className="font-display text-2xl sm:text-3xl font-bold text-[#022A4E]">
                       Message Sent Successfully!
@@ -315,7 +315,7 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
 
           {/* Side Column: Studio Inquiries & Direct Lines */}
           <div className="lg:col-span-4 space-y-6">
-            
+
             {/* Direct Communication Channels (Consolidated, No Duplicates) */}
             <div className="p-6 sm:p-7 rounded-3xl bg-white border border-slate-200/90 shadow-xs space-y-5">
               <div className="space-y-1 border-b border-slate-100 pb-3">
@@ -330,8 +330,8 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
 
               <div className="space-y-3.5">
                 {/* Official Email */}
-                <a 
-                  href="mailto:basantech1@gmail.com" 
+                <a
+                  href="mailto:basantech1@gmail.com"
                   id="contact-direct-email-link"
                   className="p-4 rounded-2xl bg-slate-50 hover:bg-emerald-50/50 border border-slate-200/80 hover:border-[#00976C]/60 flex flex-col space-y-1.5 transition-all group block shadow-2xs"
                 >
@@ -391,7 +391,7 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
                 </div>
 
                 {/* Instagram Profile */}
-                <a 
+                <a
                   href="https://www.instagram.com/basan_tech/"
                   target="_blank"
                   rel="noopener noreferrer"
@@ -441,7 +441,7 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
                   Engagement Standards
                 </span>
               </div>
-              
+
               <div className="space-y-2.5 text-xs">
                 <div className="flex justify-between border-b border-slate-100 pb-2">
                   <span className="text-slate-500">Engineering Review:</span>

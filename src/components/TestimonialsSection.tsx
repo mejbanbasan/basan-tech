@@ -1,12 +1,12 @@
 import React from 'react';
 import { PageView } from '../types';
 import { TESTIMONIALS_DATA, CLIENT_COMMITMENTS } from '../data/agencyData';
-import { 
+import {
   Star,
-  ShieldCheck, 
-  Users, 
-  CheckCircle2, 
-  Sparkles, 
+  ShieldCheck,
+  Users,
+  CheckCircle2,
+  Sparkles,
   ArrowUpRight
 } from 'lucide-react';
 
@@ -15,29 +15,29 @@ interface TestimonialsSectionProps {
   showBreadcrumb?: boolean;
 }
 
-export const TestimonialsSection: React.FC<TestimonialsSectionProps> = ({ 
+export const TestimonialsSection: React.FC<TestimonialsSectionProps> = ({
   onNavigate,
-  showBreadcrumb = false 
+  showBreadcrumb = false
 }) => {
   // Duplicate array so marquee scrolls continuously and seamlessly without gaps
   const marqueeItems = [...TESTIMONIALS_DATA, ...TESTIMONIALS_DATA];
 
   return (
-    <section 
-      id="testimonials-section" 
+    <section
+      id="testimonials-section"
       className={`${showBreadcrumb ? 'pt-20 sm:pt-24 pb-12 sm:pb-16' : 'py-12 sm:py-16'} bg-slate-50/70 border-b border-slate-200 relative overflow-hidden`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8 sm:space-y-10">
-        
+
         {/* Section Header */}
         <div className="max-w-2xl space-y-3">
           {showBreadcrumb && (
             <nav aria-label="Breadcrumb" className="pb-1">
               <ol className="flex items-center gap-1.5 text-xs text-slate-500 font-medium list-none p-0 m-0">
                 <li>
-                  <a 
+                  <a
                     href="/"
-                    onClick={(e) => { e.preventDefault(); onNavigate('home'); }} 
+                    onClick={(e) => { e.preventDefault(); onNavigate('home'); }}
                     className="hover:text-[#00976C] transition-colors cursor-pointer"
                   >
                     Home
@@ -55,13 +55,13 @@ export const TestimonialsSection: React.FC<TestimonialsSectionProps> = ({
             <span className="w-2 h-2 rounded-full bg-[#00976C]"></span>
             <span>CLIENT REVIEWS &amp; REPUTATION</span>
           </div>
-          
+
           <h2 className="text-3xl sm:text-5xl font-bold text-[#022A4E] tracking-tight leading-tight">
             What Our Clients Say
           </h2>
-          
+
           <p className="text-slate-600 text-sm sm:text-base leading-relaxed">
-            Real feedback from founders and project leads who trusted BasanTech to engineer, launch, and support their digital platforms.
+            Real feedback from founders and project leads who trusted Basan Tech to engineer, launch, and support their digital platforms.
           </p>
         </div>
 
@@ -182,7 +182,7 @@ export const TestimonialsSection: React.FC<TestimonialsSectionProps> = ({
             onClick={() => onNavigate('contact')}
             className="inline-flex items-center gap-2 px-8 py-3.5 rounded-full text-xs font-bold text-white bg-[#022A4E] hover:bg-[#00976C] transition-all duration-200 shadow-xs hover:shadow-md cursor-pointer"
           >
-            <span>Partner With BasanTech On Your Next Project</span>
+            <span>Partner With Basan Tech On Your Next Project</span>
             <ArrowUpRight className="w-3.5 h-3.5 text-emerald-300" />
           </button>
         </div>
