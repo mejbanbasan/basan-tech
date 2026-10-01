@@ -120,7 +120,7 @@ export const PortfolioShowcase: React.FC<PortfolioShowcaseProps> = ({
                 <div className="relative h-60 w-full overflow-hidden bg-slate-100">
                   <img
                     src={study.heroImage}
-                    alt={study.title}
+                    alt={`${study.title} — ${study.category} platform engineered by Basan Tech`}
                     width={600}
                     height={340}
                     loading="lazy"
@@ -327,7 +327,7 @@ export const PortfolioShowcase: React.FC<PortfolioShowcaseProps> = ({
               <div className="relative w-full rounded-2xl overflow-hidden bg-slate-100 border border-slate-200 aspect-video shadow-xs">
                 <img
                   src={activeModalStudy.heroImage}
-                  alt={activeModalStudy.title}
+                  alt={`${activeModalStudy.title} — ${activeModalStudy.category} case study engineered by Basan Tech`}
                   width={1200}
                   height={675}
                   loading="lazy"
