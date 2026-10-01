@@ -11,7 +11,8 @@ import {
   ArrowRight,
   Code2,
   Copy,
-  Check
+  Check,
+  Terminal
 } from 'lucide-react';
 
 interface InsightDetailPageProps {
@@ -52,11 +53,10 @@ export const InsightDetailPage: React.FC<InsightDetailPageProps> = ({ slug, onNa
         '@id': `https://basantech.online/insights/${article.slug}`
       },
       'author': {
-        '@type': 'Person',
-        '@id': 'https://basantech.online/#founder',
-        'name': article.author.name,
-        'jobTitle': article.author.role,
-        'url': 'https://basantech.online/about'
+        '@type': 'Organization',
+        '@id': 'https://basantech.online/#organization',
+        'name': 'Basan Tech Engineering Team',
+        'url': 'https://basantech.online/'
       },
       'publisher': {
         '@type': 'Organization',
@@ -149,12 +149,12 @@ export const InsightDetailPage: React.FC<InsightDetailPageProps> = ({ slug, onNa
 
           {/* Author Badge */}
           <div className="flex items-center gap-3 pt-4 border-t border-slate-200/70">
-            <div className="w-11 h-11 rounded-full bg-[#022A4E] text-white flex items-center justify-center font-bold text-sm">
-              MB
+            <div className="w-10 h-10 rounded-full bg-emerald-50 text-[#00976C] border border-emerald-200 flex items-center justify-center shrink-0">
+              <Terminal className="w-5 h-5" />
             </div>
             <div>
-              <div className="text-sm font-bold text-[#022A4E]">{article.author.name}</div>
-              <div className="text-xs text-slate-500">{article.author.role} at Basan Tech</div>
+              <div className="text-sm font-bold text-[#022A4E]">Basan Tech Engineering Team</div>
+              <div className="text-xs text-slate-500">Software Architecture &amp; Development • Palanpur, Gujarat</div>
             </div>
           </div>
         </header>
@@ -258,13 +258,13 @@ export const InsightDetailPage: React.FC<InsightDetailPageProps> = ({ slug, onNa
 
         {/* Author Bio Card */}
         <div className="mt-10 p-6 sm:p-8 rounded-3xl bg-white border border-slate-200 flex flex-col sm:flex-row items-center sm:items-start gap-5 shadow-2xs">
-          <div className="w-16 h-16 rounded-2xl bg-[#022A4E] text-white flex items-center justify-center font-bold text-xl shrink-0">
-            MB
+          <div className="w-14 h-14 rounded-2xl bg-emerald-50 text-[#00976C] border border-emerald-200 flex items-center justify-center shrink-0">
+            <Terminal className="w-7 h-7" />
           </div>
           <div className="space-y-2 text-center sm:text-left">
-            <h3 className="text-lg font-bold text-[#022A4E]">Written by {article.author.name}</h3>
+            <h3 className="text-lg font-bold text-[#022A4E]">Published by Basan Tech Engineering Team</h3>
             <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
-              Founder &amp; Lead Software Engineer at Basan Tech. Specializing in high-performance web systems, custom enterprise software architectures, and deterministic AI automation workflows. Headquartered in Palanpur, Gujarat.
+              The software engineering, cloud architecture, and product development team at Basan Tech. Delivering high-performance web platforms, bespoke enterprise software, and scalable AI solutions from Palanpur, Gujarat.
             </p>
           </div>
         </div>

@@ -12,9 +12,9 @@ export const INSIGHTS_DATA: Article[] = [
     tags: ['React 19', 'Vite', 'Web Performance', 'Core Web Vitals', 'Frontend Architecture'],
     featured: true,
     author: {
-      name: 'Mejban Basan',
-      role: 'Founder & Lead Software Engineer',
-      avatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=200'
+      name: 'Basan Tech Engineering Team',
+      role: 'Software Architecture & Development',
+      avatar: ''
     },
     keyTakeaways: [
       'React 19 native document metadata, automatic asset preloading, and compiler-level optimizations eliminate the need for heavy external head-management libraries.',
@@ -91,9 +91,9 @@ export default defineConfig({
     tags: ['Custom Software', 'SaaS vs Custom', 'Startup Scaling', 'IP Ownership', 'ROI Analysis'],
     featured: false,
     author: {
-      name: 'Mejban Basan',
-      role: 'Founder & Lead Software Engineer',
-      avatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=200'
+      name: 'Basan Tech Engineering Team',
+      role: 'Software Architecture & Development',
+      avatar: ''
     },
     keyTakeaways: [
       'Off-the-shelf SaaS offers rapid initial setup, but per-seat licensing costs compound aggressively as organizations scale beyond 20–50 team members.',
@@ -157,9 +157,9 @@ export default defineConfig({
     tags: ['AI Solutions', 'RAG Pipelines', 'Autonomous Agents', 'Vector Databases', 'Enterprise AI'],
     featured: false,
     author: {
-      name: 'Mejban Basan',
-      role: 'Founder & Lead Software Engineer',
-      avatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=200'
+      name: 'Basan Tech Engineering Team',
+      role: 'Software Architecture & Development',
+      avatar: ''
     },
     keyTakeaways: [
       'Generic chatbot wrappers provide minimal business value; enterprise ROI comes from deep domain integration with proprietary databases and automated workflows.',

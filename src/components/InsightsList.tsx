@@ -9,7 +9,8 @@ import {
   Sparkles,
   Tag,
   ArrowUpRight,
-  CheckCircle2
+  CheckCircle2,
+  Terminal
 } from 'lucide-react';
 
 interface InsightsListProps {
@@ -113,12 +114,12 @@ export const InsightsList: React.FC<InsightsListProps> = ({ onNavigate, showBrea
                 {/* Author & CTA Row */}
                 <div className="pt-2 flex flex-wrap items-center justify-between gap-4 border-t border-slate-100">
                   <div className="flex items-center gap-3">
-                    <div className="w-9 h-9 rounded-full bg-[#022A4E] text-white flex items-center justify-center font-bold text-xs">
-                      MB
+                    <div className="w-9 h-9 rounded-full bg-emerald-50 text-[#00976C] border border-emerald-200 flex items-center justify-center">
+                      <Terminal className="w-4 h-4" />
                     </div>
                     <div>
-                      <div className="text-xs font-bold text-[#022A4E]">{featuredArticle.author.name}</div>
-                      <div className="text-[11px] text-slate-500">{featuredArticle.author.role} • {featuredArticle.publishedAt}</div>
+                      <div className="text-xs font-bold text-[#022A4E]">Basan Tech Engineering Team</div>
+                      <div className="text-[11px] text-slate-500">Software Architecture &amp; Development • {featuredArticle.publishedAt}</div>
                     </div>
                   </div>
 
@@ -194,9 +195,14 @@ export const InsightsList: React.FC<InsightsListProps> = ({ onNavigate, showBrea
 
               {/* Card Footer: Author & Read Link */}
               <div className="pt-6 mt-6 border-t border-slate-100 flex items-center justify-between gap-3 text-xs">
-                <div>
-                  <div className="font-bold text-[#022A4E] text-xs">{article.author.name}</div>
-                  <div className="text-[11px] text-slate-400">{article.publishedAt}</div>
+                <div className="flex items-center gap-2.5">
+                  <div className="w-7 h-7 rounded-full bg-emerald-50 text-[#00976C] border border-emerald-200/80 flex items-center justify-center shrink-0">
+                    <Terminal className="w-3.5 h-3.5" />
+                  </div>
+                  <div>
+                    <div className="font-bold text-[#022A4E] text-xs">Basan Tech Team</div>
+                    <div className="text-[11px] text-slate-400">{article.publishedAt}</div>
+                  </div>
                 </div>
 
                 <div className="w-8 h-8 rounded-full bg-slate-50 group-hover:bg-emerald-50 flex items-center justify-center text-slate-500 group-hover:text-[#00976C] transition-all">
