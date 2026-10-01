@@ -59,6 +59,7 @@ export const Navbar: React.FC<NavbarProps> = ({ currentPage, onNavigate }) => {
     { label: 'Home', page: 'home', href: '/' },
     { label: 'Services', page: 'services', href: '/services', hasDropdown: true },
     { label: 'Work', page: 'portfolio', href: '/work' },
+    { label: 'Insights', page: 'insights', href: '/insights' },
     { label: 'About', page: 'about', href: '/about' },
     { label: 'Contact', page: 'contact', href: '/contact' },
   ];

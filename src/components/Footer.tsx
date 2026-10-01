@@ -175,6 +175,15 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
               </li>
               <li>
                 <a
+                  href="/insights"
+                  onClick={(e) => { e.preventDefault(); onNavigate('insights'); }}
+                  className="hover:text-[#00976C] transition-colors cursor-pointer inline-block"
+                >
+                  Insights &amp; Articles
+                </a>
+              </li>
+              <li>
+                <a
                   href="/services"
                   onClick={(e) => { e.preventDefault(); onNavigate('services'); }}
                   className="hover:text-[#00976C] transition-colors cursor-pointer inline-block"

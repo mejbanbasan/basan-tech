@@ -6,6 +6,7 @@ import { HeroSection } from './components/HeroSection';
 import { ServicesOverview } from './components/ServicesOverview';
 import { ErrorBoundary } from './components/ErrorBoundary';
 import { SERVICES_DATA } from './data/servicesData';
+import { INSIGHTS_DATA } from './data/insightsData';
 
 // Code-split heavy below-the-fold sections and individual detail pages
 const PortfolioShowcase = lazy(() => import('./components/PortfolioShowcase').then(m => ({ default: m.PortfolioShowcase })));
@@ -16,6 +17,8 @@ const PrivacyPolicy = lazy(() => import('./components/PrivacyPolicy').then(m => 
 const TermsOfService = lazy(() => import('./components/TermsOfService').then(m => ({ default: m.TermsOfService })));
 const ServiceDetailPage = lazy(() => import('./components/ServiceDetailPage').then(m => ({ default: m.ServiceDetailPage })));
 const EngineeringProcess = lazy(() => import('./components/EngineeringProcess').then(m => ({ default: m.EngineeringProcess })));
+const InsightsList = lazy(() => import('./components/InsightsList').then(m => ({ default: m.InsightsList })));
+const InsightDetailPage = lazy(() => import('./components/InsightDetailPage').then(m => ({ default: m.InsightDetailPage })));
 
 // Dimension-matched skeleton fallback for subpages to completely eliminate CLS
 const PageSkeleton = () => (
@@ -50,7 +53,7 @@ const normalizeServiceId = (rawId: string): ServiceId | null => {
 };
 
 // Helper to determine active page and service from URL pathname & hash
-const getRouteFromLocation = (): { page: PageView; serviceId?: ServiceId } => {
+const getRouteFromLocation = (): { page: PageView; serviceId?: ServiceId; articleSlug?: string } => {
   if (typeof window === 'undefined') return { page: 'home' };
 
   const pathname = window.location.pathname.toLowerCase();
@@ -66,7 +69,13 @@ const getRouteFromLocation = (): { page: PageView; serviceId?: ServiceId } => {
     return { page: 'services' };
   }
 
-  // 2. Fallback hash for /services/:id (e.g. #/services/app-dev)
+  // 2. Check for /insights/:slug path (e.g. /insights/building-sub-second-web-platforms-react-19-vite-2026)
+  const insightMatch = pathname.match(/^\/insights\/([a-z0-9-]+)\/?$/);
+  if (insightMatch) {
+    return { page: 'insight-detail', articleSlug: insightMatch[1] };
+  }
+
+  // 3. Fallback hash for /services/:id (e.g. #/services/app-dev)
   const hashServiceMatch = hash.match(/^services\/([a-z0-9-]+)\/?$/);
   if (hashServiceMatch) {
     const matchedId = normalizeServiceId(hashServiceMatch[1]);
@@ -75,19 +84,26 @@ const getRouteFromLocation = (): { page: PageView; serviceId?: ServiceId } => {
     }
   }
 
-  // 3. Check clean pathnames
+  const hashInsightMatch = hash.match(/^insights\/([a-z0-9-]+)\/?$/);
+  if (hashInsightMatch) {
+    return { page: 'insight-detail', articleSlug: hashInsightMatch[1] };
+  }
+
+  // 4. Check clean pathnames
   const cleanPath = pathname.replace(/^\//, '').replace(/\/$/, '');
-  const validPages: PageView[] = ['services', 'portfolio', 'about', 'testimonials', 'contact', 'privacy', 'terms'];
+  const validPages: PageView[] = ['services', 'portfolio', 'insights', 'about', 'testimonials', 'contact', 'privacy', 'terms'];
 
   if (cleanPath === 'work' || cleanPath === 'portfolio') return { page: 'portfolio' };
+  if (cleanPath === 'insights' || cleanPath === 'blog' || cleanPath === 'articles') return { page: 'insights' };
   if (cleanPath === 'privacy-policy' || cleanPath === 'privacy') return { page: 'privacy' };
   if (cleanPath === 'terms-of-service' || cleanPath === 'terms') return { page: 'terms' };
   if (validPages.includes(cleanPath as PageView)) {
     return { page: cleanPath as PageView };
   }
 
-  // 4. Fallback to hash if present (for old bookmarks/links)
+  // 5. Fallback to hash if present (for old bookmarks/links)
   if (hash === 'work' || hash === 'portfolio') return { page: 'portfolio' };
+  if (hash === 'insights' || hash === 'blog' || hash === 'articles') return { page: 'insights' };
   if (hash === 'privacy-policy' || hash === 'privacy') return { page: 'privacy' };
   if (hash === 'terms-of-service' || hash === 'terms') return { page: 'terms' };
   if (validPages.includes(hash as PageView)) {
@@ -101,6 +117,7 @@ export default function App() {
   const initialRoute = getRouteFromLocation();
   const [currentPage, setCurrentPage] = useState<PageView>(initialRoute.page);
   const [selectedServiceId, setSelectedServiceId] = useState<ServiceId>(initialRoute.serviceId || 'custom-software');
+  const [selectedArticleSlug, setSelectedArticleSlug] = useState<string>(initialRoute.articleSlug || 'building-sub-second-web-platforms-react-19-vite-2026');
   const [openFaqIndex, setOpenFaqIndex] = useState<number | null>(null);
 
   // Listen to popstate (browser back/forward buttons) and hashchange
@@ -110,6 +127,9 @@ export default function App() {
       setCurrentPage(route.page);
       if (route.serviceId) {
         setSelectedServiceId(route.serviceId);
+      }
+      if (route.articleSlug) {
+        setSelectedArticleSlug(route.articleSlug);
       }
     };
 
@@ -177,6 +197,24 @@ export default function App() {
         metaDescription = 'Inspect production platforms and case studies engineered by Basan Tech across e-commerce, healthcare, digital education, NGOs, and startup incubation.';
         canonicalUrl = 'https://basantech.online/work';
         break;
+      case 'insights':
+        pageTitle = 'Insights & Engineering Articles — Basan Tech';
+        metaDescription = 'In-depth technical guides, software architecture teardowns, and engineering insights from Basan Tech on React 19, custom software, and practical AI.';
+        canonicalUrl = 'https://basantech.online/insights';
+        break;
+      case 'insight-detail': {
+        const currentArticle = INSIGHTS_DATA.find(a => a.slug === selectedArticleSlug) || INSIGHTS_DATA[0];
+        if (currentArticle) {
+          pageTitle = `${currentArticle.title} — Basan Tech`;
+          metaDescription = currentArticle.description;
+          canonicalUrl = `https://basantech.online/insights/${currentArticle.slug}`;
+        } else {
+          pageTitle = 'Engineering Insights & Articles — Basan Tech';
+          metaDescription = 'In-depth technical guides, software architecture teardowns, and engineering insights from Basan Tech.';
+          canonicalUrl = 'https://basantech.online/insights';
+        }
+        break;
+      }
       case 'about':
         pageTitle = 'About Us — Basan Tech | Palanpur, Gujarat';
         metaDescription = 'Learn about Basan Tech, an engineering-led software company in Palanpur, Gujarat, dedicated to clean code, craftsman-level quality, and 100% client IP ownership.';
@@ -226,18 +264,22 @@ export default function App() {
 
     // Set canonical link
     updateCanonicalUrl(canonicalUrl);
-  }, [currentPage, selectedServiceId]);
+  }, [currentPage, selectedServiceId, selectedArticleSlug]);
 
-  const handleNavigate = (page: PageView, serviceId?: ServiceId) => {
-    if (serviceId) {
-      setSelectedServiceId(serviceId);
+  const handleNavigate = (page: PageView, param?: string) => {
+    if (page === 'service-detail' && param) {
+      setSelectedServiceId(param as ServiceId);
+    } else if (page === 'insight-detail' && param) {
+      setSelectedArticleSlug(param);
     }
     setCurrentPage(page);
 
     try {
       let targetPath = '/';
-      if (page === 'service-detail' && serviceId) {
-        targetPath = `/services/${serviceId}`;
+      if (page === 'service-detail' && param) {
+        targetPath = `/services/${param}`;
+      } else if (page === 'insight-detail' && param) {
+        targetPath = `/insights/${param}`;
       } else if (page === 'portfolio') {
         targetPath = '/work';
       } else if (page === 'privacy') {
@@ -328,6 +370,22 @@ export default function App() {
               {currentPage === 'portfolio' && (
                 <div>
                   <PortfolioShowcase onNavigate={handleNavigate} showBreadcrumb={true} />
+                  <ContactSection onNavigate={handleNavigate} />
+                </div>
+              )}
+
+              {/* INSIGHTS / ARTICLES LISTING PAGE */}
+              {currentPage === 'insights' && (
+                <div>
+                  <InsightsList onNavigate={handleNavigate} showBreadcrumb={true} />
+                  <ContactSection onNavigate={handleNavigate} />
+                </div>
+              )}
+
+              {/* INSIGHT DETAIL / ARTICLE PAGE */}
+              {currentPage === 'insight-detail' && (
+                <div>
+                  <InsightDetailPage slug={selectedArticleSlug} onNavigate={handleNavigate} />
                   <ContactSection onNavigate={handleNavigate} />
                 </div>
               )}

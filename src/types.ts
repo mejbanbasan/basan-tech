@@ -3,10 +3,12 @@ export type PageView =
   | 'services' 
   | 'service-detail' 
   | 'portfolio' 
+  | 'insights'
+  | 'insight-detail'
   | 'about' 
-  | 'testimonials'
-  | 'contact'
-  | 'privacy'
+  | 'testimonials' 
+  | 'contact' 
+  | 'privacy' 
   | 'terms';
 
 export type ServiceId = 
@@ -107,4 +109,36 @@ export interface Testimonial {
   quote: string;
   date: string;
   verified?: boolean;
+}
+
+export interface ArticleSection {
+  heading: string;
+  paragraphs: string[];
+  subpoints?: string[];
+  codeSnippet?: {
+    language: string;
+    code: string;
+    caption?: string;
+  };
+}
+
+export interface Article {
+  slug: string;
+  title: string;
+  subtitle: string;
+  description: string;
+  publishedAt: string;
+  readTime: string;
+  category: string;
+  tags: string[];
+  featured?: boolean;
+  author: {
+    name: string;
+    role: string;
+    avatar: string;
+  };
+  keyTakeaways: string[];
+  sections: ArticleSection[];
+  ctaHeading: string;
+  ctaText: string;
 }

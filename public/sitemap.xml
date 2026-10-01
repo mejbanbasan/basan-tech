@@ -27,6 +27,32 @@
     <priority>0.85</priority>
   </url>
 
+  <!-- 4. Insights & Engineering Articles Hub -->
+  <url>
+    <loc>https://basantech.online/insights</loc>
+    <lastmod>2026-10-01</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://basantech.online/insights/building-sub-second-web-platforms-react-19-vite-2026</loc>
+    <lastmod>2026-10-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://basantech.online/insights/custom-software-vs-off-the-shelf-saas-startup-guide</loc>
+    <lastmod>2026-10-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://basantech.online/insights/practical-ai-integration-autonomous-agents-rag-business</loc>
+    <lastmod>2026-10-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.80</priority>
+  </url>
+
   <!-- 4. About Us Page -->
   <url>
     <loc>https://basantech.online/about</loc>
