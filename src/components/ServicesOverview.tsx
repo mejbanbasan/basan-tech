@@ -54,23 +54,34 @@ export const ServicesOverview: React.FC<ServicesOverviewProps> = ({
           </nav>
         )}
 
-        {/* Section Header: Pill, Main Headline, Subtitle */}
-        <div className="text-center max-w-3xl mx-auto space-y-4">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-50 border border-emerald-200 text-xs font-semibold text-[#00976C] shadow-2xs">
-            <span className="w-2 h-2 rounded-full bg-[#00976C] animate-pulse" />
-            <span className="font-mono text-[11px] uppercase tracking-wider font-bold">OUR SERVICES</span>
+        {/* Section Header */}
+        <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-8">
+          <div className="max-w-3xl space-y-4">
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-50 border border-emerald-200 text-xs font-semibold text-emerald-800 shadow-2xs">
+              <span className="w-2 h-2 rounded-full bg-[#00976C] animate-pulse" />
+              <span className="font-mono uppercase tracking-wider text-[11px] font-bold text-[#00976C]">
+                ENGINEERING PRACTICES • 06 CORE SERVICES
+              </span>
+            </div>
+
+            <h2 className="text-3xl sm:text-5xl font-bold tracking-tight text-[#022A4E] leading-[1.15]">
+              Software Engineering &amp; Digital Services
+            </h2>
+
+            <p className="text-slate-600 text-base sm:text-lg leading-relaxed max-w-2xl font-normal">
+              We design and engineer dependable digital solutions for businesses worldwide. Every service includes full source code ownership, clean architecture, and direct developer communication.
+            </p>
           </div>
 
-          <h2 className="text-3xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-[#022A4E] leading-[1.12]">
-            Scalable Digital Services
-            <span className="block text-slate-500 font-medium text-2xl sm:text-4xl lg:text-5xl mt-1">
-              crafted for modern businesses
-            </span>
-          </h2>
-
-          <p className="text-slate-600 text-sm sm:text-base leading-relaxed max-w-2xl mx-auto font-normal">
-            A modern engineering suite built for founders, enterprises, and high-growth businesses seeking robust, scalable digital solutions.
-          </p>
+          <div className="shrink-0">
+            <button
+              onClick={() => onNavigate('contact')}
+              className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full text-xs font-bold text-white bg-[#00976C] hover:bg-[#00825B] transition-all duration-200 shadow-xs hover:shadow-md cursor-pointer"
+            >
+              <span>Initiate Project Consultation</span>
+              <ArrowUpRight className="w-4 h-4 text-emerald-200" />
+            </button>
+          </div>
         </div>
 
         {/* Bento Grid Layout (Row 1: 1 Standard + 1 Featured Wide; Row 2: 3 Standard; Row 3: 1 Featured Banner) */}
@@ -186,7 +197,7 @@ export const ServicesOverview: React.FC<ServicesOverviewProps> = ({
                   App Development (Android &amp; iOS)
                 </h3>
                 <p className="text-xs sm:text-sm text-slate-600 leading-relaxed font-normal">
-                  We design and develop native and cross-platform mobile apps for iOS and Android platforms with 60fps performance, clarity, and polished user journeys.
+                  Native and cross-platform mobile apps for iOS and Android built with intuitive UX, smooth performance, and robust offline support.
                 </p>
               </div>
 
@@ -473,7 +484,7 @@ export const ServicesOverview: React.FC<ServicesOverviewProps> = ({
               </h3>
 
               <p className="text-slate-300 text-sm sm:text-base leading-relaxed font-normal">
-                Intelligent RAG pipelines, deterministic autonomous agents, document intelligence, and enterprise LLM integrations engineered to automate operational tasks with zero proprietary data leakage.
+                Practical AI integrations, autonomous agents, RAG document pipelines, and custom LLM workflows that automate business operations with zero proprietary data leakage.
               </p>
 
               {/* 4 Capability Checkmarks */}
