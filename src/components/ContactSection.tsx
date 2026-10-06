@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { PageView, ServiceId } from '../types';
 import {
   Send,
@@ -46,6 +46,35 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
       default: return '';
     }
   });
+
+  // Keep projectType synchronized whenever preselectedService prop changes
+  useEffect(() => {
+    if (preselectedService) {
+      switch (preselectedService) {
+        case 'website-dev':
+        case 'web-dev':
+          setProjectType('Website Development');
+          break;
+        case 'app-dev':
+        case 'mobile-app':
+          setProjectType('App Development (Android & iOS)');
+          break;
+        case 'custom-software':
+          setProjectType('Custom Software Development');
+          break;
+        case 'desktop-software':
+          setProjectType('Desktop Software Development');
+          break;
+        case 'ecommerce-dev':
+        case 'ecommerce':
+          setProjectType('E-commerce Development');
+          break;
+        case 'ai-solutions':
+          setProjectType('AI Solutions');
+          break;
+      }
+    }
+  }, [preselectedService]);
   const [projectDetails, setProjectDetails] = useState('');
 
   const [isSubmitting, setIsSubmitting] = useState(false);

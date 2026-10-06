@@ -269,6 +269,15 @@ export default function App() {
   const handleNavigate = (page: PageView, param?: string) => {
     if (page === 'service-detail' && param) {
       setSelectedServiceId(param as ServiceId);
+    } else if (page === 'contact' && param) {
+      const matched = normalizeServiceId(param);
+      if (matched) setSelectedServiceId(matched);
+    } else if (page === 'home' && param) {
+      const matched = normalizeServiceId(param);
+      if (matched) setSelectedServiceId(matched);
+    } else if (page === 'services' && param) {
+      const matched = normalizeServiceId(param);
+      if (matched) setSelectedServiceId(matched);
     } else if (page === 'insight-detail' && param) {
       setSelectedArticleSlug(param);
     }
@@ -346,7 +355,7 @@ export default function App() {
               </Suspense>
 
               <Suspense fallback={<div className="min-h-[600px] bg-slate-900" />}>
-                <ContactSection onNavigate={handleNavigate} />
+                <ContactSection onNavigate={handleNavigate} preselectedService={selectedServiceId} />
               </Suspense>
             </div>
           )}
@@ -359,7 +368,7 @@ export default function App() {
                 <div>
                   <ServicesOverview onNavigate={handleNavigate} showBreadcrumb={true} />
                   <EngineeringProcess onNavigate={handleNavigate} />
-                  <ContactSection onNavigate={handleNavigate} />
+                  <ContactSection onNavigate={handleNavigate} preselectedService={selectedServiceId} />
                 </div>
               )}
 
@@ -411,7 +420,7 @@ export default function App() {
               {/* CONTACT PAGE (Dedicated Page) */}
               {currentPage === 'contact' && (
                 <div>
-                  <ContactSection onNavigate={handleNavigate} showBreadcrumb={true} />
+                  <ContactSection onNavigate={handleNavigate} preselectedService={selectedServiceId} showBreadcrumb={true} />
                 </div>
               )}
 
