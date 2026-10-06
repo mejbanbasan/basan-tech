@@ -116,7 +116,7 @@ const getRouteFromLocation = (): { page: PageView; serviceId?: ServiceId; articl
 export default function App() {
   const initialRoute = getRouteFromLocation();
   const [currentPage, setCurrentPage] = useState<PageView>(initialRoute.page);
-  const [selectedServiceId, setSelectedServiceId] = useState<ServiceId>(initialRoute.serviceId || 'custom-software');
+  const [selectedServiceId, setSelectedServiceId] = useState<ServiceId | undefined>(initialRoute.serviceId);
   const [selectedArticleSlug, setSelectedArticleSlug] = useState<string>(initialRoute.articleSlug || 'building-sub-second-web-platforms-react-19-vite-2026');
   const [openFaqIndex, setOpenFaqIndex] = useState<number | null>(null);
 
@@ -269,15 +269,15 @@ export default function App() {
   const handleNavigate = (page: PageView, param?: string) => {
     if (page === 'service-detail' && param) {
       setSelectedServiceId(param as ServiceId);
-    } else if (page === 'contact' && param) {
-      const matched = normalizeServiceId(param);
-      if (matched) setSelectedServiceId(matched);
-    } else if (page === 'home' && param) {
-      const matched = normalizeServiceId(param);
-      if (matched) setSelectedServiceId(matched);
-    } else if (page === 'services' && param) {
-      const matched = normalizeServiceId(param);
-      if (matched) setSelectedServiceId(matched);
+    } else if (page === 'contact') {
+      const matched = param ? normalizeServiceId(param) : undefined;
+      setSelectedServiceId(matched);
+    } else if (page === 'home') {
+      const matched = param ? normalizeServiceId(param) : undefined;
+      setSelectedServiceId(matched);
+    } else if (page === 'services') {
+      const matched = param ? normalizeServiceId(param) : undefined;
+      setSelectedServiceId(matched);
     } else if (page === 'insight-detail' && param) {
       setSelectedArticleSlug(param);
     }
@@ -355,7 +355,7 @@ export default function App() {
               </Suspense>
 
               <Suspense fallback={<div className="min-h-[600px] bg-slate-900" />}>
-                <ContactSection onNavigate={handleNavigate} preselectedService={selectedServiceId} />
+                <ContactSection onNavigate={handleNavigate} />
               </Suspense>
             </div>
           )}
@@ -368,7 +368,7 @@ export default function App() {
                 <div>
                   <ServicesOverview onNavigate={handleNavigate} showBreadcrumb={true} />
                   <EngineeringProcess onNavigate={handleNavigate} />
-                  <ContactSection onNavigate={handleNavigate} preselectedService={selectedServiceId} />
+                  <ContactSection onNavigate={handleNavigate} />
                 </div>
               )}
 

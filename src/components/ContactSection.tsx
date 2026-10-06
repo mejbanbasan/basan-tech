@@ -73,15 +73,6 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
           setProjectType('AI Solutions');
           break;
       }
-
-      // Smoothly highlight and focus the form input when arriving with preselected service
-      const timer = setTimeout(() => {
-        const selectEl = document.getElementById('contact-form-project-type');
-        if (selectEl) {
-          selectEl.focus();
-        }
-      }, 350);
-      return () => clearTimeout(timer);
     }
   }, [preselectedService]);
   const [projectDetails, setProjectDetails] = useState('');
