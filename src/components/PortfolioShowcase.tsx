@@ -45,8 +45,46 @@ export const PortfolioShowcase: React.FC<PortfolioShowcaseProps> = ({
 
   const displayedStudies = limit ? filteredStudies.slice(0, limit) : filteredStudies;
 
+  // Schema.org Structured Data for Portfolio Items
+  const portfolioSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'ItemList',
+    name: 'Basan Tech Engineering Portfolio & Case Studies',
+    description: 'Production web platforms, healthcare CRMs, mobile applications, and software engineered by Basan Tech.',
+    numberOfItems: CASE_STUDIES.length,
+    itemListElement: CASE_STUDIES.map((study, index) => {
+      const fullImageUrl = study.heroImage.startsWith('http')
+        ? study.heroImage
+        : `https://basantech.online${study.heroImage}`;
+      return {
+        '@type': 'ListItem',
+        position: index + 1,
+        item: {
+          '@type': 'CreativeWork',
+          name: study.title,
+          headline: study.tagline,
+          description: study.summary || study.tagline,
+          genre: study.categoryLabel,
+          url: study.liveUrl || 'https://basantech.online/work',
+          image: fullImageUrl,
+          creator: {
+            '@type': 'Organization',
+            name: 'Basan Tech',
+            url: 'https://basantech.online',
+          },
+          keywords: study.techStack ? study.techStack.join(', ') : undefined,
+        },
+      };
+    }),
+  };
+
   return (
     <section id="portfolio-section" className={`${showBreadcrumb ? 'pt-24 sm:pt-28 pb-12 sm:pb-16' : 'py-12 sm:py-16'} bg-slate-50/60 border-b border-slate-200`}>
+      {/* Schema.org CreativeWork ItemList Structured Data */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(portfolioSchema) }}
+      />
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10 sm:space-y-12">
 
         {/* Section Header */}
@@ -120,7 +158,7 @@ export const PortfolioShowcase: React.FC<PortfolioShowcaseProps> = ({
                 <div className="relative h-60 w-full overflow-hidden bg-slate-100">
                   <img
                     src={study.heroImage}
-                    alt={`${study.title} — ${study.category} platform engineered by Basan Tech`}
+                    alt={study.imageAlt || `${study.title} — ${study.categoryLabel} engineered by Basan Tech`}
                     width={600}
                     height={340}
                     loading="lazy"
@@ -327,7 +365,7 @@ export const PortfolioShowcase: React.FC<PortfolioShowcaseProps> = ({
               <div className="relative w-full rounded-2xl overflow-hidden bg-slate-100 border border-slate-200 aspect-video shadow-xs">
                 <img
                   src={activeModalStudy.heroImage}
-                  alt={`${activeModalStudy.title} — ${activeModalStudy.category} case study engineered by Basan Tech`}
+                  alt={activeModalStudy.imageAlt || `${activeModalStudy.title} — ${activeModalStudy.categoryLabel} case study engineered by Basan Tech`}
                   width={1200}
                   height={675}
                   loading="lazy"

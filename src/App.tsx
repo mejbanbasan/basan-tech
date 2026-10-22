@@ -193,8 +193,8 @@ export default function App() {
         break;
       }
       case 'portfolio':
-        pageTitle = 'Work & Case Studies — Basan Tech';
-        metaDescription = 'Inspect production platforms and case studies engineered by Basan Tech across e-commerce, healthcare, digital education, NGOs, and startup incubation.';
+        pageTitle = 'Work & Portfolio — Web Apps, Healthcare CRMs & Software | Basan Tech';
+        metaDescription = 'Explore production software, web applications, healthcare CRMs, and e-commerce platforms engineered by Basan Tech. Verified client case studies and live platforms.';
         canonicalUrl = 'https://basantech.online/work';
         break;
       case 'insights':

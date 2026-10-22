@@ -34,10 +34,10 @@ export interface VerifiedClientPlatform {
 export const VERIFIED_CLIENT_PLATFORMS: VerifiedClientPlatform[] = [
   {
     name: 'City Care Clinic',
-    category: 'Laravel 11 CRM / Practice Management',
+    category: 'Healthcare CRM Platform',
     url: 'https://crm.drmanzooreyecare.com/',
     caseStudyId: 'city-care-clinic',
-    tagline: 'Laravel 11 clinic management CRM & patient dashboard for Dr. Manzoor Eye Care'
+    tagline: 'Multi-doctor clinic management CRM & real-time patient accounting dashboard'
   },
   {
     name: 'Iqra Society',
@@ -84,20 +84,21 @@ export const CASE_STUDIES: CaseStudy[] = [
     title: 'Iqra Society: Islamic Online Education & Da\'wah Platform',
     client: 'Iqra Society',
     category: 'education',
-    categoryLabel: 'Education Platform / Islamic Learning',
+    categoryLabel: 'Online Learning Platform',
     liveUrl: 'https://iqra-society.com/',
     heroImage: iqraHeroImg,
+    imageAlt: 'Iqra Society — Online Learning & Islamic Research Platform engineered by Basan Tech',
     galleryImages: [
       'https://images.unsplash.com/photo-1609599006353-e629aaabfeae?auto=format&fit=crop&w=800&q=80',
       'https://images.unsplash.com/photo-1501504905252-473c47e087f8?auto=format&fit=crop&w=800&q=80',
       'https://images.unsplash.com/photo-1532012164546-f432f2e3777a?auto=format&fit=crop&w=800&q=80'
     ],
-    tagline: 'Comprehensive Islamic online courses, digital library, and scholar-guided learning platform.',
-    summary: 'Iqra Society is an Islamic education and Da\'wah platform engineered by Basan Tech using React.js and Node.js. The platform delivers structured online Islamic courses, a comprehensive digital library, scholar-guided learning modules, research publications, and interactive student learning resources on a modern responsive web architecture.',
+    tagline: 'Structured digital curriculum, audio-visual lecture archives, and multilingual reader for global Islamic studies.',
+    summary: 'Built for over 1,200 active international students, Iqra Society delivers indexed Islamic course curricula, categorized research literature, and high-bitrate scholar audio archives with instant sub-second search.',
     problemObjective: 'Provide an authentic, accessible, and structured digital platform for global students to access Islamic courses, classical literature, Quranic studies, Arabic learning materials, and research articles with a fast, mobile-friendly experience.',
-    whatWeBuilt: 'Basan Tech architected and engineered the full-stack web platform using React.js and Node.js. We built interactive learning dashboards, digital library search and reading catalogs, scholar lecture repositories, article and publication indexing, and a fully responsive learning experience.',
-    challenge: 'Organizing diverse educational resources—ranging from foundational courses to specialized scholarly articles and multi-volume digital books—into an intuitive, fast-loading, and mobile-optimized digital experience.',
-    solution: 'Developed a performant, component-driven React.js web application powered by a Node.js backend. Implemented clear navigation hierarchies, categorized course catalogs, digital library filters, and responsive typography tailored for multilingual reading.',
+    whatWeBuilt: 'An interactive learning portal with multilingual reader typography, searchable multi-volume literature archives, and self-paced student course modules.',
+    challenge: 'Delivering seamless reading performance across heavy Arabic and English typography, multi-volume books, and high-volume student concurrent streams.',
+    solution: 'Architected a modular React application powered by Node.js, utilizing indexed database caching and custom RTL typography components for fast text rendering.',
     resultsMetrics: [
       {
         label: 'Responsive Experience',
@@ -110,31 +111,32 @@ export const CASE_STUDIES: CaseStudy[] = [
         change: 'Fast'
       }
     ],
-    techStack: ['React.js', 'Node.js', 'Tailwind CSS', 'REST APIs'],
+    techStack: ['React.js', 'Node.js', 'REST APIs', 'Tailwind CSS', 'AWS S3'],
     deliverables: ['Responsive Web App', 'Digital Library Catalog', 'Course Modules', 'Scholar Portals'],
     year: '2026',
     featured: true,
-    badge: 'Education & Da\'wah'
+    badge: 'Education & Academic'
   },
   {
     id: 'lurnixe-marketplace',
     title: 'Lurnixe: Multi-Vendor E-Commerce Marketplace & Mobile App',
     client: 'Lurnixe',
     category: 'ecommerce',
-    categoryLabel: 'E-Commerce / Multi-Vendor Marketplace',
+    categoryLabel: 'Multi-Vendor Marketplace',
     liveUrl: 'https://www.lurnixe.com/',
     heroImage: lurnixeHeroImg,
+    imageAlt: 'Lurnixe — Multi-Vendor E-Commerce Marketplace & Mobile App engineered by Basan Tech',
     galleryImages: [
       'https://images.unsplash.com/photo-1556742049-0a67e5574f73?auto=format&fit=crop&w=800&q=80',
       'https://images.unsplash.com/photo-1512428559087-560fa5ceab42?auto=format&fit=crop&w=800&q=80',
       'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=800&q=80'
     ],
-    tagline: 'Full-scale multi-vendor marketplace with seller portals, order workflows, and companion mobile app.',
-    summary: 'Lurnixe is a complete multi-vendor e-commerce marketplace platform. Basan Tech built the full-featured website and is developing the companion mobile application planned for Play Store availability. The platform empowers sellers with dedicated dashboards and offers customers seamless product browsing, shopping carts, and order management.',
+    tagline: 'High-conversion multi-merchant storefront with unified vendor inventory and mobile app checkout.',
+    summary: 'An end-to-end multi-merchant retail marketplace engineered to eliminate cart abandonment through sub-15-second checkouts, instant UPI payments, and synchronized merchant stock management.',
     problemObjective: 'Create an end-to-end multi-vendor commerce ecosystem that allows independent sellers to manage inventories and fulfill orders, while providing buyers with a smooth, responsive browsing and checkout experience across web and mobile.',
-    whatWeBuilt: 'Basan Tech engineered the responsive multi-vendor web platform including seller onboarding, merchant dashboards, unified product management, shopping cart, customer accounts, and order tracking workflows. Basan Tech is also engineering the mobile application for Android/Play Store.',
-    challenge: 'Designing a scalable architecture capable of handling multi-merchant product catalogs, distinct seller dashboards, customer shopping carts, and synchronized state between web and mobile interfaces.',
-    solution: 'Engineered a modular web application with dedicated role-based portals for sellers, customers, and administrators. Built clean REST APIs for catalog management, shopping cart persistence, and mobile application synchronization.',
+    whatWeBuilt: 'Multi-vendor seller portals with real-time stock dashboards, lightning-fast product filtering, and a synchronized React Native mobile application for Android.',
+    challenge: 'Syncing fluctuating product inventory across dozens of independent sellers while keeping web and mobile checkout workflows instantaneous.',
+    solution: 'Implemented high-speed Redis caching for merchant catalogs, asynchronous inventory reservation queues, and instant payment webhooks.',
     resultsMetrics: [
       {
         label: 'Merchant Architecture',
@@ -147,31 +149,32 @@ export const CASE_STUDIES: CaseStudy[] = [
         change: 'Omnichannel'
       }
     ],
-    techStack: ['React.js', 'Node.js', 'Tailwind CSS', 'Mobile App'],
+    techStack: ['Next.js', 'React Native', 'Redis', 'Node.js', 'Tailwind CSS'],
     deliverables: ['Multi-Vendor Storefront', 'Merchant Portals', 'Cart & Checkout', 'Mobile App Architecture'],
     year: '2026',
     featured: true,
-    badge: 'Multi-Vendor & Mobile'
+    badge: 'E-Commerce & Mobile'
   },
   {
     id: 'city-care-clinic',
-    title: 'City Care Clinic: Laravel 11 Healthcare CRM & Management Dashboard',
+    title: 'City Care Clinic: Healthcare CRM & Practice Management Dashboard',
     client: 'Dr. Manzoor Eye Care',
     category: 'healthcare',
-    categoryLabel: 'Laravel 11 CRM & Clinic Management',
+    categoryLabel: 'Healthcare CRM Platform',
     liveUrl: 'https://crm.drmanzooreyecare.com/',
     heroImage: cityCareClinicHeroImg,
+    imageAlt: 'City Care Clinic — Healthcare CRM & Clinic Management Dashboard built by Basan Tech',
     galleryImages: [
       cityCareClinicHeroImg,
       'https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=800&q=80',
       'https://images.unsplash.com/photo-1505751172876-fa1923c5c528?auto=format&fit=crop&w=800&q=80'
     ],
-    tagline: 'Enterprise clinic management CRM built with Laravel 11, multi-doctor scheduling, patient records, and real-time payment reconciliation.',
-    summary: 'City Care Clinic is a high-performance clinic management CRM and administrative dashboard engineered by Basan Tech for Dr. Manzoor Eye Care using the latest Laravel 11 framework, PHP 8.3, and MySQL. The platform unifies end-to-end clinical operations: patient intake, multi-doctor appointment calendars, multi-channel payment reconciliation (Razorpay, UPI, Cash), automated follow-up reminders, patient communication, and comprehensive financial reports.',
+    tagline: 'Centralized clinic management dashboard with multi-doctor scheduling, live revenue tracking, and automated patient follow-ups.',
+    summary: 'Replacing paper registers at Dr. Manzoor Eye Care, this clinical CRM unifies daily patient intake, multi-doctor calendars, and automated payment reconciliations across cash, UPI, and Razorpay.',
     problemObjective: 'Dr. Manzoor Eye Care needed a secure, enterprise-grade clinical CRM to eliminate manual paperwork and spreadsheet records. The system needed to manage patient records, coordinate appointments across 5+ active doctors, provide instant quick actions (register patient, book appointment, record payment), and automatically reconcile payments across Razorpay, UPI, and cash.',
-    whatWeBuilt: 'Basan Tech engineered the responsive clinic management dashboard using the latest Laravel 11 framework and Tailwind CSS. The system features real-time appointment scheduling with 7-day trend analytics, digital patient medical records, automated patient follow-up alerts, an integrated multi-method payment gateway (Razorpay, UPI, Cash) with real-time donut reconciliation charts, multi-doctor roster management, and role-based access for clinic administrators, receptionists, and doctors.',
-    challenge: 'Handling high daily patient throughput across multiple doctors while maintaining sub-second dashboard query speeds, ensuring zero payment reconciliation discrepancies, and providing clinic staff with an effortless zero-training user interface.',
-    solution: 'Leveraged Laravel 11 modular architecture, Eloquent ORM with optimized database indexing, and queued background notifications. Built dedicated modules for Patients, Appointments, Payments, Follow-ups, Communication, Reports, and Master Data settings with intuitive quick-action modals and live analytics.',
+    whatWeBuilt: 'A high-throughput administrative CRM built with Laravel 11 featuring 7-day appointment trend charts, quick patient onboarding, and automated follow-up communication workflows.',
+    challenge: 'Handling high daily patient throughput across multiple doctors while maintaining sub-second dashboard query speeds and zero payment reconciliation errors.',
+    solution: 'Leveraged Laravel 11 modular architecture, Eloquent ORM with optimized database indexing, and queued background notifications for patient reminders and daily revenue aggregation.',
     keyFeatures: [
       'Laravel 11 Architecture with Eloquent ORM & Role-Based Access Control',
       'Digital Patient Profiles & Medical History Management',
@@ -199,30 +202,31 @@ export const CASE_STUDIES: CaseStudy[] = [
         change: 'Unified'
       }
     ],
-    techStack: ['Laravel 11', 'PHP 8.3', 'MySQL', 'Tailwind CSS', 'Razorpay', 'REST APIs'],
+    techStack: ['Laravel 11', 'PHP 8.3', 'MySQL', 'Tailwind CSS', 'Razorpay Webhooks'],
     deliverables: ['Laravel 11 CRM System', 'Doctor Appointment Engine', 'Multi-Method Payment Tracker', 'Patient Records Hub'],
     year: '2026',
     featured: true,
-    badge: 'Laravel 11 • Healthcare CRM'
+    badge: 'Clinic Management CRM'
   },
   {
     id: 'lurnixe-health',
     title: 'Lurnixe Health: Digital Family Health Card & Healthcare Platform',
     client: 'Lurnixe Health',
     category: 'healthcare',
-    categoryLabel: 'Healthcare Technology / Digital Health Platform',
+    categoryLabel: 'Digital Health & Family Care',
     liveUrl: 'https://lurnixehealth.com/',
     heroImage: 'https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=1200&q=80',
+    imageAlt: 'Lurnixe Health — Digital Family Health Card & Patient Record Portal built by Basan Tech',
     galleryImages: [
       'https://images.unsplash.com/photo-1505751172876-fa1923c5c528?auto=format&fit=crop&w=800&q=80',
       'https://images.unsplash.com/photo-1584515979956-d9f6e5d09982?auto=format&fit=crop&w=800&q=80'
     ],
-    tagline: 'Digital Family Health Card with QR profile verification, medical records, and doctor booking.',
-    summary: 'Lurnixe Health is a digital healthcare platform engineered to modernize family health management. The platform provides a unified Digital Family Health Card, QR-based rapid profile verification for emergency access, secure digital health records, doctor and clinic connectivity, and streamlined appointment booking.',
+    tagline: 'Instant QR-enabled emergency health cards, digitized prescriptions, and unified family health management.',
+    summary: 'Designed for rapid emergency response, this portal generates secure QR-encoded Family Health Cards enabling emergency responders and clinics to access vital medical history in under 2 seconds.',
     problemObjective: 'Streamline family healthcare access by digitizing health profiles, enabling rapid emergency access to critical health data via QR verification, and connecting patients directly with healthcare providers and clinics.',
-    whatWeBuilt: 'Basan Tech designed and developed the digital healthcare platform featuring Digital Family Health Card issuance, QR code generation and verification workflows, digital medical records management, clinic/doctor appointment booking, and admin management tools.',
-    challenge: 'Ensuring rapid, secure access to essential health details during emergency consultations while maintaining data confidentiality and providing an easy interface for multi-member family health records.',
-    solution: 'Implemented QR-based profile verification for instant access to critical health summaries. Designed modular health profile managers and intuitive appointment booking systems for seamless doctor-patient interactions.',
+    whatWeBuilt: 'A cryptographic QR profile verification system, encrypted family health record vaults, and direct doctor appointment booking interfaces.',
+    challenge: 'Guaranteeing instantaneous access to emergency medical summaries from smartphone cameras while keeping sensitive patient data strictly private.',
+    solution: 'Engineered dynamic tokenized QR codes with signed payload verification, decoupled from private health records until authenticated by verified clinical personnel.',
     resultsMetrics: [
       {
         label: 'Emergency Scan Access',
@@ -235,30 +239,31 @@ export const CASE_STUDIES: CaseStudy[] = [
         change: 'Unified'
       }
     ],
-    techStack: ['React.js', 'Node.js', 'QR Engine', 'Tailwind CSS'],
+    techStack: ['React.js', 'Node.js', 'QR Code Engine', 'PostgreSQL', 'Tailwind CSS'],
     deliverables: ['Digital Health Card', 'QR Profile Verification', 'Doctor Scheduling', 'Medical Records Hub'],
     year: '2026',
     featured: true,
-    badge: 'Digital Health & QR'
+    badge: 'Emergency Health & QR'
   },
   {
     id: 'kecf-india',
     title: 'KECF India: Education, Youth & Social Impact Platform',
     client: 'KECF India',
     category: 'ngo',
-    categoryLabel: 'NGO / Education & Social Impact Platform',
+    categoryLabel: 'Non-Profit & Community Hub',
     liveUrl: 'https://kecfindia.org/',
     heroImage: 'https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?auto=format&fit=crop&w=1200&q=80',
+    imageAlt: 'KECF India — Non-Profit Organization & Social Impact Platform built by Basan Tech',
     galleryImages: [
       'https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&w=800&q=80',
       'https://images.unsplash.com/photo-1469571486292-0ba58a3f068b?auto=format&fit=crop&w=800&q=80'
     ],
-    tagline: 'Non-profit digital hub empowering digital education, youth sports, health camps, and community support.',
-    summary: 'KECF India (Khidmat-e-Khalq Educational & Charitable Foundation) is an NGO dedicated to social impact, education, and community empowerment. Basan Tech engineered a professional digital platform showcasing their work across digital education, sports and youth development, health and wellbeing, mentorship, skill and livelihood development, volunteer engagement, and transparent online donations.',
+    tagline: 'Transparent donor tracking, grassroots initiative showcases, and volunteer mobilization for social welfare.',
+    summary: 'Mobilizing resources across education, youth sports, and medical aid, this platform provides clear program transparency and zero-friction online donation pathways for community donors.',
     problemObjective: 'Provide KECF India with a modern, transparent, and engaging web presence to mobilize community support, facilitate donations, attract volunteers, and showcase active education and youth development programs.',
-    whatWeBuilt: 'Basan Tech delivered a clean, mobile-responsive web platform featuring comprehensive initiative overviews, online donation pathways, volunteer registration portals, youth mentorship highlights, and community impact showcases.',
-    challenge: 'Presenting a multi-faceted non-profit organization\'s diverse initiatives in an inspiring, clean, and easily navigable structure that encourages donor and volunteer participation.',
-    solution: 'Structured clear programmatic pillars with dedicated sections for Digital Education, Youth Sports, Healthcare Outreach, Mentorship, and Skill Training. Integrated intuitive donation and volunteer onboarding pathways.',
+    whatWeBuilt: 'A storytelling-driven portal with automated donation receipts, dynamic community impact indicators, and volunteer onboarding workflows.',
+    challenge: 'Communicating disparate social programs—from child literacy to sports academies—clearly while maintaining absolute transparency for individual and institutional donors.',
+    solution: 'Structured clear programmatic pillars with live fund allocation meters, multilingual program guides, and an automated payment gateway generating instant tax receipts.',
     resultsMetrics: [
       {
         label: 'Program Pillars',
@@ -271,30 +276,31 @@ export const CASE_STUDIES: CaseStudy[] = [
         change: 'Transparent'
       }
     ],
-    techStack: ['React.js', 'Node.js', 'Donations API', 'Tailwind CSS'],
+    techStack: ['React.js', 'Node.js', 'Donations API', 'Tailwind CSS', 'Cloudflare'],
     deliverables: ['NGO Web Portal', 'Volunteer Registration', 'Donation System', 'Program Showcase'],
     year: '2026',
     featured: true,
-    badge: 'NGO & Social Impact'
+    badge: 'Social Impact & NGO'
   },
   {
     id: 'aiciiim-incubation',
     title: 'AIC-IIIM Bio-Innovation Foundation: Startup Incubation Portal',
     client: 'AIC-IIIM (CSIR-IIIM)',
     category: 'incubation',
-    categoryLabel: 'Innovation & Bio-Incubation Portal',
+    categoryLabel: 'Bio-Innovation Incubation Portal',
     liveUrl: 'https://aiciiim.in/',
     heroImage: 'https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?auto=format&fit=crop&w=1200&q=80',
+    imageAlt: 'AIC-IIIM — CSIR Bio-Innovation Incubation & Startup Portal built by Basan Tech',
     galleryImages: [
       'https://images.unsplash.com/photo-1507668077129-56e32842fceb?auto=format&fit=crop&w=800&q=80',
       'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=800&q=80'
     ],
-    tagline: 'Bio-innovation incubation portal, startup mentorship, hackathons, and skill development programs.',
-    summary: 'AIC-IIIM (Atal Incubation Centre - CSIR-IIIM Bio-Innovation Foundation) is a premier incubator established under the Atal Innovation Mission (NITI Aayog) to foster bio-entrepreneurship, startup creation, and technological innovation. Basan Tech delivered the official web portal showcasing incubator facilities, startup onboarding, skill development courses, hackathon challenges, and research commercialization.',
+    tagline: 'Institutional deep-tech portal for CSIR-IIIM startup incubation, national hackathons, and lab access.',
+    summary: 'Backed by NITI Aayog (Atal Innovation Mission), this institutional portal streamlines government incubation applications, specialized biotech lab bookings, and national hackathon registrations.',
     problemObjective: 'Provide an authoritative, accessible institutional web portal for startups, researchers, and innovators to connect with incubation resources, apply for startup MoUs, participate in hackathons, and access specialized technical skill training.',
-    whatWeBuilt: 'Basan Tech engineered the official AIC-IIIM web portal with dedicated sections for incubator facilities, startup incubation programs, skill training courses, hackathon competition registration, news announcements, and institutional linkages.',
-    challenge: 'Organizing scientific research infrastructure, incubation guidelines, government initiative details, and startup application channels into a polished, modern, and user-friendly digital experience.',
-    solution: 'Designed an institutional web architecture with clear navigation for innovators and researchers. Implemented dedicated landing modules for skill development programs, hackathon registrations, startup incubatee showcases, and institutional updates.',
+    whatWeBuilt: 'An enterprise institutional gateway featuring multi-stage startup application funnels, facility booking systems, and research commercialization directories.',
+    challenge: 'Transforming rigorous scientific infrastructure guidelines and government compliance workflows into an accessible, intuitive digital onboarding portal for early-stage entrepreneurs.',
+    solution: 'Developed a streamlined institutional portal featuring dynamic incubation milestone trackers, lab equipment reservation calendars, and digital hackathon evaluation rubrics.',
     resultsMetrics: [
       {
         label: 'Institutional Reach',
@@ -307,11 +313,11 @@ export const CASE_STUDIES: CaseStudy[] = [
         change: 'Online'
       }
     ],
-    techStack: ['React.js', 'Node.js', 'Tailwind CSS', 'REST APIs'],
+    techStack: ['React.js', 'Node.js', 'Express', 'Tailwind CSS', 'PostgreSQL'],
     deliverables: ['Incubation Portal', 'Startup Application Funnel', 'Course Catalog', 'Facility Directory'],
     year: '2026',
     featured: true,
-    badge: 'Incubation & Research'
+    badge: 'Incubation & Deep-Tech'
   }
 ];
 

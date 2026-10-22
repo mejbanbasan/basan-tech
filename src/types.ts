@@ -65,6 +65,7 @@ export interface CaseStudy {
   categoryLabel: string;
   liveUrl?: string;
   heroImage: string;
+  imageAlt?: string;
   galleryImages: string[];
   tagline: string;
   summary: string;
