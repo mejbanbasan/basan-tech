@@ -1,6 +1,7 @@
 import { Service, CaseStudy, TeamMember, Testimonial } from '../types';
 import iqraHeroImg from '../assets/images/iqra_islamic_madrasa_1787989336430.webp';
 import lurnixeHeroImg from '../assets/images/lurnixe_orange_white_1787989665999.webp';
+import cityCareClinicHeroImg from '../assets/images/city_care_clinic_crm.webp';
 import { SERVICES_DATA } from './servicesData';
 
 export { SERVICES_DATA };
@@ -14,7 +15,7 @@ export interface AgencyStatItem {
 }
 
 export const AGENCY_STATS: AgencyStatItem[] = [
-  { value: '5', numericValue: 5, label: 'Client Platforms Built', suffix: '', desc: 'Live in production' },
+  { value: '6', numericValue: 6, label: 'Client Platforms Built', suffix: '', desc: 'Live in production' },
   { value: '6', numericValue: 6, label: 'Core Services', suffix: '', desc: 'Web, Mobile, AI & Software' },
   { value: '14+', numericValue: 14, label: 'Technologies Mastered', suffix: '+', desc: 'Modern full-stack ecosystems' },
   { value: '100%', numericValue: 100, label: 'Client IP Ownership', suffix: '%', desc: 'Full source code ownership' },
@@ -31,6 +32,13 @@ export interface VerifiedClientPlatform {
 }
 
 export const VERIFIED_CLIENT_PLATFORMS: VerifiedClientPlatform[] = [
+  {
+    name: 'City Care Clinic',
+    category: 'Healthcare CRM / Clinic Management',
+    url: 'https://crm.drmanzooreyecare.com/',
+    caseStudyId: 'city-care-clinic',
+    tagline: 'Clinic management CRM & patient dashboard for Dr. Manzoor Eye Care'
+  },
   {
     name: 'Iqra Society',
     category: 'Education Platform / Islamic Learning',
@@ -144,6 +152,58 @@ export const CASE_STUDIES: CaseStudy[] = [
     year: '2026',
     featured: true,
     badge: 'Multi-Vendor & Mobile'
+  },
+  {
+    id: 'city-care-clinic',
+    title: 'City Care Clinic: Healthcare CRM & Practice Management Dashboard',
+    client: 'Dr. Manzoor Eye Care',
+    category: 'healthcare',
+    categoryLabel: 'Clinic CRM & Healthcare Management',
+    liveUrl: 'https://crm.drmanzooreyecare.com/',
+    heroImage: cityCareClinicHeroImg,
+    galleryImages: [
+      cityCareClinicHeroImg,
+      'https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=800&q=80',
+      'https://images.unsplash.com/photo-1505751172876-fa1923c5c528?auto=format&fit=crop&w=800&q=80'
+    ],
+    tagline: 'Comprehensive clinic management CRM, patient records, multi-doctor scheduling, and revenue analytics.',
+    summary: 'City Care Clinic is a modern clinic management CRM and administrative dashboard engineered by Basan Tech for Dr. Manzoor Eye Care. The platform provides comprehensive patient management, appointment scheduling, real-time payment tracking, automated follow-ups, communication tools, detailed operational reports, and multi-doctor coordination.',
+    problemObjective: 'Replace manual clinic registers and disconnected records with a centralized, real-time CRM dashboard to streamline patient appointments, multi-doctor schedules, and payment accounting for Dr. Manzoor Eye Care.',
+    whatWeBuilt: 'Basan Tech engineered the responsive clinic management dashboard featuring digital patient intake, appointment scheduling calendars, integrated multi-method payment tracking, automated patient follow-ups, communication channels, and daily clinic reports.',
+    challenge: 'Designing an intuitive, rapid-access interface for clinic receptionists and doctors to manage high patient flow, multi-doctor appointment slots, and real-time payment reconciliations without administrative delays.',
+    solution: 'Architected a performant, modular CRM dashboard with role-based access, quick-action patient registration, appointment status tracking (Confirmed, Pending, Completed), automated payment summaries, and multi-doctor practice analytics.',
+    keyFeatures: [
+      'Digital Patient Profiles & Medical History Management',
+      'Multi-Doctor Appointment Scheduling & Status Calendar',
+      'Real-time Payments Tracking (Cash, UPI & Razorpay)',
+      'Automated Patient Follow-ups & Reminders',
+      'Direct Patient Communication & Notification Workflows',
+      'Daily Revenue, Collection & Operational Analytics Reports',
+      'Multi-Doctor Roster & Practice Coordination Support'
+    ],
+    architecture: [
+      'Role-Based Access Control (Admin, Reception, Doctor)',
+      'Real-time Appointment Calendar & Time-Slot Engine',
+      'Multi-Gateway Payment Accounting & Invoice Generator',
+      'Responsive Dashboard Optimized for Desktop & Tablets'
+    ],
+    resultsMetrics: [
+      {
+        label: 'Clinical Workflow',
+        value: '100% Digital',
+        change: 'Paperless'
+      },
+      {
+        label: 'Doctor Coordination',
+        value: 'Multi-Doctor',
+        change: 'Unified'
+      }
+    ],
+    techStack: ['React.js', 'Node.js', 'PostgreSQL', 'Tailwind CSS', 'Payment Gateway'],
+    deliverables: ['Clinic Management CRM', 'Appointment Scheduler', 'Patient Records Hub', 'Financial Reports Engine'],
+    year: '2026',
+    featured: true,
+    badge: 'Clinic CRM & Healthcare'
   },
   {
     id: 'lurnixe-health',
@@ -316,6 +376,16 @@ export const TESTIMONIALS_DATA: Testimonial[] = [
     serviceType: 'Institutional & NGO Web Platform',
     quote: 'Basan Tech treated our institutional web portal with immense dedication. The responsive layout, transparent donation tracking, and bilingual support exceeded our expectations. Even months after launch, their team is always available whenever we need quick assistance.',
     date: 'May 2026'
+  },
+  {
+    id: 'test-city-care',
+    clientName: 'Dr. Manzoor Eye Care',
+    clientTitle: 'Clinical Operations Lead',
+    avatar: 'DM',
+    rating: 5,
+    serviceType: 'City Care Clinic CRM & Management Dashboard',
+    quote: 'Basan Tech transformed our entire clinic workflow with City Care Clinic CRM. Appointment scheduling, patient tracking, and multi-doctor payment reporting operate seamlessly with zero lag and exceptional usability.',
+    date: 'October 2026'
   },
   {
     id: 'test-aiciiim',
