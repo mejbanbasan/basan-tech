@@ -126,7 +126,7 @@ export const PortfolioShowcase: React.FC<PortfolioShowcaseProps> = ({
                     loading="lazy"
                     decoding="async"
                     referrerPolicy="no-referrer"
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                    className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-[#022A4E]/90 via-[#022A4E]/20 to-transparent" />
 
@@ -333,7 +333,7 @@ export const PortfolioShowcase: React.FC<PortfolioShowcaseProps> = ({
                   loading="lazy"
                   decoding="async"
                   referrerPolicy="no-referrer"
-                  className="w-full h-full object-cover"
+                  className="w-full h-full object-cover object-top"
                 />
                 {activeModalStudy.liveUrl && (
                   <div className="absolute bottom-3 right-3 sm:bottom-4 sm:right-4">

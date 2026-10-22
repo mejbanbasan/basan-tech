@@ -34,10 +34,10 @@ export interface VerifiedClientPlatform {
 export const VERIFIED_CLIENT_PLATFORMS: VerifiedClientPlatform[] = [
   {
     name: 'City Care Clinic',
-    category: 'Healthcare CRM / Clinic Management',
+    category: 'Laravel 11 CRM / Practice Management',
     url: 'https://crm.drmanzooreyecare.com/',
     caseStudyId: 'city-care-clinic',
-    tagline: 'Clinic management CRM & patient dashboard for Dr. Manzoor Eye Care'
+    tagline: 'Laravel 11 clinic management CRM & patient dashboard for Dr. Manzoor Eye Care'
   },
   {
     name: 'Iqra Society',
@@ -155,10 +155,10 @@ export const CASE_STUDIES: CaseStudy[] = [
   },
   {
     id: 'city-care-clinic',
-    title: 'City Care Clinic: Healthcare CRM & Practice Management Dashboard',
+    title: 'City Care Clinic: Laravel 11 Healthcare CRM & Management Dashboard',
     client: 'Dr. Manzoor Eye Care',
     category: 'healthcare',
-    categoryLabel: 'Clinic CRM & Healthcare Management',
+    categoryLabel: 'Laravel 11 CRM & Clinic Management',
     liveUrl: 'https://crm.drmanzooreyecare.com/',
     heroImage: cityCareClinicHeroImg,
     galleryImages: [
@@ -166,26 +166,26 @@ export const CASE_STUDIES: CaseStudy[] = [
       'https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=800&q=80',
       'https://images.unsplash.com/photo-1505751172876-fa1923c5c528?auto=format&fit=crop&w=800&q=80'
     ],
-    tagline: 'Comprehensive clinic management CRM, patient records, multi-doctor scheduling, and revenue analytics.',
-    summary: 'City Care Clinic is a modern clinic management CRM and administrative dashboard engineered by Basan Tech for Dr. Manzoor Eye Care. The platform provides comprehensive patient management, appointment scheduling, real-time payment tracking, automated follow-ups, communication tools, detailed operational reports, and multi-doctor coordination.',
-    problemObjective: 'Replace manual clinic registers and disconnected records with a centralized, real-time CRM dashboard to streamline patient appointments, multi-doctor schedules, and payment accounting for Dr. Manzoor Eye Care.',
-    whatWeBuilt: 'Basan Tech engineered the responsive clinic management dashboard featuring digital patient intake, appointment scheduling calendars, integrated multi-method payment tracking, automated patient follow-ups, communication channels, and daily clinic reports.',
-    challenge: 'Designing an intuitive, rapid-access interface for clinic receptionists and doctors to manage high patient flow, multi-doctor appointment slots, and real-time payment reconciliations without administrative delays.',
-    solution: 'Architected a performant, modular CRM dashboard with role-based access, quick-action patient registration, appointment status tracking (Confirmed, Pending, Completed), automated payment summaries, and multi-doctor practice analytics.',
+    tagline: 'Enterprise clinic management CRM built with Laravel 11, multi-doctor scheduling, patient records, and real-time payment reconciliation.',
+    summary: 'City Care Clinic is a high-performance clinic management CRM and administrative dashboard engineered by Basan Tech for Dr. Manzoor Eye Care using the latest Laravel 11 framework, PHP 8.3, and MySQL. The platform unifies end-to-end clinical operations: patient intake, multi-doctor appointment calendars, multi-channel payment reconciliation (Razorpay, UPI, Cash), automated follow-up reminders, patient communication, and comprehensive financial reports.',
+    problemObjective: 'Dr. Manzoor Eye Care needed a secure, enterprise-grade clinical CRM to eliminate manual paperwork and spreadsheet records. The system needed to manage patient records, coordinate appointments across 5+ active doctors, provide instant quick actions (register patient, book appointment, record payment), and automatically reconcile payments across Razorpay, UPI, and cash.',
+    whatWeBuilt: 'Basan Tech engineered the responsive clinic management dashboard using the latest Laravel 11 framework and Tailwind CSS. The system features real-time appointment scheduling with 7-day trend analytics, digital patient medical records, automated patient follow-up alerts, an integrated multi-method payment gateway (Razorpay, UPI, Cash) with real-time donut reconciliation charts, multi-doctor roster management, and role-based access for clinic administrators, receptionists, and doctors.',
+    challenge: 'Handling high daily patient throughput across multiple doctors while maintaining sub-second dashboard query speeds, ensuring zero payment reconciliation discrepancies, and providing clinic staff with an effortless zero-training user interface.',
+    solution: 'Leveraged Laravel 11 modular architecture, Eloquent ORM with optimized database indexing, and queued background notifications. Built dedicated modules for Patients, Appointments, Payments, Follow-ups, Communication, Reports, and Master Data settings with intuitive quick-action modals and live analytics.',
     keyFeatures: [
+      'Laravel 11 Architecture with Eloquent ORM & Role-Based Access Control',
       'Digital Patient Profiles & Medical History Management',
-      'Multi-Doctor Appointment Scheduling & Status Calendar',
-      'Real-time Payments Tracking (Cash, UPI & Razorpay)',
-      'Automated Patient Follow-ups & Reminders',
-      'Direct Patient Communication & Notification Workflows',
-      'Daily Revenue, Collection & Operational Analytics Reports',
-      'Multi-Doctor Roster & Practice Coordination Support'
+      'Multi-Doctor Appointment Scheduling & 7-Day Trend Analytics',
+      'Multi-Channel Payment Tracking & Reconciliation (Razorpay, UPI, Cash)',
+      'Automated Patient Follow-up Scheduling & Communication Engine',
+      'Quick Action Workflows: Register Patient, Book Slot & Record Payment',
+      'Comprehensive Clinic Performance & Revenue Reporting'
     ],
     architecture: [
-      'Role-Based Access Control (Admin, Reception, Doctor)',
-      'Real-time Appointment Calendar & Time-Slot Engine',
-      'Multi-Gateway Payment Accounting & Invoice Generator',
-      'Responsive Dashboard Optimized for Desktop & Tablets'
+      'Latest Laravel 11 MVC Core with PHP 8.3 & MySQL Database',
+      'Tailwind CSS Responsive Dashboard UI for Desktop & Reception Terminals',
+      'Razorpay Webhook Integration, UPI QR & Cash Transaction Accounting',
+      'Automated Database Migrations, Seeders & Scheduled Task Queues'
     ],
     resultsMetrics: [
       {
@@ -195,15 +195,15 @@ export const CASE_STUDIES: CaseStudy[] = [
       },
       {
         label: 'Doctor Coordination',
-        value: 'Multi-Doctor',
+        value: '5+ Doctors',
         change: 'Unified'
       }
     ],
-    techStack: ['React.js', 'Node.js', 'PostgreSQL', 'Tailwind CSS', 'Payment Gateway'],
-    deliverables: ['Clinic Management CRM', 'Appointment Scheduler', 'Patient Records Hub', 'Financial Reports Engine'],
+    techStack: ['Laravel 11', 'PHP 8.3', 'MySQL', 'Tailwind CSS', 'Razorpay', 'REST APIs'],
+    deliverables: ['Laravel 11 CRM System', 'Doctor Appointment Engine', 'Multi-Method Payment Tracker', 'Patient Records Hub'],
     year: '2026',
     featured: true,
-    badge: 'Clinic CRM & Healthcare'
+    badge: 'Laravel 11 • Healthcare CRM'
   },
   {
     id: 'lurnixe-health',
@@ -383,8 +383,8 @@ export const TESTIMONIALS_DATA: Testimonial[] = [
     clientTitle: 'Clinical Operations Lead',
     avatar: 'DM',
     rating: 5,
-    serviceType: 'City Care Clinic CRM & Management Dashboard',
-    quote: 'Basan Tech transformed our entire clinic workflow with City Care Clinic CRM. Appointment scheduling, patient tracking, and multi-doctor payment reporting operate seamlessly with zero lag and exceptional usability.',
+    serviceType: 'Laravel 11 Clinic CRM & Management Dashboard',
+    quote: 'Basan Tech engineered our City Care Clinic CRM using the latest Laravel framework. Appointment scheduling, patient tracking across multiple doctors, and daily payment reconciliation work flawlessly with sub-second response times.',
     date: 'October 2026'
   },
   {
