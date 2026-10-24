@@ -361,12 +361,15 @@ export const ChatWidget: React.FC<ChatWidgetProps> = ({ onNavigate }) => {
           <button
             onClick={handleOpenChat}
             aria-label="Open Basan Tech AI Assistant"
-            className="w-14 h-14 rounded-full bg-gradient-to-tr from-[#022A4E] to-[#043d6f] text-white shadow-xl shadow-[#022A4E]/30 hover:shadow-2xl hover:shadow-[#00976C]/40 border-2 border-emerald-400/30 flex items-center justify-center transition-all duration-300 hover:scale-105 active:scale-95 cursor-pointer relative"
+            className="w-14 h-14 rounded-full bg-white shadow-xl shadow-[#022A4E]/30 hover:shadow-2xl hover:shadow-[#00976C]/40 border-2 border-[#00976C] flex items-center justify-center transition-all duration-300 hover:scale-105 active:scale-95 cursor-pointer relative overflow-hidden p-1.5"
           >
-            <div className="relative">
-              <Bot className="w-6 h-6 text-emerald-300" />
-              <Sparkles className="w-3 h-3 text-amber-300 absolute -top-1 -right-1 animate-pulse" />
-            </div>
+            <img
+              src="/favicon-512x512.png"
+              alt="Basan Tech Logo"
+              width={40}
+              height={40}
+              className="w-full h-full object-contain rounded-full"
+            />
 
             {/* Online Green Pulsing Indicator */}
             <span className="absolute top-1 right-1 flex h-3.5 w-3.5">
@@ -390,55 +393,32 @@ export const ChatWidget: React.FC<ChatWidgetProps> = ({ onNavigate }) => {
             : 'bottom-6 right-6 w-[390px] sm:w-[410px] h-[590px] max-h-[calc(100vh-100px)] rounded-3xl border border-slate-200 shadow-2xl overflow-hidden'
         }`}
       >
-        {/* Chat Header */}
+        {/* Clean Chat Header: Logo + Title + Online Status + Close Button */}
         <div className="bg-[#022A4E] text-white px-4 py-3.5 sm:px-5 sm:py-4 flex items-center justify-between shadow-md relative z-10 shrink-0">
           <div className="flex items-center gap-3">
-            <div className="relative">
-              <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-gradient-to-br from-emerald-500 to-[#00976C] flex items-center justify-center shadow-md">
-                <Bot className="w-5 h-5 sm:w-5.5 sm:h-5.5 text-white" />
-              </div>
+            <div className="relative shrink-0">
+              <img
+                src="/favicon-512x512.png"
+                alt="Basan Tech Logo"
+                width={36}
+                height={36}
+                className="w-9 h-9 sm:w-10 sm:h-10 rounded-full object-contain shadow-xs bg-white border border-slate-100 p-0.5"
+              />
               <span className="absolute -bottom-0.5 -right-0.5 w-3 h-3 rounded-full bg-emerald-400 border-2 border-[#022A4E]" />
             </div>
 
             <div>
-              <div className="flex items-center gap-1.5">
-                <h3 className="text-sm sm:text-base font-bold text-white tracking-tight">
-                  Basan Tech Assistant
-                </h3>
-                <span className="px-1.5 py-0.5 rounded text-[9px] font-mono font-bold bg-emerald-500/20 text-emerald-300 border border-emerald-500/30">
-                  AI Live
-                </span>
-              </div>
-              <p className="text-[11px] text-slate-300 flex items-center gap-1.5">
+              <h3 className="text-sm sm:text-base font-bold text-white tracking-tight leading-snug">
+                Basan Tech Assistant
+              </h3>
+              <p className="text-[11px] text-emerald-300 font-medium flex items-center gap-1.5 mt-0.5">
                 <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
-                <span>Active • Palanpur, Gujarat</span>
+                <span>Online now</span>
               </p>
             </div>
           </div>
 
-          <div className="flex items-center gap-1">
-            {/* Quick WhatsApp shortcut */}
-            <a
-              href="https://wa.me/919624895641"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="Chat on WhatsApp"
-              title="Chat directly on WhatsApp"
-              className="p-2 rounded-xl text-slate-300 hover:text-emerald-300 hover:bg-white/10 transition-colors"
-            >
-              <Globe className="w-4 h-4" />
-            </a>
-
-            {/* Clear conversation */}
-            <button
-              onClick={handleClearHistory}
-              aria-label="Restart chat"
-              title="Clear chat and restart"
-              className="p-2 rounded-xl text-slate-300 hover:text-white hover:bg-white/10 transition-colors cursor-pointer"
-            >
-              <RotateCcw className="w-4 h-4" />
-            </button>
-
+          <div className="flex items-center">
             {/* Close button */}
             <button
               onClick={handleCloseChat}
@@ -463,15 +443,19 @@ export const ChatWidget: React.FC<ChatWidgetProps> = ({ onNavigate }) => {
                 }`}
               >
                 {/* Avatar Icon */}
-                <div
-                  className={`w-7 h-7 rounded-lg flex items-center justify-center shrink-0 mt-0.5 text-xs font-bold ${
-                    msg.role === 'user'
-                      ? 'bg-[#022A4E] text-white'
-                      : 'bg-emerald-50 border border-emerald-200 text-[#00976C]'
-                  }`}
-                >
-                  {msg.role === 'user' ? <User className="w-3.5 h-3.5" /> : <Bot className="w-3.5 h-3.5" />}
-                </div>
+                {msg.role === 'user' ? (
+                  <div className="w-7 h-7 rounded-lg flex items-center justify-center shrink-0 mt-0.5 text-xs font-bold bg-[#022A4E] text-white">
+                    <User className="w-3.5 h-3.5" />
+                  </div>
+                ) : (
+                  <img
+                    src="/favicon-512x512.png"
+                    alt="Basan Tech"
+                    width={28}
+                    height={28}
+                    className="w-7 h-7 rounded-full object-contain shrink-0 mt-0.5 shadow-2xs bg-white border border-slate-200 p-0.5"
+                  />
+                )}
 
                 {/* Message Bubble */}
                 <div
@@ -532,9 +516,13 @@ export const ChatWidget: React.FC<ChatWidgetProps> = ({ onNavigate }) => {
           {/* Typing Indicator */}
           {isLoading && (
             <div className="flex items-start gap-2.5 max-w-[80%]">
-              <div className="w-7 h-7 rounded-lg bg-emerald-50 border border-emerald-200 text-[#00976C] flex items-center justify-center shrink-0 mt-0.5">
-                <Bot className="w-3.5 h-3.5 animate-pulse" />
-              </div>
+              <img
+                src="/favicon-512x512.png"
+                alt="Basan Tech"
+                width={28}
+                height={28}
+                className="w-7 h-7 rounded-full object-contain shrink-0 mt-0.5 shadow-2xs bg-white border border-slate-200 p-0.5"
+              />
               <div className="px-4 py-3 rounded-2xl rounded-tl-xs bg-white border border-slate-200/90 shadow-xs flex items-center gap-1.5">
                 <span className="w-2 h-2 rounded-full bg-emerald-500 animate-bounce [animation-delay:-0.3s]" />
                 <span className="w-2 h-2 rounded-full bg-emerald-500 animate-bounce [animation-delay:-0.15s]" />
@@ -599,13 +587,6 @@ export const ChatWidget: React.FC<ChatWidgetProps> = ({ onNavigate }) => {
               <Send className="w-4 h-4" />
             </button>
           </form>
-
-          {/* Footer tagline */}
-          <div className="mt-2 text-center">
-            <span className="text-[10px] text-slate-400 font-mono">
-              Live AI with Multi-Key Failover • Basan Tech Studio
-            </span>
-          </div>
         </div>
       </div>
     </>
