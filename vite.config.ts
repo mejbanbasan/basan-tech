@@ -1,11 +1,50 @@
 import tailwindcss from '@tailwindcss/vite';
 import react from '@vitejs/plugin-react';
 import path from 'path';
-import {defineConfig} from 'vite';
+import { defineConfig, Plugin, loadEnv } from 'vite';
+import { processChatRequest } from './src/server/chatHandler';
 
-export default defineConfig(() => {
+const apiChatDevPlugin = (): Plugin => ({
+  name: 'api-chat-dev-server',
+  configureServer(server) {
+    server.middlewares.use(async (req, res, next) => {
+      if (req.url === '/api/chat' && req.method === 'POST') {
+        let raw = '';
+        req.on('data', (chunk) => (raw += chunk));
+        req.on('end', async () => {
+          try {
+            const body = raw ? JSON.parse(raw) : {};
+            const responseData = await processChatRequest(body);
+            res.setHeader('Content-Type', 'application/json');
+            res.statusCode = 200;
+            res.end(JSON.stringify(responseData));
+          } catch (err: any) {
+            res.setHeader('Content-Type', 'application/json');
+            res.statusCode = 500;
+            res.end(
+              JSON.stringify({
+                success: false,
+                fallback: true,
+                reply:
+                  "I'm having trouble connecting right now — please reach out via WhatsApp (+91 84888 88461) or the contact form at https://basantech.online/contact.",
+                timestamp: new Date().toISOString()
+              })
+            );
+          }
+        });
+      } else {
+        next();
+      }
+    });
+  }
+});
+
+export default defineConfig(({ mode }) => {
+  const env = loadEnv(mode, process.cwd(), '');
+  Object.assign(process.env, env);
+
   return {
-    plugins: [react(), tailwindcss()],
+    plugins: [react(), tailwindcss(), apiChatDevPlugin()],
     resolve: {
       alias: {
         '@': path.resolve(__dirname, '.'),

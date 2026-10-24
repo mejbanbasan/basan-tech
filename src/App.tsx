@@ -2,6 +2,7 @@ import React, { useState, useEffect, Suspense, lazy } from 'react';
 import { PageView, ServiceId } from './types';
 import { Navbar } from './components/Navbar';
 import { Footer } from './components/Footer';
+import { ChatWidget } from './components/ChatWidget';
 import { HeroSection } from './components/HeroSection';
 import { ServicesOverview } from './components/ServicesOverview';
 import { ErrorBoundary } from './components/ErrorBoundary';
@@ -440,6 +441,9 @@ export default function App() {
 
       {/* Studio Footer */}
       <Footer onNavigate={handleNavigate} />
+
+      {/* Production AI Chatbot Widget */}
+      <ChatWidget onNavigate={handleNavigate} />
 
     </div>
   );
