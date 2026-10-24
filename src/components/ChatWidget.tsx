@@ -233,11 +233,11 @@ export const ChatWidget: React.FC<ChatWidgetProps> = ({ onNavigate }) => {
         {
           id: `assistant-${Date.now()}`,
           role: 'assistant',
-          text: "I'm having trouble connecting right now — please reach out via WhatsApp (+91 84888 88461) or our contact form, and our engineering team will get back to you promptly!",
+          text: "I'm having trouble connecting right now — please reach out via WhatsApp (+91 9624895641) or our contact form, and our engineering team will get back to you promptly!",
           timestamp: assistantTimestamp,
           isFallback: true,
           contactUrl: 'https://basantech.online/contact',
-          whatsappUrl: 'https://wa.me/918488888461'
+          whatsappUrl: 'https://wa.me/919624895641'
         }
       ]);
     } finally {
@@ -419,7 +419,7 @@ export const ChatWidget: React.FC<ChatWidgetProps> = ({ onNavigate }) => {
           <div className="flex items-center gap-1">
             {/* Quick WhatsApp shortcut */}
             <a
-              href="https://wa.me/918488888461"
+              href="https://wa.me/919624895641"
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Chat on WhatsApp"
@@ -491,7 +491,7 @@ export const ChatWidget: React.FC<ChatWidgetProps> = ({ onNavigate }) => {
                   {msg.isFallback && (
                     <div className="mt-3 pt-3 border-t border-slate-100 flex flex-wrap gap-2">
                       <a
-                        href={msg.whatsappUrl || 'https://wa.me/918488888461'}
+                        href={msg.whatsappUrl || 'https://wa.me/919624895641'}
                         target="_blank"
                         rel="noopener noreferrer"
                         className="px-3 py-1.5 rounded-full bg-emerald-600 hover:bg-emerald-700 text-white font-semibold text-xs inline-flex items-center gap-1.5 shadow-xs transition-colors"

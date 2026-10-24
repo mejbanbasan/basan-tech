@@ -26,7 +26,7 @@ const apiChatDevPlugin = (): Plugin => ({
                 success: false,
                 fallback: true,
                 reply:
-                  "I'm having trouble connecting right now — please reach out via WhatsApp (+91 84888 88461) or the contact form at https://basantech.online/contact.",
+                  "I'm having trouble connecting right now — please reach out via WhatsApp (+91 9624895641) or the contact form at https://basantech.online/contact.",
                 timestamp: new Date().toISOString()
               })
             );

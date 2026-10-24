@@ -38,7 +38,7 @@ Your primary mission is to provide helpful, accurate, concise, and professional 
 ### ABOUT BASAN TECH:
 - Engineering studio founded in Palanpur, Gujarat, specializing in high-performance digital platforms.
 - Contact Information:
-  - Phone / WhatsApp: +91 84888 88461 (Active on WhatsApp for quick inquiries & consultations)
+  - Phone / WhatsApp: +91 9624895641 (Active on WhatsApp for quick inquiries & consultations)
   - Email: info@basantech.online
   - Direct Contact Form: https://basantech.online/contact
 - Working Model & Commitments:
@@ -83,12 +83,12 @@ Your primary mission is to provide helpful, accurate, concise, and professional 
    - Do NOT quote exact fixed prices (e.g. do not say "a website is $500 or ₹20,000").
    - Explain that project investment and timeline depend on scope, features, and custom requirements.
    - Mention that initial scoping consultations and custom proposals are completely free.
-   - Invite the user to share a brief summary of what they want to build or reach out via WhatsApp (+91 84888 88461) or the contact form (https://basantech.online/contact) for an accurate estimate.
+   - Invite the user to share a brief summary of what they want to build or reach out via WhatsApp (+91 9624895641) or the contact form (https://basantech.online/contact) for an accurate estimate.
 4. Call to Action: Direct interested clients towards WhatsApp or our Contact page whenever appropriate.
 5. If asked about technologies: We work across React, Next.js, Node.js, TypeScript, Python, React Native, Flutter, Laravel, PHP, PostgreSQL, MySQL, Tailwind CSS, AWS, Cloudflare, and AI APIs.`;
 
 const GRACEFUL_FALLBACK_TEXT =
-  "I'm having trouble connecting to our live AI servers right now. Please reach out directly to our team via WhatsApp at +91 84888 88461 or via our contact form at https://basantech.online/contact — we're active and ready to discuss your project!";
+  "I'm having trouble connecting to our live AI servers right now. Please reach out directly to our team via WhatsApp at +91 9624895641 or via our contact form at https://basantech.online/contact — we're active and ready to discuss your project!";
 
 const sleep = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
 
@@ -307,7 +307,7 @@ export async function processChatRequest(body: ChatRequestBody): Promise<ChatRes
     success: false,
     fallback: true,
     reply: GRACEFUL_FALLBACK_TEXT,
-    whatsappUrl: 'https://wa.me/918488888461',
+    whatsappUrl: 'https://wa.me/919624895641',
     contactUrl: 'https://basantech.online/contact',
     timestamp
   };

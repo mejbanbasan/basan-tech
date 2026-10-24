@@ -29,8 +29,8 @@ export default async function handler(req: any, res: any) {
     return res.status(500).json({
       success: false,
       fallback: true,
-      reply: "I'm having trouble connecting to our live AI servers right now. Please reach out via WhatsApp at +91 84888 88461 or via our contact form at https://basantech.online/contact — we're active and ready to discuss your project!",
-      whatsappUrl: 'https://wa.me/918488888461',
+      reply: "I'm having trouble connecting to our live AI servers right now. Please reach out via WhatsApp at +91 9624895641 or via our contact form at https://basantech.online/contact — we're active and ready to discuss your project!",
+      whatsappUrl: 'https://wa.me/919624895641',
       contactUrl: 'https://basantech.online/contact',
       timestamp: new Date().toISOString()
     });
