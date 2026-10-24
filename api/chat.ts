@@ -326,15 +326,37 @@ export default async function handler(req: any, res: any) {
     return res.status(200).end();
   }
 
-  // Diagnostic GET endpoint to check serverless health and keys status
+  // Diagnostic GET endpoint to check serverless health, keys status, and active models
   if (req.method === 'GET') {
     const keys = getGeminiApiKeys();
+    let availableGoogleModels: string[] = [];
+    let listModelsError = '';
+    if (keys.length > 0) {
+      try {
+        const modelsRes = await fetch(
+          `https://generativelanguage.googleapis.com/v1beta/models?key=${keys[0].key}`
+        );
+        if (modelsRes.ok) {
+          const modelsData = await modelsRes.json();
+          availableGoogleModels = (modelsData.models || [])
+            .filter((m: any) => m.supportedGenerationMethods?.includes('generateContent'))
+            .map((m: any) => m.name.replace('models/', ''));
+        } else {
+          listModelsError = `HTTP ${modelsRes.status}: ${await modelsRes.text()}`;
+        }
+      } catch (err: any) {
+        listModelsError = err.message;
+      }
+    }
+
     return res.status(200).json({
       status: 'online',
       service: 'Basan Tech AI Chatbot API',
       keysConfigured: keys.length,
       keyLabels: keys.map((k) => k.id),
-      models: getGeminiModels(),
+      availableGoogleModels,
+      listModelsError: listModelsError || undefined,
+      currentConfiguredModels: getGeminiModels(),
       timestamp: new Date().toISOString()
     });
   }
