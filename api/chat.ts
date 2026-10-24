@@ -4,13 +4,13 @@
  * Multi-Key (10 Keys) x Multi-Model (5 Models) Failover Engine for Gemini API.
  */
 
-// 5 default Gemini models in priority order
+// 5 default Gemini models in priority order (verified active on Google Gemini API v1beta)
 export const DEFAULT_GEMINI_MODELS = [
   'gemini-2.5-flash',
-  'gemini-2.0-flash',
-  'gemini-1.5-flash',
-  'gemini-2.5-pro',
-  'gemini-1.5-pro'
+  'gemini-flash-latest',
+  'gemini-2.5-flash-lite',
+  'gemini-3.5-flash',
+  'gemini-2.5-pro'
 ];
 
 export const SYSTEM_PROMPT = `You are the Basan Tech Assistant, an AI representative for Basan Tech (https://basantech.online) — a premier software, web development, and AI engineering studio based in Palanpur, Gujarat, India.
@@ -143,6 +143,10 @@ export function getGeminiModels(): string[] {
 
 /**
  * Call Gemini generateContent API via standard HTTPS POST
+ * Conforms strictly to Gemini API rules:
+ * 1. First turn in contents MUST have role: 'user' (strips leading assistant/model greetings).
+ * 2. Turns must strictly alternate (merges adjacent identical roles).
+ * 3. Supports system_instruction with auto-fallback to prompt injection if model rejects it.
  */
 async function callGeminiApi(
   apiKey: string,
@@ -153,27 +157,52 @@ async function callGeminiApi(
 ): Promise<{ success: boolean; text?: string; status?: number; error?: string }> {
   const url = `https://generativelanguage.googleapis.com/v1beta/models/${encodeURIComponent(model)}:generateContent?key=${apiKey}`;
 
-  const contents: Array<{ role: string; parts: Array<{ text: string }> }> = [];
+  const rawTurns: Array<{ role: 'user' | 'model'; text: string }> = [];
 
+  // 1. Process recent history (last 8 turns)
   const recentHistory = Array.isArray(history) ? history.slice(-8) : [];
   for (const item of recentHistory) {
-    if (item.text && item.text.trim()) {
-      contents.push({
-        role: item.role === 'model' || item.role === 'assistant' ? 'model' : 'user',
-        parts: [{ text: item.text.trim() }]
-      });
+    const text = (item.text || '').trim();
+    if (!text) continue;
+    const role: 'user' | 'model' = item.role === 'model' || item.role === 'assistant' ? 'model' : 'user';
+    rawTurns.push({ role, text });
+  }
+
+  // 2. Append latestMessage if not already the last turn
+  const cleanLatest = (latestMessage || '').trim();
+  if (cleanLatest) {
+    const lastTurn = rawTurns[rawTurns.length - 1];
+    if (!lastTurn || lastTurn.role !== 'user' || lastTurn.text !== cleanLatest) {
+      rawTurns.push({ role: 'user', text: cleanLatest });
     }
   }
 
-  contents.push({
-    role: 'user',
-    parts: [{ text: latestMessage.trim() }]
-  });
+  // 3. Strip any leading 'model' turns — Gemini throws HTTP 400 if contents[0].role is 'model'
+  while (rawTurns.length > 0 && rawTurns[0].role === 'model') {
+    rawTurns.shift();
+  }
 
-  const payload = {
-    system_instruction: {
-      parts: [{ text: systemPrompt }]
-    },
+  // If empty after stripping, guarantee at least one user turn
+  if (rawTurns.length === 0 && cleanLatest) {
+    rawTurns.push({ role: 'user', text: cleanLatest });
+  }
+
+  // 4. Merge consecutive turns of the same role (Gemini requires alternating roles)
+  const mergedTurns: Array<{ role: 'user' | 'model'; text: string }> = [];
+  for (const turn of rawTurns) {
+    if (mergedTurns.length > 0 && mergedTurns[mergedTurns.length - 1].role === turn.role) {
+      mergedTurns[mergedTurns.length - 1].text += '\n\n' + turn.text;
+    } else {
+      mergedTurns.push({ role: turn.role, text: turn.text });
+    }
+  }
+
+  const contents = mergedTurns.map((t) => ({
+    role: t.role,
+    parts: [{ text: t.text }]
+  }));
+
+  const payload: any = {
     contents,
     generationConfig: {
       temperature: 0.7,
@@ -182,47 +211,75 @@ async function callGeminiApi(
     }
   };
 
-  const controller = new AbortController();
-  const timeoutId = setTimeout(() => controller.abort(), 12000);
-
-  try {
-    const response = await fetch(url, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(payload),
-      signal: controller.signal
-    });
-
-    clearTimeout(timeoutId);
-
-    if (!response.ok) {
-      let errorDetail = '';
-      try {
-        const errJson = await response.json();
-        errorDetail = errJson.error?.message || response.statusText;
-      } catch {
-        errorDetail = response.statusText;
-      }
-      return { success: false, status: response.status, error: `HTTP ${response.status}: ${errorDetail}` };
-    }
-
-    const data = await response.json();
-    const candidateText = data.candidates?.[0]?.content?.parts?.[0]?.text;
-
-    if (!candidateText || !candidateText.trim()) {
-      return { success: false, error: 'Empty text returned in model candidate' };
-    }
-
-    return { success: true, text: candidateText.trim() };
-  } catch (err: any) {
-    clearTimeout(timeoutId);
-    return {
-      success: false,
-      error: err.name === 'AbortError' ? 'Request timed out after 12s' : err.message || 'Network error'
+  if (systemPrompt && systemPrompt.trim()) {
+    payload.system_instruction = {
+      parts: [{ text: systemPrompt.trim() }]
     };
   }
+
+  const sendRequest = async (bodyPayload: any) => {
+    const controller = new AbortController();
+    const timeoutId = setTimeout(() => controller.abort(), 12000);
+
+    try {
+      const response = await fetch(url, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(bodyPayload),
+        signal: controller.signal
+      });
+
+      clearTimeout(timeoutId);
+
+      if (!response.ok) {
+        let errorDetail = '';
+        try {
+          const errJson = await response.json();
+          errorDetail = errJson.error?.message || response.statusText;
+        } catch {
+          errorDetail = response.statusText;
+        }
+        return { ok: false, status: response.status, errorDetail };
+      }
+
+      const data = await response.json();
+      const candidateText = data.candidates?.[0]?.content?.parts?.[0]?.text;
+      return { ok: true, status: response.status, text: candidateText };
+    } catch (err: any) {
+      clearTimeout(timeoutId);
+      return {
+        ok: false,
+        status: 0,
+        errorDetail: err.name === 'AbortError' ? 'Request timed out after 12s' : err.message || 'Network error'
+      };
+    }
+  };
+
+  let res = await sendRequest(payload);
+
+  // If rejected with 400 mentioning system_instruction, retry by prepending system instructions to first user turn
+  if (!res.ok && res.status === 400 && payload.system_instruction && res.errorDetail.toLowerCase().includes('system_instruction')) {
+    const fallbackContents = JSON.parse(JSON.stringify(contents));
+    if (fallbackContents.length > 0 && fallbackContents[0].role === 'user') {
+      fallbackContents[0].parts[0].text = `[Instructions: ${systemPrompt}]\n\n${fallbackContents[0].parts[0].text}`;
+    }
+    res = await sendRequest({
+      contents: fallbackContents,
+      generationConfig: payload.generationConfig
+    });
+  }
+
+  if (!res.ok) {
+    return { success: false, status: res.status, error: `HTTP ${res.status}: ${res.errorDetail}` };
+  }
+
+  if (!res.text || !res.text.trim()) {
+    return { success: false, error: 'Empty text returned in model candidate' };
+  }
+
+  return { success: true, text: res.text.trim() };
 }
 
 /**
