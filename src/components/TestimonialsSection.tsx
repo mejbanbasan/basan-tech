@@ -107,10 +107,17 @@ export const TestimonialsSection: React.FC<TestimonialsSectionProps> = ({
                       </div>
                     </div>
 
-                    {/* 5-Star Rating Row */}
-                    <div className="flex items-center gap-1 pt-0.5">
-                      {[...Array(item.rating)].map((_, sIdx) => (
-                        <Star key={sIdx} className="w-3.5 h-3.5 fill-amber-400 text-amber-400" />
+                    {/* Star Rating Row (5-star scale showing authentic rating) */}
+                    <div className="flex items-center gap-1 pt-0.5" aria-label={`${item.rating} out of 5 stars`}>
+                      {[...Array(5)].map((_, sIdx) => (
+                        <Star
+                          key={sIdx}
+                          className={`w-3.5 h-3.5 ${
+                            sIdx < item.rating
+                              ? 'fill-amber-400 text-amber-400'
+                              : 'fill-slate-200 text-slate-200'
+                          }`}
+                        />
                       ))}
                     </div>
 

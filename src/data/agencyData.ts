@@ -350,7 +350,7 @@ export const TESTIMONIALS_DATA: Testimonial[] = [
     avatar: 'LX',
     rating: 5,
     serviceType: 'Multi-Vendor Marketplace & Mobile App',
-    quote: 'Our previous storefront struggled with cart drop-offs and slow mobile checkout. Basan Tech re-engineered our platform with instant UPI and card gateways plus real-time inventory sync. Our mobile checkout conversion rate increased noticeably within weeks.',
+    quote: 'Our previous storefront struggled with cart drop-offs and a clunky checkout flow. Basan Tech simplified the entire buying journey and made mobile purchases effortless. Our completed customer orders jumped noticeably within the very first month.',
     date: 'August 2026'
   },
   {
@@ -359,8 +359,8 @@ export const TESTIMONIALS_DATA: Testimonial[] = [
     clientTitle: 'Platform Administrator',
     avatar: 'IS',
     rating: 5,
-    serviceType: 'Education & Da\'wah Learning Platform',
-    quote: 'Basan Tech engineered our digital learning platform from the ground up. Their communication across weekly sprints was crystal clear, the student-parent dashboard is lightning-fast, and their post-launch support helped us onboard over 1,200 active learners with zero downtime.',
+    serviceType: 'Education & Learning Portal',
+    quote: 'Basan Tech built our digital learning platform from the ground up. Their project updates were always prompt and transparent, the portal is intuitive for students and parents to navigate, and we onboarded over 1,200 learners without a single issue.',
     date: 'July 2026'
   },
   {
@@ -368,9 +368,9 @@ export const TESTIMONIALS_DATA: Testimonial[] = [
     clientName: 'Lurnixe Health',
     clientTitle: 'Product & Clinical Operations Lead',
     avatar: 'LH',
-    rating: 5,
+    rating: 4,
     serviceType: 'Digital Health Card & Patient Portal',
-    quote: 'Data privacy and quick access to records were non-negotiable for our clinic operations. Basan Tech delivered a dependable, well-documented architecture with complete code handover and zero vendor lock-in. Their 30-day warranty support was top tier.',
+    quote: 'Patient privacy and instant record retrieval were our highest operational priorities. Basan Tech delivered an intuitive portal that our clinic staff found easy to adopt from day one. Their team was exceptionally supportive throughout onboarding.',
     date: 'June 2026'
   },
   {
@@ -379,18 +379,18 @@ export const TESTIMONIALS_DATA: Testimonial[] = [
     clientTitle: 'Executive Director',
     avatar: 'KC',
     rating: 5,
-    serviceType: 'Institutional & NGO Web Platform',
-    quote: 'Basan Tech treated our institutional web portal with immense dedication. The responsive layout, transparent donation tracking, and bilingual support exceeded our expectations. Even months after launch, their team is always available whenever we need quick assistance.',
+    serviceType: 'Community & Non-Profit Platform',
+    quote: 'Basan Tech approached our non-profit platform with true dedication. Donors find it simple to contribute and follow our initiatives, and having bilingual support helped us connect with our community much more effectively. They are always quick to help whenever we reach out.',
     date: 'May 2026'
   },
   {
     id: 'test-city-care',
-    clientName: 'Dr. Manzoor Eye Care',
-    clientTitle: 'Clinical Operations Lead',
-    avatar: 'DM',
+    clientName: 'Clinical Operations Lead',
+    clientTitle: 'Healthcare CRM Platform',
+    avatar: 'CO',
     rating: 5,
-    serviceType: 'Laravel 11 Clinic CRM & Management Dashboard',
-    quote: 'Basan Tech engineered our City Care Clinic CRM using the latest Laravel framework. Appointment scheduling, patient tracking across multiple doctors, and daily payment reconciliation work flawlessly with sub-second response times.',
+    serviceType: 'Clinic CRM & Management Dashboard',
+    quote: 'Switching from paper registers to this CRM cut our front-desk wait times dramatically. Booking appointments across multiple doctors takes seconds, and daily billing reconciliation at the end of every shift is completely stress-free.',
     date: 'October 2026'
   },
   {
@@ -398,9 +398,9 @@ export const TESTIMONIALS_DATA: Testimonial[] = [
     clientName: 'AIC-IIIM',
     clientTitle: 'Incubation Program Head',
     avatar: 'AI',
-    rating: 5,
+    rating: 4,
     serviceType: 'Startup Incubation & Hackathon Portal',
-    quote: 'Basan Tech delivered our official incubator portal under Atal Innovation Mission (NITI Aayog). The application workflows, facility management, and hackathon registration portals operate seamlessly for our startups and researchers.',
+    quote: 'Managing startup cohort intakes, lab facility bookings, and hackathons used to involve endless email chains. Basan Tech centralized everything into a single, reliable hub that has made life much easier for both our team and our founders.',
     date: 'April 2026'
   }
 ];
