@@ -28,7 +28,7 @@ interface ChatWidgetProps {
   onNavigate?: (page: PageView) => void;
 }
 
-const STORAGE_KEY = 'basantech_chat_history_v1';
+const STORAGE_KEY = 'basantech_chat_history_v3';
 
 const INITIAL_WELCOME: Message = {
   id: 'welcome-0',
@@ -49,10 +49,17 @@ export const ChatWidget: React.FC<ChatWidgetProps> = ({ onNavigate }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [messages, setMessages] = useState<Message[]>(() => {
     try {
+      // Clear any stale cached errors from prior broken sessions
+      sessionStorage.removeItem('basantech_chat_history_v1');
+      sessionStorage.removeItem('basantech_chat_history_v2');
+
       const saved = sessionStorage.getItem(STORAGE_KEY);
       if (saved) {
         const parsed = JSON.parse(saved);
-        if (Array.isArray(parsed) && parsed.length > 0) return parsed;
+        if (Array.isArray(parsed) && parsed.length > 0) {
+          const validOnly = parsed.filter((m: Message) => !m.isFallback);
+          if (validOnly.length > 0) return validOnly;
+        }
       }
     } catch {
       // Ignore storage parse errors
@@ -187,8 +194,9 @@ export const ChatWidget: React.FC<ChatWidgetProps> = ({ onNavigate }) => {
     setIsLoading(true);
 
     try {
-      // Prepare history formatted for API
-      const historyPayload = newMessages
+      // Prepare history formatted for API (excluding any error fallbacks and not duplicating latest message)
+      const historyPayload = messages
+        .filter((m) => !m.isFallback)
         .slice(-8)
         .map((m) => ({
           role: m.role === 'assistant' ? ('model' as const) : ('user' as const),
