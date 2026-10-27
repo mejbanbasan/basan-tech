@@ -10,16 +10,24 @@ export const TermsOfService: React.FC<TermsOfServiceProps> = ({ onNavigate }) =>
   return (
     <div className="pt-24 sm:pt-28 pb-12 sm:pb-16 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10 sm:space-y-12">
 
-      {/* Back Button */}
-      <div>
-        <button
-          onClick={() => onNavigate('home')}
-          className="inline-flex items-center gap-2 text-xs font-semibold text-slate-600 hover:text-[#022A4E] transition-colors cursor-pointer"
-        >
-          <ArrowLeft className="w-4 h-4 text-[#00976C]" />
-          <span>Back to Home</span>
-        </button>
-      </div>
+      {/* Semantic Breadcrumb Navigation */}
+      <nav aria-label="Breadcrumb" className="pb-1">
+        <ol className="flex items-center gap-1.5 text-xs text-slate-500 font-medium list-none p-0 m-0">
+          <li>
+            <a
+              href="/"
+              onClick={(e) => { e.preventDefault(); onNavigate('home'); }}
+              className="hover:text-[#00976C] transition-colors cursor-pointer"
+            >
+              Home
+            </a>
+          </li>
+          <li aria-hidden="true">/</li>
+          <li className="text-[#022A4E] font-semibold" aria-current="page">
+            Terms of Service
+          </li>
+        </ol>
+      </nav>
 
       {/* Header */}
       <div className="space-y-4 border-b border-slate-200 pb-8">

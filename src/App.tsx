@@ -20,6 +20,7 @@ const ServiceDetailPage = lazy(() => import('./components/ServiceDetailPage').th
 const EngineeringProcess = lazy(() => import('./components/EngineeringProcess').then(m => ({ default: m.EngineeringProcess })));
 const InsightsList = lazy(() => import('./components/InsightsList').then(m => ({ default: m.InsightsList })));
 const InsightDetailPage = lazy(() => import('./components/InsightDetailPage').then(m => ({ default: m.InsightDetailPage })));
+const FaqSection = lazy(() => import('./components/FaqSection').then(m => ({ default: m.FaqSection })));
 
 // Dimension-matched skeleton fallback for subpages to completely eliminate CLS
 const PageSkeleton = () => (
@@ -163,88 +164,165 @@ export default function App() {
     link.setAttribute('href', url);
   };
 
-  // Update browser tab document.title, meta descriptions, Open Graph, and Twitter tags consistently across pages
+  // Helper to dynamically inject or update BreadcrumbList JSON-LD schema for Google
+  const updateBreadcrumbSchema = (crumbs: { name: string; url: string }[]) => {
+    let script = document.getElementById('schema-breadcrumb') as HTMLScriptElement | null;
+    if (!script) {
+      script = document.createElement('script');
+      script.id = 'schema-breadcrumb';
+      script.type = 'application/ld+json';
+      document.head.appendChild(script);
+    }
+    const schema = {
+      '@context': 'https://schema.org',
+      '@type': 'BreadcrumbList',
+      itemListElement: crumbs.map((crumb, idx) => ({
+        '@type': 'ListItem',
+        position: idx + 1,
+        name: crumb.name,
+        item: crumb.url
+      }))
+    };
+    script.text = JSON.stringify(schema);
+  };
+
+  // Update browser tab document.title, meta descriptions, Open Graph, Twitter tags, and BreadcrumbList schema consistently across pages
   useEffect(() => {
-    let pageTitle = 'Basan Tech — Web & Software Development Agency';
-    let metaDescription = 'Basan Tech is an engineering studio building custom software, web applications, mobile apps, and AI solutions for ambitious startups and growing businesses.';
+    let pageTitle = 'Basan Tech — Custom Software, Web & Mobile App Development Studio';
+    let metaDescription = 'Basan Tech is an engineering studio building custom software, high-performance web applications, mobile apps, and AI solutions with 100% client code ownership.';
     let canonicalUrl = 'https://basantech.online/';
+    let breadcrumbs: { name: string; url: string }[] = [
+      { name: 'Home', url: 'https://basantech.online/' }
+    ];
 
     switch (currentPage) {
       case 'home':
-        pageTitle = 'Basan Tech — Web & Software Development Agency';
-        metaDescription = 'Basan Tech is an engineering studio building custom software, web applications, mobile apps, and AI solutions for ambitious startups and growing businesses.';
+        pageTitle = 'Basan Tech — Custom Software, Web & Mobile App Development Studio';
+        metaDescription = 'Basan Tech is an engineering studio building custom software, high-performance web applications, mobile apps, and AI solutions with 100% client code ownership.';
         canonicalUrl = 'https://basantech.online/';
+        breadcrumbs = [{ name: 'Home', url: 'https://basantech.online/' }];
         break;
       case 'services':
-        pageTitle = 'Our Services & Practices — Basan Tech';
+        pageTitle = 'Engineering Services & Digital Solutions — Basan Tech';
         metaDescription = 'Explore Basan Tech software engineering practices: custom web development, mobile applications, bespoke software, desktop systems, e-commerce, and AI solutions.';
         canonicalUrl = 'https://basantech.online/services';
+        breadcrumbs = [
+          { name: 'Home', url: 'https://basantech.online/' },
+          { name: 'Services', url: 'https://basantech.online/services' }
+        ];
         break;
       case 'service-detail': {
         const currentService = SERVICES_DATA.find(s => s.id === selectedServiceId);
         if (currentService) {
           pageTitle = `${currentService.title} Services — Basan Tech`;
-          metaDescription = `Basan Tech engineers ${currentService.shortDescription.toLowerCase()}`;
+          metaDescription = `Basan Tech engineers high-performance ${currentService.title.toLowerCase()}: ${currentService.shortDescription}`;
           canonicalUrl = `https://basantech.online/services/${currentService.id}`;
+          breadcrumbs = [
+            { name: 'Home', url: 'https://basantech.online/' },
+            { name: 'Services', url: 'https://basantech.online/services' },
+            { name: currentService.title, url: canonicalUrl }
+          ];
         } else {
           pageTitle = 'Software Engineering Services — Basan Tech';
           metaDescription = 'Explore custom software, mobile apps, and web application engineering services by Basan Tech.';
           canonicalUrl = 'https://basantech.online/services';
+          breadcrumbs = [
+            { name: 'Home', url: 'https://basantech.online/' },
+            { name: 'Services', url: 'https://basantech.online/services' }
+          ];
         }
         break;
       }
       case 'portfolio':
-        pageTitle = 'Work & Portfolio — Web Apps, Healthcare CRMs & Software | Basan Tech';
-        metaDescription = 'Explore production software, web applications, healthcare CRMs, and e-commerce platforms engineered by Basan Tech. Verified client case studies and live platforms.';
+        pageTitle = 'Work & Case Studies — Live Software & Web Platforms | Basan Tech';
+        metaDescription = 'Explore production software, clinical CRMs, e-commerce platforms, and web applications engineered by Basan Tech. Verified client case studies and live platforms.';
         canonicalUrl = 'https://basantech.online/work';
+        breadcrumbs = [
+          { name: 'Home', url: 'https://basantech.online/' },
+          { name: 'Work', url: 'https://basantech.online/work' }
+        ];
         break;
       case 'insights':
-        pageTitle = 'Insights & Engineering Articles — Basan Tech';
-        metaDescription = 'In-depth technical guides, software architecture teardowns, and engineering insights from Basan Tech on React 19, custom software, and practical AI.';
+        pageTitle = 'Engineering Insights & Technical Guides — Basan Tech';
+        metaDescription = 'In-depth technical guides, software architecture teardowns, and engineering insights from Basan Tech on modern web performance, custom software, and practical AI.';
         canonicalUrl = 'https://basantech.online/insights';
+        breadcrumbs = [
+          { name: 'Home', url: 'https://basantech.online/' },
+          { name: 'Insights', url: 'https://basantech.online/insights' }
+        ];
         break;
       case 'insight-detail': {
         const currentArticle = INSIGHTS_DATA.find(a => a.slug === selectedArticleSlug) || INSIGHTS_DATA[0];
         if (currentArticle) {
-          pageTitle = `${currentArticle.title} — Basan Tech`;
+          pageTitle = `${currentArticle.title} — Basan Tech Engineering`;
           metaDescription = currentArticle.description;
           canonicalUrl = `https://basantech.online/insights/${currentArticle.slug}`;
+          breadcrumbs = [
+            { name: 'Home', url: 'https://basantech.online/' },
+            { name: 'Insights', url: 'https://basantech.online/insights' },
+            { name: currentArticle.title, url: canonicalUrl }
+          ];
         } else {
           pageTitle = 'Engineering Insights & Articles — Basan Tech';
           metaDescription = 'In-depth technical guides, software architecture teardowns, and engineering insights from Basan Tech.';
           canonicalUrl = 'https://basantech.online/insights';
+          breadcrumbs = [
+            { name: 'Home', url: 'https://basantech.online/' },
+            { name: 'Insights', url: 'https://basantech.online/insights' }
+          ];
         }
         break;
       }
       case 'about':
-        pageTitle = 'About Us — Basan Tech | Palanpur, Gujarat';
+        pageTitle = 'About Basan Tech — Engineering Studio | Palanpur, Gujarat';
         metaDescription = 'Learn about Basan Tech, an engineering-led software company in Palanpur, Gujarat, dedicated to clean code, craftsman-level quality, and 100% client IP ownership.';
         canonicalUrl = 'https://basantech.online/about';
+        breadcrumbs = [
+          { name: 'Home', url: 'https://basantech.online/' },
+          { name: 'About Us', url: 'https://basantech.online/about' }
+        ];
         break;
       case 'testimonials':
-        pageTitle = 'Client Reviews & Reputation — Basan Tech';
-        metaDescription = 'Read genuine client reviews and project outcomes from founders who trusted Basan Tech to engineer, launch, and support their digital platforms.';
+        pageTitle = 'Client Reviews & Verified Deliveries — Basan Tech';
+        metaDescription = 'Read verified client reviews, project outcomes, and testimonials from founders who trusted Basan Tech to build, launch, and scale their digital platforms.';
         canonicalUrl = 'https://basantech.online/testimonials';
+        breadcrumbs = [
+          { name: 'Home', url: 'https://basantech.online/' },
+          { name: 'Testimonials', url: 'https://basantech.online/testimonials' }
+        ];
         break;
       case 'contact':
-        pageTitle = 'Contact Us — Basan Tech | Palanpur, Gujarat';
-        metaDescription = 'Connect directly with Basan Tech software engineers for project scoping and consultations. Direct developer communication with zero sales bureaucracy.';
+        pageTitle = 'Contact Basan Tech — Start a Project & Request a Free Quote';
+        metaDescription = 'Contact Basan Tech for custom software, web, and mobile app development inquiries. Direct developer consultation, transparent pricing, and zero sales bureaucracy.';
         canonicalUrl = 'https://basantech.online/contact';
+        breadcrumbs = [
+          { name: 'Home', url: 'https://basantech.online/' },
+          { name: 'Contact Us', url: 'https://basantech.online/contact' }
+        ];
         break;
       case 'privacy':
-        pageTitle = 'Privacy Policy — Basan Tech';
-        metaDescription = 'Review the privacy policy and data governance practices of Basan Tech, ensuring complete confidentiality for client source code and project data.';
+        pageTitle = 'Privacy Policy — Data Protection & Confidentiality | Basan Tech';
+        metaDescription = 'Review the privacy policy and data governance practices of Basan Tech, ensuring complete confidentiality for client source code, project data, and personal information.';
         canonicalUrl = 'https://basantech.online/privacy-policy';
+        breadcrumbs = [
+          { name: 'Home', url: 'https://basantech.online/' },
+          { name: 'Privacy Policy', url: 'https://basantech.online/privacy-policy' }
+        ];
         break;
       case 'terms':
-        pageTitle = 'Terms of Service — Basan Tech';
-        metaDescription = 'Review the terms of service governing software development engagements, intellectual property transfer, and warranty commitments with Basan Tech.';
+        pageTitle = 'Terms of Service — Engagement & IP Ownership | Basan Tech';
+        metaDescription = 'Review the terms of service governing software development engagements, 100% client IP transfer, sprint delivery, and 30-day warranty commitments with Basan Tech.';
         canonicalUrl = 'https://basantech.online/terms-of-service';
+        breadcrumbs = [
+          { name: 'Home', url: 'https://basantech.online/' },
+          { name: 'Terms of Service', url: 'https://basantech.online/terms-of-service' }
+        ];
         break;
       default:
-        pageTitle = 'Basan Tech — Web & Software Development Agency';
-        metaDescription = 'Basan Tech is an engineering studio building custom software, web applications, mobile apps, and AI solutions for ambitious startups and growing businesses.';
+        pageTitle = 'Basan Tech — Custom Software, Web & Mobile App Development Studio';
+        metaDescription = 'Basan Tech is an engineering studio building custom software, high-performance web applications, mobile apps, and AI solutions with 100% client code ownership.';
         canonicalUrl = 'https://basantech.online/';
+        breadcrumbs = [{ name: 'Home', url: 'https://basantech.online/' }];
     }
 
     // Set page title
@@ -265,6 +343,9 @@ export default function App() {
 
     // Set canonical link
     updateCanonicalUrl(canonicalUrl);
+
+    // Update dynamic BreadcrumbList Schema for Google
+    updateBreadcrumbSchema(breadcrumbs);
   }, [currentPage, selectedServiceId, selectedArticleSlug]);
 
   const handleNavigate = (page: PageView, param?: string) => {
@@ -355,6 +436,10 @@ export default function App() {
                 <AboutAgency onNavigate={handleNavigate} isAboutPage={false} />
               </Suspense>
 
+              <Suspense fallback={<div className="min-h-[400px] bg-white" />}>
+                <FaqSection onNavigate={handleNavigate} />
+              </Suspense>
+
               <Suspense fallback={<div className="min-h-[600px] bg-slate-900" />}>
                 <ContactSection onNavigate={handleNavigate} />
               </Suspense>
@@ -369,6 +454,7 @@ export default function App() {
                 <div>
                   <ServicesOverview onNavigate={handleNavigate} showBreadcrumb={true} />
                   <EngineeringProcess onNavigate={handleNavigate} />
+                  <FaqSection onNavigate={handleNavigate} />
                   <ContactSection onNavigate={handleNavigate} />
                 </div>
               )}

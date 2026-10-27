@@ -91,15 +91,22 @@ export const PortfolioShowcase: React.FC<PortfolioShowcaseProps> = ({
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
           <div className="space-y-3 max-w-2xl">
             {showBreadcrumb && (
-              <nav aria-label="Breadcrumb" className="flex items-center gap-1.5 text-xs text-slate-500 font-medium pb-1">
-                <button
-                  onClick={() => onNavigate('home')}
-                  className="hover:text-[#00976C] transition-colors cursor-pointer"
-                >
-                  Home
-                </button>
-                <span>/</span>
-                <span className="text-[#022A4E] font-semibold">Work &amp; Case Studies</span>
+              <nav aria-label="Breadcrumb" className="pb-1">
+                <ol className="flex items-center gap-1.5 text-xs text-slate-500 font-medium list-none p-0 m-0">
+                  <li>
+                    <a
+                      href="/"
+                      onClick={(e) => { e.preventDefault(); onNavigate('home'); }}
+                      className="hover:text-[#00976C] transition-colors cursor-pointer"
+                    >
+                      Home
+                    </a>
+                  </li>
+                  <li aria-hidden="true">/</li>
+                  <li className="text-[#022A4E] font-semibold" aria-current="page">
+                    Work &amp; Case Studies
+                  </li>
+                </ol>
               </nav>
             )}
 

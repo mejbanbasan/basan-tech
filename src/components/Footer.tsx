@@ -161,7 +161,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
                   onClick={(e) => { e.preventDefault(); onNavigate('about'); }}
                   className="hover:text-[#00976C] transition-colors cursor-pointer inline-block"
                 >
-                  About Us
+                  About Basan Tech
                 </a>
               </li>
               <li>
@@ -179,7 +179,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
                   onClick={(e) => { e.preventDefault(); onNavigate('insights'); }}
                   className="hover:text-[#00976C] transition-colors cursor-pointer inline-block"
                 >
-                  Insights &amp; Articles
+                  Engineering Insights
                 </a>
               </li>
               <li>
@@ -188,7 +188,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
                   onClick={(e) => { e.preventDefault(); onNavigate('services'); }}
                   className="hover:text-[#00976C] transition-colors cursor-pointer inline-block"
                 >
-                  Services
+                  All Engineering Services
                 </a>
               </li>
               <li>
@@ -197,7 +197,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
                   onClick={(e) => { e.preventDefault(); onNavigate('testimonials'); }}
                   className="hover:text-[#00976C] transition-colors cursor-pointer inline-block"
                 >
-                  Client Deliveries
+                  Client Reviews &amp; Results
                 </a>
               </li>
               <li>
@@ -206,7 +206,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
                   onClick={(e) => { e.preventDefault(); onNavigate('contact'); }}
                   className="hover:text-[#00976C] transition-colors cursor-pointer inline-block"
                 >
-                  Contact &amp; Inquiries
+                  Contact &amp; Free Quote
                 </a>
               </li>
             </ul>

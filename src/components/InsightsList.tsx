@@ -35,15 +35,22 @@ export const InsightsList: React.FC<InsightsListProps> = ({ onNavigate, showBrea
 
         {/* Breadcrumb Navigation */}
         {showBreadcrumb && (
-          <nav aria-label="Breadcrumb" className="flex items-center gap-1.5 text-xs text-slate-500 font-medium pb-4 sm:pb-6">
-            <button
-              onClick={() => onNavigate('home')}
-              className="hover:text-[#00976C] transition-colors cursor-pointer"
-            >
-              Home
-            </button>
-            <span>/</span>
-            <span className="text-[#022A4E] font-semibold">Insights &amp; Articles</span>
+          <nav aria-label="Breadcrumb" className="pb-4 sm:pb-6">
+            <ol className="flex items-center gap-1.5 text-xs text-slate-500 font-medium list-none p-0 m-0">
+              <li>
+                <a
+                  href="/"
+                  onClick={(e) => { e.preventDefault(); onNavigate('home'); }}
+                  className="hover:text-[#00976C] transition-colors cursor-pointer"
+                >
+                  Home
+                </a>
+              </li>
+              <li aria-hidden="true">/</li>
+              <li className="text-[#022A4E] font-semibold" aria-current="page">
+                Insights &amp; Articles
+              </li>
+            </ol>
           </nav>
         )}
 

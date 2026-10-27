@@ -103,14 +103,34 @@ export const InsightDetailPage: React.FC<InsightDetailPageProps> = ({ slug, onNa
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
 
         {/* Top Breadcrumb & Back Link */}
-        <div className="flex items-center justify-between gap-4 pb-6 border-b border-slate-200/80 mb-8">
-          <button
-            onClick={() => onNavigate('insights')}
-            className="inline-flex items-center gap-2 text-xs font-semibold text-slate-600 hover:text-[#00976C] transition-colors cursor-pointer"
-          >
-            <ArrowLeft className="w-3.5 h-3.5" />
-            <span>Back to Insights</span>
-          </button>
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 border-b border-slate-200/80 mb-8">
+          <nav aria-label="Breadcrumb">
+            <ol className="flex items-center gap-1.5 text-xs text-slate-500 font-medium list-none p-0 m-0">
+              <li>
+                <a
+                  href="/"
+                  onClick={(e) => { e.preventDefault(); onNavigate('home'); }}
+                  className="hover:text-[#00976C] transition-colors cursor-pointer"
+                >
+                  Home
+                </a>
+              </li>
+              <li aria-hidden="true">/</li>
+              <li>
+                <a
+                  href="/insights"
+                  onClick={(e) => { e.preventDefault(); onNavigate('insights'); }}
+                  className="hover:text-[#00976C] transition-colors cursor-pointer"
+                >
+                  Insights
+                </a>
+              </li>
+              <li aria-hidden="true">/</li>
+              <li className="text-[#022A4E] font-semibold truncate max-w-[200px] sm:max-w-xs" aria-current="page">
+                {article.title}
+              </li>
+            </ol>
+          </nav>
 
           <button
             onClick={handleShare}

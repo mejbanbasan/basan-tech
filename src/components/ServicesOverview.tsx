@@ -42,15 +42,22 @@ export const ServicesOverview: React.FC<ServicesOverviewProps> = ({
 
         {/* Breadcrumb Navigation (if on dedicated /services page) */}
         {showBreadcrumb && (
-          <nav aria-label="Breadcrumb" className="flex items-center gap-1.5 text-xs text-slate-500 font-medium">
-            <button
-              onClick={() => onNavigate('home')}
-              className="hover:text-[#00976C] transition-colors cursor-pointer"
-            >
-              Home
-            </button>
-            <span>/</span>
-            <span className="text-[#022A4E] font-semibold">Services</span>
+          <nav aria-label="Breadcrumb">
+            <ol className="flex items-center gap-1.5 text-xs text-slate-500 font-medium list-none p-0 m-0">
+              <li>
+                <a
+                  href="/"
+                  onClick={(e) => { e.preventDefault(); onNavigate('home'); }}
+                  className="hover:text-[#00976C] transition-colors cursor-pointer"
+                >
+                  Home
+                </a>
+              </li>
+              <li aria-hidden="true">/</li>
+              <li className="text-[#022A4E] font-semibold" aria-current="page">
+                Services
+              </li>
+            </ol>
           </nav>
         )}
 
