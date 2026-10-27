@@ -4,11 +4,11 @@
  * Multi-Key (10 Keys) x Multi-Model (5 Models) Failover Engine for Gemini API.
  */
 
-// 5 default Gemini models in priority order (verified active on Google Gemini API v1beta)
+// 5 default Gemini models in priority order: fastest flash models first for instant response
 export const DEFAULT_GEMINI_MODELS = [
-  'gemini-2.5-flash',
-  'gemini-flash-latest',
   'gemini-2.5-flash-lite',
+  'gemini-flash-latest',
+  'gemini-2.5-flash',
   'gemini-3.5-flash',
   'gemini-2.5-pro'
 ];
@@ -21,7 +21,7 @@ Your primary mission is to provide helpful, accurate, concise, and professional 
 - Engineering studio founded in Palanpur, Gujarat, specializing in high-performance digital platforms.
 - Contact Information:
   - Phone / WhatsApp: +91 9624895641 (Active on WhatsApp for quick inquiries & consultations)
-  - Email: info@basantech.online
+  - Email: basantech1@gmail.com (Always use this exact email address; NEVER use info@basantech.online or invent any other email address)
   - Direct Contact Form: https://basantech.online/contact
 - Working Model & Commitments:
   - 100% Client-Owned Source Code: All GitHub repos, databases, and assets belong entirely to the client upon delivery (no vendor lock-in).
@@ -67,7 +67,8 @@ Your primary mission is to provide helpful, accurate, concise, and professional 
    - Mention that initial scoping consultations and custom proposals are completely free.
    - Invite the user to share a brief summary of what they want to build or reach out via WhatsApp (+91 9624895641) or the contact form (https://basantech.online/contact) for an accurate estimate.
 4. Call to Action: Direct interested clients towards WhatsApp or our Contact page whenever appropriate.
-5. If asked about technologies: We work across React, Next.js, Node.js, TypeScript, Python, React Native, Flutter, Laravel, PHP, PostgreSQL, MySQL, Tailwind CSS, AWS, Cloudflare, and AI APIs.`;
+5. If asked about technologies: We work across React, Next.js, Node.js, TypeScript, Python, React Native, Flutter, Laravel, PHP, PostgreSQL, MySQL, Tailwind CSS, AWS, Cloudflare, and AI APIs.
+6. Contact & Email Accuracy: Whenever sharing our email address, ALWAYS use basantech1@gmail.com. NEVER generate, assume, or invent info@basantech.online or any other email address.`;
 
 const GRACEFUL_FALLBACK_TEXT =
   "I'm having trouble connecting right now — please reach out via WhatsApp (+91 9624895641) or our contact form at https://basantech.online/contact — we're active and ready to discuss your project!";
@@ -206,8 +207,11 @@ async function callGeminiApi(
     contents,
     generationConfig: {
       temperature: 0.7,
-      maxOutputTokens: 800,
-      topP: 0.95
+      maxOutputTokens: 550,
+      topP: 0.95,
+      thinkingConfig: {
+        thinkingBudget: 0
+      }
     }
   };
 
@@ -219,7 +223,7 @@ async function callGeminiApi(
 
   const sendRequest = async (bodyPayload: any) => {
     const controller = new AbortController();
-    const timeoutId = setTimeout(() => controller.abort(), 12000);
+    const timeoutId = setTimeout(() => controller.abort(), 8000);
 
     try {
       const response = await fetch(url, {
@@ -252,12 +256,19 @@ async function callGeminiApi(
       return {
         ok: false,
         status: 0,
-        errorDetail: err.name === 'AbortError' ? 'Request timed out after 12s' : err.message || 'Network error'
+        errorDetail: err.name === 'AbortError' ? 'Request timed out after 8s' : err.message || 'Network error'
       };
     }
   };
 
   let res = await sendRequest(payload);
+
+  // If rejected with 400 mentioning thinkingConfig or thinkingBudget, retry without thinkingConfig
+  if (!res.ok && res.status === 400 && payload.generationConfig?.thinkingConfig && /thinking/i.test(res.errorDetail)) {
+    const fallbackPayload = JSON.parse(JSON.stringify(payload));
+    delete fallbackPayload.generationConfig.thinkingConfig;
+    res = await sendRequest(fallbackPayload);
+  }
 
   // If rejected with 400 mentioning system_instruction, retry by prepending system instructions to first user turn
   if (!res.ok && res.status === 400 && payload.system_instruction && res.errorDetail.toLowerCase().includes('system_instruction')) {
@@ -265,10 +276,11 @@ async function callGeminiApi(
     if (fallbackContents.length > 0 && fallbackContents[0].role === 'user') {
       fallbackContents[0].parts[0].text = `[Instructions: ${systemPrompt}]\n\n${fallbackContents[0].parts[0].text}`;
     }
-    res = await sendRequest({
+    const fallbackPayload: any = {
       contents: fallbackContents,
       generationConfig: payload.generationConfig
-    });
+    };
+    res = await sendRequest(fallbackPayload);
   }
 
   if (!res.ok) {
@@ -335,8 +347,21 @@ export async function processChatRequest(body: any): Promise<any> {
           break;
         } else {
           lastRecordedError = `${currentKey.id} + ${currentModel}: ${result.error}`;
-          console.warn(`[Chat API Failover] ${lastRecordedError}. Retrying next model in ~200ms...`);
-          await sleep(200);
+          console.warn(`[Chat API Failover] ${lastRecordedError}.`);
+
+          // If the key is invalid or quota is completely exhausted for this project/account,
+          // testing subsequent models on the same dead key wastes time. Switch to next key immediately.
+          const isKeyExhausted =
+            result.status === 403 ||
+            (result.status === 400 && /API_KEY_INVALID|key not valid/i.test(result.error || '')) ||
+            (result.status === 429 && /quota|exhausted|resource/i.test(result.error || ''));
+
+          if (isKeyExhausted) {
+            console.warn(`[Chat API Failover] Key ${currentKey.id} quota/auth exhausted. Switching to next key immediately.`);
+            break;
+          }
+
+          await sleep(50);
         }
       }
 
