@@ -4,11 +4,11 @@
  * Multi-Key (10 Keys) x Multi-Model (5 Models) Failover Engine for Gemini API.
  */
 
-// 5 default Gemini models in priority order: fastest flash models first for instant response
+// 5 default Gemini models in priority order: prioritizing gemini-2.5-flash first for instant response
 export const DEFAULT_GEMINI_MODELS = [
-  'gemini-2.5-flash-lite',
-  'gemini-flash-latest',
   'gemini-2.5-flash',
+  'gemini-flash-latest',
+  'gemini-2.5-flash-lite',
   'gemini-3.5-flash',
   'gemini-2.5-pro'
 ];
