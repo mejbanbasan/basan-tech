@@ -7,6 +7,7 @@ import {
   Phone,
   Check,
   Instagram,
+  Linkedin,
   MessageCircle,
   ShieldCheck,
   Globe,
@@ -97,6 +98,52 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
             <p className="text-sm text-slate-600 leading-relaxed max-w-sm">
               Basan Tech is a software engineering and digital solutions company. We design and build clean, scalable web applications, custom software, mobile apps, and automated workflows.
             </p>
+
+            {/* Social Presence */}
+            <div className="flex items-center gap-2 pt-0.5">
+              <a
+                href="https://www.linkedin.com/company/basantech/"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Basan Tech on LinkedIn"
+                id="footer-brand-linkedin-link"
+                className="w-8 h-8 rounded-lg bg-slate-100 hover:bg-[#0A66C2] text-slate-600 hover:text-white flex items-center justify-center transition-all duration-200 border border-slate-200 hover:border-[#0A66C2] cursor-pointer shadow-2xs"
+                title="Basan Tech on LinkedIn"
+              >
+                <Linkedin className="w-4 h-4" />
+              </a>
+              <a
+                href="https://www.instagram.com/basan_tech/"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Basan Tech on Instagram"
+                id="footer-brand-instagram-link"
+                className="w-8 h-8 rounded-lg bg-slate-100 hover:bg-pink-600 text-slate-600 hover:text-white flex items-center justify-center transition-all duration-200 border border-slate-200 hover:border-pink-600 cursor-pointer shadow-2xs"
+                title="Basan Tech on Instagram"
+              >
+                <Instagram className="w-4 h-4" />
+              </a>
+              <a
+                href="https://wa.me/919624895641"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Basan Tech on WhatsApp"
+                id="footer-brand-whatsapp-link"
+                className="w-8 h-8 rounded-lg bg-slate-100 hover:bg-[#00976C] text-slate-600 hover:text-white flex items-center justify-center transition-all duration-200 border border-slate-200 hover:border-[#00976C] cursor-pointer shadow-2xs"
+                title="Chat on WhatsApp"
+              >
+                <MessageCircle className="w-4 h-4" />
+              </a>
+              <a
+                href="mailto:basantech1@gmail.com"
+                aria-label="Email Basan Tech"
+                id="footer-brand-email-link"
+                className="w-8 h-8 rounded-lg bg-slate-100 hover:bg-[#022A4E] text-slate-600 hover:text-white flex items-center justify-center transition-all duration-200 border border-slate-200 hover:border-[#022A4E] cursor-pointer shadow-2xs"
+                title="Email Basan Tech"
+              >
+                <Mail className="w-4 h-4" />
+              </a>
+            </div>
 
             <div className="flex flex-wrap items-center gap-2">
               <div className="flex items-center gap-2 text-xs font-semibold text-emerald-700 bg-emerald-50 px-3 py-1.5 rounded-lg w-fit border border-emerald-200">
@@ -248,6 +295,17 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
               >
                 <MessageCircle className="w-4 h-4 text-[#00976C] shrink-0" />
                 <span>WhatsApp: +91 9624895641</span>
+              </a>
+
+              <a
+                href="https://www.linkedin.com/company/basantech/"
+                target="_blank"
+                rel="noopener noreferrer"
+                id="footer-direct-linkedin-link"
+                className="flex items-center gap-2 text-[#0A66C2] hover:text-[#004182] transition-colors font-medium"
+              >
+                <Linkedin className="w-4 h-4 text-[#0A66C2] shrink-0" />
+                <span>LinkedIn: Basan Tech</span>
               </a>
 
               <a

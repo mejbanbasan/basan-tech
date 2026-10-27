@@ -12,6 +12,7 @@ import {
   Copy,
   Check,
   Instagram,
+  Linkedin,
   MessageCircle,
   Loader2
 } from 'lucide-react';
@@ -425,6 +426,26 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
                     </a>
                   </div>
                 </div>
+
+                {/* LinkedIn Company Page */}
+                <a
+                  href="https://www.linkedin.com/company/basantech/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  id="contact-direct-linkedin-link"
+                  className="p-3.5 rounded-2xl bg-slate-50 hover:bg-sky-50/50 border border-slate-200/80 hover:border-[#0A66C2]/60 flex items-center justify-between transition-colors group block shadow-2xs"
+                >
+                  <div className="flex items-center gap-2 text-xs">
+                    <div className="w-7 h-7 rounded-lg bg-white border border-slate-200 flex items-center justify-center text-[#0A66C2] group-hover:scale-105 transition-transform">
+                      <Linkedin className="w-3.5 h-3.5" />
+                    </div>
+                    <div>
+                      <div className="font-semibold text-slate-700 group-hover:text-[#0A66C2] transition-colors">LinkedIn Company Page</div>
+                      <div className="font-mono text-[11px] text-slate-500">linkedin.com/company/basantech</div>
+                    </div>
+                  </div>
+                  <ArrowUpRight className="w-3.5 h-3.5 text-slate-400 group-hover:text-[#0A66C2] transition-colors" />
+                </a>
 
                 {/* Instagram Profile */}
                 <a

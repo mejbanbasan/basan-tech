@@ -8,7 +8,8 @@ import {
   Target,
   Code2,
   CheckCircle2,
-  MapPin
+  MapPin,
+  Linkedin
 } from 'lucide-react';
 import aboutCollabImg from '../assets/images/about_collaboration.webp';
 
@@ -125,6 +126,16 @@ export const AboutAgency: React.FC<AboutAgencyProps> = ({
                     <MapPin className="w-4 h-4 text-[#00976C] shrink-0" />
                     <span>Engineering Studio: Palanpur, Gujarat, India</span>
                   </div>
+                  <a
+                    href="https://www.linkedin.com/company/basantech/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-2 text-[#0A66C2] hover:text-[#004182] font-semibold bg-sky-50/70 hover:bg-sky-100/80 p-2 rounded-xl border border-sky-200/70 transition-colors"
+                  >
+                    <Linkedin className="w-4 h-4 text-[#0A66C2] shrink-0" />
+                    <span>Basan Tech on LinkedIn</span>
+                    <ArrowUpRight className="w-3.5 h-3.5 ml-auto text-[#0A66C2]" />
+                  </a>
                 </div>
               </div>
             </div>

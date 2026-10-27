@@ -14,6 +14,16 @@ export interface AgencyStatItem {
   desc?: string;
 }
 
+export const COMPANY_SOCIAL_LINKS = {
+  linkedin: 'https://www.linkedin.com/company/basantech/',
+  instagram: 'https://www.instagram.com/basan_tech/',
+  whatsapp: 'https://wa.me/919624895641',
+  email: 'mailto:basantech1@gmail.com',
+  phone: 'tel:+919624895641',
+  directPhone: '+91 9624895641',
+  directEmail: 'basantech1@gmail.com'
+};
+
 export const AGENCY_STATS: AgencyStatItem[] = [
   { value: '6', numericValue: 6, label: 'Client Platforms Built', suffix: '', desc: 'Live in production' },
   { value: '6', numericValue: 6, label: 'Core Services', suffix: '', desc: 'Web, Mobile, AI & Software' },

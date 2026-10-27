@@ -22,6 +22,7 @@ Your primary mission is to provide helpful, accurate, concise, and professional 
 - Contact Information:
   - Phone / WhatsApp: +91 9624895641 (Active on WhatsApp for quick inquiries & consultations)
   - Email: basantech1@gmail.com (Always use this exact email address; NEVER use info@basantech.online or invent any other email address)
+  - LinkedIn: https://www.linkedin.com/company/basantech/ (Official Company LinkedIn Page)
   - Direct Contact Form: https://basantech.online/contact
 - Working Model & Commitments:
   - 100% Client-Owned Source Code: All GitHub repos, databases, and assets belong entirely to the client upon delivery (no vendor lock-in).
